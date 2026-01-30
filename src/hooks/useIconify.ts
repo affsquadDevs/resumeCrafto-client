@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { searchIcons, getIconDetails } from '@/api/iconify';
+import { searchIcons, getIconDetails } from '@/utils/iconify';
 import { useEditorStore } from '@/store/useEditorStore';
 
 export const useIconify = (activeTab: string) => {

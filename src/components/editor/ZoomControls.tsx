@@ -17,7 +17,7 @@ export const ZoomControls = () => {
     };
 
     return (
-        <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-md border border-gray-200 p-2 flex items-center gap-3 z-50">
+        <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-md border border-gray-200 p-2 hidden sm:flex items-center gap-3 z-50">
             <button
                 onClick={() => stepZoom(-0.1)}
                 className="p-1 hover:bg-gray-100 rounded text-gray-600"

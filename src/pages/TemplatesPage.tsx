@@ -9,30 +9,115 @@ import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
 import { useRouter } from 'next/navigation';
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
+import { useSession } from 'next-auth/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Trash2, EyeOff, Eye, Loader2, Globe, User, Check, AlertCircle, AlertTriangle, X } from 'lucide-react';
 
 export default function TemplatesPage() {
     const router = useRouter();
+    const { data: session } = useSession();
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
     const [searchQuery, setSearchQuery] = useState('');
-    const [activeCategory, setActiveCategory] = useState('All');
+    const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [dbTemplates, setDbTemplates] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [templateToDelete, setTemplateToDelete] = useState<string | null>(null);
 
-    const handleSelectTemplate = (templateId: string) => {
-        const template = TEMPLATES.find(t => t.id === templateId);
-        if (template) {
-            loadTemplate(template.elements as any);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
+    React.useEffect(() => {
+        fetchTemplates();
+    }, []);
+
+    const fetchTemplates = async () => {
+        try {
+            const res = await fetch('/api/templates');
+            if (res.ok) {
+                const data = await res.json();
+                setDbTemplates(data);
+            }
+        } catch (error) {
+            console.error('Fetch templates error:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSelectTemplate = (template: any) => {
+        // template could be from static or DB
+        const elements = template.elements || template.data;
+        if (elements) {
+            loadTemplate(elements);
             router.push('/editor');
         }
     };
 
-    const categories = ['All', 'Professional', 'Creative', 'Minimal', 'Modern'];
+    const handleDelete = async (id: string, e: React.MouseEvent) => {
+        e.stopPropagation();
+        setTemplateToDelete(id);
+    };
 
-    const filteredTemplates = TEMPLATES.filter(template => {
+    const confirmDelete = async () => {
+        if (!templateToDelete) return;
+        const id = templateToDelete;
+        setTemplateToDelete(null);
+
+        try {
+            const res = await fetch(`/api/templates?id=${id}`, { method: 'DELETE' });
+            if (res.ok) {
+                setDbTemplates(prev => prev.filter(t => t.id !== id));
+                setMessage({ type: 'success', text: 'Template deleted' });
+            }
+        } catch (error) {
+            setMessage({ type: 'error', text: 'Failed to delete' });
+        } finally {
+            setTimeout(() => setMessage(null), 3000);
+        }
+    };
+
+    const handleToggleVisibility = async (id: string, currentStatus: boolean, e: React.MouseEvent) => {
+        e.stopPropagation();
+        try {
+            const res = await fetch('/api/templates', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, isPublic: !currentStatus })
+            });
+            if (res.ok) {
+                const updated = await res.json();
+                setDbTemplates(prev => prev.map(t => t.id === id ? updated : t));
+                setMessage({ type: 'success', text: !currentStatus ? 'Public' : 'Hidden' });
+            }
+        } catch (error) {
+            setMessage({ type: 'error', text: 'Failed to update' });
+        } finally {
+            setTimeout(() => setMessage(null), 3000);
+        }
+    };
+
+    const categories = ['All', 'My Templates', 'Premium', 'Shared Examples'];
+
+    // Combine static and DB templates
+    // Combine and shuffle templates
+    const shuffledTemplates = React.useMemo(() => {
+        const all = [
+            ...TEMPLATES.map(t => ({ ...t, isStatic: true, type: 'Premium' })),
+            ...dbTemplates.map(t => ({ ...t, isStatic: false, type: 'Shared Example' }))
+        ];
+        return [...all].sort(() => Math.random() - 0.5);
+    }, [dbTemplates]);
+
+    const filteredTemplates = shuffledTemplates.filter(template => {
         const matchesSearch = template.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+        const isProfessional = template.isStatic
+            ? (template.id.includes('corporate') || template.id.includes('structured'))
+            : true;
+
         const matchesCategory = activeCategory === 'All' ||
-            (activeCategory === 'Professional' && (template.id.includes('corporate') || template.id.includes('structured'))) ||
-            (activeCategory === 'Creative' && (template.id.includes('creative') || template.id.includes('color'))) ||
-            (activeCategory === 'Minimal' && (template.id.includes('minimal'))) ||
-            (activeCategory === 'Modern' && (template.id.includes('modern') || template.id.includes('editorial')));
+            (activeCategory === 'My Templates' && template.userId === (session?.user as any)?.id) ||
+            (activeCategory === 'Premium' && template.isStatic) ||
+            (activeCategory === 'Shared Examples' && !template.isStatic);
 
         return matchesSearch && matchesCategory;
     });
@@ -104,16 +189,50 @@ export default function TemplatesPage() {
                             ))}
                         </div>
 
-                        {filteredTemplates.length > 0 ? (
+                        {isLoading ? (
+                            <div className="py-32 flex flex-col items-center justify-center gap-4 text-gray-400">
+                                <Loader2 size={40} className="animate-spin" />
+                                <p className="font-bold uppercase tracking-widest text-xs">Curating Masterpieces...</p>
+                            </div>
+                        ) : filteredTemplates.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 pt-8">
                                 {filteredTemplates.map((template) => (
-                                    <DesignCard
-                                        key={template.id}
-                                        title={template.name}
-                                        date="Modern Template"
-                                        templateElements={template.elements}
-                                        onClick={() => handleSelectTemplate(template.id)}
-                                    />
+                                    <div key={template.id} className="group relative">
+                                        <DesignCard
+                                            title={template.name}
+                                            date={template.isStatic ? "Official Premium" : `Shared by ${template.user?.name || 'User'}`}
+                                            templateElements={template.isStatic ? template.elements : template.data}
+                                            onClick={() => handleSelectTemplate(template)}
+                                        />
+
+                                        {!template.isStatic && template.userId && template.userId === (session?.user as any)?.id && (
+                                            <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                                                <button
+                                                    onClick={(e) => handleToggleVisibility(template.id, template.isPublic, e)}
+                                                    className={`p-2 rounded-xl border shadow-xl backdrop-blur-md transition-all active:scale-90 ${template.isPublic ? 'bg-white/80 text-blue-600 border-blue-100' : 'bg-gray-900/80 text-white border-gray-700'}`}
+                                                    title={template.isPublic ? "Visible to everyone" : "Private (only you see this)"}
+                                                >
+                                                    {template.isPublic ? <Globe size={18} /> : <EyeOff size={18} />}
+                                                </button>
+                                                <button
+                                                    onClick={(e) => handleDelete(template.id, e)}
+                                                    className="p-2 bg-red-500/80 text-white rounded-xl border border-red-400 shadow-xl backdrop-blur-md hover:bg-red-600 transition-all active:scale-90"
+                                                    title="Delete Template"
+                                                >
+                                                    <Trash2 size={18} />
+                                                </button>
+                                            </div>
+                                        )}
+
+                                        {!template.isStatic && !template.isPublic && (
+                                            <div className="absolute top-4 left-4 pointer-events-none">
+                                                <div className="px-3 py-1 bg-gray-900 text-white text-[10px] font-bold rounded-lg flex items-center gap-2 shadow-xl border border-gray-700">
+                                                    <EyeOff size={12} />
+                                                    PRIVATE
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         ) : (
@@ -128,45 +247,78 @@ export default function TemplatesPage() {
                     </div>
                 </section>
 
-                {/* Custom CTA */}
-                <section className="py-24 px-6 lg:px-10 bg-gray-50/50">
-                    <div className="max-w-7xl mx-auto">
-                        <LiquidGlass
-                            displacementScale={8}
-                            blurAmount={20}
-                            saturation={110}
-                            cornerRadius={48}
-                            padding={typeof window !== 'undefined' && window.innerWidth < 768 ? "40px 24px" : "80px"}
-                            className="bg-white border border-gray-100 shadow-xl"
+            </main>
+
+            <AnimatePresence>
+                {templateToDelete && (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setTemplateToDelete(null)}
+                            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[110] flex items-center justify-center p-4"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl z-[111] overflow-hidden"
                         >
-                            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                                <div className="text-center md:text-left">
-                                    <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-6">Can&apos;t find the perfect fit?</h2>
-                                    <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-10">
-                                        Our design team is constantly adding new templates. If you have a specific style in mind,
-                                        you can start from scratch or reach out to us for a custom layout.
-                                    </p>
+                            <div className="p-8 md:p-10">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="p-4 bg-red-50 text-red-600 rounded-2xl">
+                                        <AlertTriangle size={32} />
+                                    </div>
                                     <button
-                                        onClick={() => { loadTemplate([]); router.push('/editor'); }}
-                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gray-950 text-white rounded-2xl font-bold hover:bg-purple-600 transition-all group"
+                                        onClick={() => setTemplateToDelete(null)}
+                                        className="p-2 hover:bg-gray-50 rounded-full text-gray-400 transition-colors"
                                     >
-                                        Start with Blank Canvas <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                        <X size={20} />
                                     </button>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {[1, 2, 3, 4].map(i => (
-                                        <div key={i} className="aspect-square bg-gray-50 rounded-2xl md:rounded-3xl border border-gray-100 p-4 md:p-6 flex flex-col justify-end">
-                                            <div className="w-8 h-8 rounded-lg bg-gray-100 mb-auto" />
-                                            <div className="h-2 w-full bg-gray-200 rounded mb-2" />
-                                            <div className="h-2 w-2/3 bg-gray-100 rounded" />
-                                        </div>
-                                    ))}
+
+                                <h3 className="text-2xl font-black text-gray-900 tracking-tight mb-4">
+                                    Delete this template?
+                                </h3>
+
+                                <p className="text-gray-500 font-medium leading-relaxed mb-8">
+                                    Are you sure you want to delete this template? This action is permanent and will remove it for everyone.
+                                </p>
+
+                                <div className="flex flex-col gap-3">
+                                    <button
+                                        onClick={confirmDelete}
+                                        className="w-full py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-red-200 active:scale-95"
+                                    >
+                                        Yes, Delete Permanent
+                                    </button>
+                                    <button
+                                        onClick={() => setTemplateToDelete(null)}
+                                        className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-gray-600 rounded-2xl font-bold transition-all active:scale-95"
+                                    >
+                                        Cancel
+                                    </button>
                                 </div>
                             </div>
-                        </LiquidGlass>
-                    </div>
-                </section>
-            </main>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {message && (
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className={`fixed top-24 right-8 z-[100] flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl border ${message.type === 'success' ? 'bg-green-50 border-green-100 text-green-700' : 'bg-red-50 border-red-100 text-red-700'}`}
+                    >
+                        {message.type === 'success' ? <Check size={20} /> : <AlertCircle size={20} />}
+                        <p className="font-bold">{message.text}</p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <DashboardFooter />
         </div>

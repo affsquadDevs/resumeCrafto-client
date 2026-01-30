@@ -63,8 +63,16 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
         }
     };
 
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = (e: React.MouseEvent | React.PointerEvent | React.TouchEvent) => {
+        // Stop propagation to prevent canvas selection box from starting
         e.stopPropagation();
+
+        // If it's already selected and it's a text element, enter editing mode on tap
+        if (isSelected && element.type === 'text' && !isEditing) {
+            setIsEditing(true);
+            return;
+        }
+
         selectElement(id);
     };
 
@@ -173,11 +181,12 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
             }}
             onClick={handleClick}
             onDoubleClick={handleDoubleClick}
+            onTouchStart={handleClick}
             disableDragging={element.locked || isEditing}
             enableResizing={selectedIds.length === 1 && isSelected && !isEditing && !element.locked}
             className={`absolute ${!isSelected ? 'hover:border hover:border-blue-300' : ''} ${element.locked ? 'cursor-default' : ''}`}
             data-element-id={id}
-            resizeHandleComponent={isSelected ? {
+            resizeHandleComponent={isSelected && !isEditing ? {
                 topLeft: <Handle type="circle" />,
                 topRight: <Handle type="circle" />,
                 bottomLeft: <Handle type="circle" />,

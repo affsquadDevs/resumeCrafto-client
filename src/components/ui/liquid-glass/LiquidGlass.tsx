@@ -124,13 +124,13 @@ const GlassContainer = forwardRef<any, any>(
                     }}
                 />
 
-                {/* Content */}
                 <div
                     style={{
                         position: 'relative',
                         zIndex: 1,
                         padding,
                         borderRadius: cornerRadius,
+                        overflow: 'visible',
                         width: '100%',
                         height: '100%'
                     }}
@@ -261,8 +261,8 @@ export default function LiquidGlass({
             style={{
                 position: 'relative',
                 willChange: 'transform',
-                contain: 'layout paint style',
                 transform: 'translateZ(0)',
+                overflow: 'visible',
                 ...style
             }}
             {...props}
@@ -280,6 +280,6 @@ export default function LiquidGlass({
             >
                 {children}
             </GlassContainer>
-        </div>
+        </div >
     );
 }

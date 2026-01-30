@@ -68,6 +68,13 @@ interface EditorState {
     pasteElements: () => void;
     groupSelected: () => void;
     ungroupSelected: () => void;
+    mobileActivePanel: 'design' | 'elements' | 'icons' | 'layers' | null;
+    setMobileActivePanel: (panel: 'design' | 'elements' | 'icons' | 'layers' | null) => void;
+
+    // Resume Identity
+    resumeId: string | null;
+    resumeName: string;
+    setResumeInfo: (id: string | null, name: string) => void;
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -80,6 +87,12 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     past: [],
     future: [],
     clipboard: [],
+    mobileActivePanel: null,
+    setMobileActivePanel: (panel) => set({ mobileActivePanel: panel }),
+
+    resumeId: null,
+    resumeName: 'Untitled Resume',
+    setResumeInfo: (id, name) => set({ resumeId: id, resumeName: name }),
 
     saveHistory: () => {
         const { pages, elements, activePageId, past } = get();
@@ -336,7 +349,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
                 elements: newElements,
                 selectedIds: [],
                 pages,
-                activePageId
+                activePageId,
+                resumeId: null, // Reset identity when loading template
+                resumeName: 'Untitled Resume'
             };
         }),
     reorderElements: (activeId: string, overId: string) =>
