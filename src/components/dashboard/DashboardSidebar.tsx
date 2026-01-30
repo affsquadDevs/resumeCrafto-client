@@ -1,16 +1,22 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Home, Layout, FileText, Settings } from 'lucide-react';
 
 export const DashboardSidebar = () => {
     return (
         <aside className="w-64 border-r border-gray-100 flex flex-col h-full bg-white shrink-0">
-            <div className="p-8 pb-4 flex items-center gap-2">
-                <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-purple-200">
-                    R
+            <div className="p-8 pb-4 flex items-center gap-3">
+                <div className="w-10 h-10 relative shrink-0">
+                    <Image
+                        src="/logo.svg"
+                        alt="Craftor Logo"
+                        fill
+                        className="object-contain"
+                    />
                 </div>
-                <span className="font-extrabold text-2xl tracking-tight text-gray-900">Craftor</span>
+                <span className="font-black text-2xl tracking-tighter text-gray-900 uppercase">Craftor</span>
             </div>
 
             <nav className="flex-1 px-4 py-8 space-y-2">

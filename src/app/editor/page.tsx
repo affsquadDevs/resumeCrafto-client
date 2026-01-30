@@ -1,6 +1,7 @@
+"use client";
 
 import EditorPage from '@/pages/EditorPage';
 
-export default function Editor() {
+export default function Page() {
   return <EditorPage />;
 }

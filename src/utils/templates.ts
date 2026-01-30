@@ -215,8 +215,8 @@ export const TEMPLATES: Template[] = [
             { type: 'shape', x: 40, y: 0, width: 80, height: 1123, styles: { backgroundColor: '#0f172a' } },
 
             // Geometry accents
-            { type: 'shape', x: 520, y: -120, width: 320, height: 320, styles: { backgroundColor: '#38bdf8', borderRadius: '40px', transform: 'rotate(18deg)' } },
-            { type: 'shape', x: 470, y: 40, width: 240, height: 240, styles: { backgroundColor: '#e2e8f0', borderRadius: '32px', transform: 'rotate(-12deg)' } },
+            { type: 'shape', x: 520, y: -120, width: 320, height: 320, styles: { backgroundColor: '#38bdf8', borderRadius: '40px' } },
+            { type: 'shape', x: 470, y: 40, width: 240, height: 240, styles: { backgroundColor: '#e2e8f0', borderRadius: '32px' } },
 
             // Name
             { type: 'text', x: 160, y: 80, width: 480, height: 90, content: 'NATALIE\nCARTER', styles: { fontSize: '48px', fontWeight: '900', color: '#0f172a', lineHeight: '1.05' } },
@@ -431,9 +431,9 @@ export const TEMPLATES: Template[] = [
             { type: 'text', x: 60, y: 250, width: 440, height: 40, content: 'VISUAL / PRODUCT DESIGNER', styles: { fontSize: '16px', letterSpacing: '3px', color: '#475569' } },
 
             // Diagonal decorative shapes across page
-            { type: 'shape', x: 500, y: 80, width: 220, height: 220, styles: { backgroundColor: '#34d399', borderRadius: '24px', transform: 'rotate(15deg)' } },
-            { type: 'shape', x: 420, y: 300, width: 180, height: 180, styles: { backgroundColor: '#facc15', borderRadius: '24px', transform: 'rotate(-10deg)' } },
-            { type: 'shape', x: 550, y: 550, width: 200, height: 200, styles: { backgroundColor: '#f472b6', borderRadius: '24px', transform: 'rotate(8deg)' } },
+            { type: 'shape', x: 500, y: 80, width: 220, height: 220, styles: { backgroundColor: '#34d399', borderRadius: '24px' } },
+            { type: 'shape', x: 420, y: 300, width: 180, height: 180, styles: { backgroundColor: '#facc15', borderRadius: '24px' } },
+            { type: 'shape', x: 550, y: 550, width: 200, height: 200, styles: { backgroundColor: '#f472b6', borderRadius: '24px' } },
 
             // Profile/About block (full width content block)
             { type: 'shape', x: 60, y: 320, width: 680, height: 160, styles: { backgroundColor: '#f3f4f6', borderRadius: '16px' } },

@@ -160,6 +160,7 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
                 draggingMembersRef.current = [];
                 startPositionsRef.current.clear();
             }}
+
             onResizeStart={() => {
                 useEditorStore.getState().saveHistory();
             }}
@@ -188,6 +189,9 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
             } : undefined}
             style={{
                 ...element.styles,
+                backgroundColor: (element.type === 'shape' || element.type === 'star' || element.type === 'icon' || element.type === 'text') ? 'transparent' : element.styles.backgroundColor,
+                borderRadius: (element.type === 'shape' || element.type === 'star' || element.type === 'icon') ? '0px' : element.styles.borderRadius,
+                boxShadow: 'none', // Shadow should only be on the content inside
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -199,7 +203,7 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
         >
             {/* Content Wrapper that rotates */}
             <div
-                className={`${isSelected && !isEditing ? 'border-2 border-blue-500' : ''}`}
+                className={`${isSelected && !isEditing ? 'border-2 border-blue-500 shadow-[0_0_0_1px_rgba(59,130,246,0.3)]' : ''}`}
                 style={{
                     width: '100%',
                     height: '100%',
@@ -208,6 +212,8 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
                     display: 'flex', // Propagate flex
                     alignItems: 'inherit',
                     justifyContent: 'inherit',
+                    filter: element.styles.boxShadow ? `drop-shadow(${element.styles.boxShadow})` : 'none',
+                    pointerEvents: 'none', // Ensure click goes to Rnd container
                 }}
             >
                 {element.type === 'text' ? (
@@ -246,8 +252,43 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
                             pointerEvents: 'none',
                         }}
                     />
+                ) : element.type === 'icon' ? (
+                    <svg
+                        viewBox={element.styles.viewBox || "0 0 24 24"}
+                        style={{
+                            width: '90%', // Slight padding to ensure it's not cut off by border
+                            height: '90%',
+                            fill: element.styles.backgroundColor || 'currentColor',
+                            color: element.styles.backgroundColor || 'currentColor',
+                        }}
+                    >
+                        {element.styles.iconPath && (element.styles.iconPath.trim().startsWith('<') ? (
+                            <g dangerouslySetInnerHTML={{ __html: element.styles.iconPath }} />
+                        ) : (
+                            <path d={element.styles.iconPath} />
+                        ))}
+                    </svg>
+                ) : element.type === 'star' ? (
+                    <svg
+                        viewBox="0 0 24 24"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    >
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                            fill={element.styles.backgroundColor || '#3b82f6'}
+                        />
+                    </svg>
                 ) : (
-                    <div style={{ width: '100%', height: '100%' }} />
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: element.styles.backgroundColor ? element.styles.backgroundColor : '#3b82f6',
+                        borderRadius: element.styles.borderRadius || '0px',
+                        // boxShadow: element.styles.boxShadow // Removed - let drop-shadow on parent handle it more consistently for all types
+                    }} />
                 )}
             </div>
 

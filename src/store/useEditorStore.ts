@@ -9,7 +9,7 @@ export interface Page {
 export interface EditorElement {
     id: string;
     pageId: string; // Add pageId
-    type: 'text' | 'shape' | 'image';
+    type: 'text' | 'shape' | 'image' | 'star' | 'icon';
     x: number;
     y: number;
     width: number;
@@ -43,7 +43,7 @@ interface EditorState {
     addPage: () => void;
     removePage: (id: string) => void;
     setActivePage: (id: string) => void;
-    addElement: (type: 'text' | 'shape' | 'image', payload?: any) => void;
+    addElement: (type: 'text' | 'shape' | 'image' | 'star' | 'icon', payload?: any) => void;
     updateElement: (id: string, updates: Partial<EditorElement>) => void;
     selectElement: (id: string | null) => void;
     toggleSelection: (id: string) => void;
@@ -193,16 +193,16 @@ export const useEditorStore = create<EditorState>((set, get) => ({
                 type,
                 x: 100,
                 y: 100,
-                width: type === 'text' ? 200 : 100,
-                height: type === 'text' ? 50 : 100,
+                width: type === 'text' ? 200 : type === 'icon' ? 40 : 100,
+                height: type === 'text' ? 50 : type === 'icon' ? 40 : 100,
                 content: type === 'text' ? 'Double click to edit' : undefined,
                 styles: {
-                    backgroundColor: type === 'shape' ? '#3b82f6' : 'transparent',
+                    backgroundColor: (type === 'shape' || type === 'star' || type === 'icon') ? '#3b82f6' : 'transparent',
                     color: '#000000',
                     fontSize: '16px',
                     fontWeight: 'normal',
                     textAlign: 'left',
-                    borderRadius: '0px',
+                    borderRadius: type === 'shape' && payload?.shapeType === 'circle' ? '50%' : '0px',
                     zIndex: state.elements.length + 1,
                     ...payload?.styles
                 },

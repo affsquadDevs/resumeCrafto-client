@@ -33,7 +33,12 @@ export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) =
     return (
         <motion.div
             initial={{ opacity: 0, y: 10, x: '-50%', scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, x: '-50%', scale: 1 }}
+            animate={{
+                opacity: 1,
+                y: 0,
+                x: '-50%',
+                scale: 1
+            }}
             exit={{ opacity: 0, y: 10, x: '-50%', scale: 0.9 }}
             transition={{
                 type: 'spring',
@@ -42,6 +47,8 @@ export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) =
                 mass: 0.8
             }}
             className="absolute -top-14 left-1/2 flex items-center bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 px-2 py-1.5 gap-1.5 z-[1000]"
+            style={{
+            }}
             onClick={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}
         >

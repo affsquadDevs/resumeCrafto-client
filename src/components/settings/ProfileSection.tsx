@@ -8,25 +8,25 @@ export const ProfileSection = () => {
             {/* Profile Photo Section */}
             <section>
                 <h3 className="text-xl font-black text-gray-900 tracking-tight mb-8">Profile Photo</h3>
-                <div className="flex items-center gap-10 p-8 bg-white border border-gray-100 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative group">
-                        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner bg-gray-100">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 p-6 md:p-8 bg-white border border-gray-100 rounded-3xl md:rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow">
+                    <div className="relative group shrink-0">
+                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner bg-gray-100">
                             <img
                                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop"
                                 alt="Profile"
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <button className="absolute bottom-1 right-1 p-2.5 bg-white border border-gray-100 rounded-full shadow-xl text-gray-600 hover:text-purple-600 hover:scale-110 transition-all">
-                            <Camera size={20} />
+                        <button className="absolute bottom-0 right-0 md:bottom-1 md:right-1 p-2 md:p-2.5 bg-white border border-gray-100 rounded-full shadow-xl text-gray-600 hover:text-purple-600 hover:scale-110 transition-all">
+                            <Camera size={18} />
                         </button>
                     </div>
-                    <div className="flex-1">
-                        <div className="flex gap-4">
-                            <button className="px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-sm">
+                    <div className="flex-1 w-full">
+                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                            <button className="w-full sm:w-auto px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-sm">
                                 Change Photo
                             </button>
-                            <button className="px-6 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition-all">
+                            <button className="w-full sm:w-auto px-6 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition-all">
                                 Remove Photo
                             </button>
                         </div>
