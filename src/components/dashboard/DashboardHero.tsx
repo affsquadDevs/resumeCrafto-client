@@ -131,21 +131,19 @@ export const DashboardHero = () => {
                             New Generation Editor
                         </div>
 
-                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
-                            Create your next
-                            <br />
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
+                            Create Professional Resumes{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-pink-200">
-                                Perfect Document.
+                                in Minutes
                             </span>
-                        </h2>
+                        </h1>
 
                         <p className="text-base md:text-lg lg:text-xl text-purple-100/80 mb-10 max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
-                            Powerful PDF & Resume editor with drag-and-drop simplicity.
-                            Build stunning documents in minutes.
+                            Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create stunning documents that get you hired.
                         </p>
 
                         <Link
-                            href="/editor"
+                            href="/resume-builder"
                             className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-purple-950 rounded-2xl font-bold hover:shadow-xl hover:shadow-white/20 transition-all active:scale-[0.98] w-full sm:w-auto"
                         >
                             <Plus size={22} className="text-purple-600 transition-transform group-hover:rotate-90" />

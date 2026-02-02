@@ -48,7 +48,7 @@ export default function TemplatesPage() {
         const elements = template.elements || template.data;
         if (elements) {
             loadTemplate(elements);
-            router.push('/editor');
+            router.push('/resume-builder');
         }
     };
 
@@ -132,8 +132,7 @@ export default function TemplatesPage() {
                     <div className="max-w-7xl mx-auto">
                         <div className="relative rounded-none md:rounded-[3rem] overflow-hidden bg-gray-950 p-8 md:p-12 lg:p-20 text-white shadow-2xl shadow-gray-950/20">
                             {/* Decorative Background */}
-                            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-purple-600/20 to-transparent pointer-events-none" />
-                            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none" />
+                            <div className="absolute top-0 right-0 h-full bg-gradient-to-bl from-purple-600/20 to-transparent" />
 
                             <div className="relative z-10 max-w-3xl text-center md:text-left">
                                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs md:text-sm font-bold text-purple-200 mb-8">
@@ -149,23 +148,6 @@ export default function TemplatesPage() {
                                     Choose from our curated collection of industry-standard templates.
                                     Each one is meticulously crafted to pass ATS filters and visual standards.
                                 </p>
-
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <div className="flex-1 relative">
-                                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                                        <input
-                                            type="text"
-                                            placeholder="Search templates..."
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all font-bold placeholder:text-gray-600"
-                                        />
-                                    </div>
-                                    <button className="px-8 py-4 bg-white text-gray-950 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-purple-50 transition-colors">
-                                        <Filter size={18} />
-                                        Filters
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prisma';
+import { submitToIndexNow } from '@/lib/indexnow';
 
 export async function GET() {
     try {
@@ -54,6 +55,15 @@ export async function POST(req: Request) {
                 image,
             },
         });
+
+
+
+        // Trigger IndexNow for the main site or profile page if public
+        // Assuming we want to re-index the homepage or a public profile URL
+        // Since profile URL structure isn't strictly defined, we can submit the main domain to be safe/helpful
+        submitToIndexNow(["https://resumecraftor.com/"]).catch(err =>
+            console.error("Failed to submit to IndexNow:", err)
+        );
 
         return NextResponse.json({
             message: 'Profile updated successfully',

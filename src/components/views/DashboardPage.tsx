@@ -4,15 +4,25 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronRight, Trash2, Loader2 } from 'lucide-react';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
-import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
-import { DashboardHero } from '@/components/dashboard/DashboardHero';
-import { DesignCard } from '@/components/dashboard/DesignCard';
-import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
+
 import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+import { DashboardHero } from '@/components/dashboard/DashboardHero';
+
+const DesignCard = dynamic(() => import('@/components/dashboard/DesignCard').then(mod => mod.DesignCard), {
+    ssr: false,
+    loading: () => <div className="h-[300px] w-full animate-pulse bg-gray-100 rounded-xl" />
+});
+
+const DashboardFooter = dynamic(() => import('@/components/dashboard/DashboardFooter').then(mod => mod.DashboardFooter));
+const FeaturesGrid = dynamic(() => import('@/components/dashboard/FeaturesGrid').then(mod => mod.FeaturesGrid));
+const FAQBlock = dynamic(() => import('@/components/dashboard/FAQBlock').then(mod => mod.FAQBlock));
+
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -49,7 +59,7 @@ export default function DashboardPage() {
             if (resume) {
                 loadTemplate(resume.data as any);
                 setResumeInfo(resume.id, resume.name);
-                router.push('/editor');
+                router.push('/resume-builder');
                 return;
             }
         }
@@ -67,7 +77,7 @@ export default function DashboardPage() {
             loadTemplate([]);
             setResumeInfo(null, 'Untitled Resume');
         }
-        router.push('/editor');
+        router.push('/resume-builder');
     };
 
     const handleDeleteResume = async (id: string, e: React.MouseEvent) => {
@@ -147,6 +157,9 @@ export default function DashboardPage() {
                         )}
                     </div>
                 </section>
+
+                <FeaturesGrid />
+                <FAQBlock />
 
                 <DashboardFooter />
             </main>

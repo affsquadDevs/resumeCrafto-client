@@ -55,8 +55,24 @@ export const authOptions: NextAuthOptions = {
             return token;
         },
         async session({ session, token }) {
-            if (session.user) {
+            if (session.user && token.id) {
                 (session.user as any).id = token.id;
+
+                try {
+                    const user = await prisma.user.findUnique({
+                        where: { id: token.id as string },
+                    });
+
+                    if (user) {
+                        session.user.image = user.image;
+                        session.user.name = user.name;
+                        session.user.email = user.email;
+                        (session.user as any).usage = user.usage;
+                        (session.user as any).language = user.language;
+                    }
+                } catch (error) {
+                    console.error('Error fetching fresh user data:', error);
+                }
             }
             return session;
         },

@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ResumeCraftor
+
+A modern, powerful platform for creating professional resumes, portfolios, and documents with an intuitive drag-and-drop editor. Built for professionals who demand premium quality and seamless user experience.
+
+## Tech Stack
+
+- **[Next.js](https://nextjs.org/)** 16 (App Router)
+- **TypeScript** 5
+- **Tailwind CSS** 4
+- **Framer Motion** - Animations
+- **NextAuth.js** - Authentication
+- **Prisma** - Database ORM
+- **Zustand** - State Management
+- **@dnd-kit** - Drag-and-drop functionality
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+```bash
+npm install
+```
+
+### Environment Setup
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+# MongoDB Connection String
+DATABASE_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net/resume-craftor"
+
+# NextAuth Configuration
+NEXTAUTH_SECRET="your-secret-key-at-least-32-chars"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+## Page Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **`/`** - Dashboard (Home page)
+- **`/editor`** - Main resume editor with drag-and-drop functionality
+- **`/templates`** - Template gallery
+- **`/settings`** - User settings and profile management
+- **`/about`** - About page
+- **`/blog`** - Blog articles
+- **`/contact`** - Contact page
+- **`/how-it-works`** - Product walkthrough
+- **`/privacy-policy`** - Privacy policy
+- **`/terms-of-service`** - Terms of service
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## File Locations
+
+- **Favicon**: `src/app/favicon.ico` and `public/favicon.ico`
+- **OG Image**: `public/og/og-image.png`
+- **Robots**: `public/robots.txt`
+- **Sitemap**: `src/app/sitemap.ts` (generated dynamically)
+- **Ads.txt**: `public/ads.txt`
+
+## Features
+
+- ✨ Intuitive drag-and-drop editor
+- 🎨 Dynamic, professional templates
+- 📱 Fully responsive design
+- 🔒 Secure authentication system
+- 💾 Save and manage multiple designs
+- 📄 High-quality PDF export
+- ⚡ Real-time preview and editing
+- 🎯 SEO-optimized pages
+
+## License
+
+© 2026 ResumeCraftor. All rights reserved.

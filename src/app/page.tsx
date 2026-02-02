@@ -1,6 +1,12 @@
 
-import DashboardPage from '@/pages/DashboardPage';
+import DashboardPage from '@/components/views/DashboardPage';
+import FAQSchema from '@/components/seo/FAQSchema';
 
 export default function Home() {
-  return <DashboardPage />;
+  return (
+    <>
+      <FAQSchema />
+      <DashboardPage />
+    </>
+  );
 }

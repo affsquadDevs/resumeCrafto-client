@@ -56,7 +56,7 @@ export default function NotFound() {
                 <div className="pt-20">
                     <Link href="/" className="inline-flex items-center gap-2 group">
                         <span className="text-gray-300 font-black text-xs uppercase tracking-[0.3em] group-hover:text-purple-600 transition-colors">
-                            Craftor
+                            ResumeCraftor
                         </span>
                     </Link>
                 </div>

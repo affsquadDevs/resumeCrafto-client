@@ -87,9 +87,13 @@ const GlassContainer = forwardRef<any, any>(
 
         useEffect(() => {
             if (mode === 'shader' && glassSize.width > 0) {
-                setShaderMapUrl(
-                    generateShaderDisplacementMap(glassSize.width, glassSize.height)
-                );
+                // Optimization: Delay shader generation
+                const timer = setTimeout(() => {
+                    setShaderMapUrl(
+                        generateShaderDisplacementMap(glassSize.width, glassSize.height)
+                    );
+                }, 100);
+                return () => clearTimeout(timer);
             }
         }, [mode, glassSize]);
 
@@ -170,6 +174,14 @@ export default function LiquidGlass({
     const [ready, setReady] = useState(false);
     const [size, setSize] = useState({ width: 0, height: 0 });
     const [isScrolling, setIsScrolling] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const rectRef = useRef<DOMRect | null>(null);
 
@@ -214,6 +226,7 @@ export default function LiquidGlass({
         let ticking = false;
 
         const onMove = (e: MouseEvent) => {
+            if (isMobile) return;
             if (!hovered && !active) return;
             if (!rectRef.current || !ref.current) return;
 
@@ -271,10 +284,10 @@ export default function LiquidGlass({
                 glassSize={size}
                 cornerRadius={cornerRadius}
                 padding={padding}
-                mode={mode}
+                mode={isMobile ? 'standard' : mode}
                 isReady={ready}
                 isScrolling={isScrolling}
-                displacementScale={displacementScale}
+                displacementScale={isMobile ? 0 : displacementScale}
                 blurAmount={blurAmount}
                 saturation={saturation}
             >

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Twitter, Linkedin, Instagram, Github, Mail, ArrowRight } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRight } from 'lucide-react';
 
 export const DashboardFooter = () => {
     return (
@@ -20,8 +20,9 @@ export const DashboardFooter = () => {
                                         className="object-contain"
                                     />
                                 </div>
-                                <span className="text-gray-950 font-black text-2xl tracking-tighter group-hover:text-purple-600 transition-colors">
-                                    CRAFTOR
+                                <span className="font-black text-2xl tracking-tighter transition-colors">
+                                    <span className="text-gray-950 group-hover:text-purple-700 transition-colors">Resume</span>
+                                    <span className="text-purple-600 group-hover:text-purple-500 transition-colors">Craftor</span>
                                 </span>
                             </Link>
                             <p className="text-gray-500 text-base leading-relaxed max-w-sm">
@@ -32,10 +33,9 @@ export const DashboardFooter = () => {
 
                         <div className="flex gap-4">
                             {[
-                                { Icon: Twitter, href: '#' },
-                                { Icon: Linkedin, href: '#' },
-                                { Icon: Instagram, href: '#' },
-                                { Icon: Github, href: '#' }
+                                { Icon: Facebook, href: 'https://www.facebook.com/people/ResumeCraftor/61586853676415/' },
+                                { Icon: Instagram, href: 'https://www.instagram.com/resumecraftor26' },
+                                { Icon: Youtube, href: 'https://www.youtube.com/@ResumeCraftor' }
                             ].map((social, i) => (
                                 <Link
                                     key={i}
@@ -65,10 +65,15 @@ export const DashboardFooter = () => {
                         <div className="space-y-6">
                             <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Company</h4>
                             <ul className="space-y-4">
-                                {['About', 'Blog', 'Careers', 'Privacy'].map((item) => (
-                                    <li key={item}>
-                                        <Link href={`/${item.toLowerCase()}`} className="text-gray-500 hover:text-purple-600 text-sm font-medium transition-colors">
-                                            {item}
+                                {[
+                                    { name: 'About', href: '/about' },
+                                    { name: 'Blog', href: '/blog' },
+                                    { name: 'Careers', href: '/careers' },
+                                    { name: 'Privacy', href: '/privacy-policy' }
+                                ].map((item) => (
+                                    <li key={item.name}>
+                                        <Link href={item.href} className="text-gray-500 hover:text-purple-600 text-sm font-medium transition-colors">
+                                            {item.name}
                                         </Link>
                                     </li>
                                 ))}
@@ -101,7 +106,7 @@ export const DashboardFooter = () => {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-6 text-xs font-medium text-gray-400">
-                        <span>© 2026 CRAFTOR. All rights reserved.</span>
+                        <span>© 2026 ResumeCraftor. All rights reserved.</span>
                         <Link href="/terms" className="hover:text-gray-600 transition-colors">Terms of Service</Link>
                         <Link href="/cookies" className="hover:text-gray-600 transition-colors">Cookies</Link>
                     </div>
