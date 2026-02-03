@@ -4,6 +4,15 @@ import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
     try {
+        // Перевірка наявності DATABASE_URL
+        if (!process.env.DATABASE_URL) {
+            console.error('DATABASE_URL is not set');
+            return NextResponse.json(
+                { message: 'Database configuration error. Please check your .env file.' },
+                { status: 500 }
+            );
+        }
+
         const { email, password, name } = await req.json();
 
         if (!email || !password) {
@@ -40,8 +49,18 @@ export async function POST(req: Request) {
         );
     } catch (error: any) {
         console.error('Registration error:', error);
+        console.error('Error details:', {
+            message: error?.message,
+            code: error?.code,
+            meta: error?.meta,
+            stack: error?.stack,
+        });
         return NextResponse.json(
-            { message: 'Internal server error' },
+            { 
+                message: 'Internal server error',
+                error: process.env.NODE_ENV === 'development' ? error?.message : undefined,
+                details: process.env.NODE_ENV === 'development' ? error?.code : undefined,
+            },
             { status: 500 }
         );
     }
