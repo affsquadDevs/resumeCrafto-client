@@ -75,8 +75,8 @@ export const EditorHeader = ({
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="flex items-center gap-1 sm:gap-2 px-3 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95"
                     >
-                        <span className="hidden xs:inline">Share</span>
-                        <span className="xs:hidden">Export</span>
+                        <span className="hidden vsm:inline">Share</span>
+                        <span className="vsm:hidden">Export</span>
                         <ChevronDown size={14} className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`} />
                     </button>
 

@@ -9,15 +9,17 @@ export default function HowItWorksPage() {
             <CraftorNavbar />
             <main className="container mx-auto px-4 py-32 max-w-6xl">
                 {/* Hero Section */}
-                <div className="text-center mb-20">
-                    <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                        <Sparkles size={16} />
+                <div className="text-center mb-12 md:mb-20 px-4 md:px-0">
+                    <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold mb-4 md:mb-6">
+                        <Sparkles size={14} className="md:!w-4 md:!h-4" />
                         <span>Simple, Fast, Professional</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
+
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
                         How ResumeCraftor Works
                     </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+
+                    <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
                         Create a professional, ATS-optimized resume in minutes. Our intelligent platform guides you through every step of building a resume that gets you hired.
                     </p>
                 </div>
@@ -102,9 +104,12 @@ export default function HowItWorksPage() {
                 </div>
 
                 {/* Detailed Process */}
-                <div className="bg-gradient-to-br from-purple-50 to-white rounded-3xl p-12 mb-24 border border-purple-100">
-                    <h2 className="text-3xl md:text-4xl font-black mb-12 text-center text-gray-900">The Complete Process</h2>
-                    <div className="space-y-8">
+                <div className="bg-gradient-to-br from-purple-50 to-white rounded-3xl p-6 md:p-12 mb-12 md:mb-24 border border-purple-100">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-8 md:mb-12 text-center text-gray-900">
+                        The Complete Process
+                    </h2>
+
+                    <div className="space-y-6 md:space-y-8">
                         {[
                             {
                                 title: "Sign Up & Set Up Your Profile",
@@ -131,13 +136,20 @@ export default function HowItWorksPage() {
                                 desc: "Export your resume as a high-quality PDF ready for applications. Your formatting stays intact across all devices and platforms."
                             }
                         ].map((step, i) => (
-                            <div key={i} className="flex gap-6">
-                                <div className="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-black">
+                            <div
+                                key={i}
+                                className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start"
+                            >
+                                <div className="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-black text-sm sm:text-base">
                                     {i + 1}
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold mb-2 text-gray-900">{step.title}</h3>
-                                    <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                                    <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2 text-gray-900">
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                                        {step.desc}
+                                    </p>
                                 </div>
                             </div>
                         ))}
@@ -145,14 +157,18 @@ export default function HowItWorksPage() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="text-center bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl p-12 text-white">
-                    <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Build Your Resume?</h2>
-                    <p className="text-purple-100 text-lg mb-8 max-w-2xl mx-auto">
+                <div className="text-center bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl p-6 md:p-12 text-white">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 md:mb-4">
+                        Ready to Build Your Resume?
+                    </h2>
+
+                    <p className="text-purple-100 text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
                         Join thousands of professionals who landed their dream jobs with ResumeCraftor
                     </p>
+
                     <a
                         href="/resume-builder"
-                        className="inline-block bg-white text-purple-700 px-8 py-4 rounded-full font-black text-sm uppercase tracking-wider hover:bg-purple-50 transition-colors shadow-xl"
+                        className="inline-block bg-white text-purple-700 px-6 py-3 md:px-8 md:py-4 rounded-full font-black text-xs sm:text-sm md:text-sm uppercase tracking-wider hover:bg-purple-50 transition-colors shadow-xl"
                     >
                         Start Building Now →
                     </a>

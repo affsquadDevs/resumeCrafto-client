@@ -13,17 +13,28 @@ export default function AboutPage() {
 
             <main className="pt-24 md:pt-32">
                 {/* Hero */}
-                <section className="px-6 lg:px-10 pb-24">
+                <section className="px-1 md:px-6 lg:px-10 pb-24">
                     <div className="max-w-7xl mx-auto">
                         <div className="bg-gray-950 text-white rounded-3xl px-8 py-16 md:px-16 md:py-24">
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-10">
+                            <h1 className="block md:hidden text-3xl font-black tracking-tight leading-snug mb-6">
+                                Design tools for
+                                <span className="block text-lg sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                                    professionals
+                                </span>
+                            </h1>
+
+                            <h1 className="hidden md:block text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-10">
                                 Design tools built for
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                                     real professionals
                                 </span>
                             </h1>
 
-                            <p className="max-w-3xl text-gray-400 text-lg md:text-xl leading-relaxed font-medium">
+                            <p className="block md:hidden text-gray-400 text-lg leading-relaxed font-medium">
+                                Craftor was founded in 2024 to simplify professional design.
+                            </p>
+
+                            <p className="hidden md:block max-w-3xl text-gray-400 text-lg md:text-xl leading-relaxed font-medium">
                                 Craftor was founded in 2024 to remove complexity from professional
                                 design. We build tools that help people create clean, accurate,
                                 and modern documents without wasting time on formatting.

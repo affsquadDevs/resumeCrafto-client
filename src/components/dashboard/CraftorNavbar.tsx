@@ -84,29 +84,29 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
     ];
 
     return (
-        <div className="fixed top-6 left-0 right-0 flex justify-center z-[100] px-4 transition-all duration-300">
+        <div className="fixed top-3 sm:top-6 left-0 right-0 flex justify-center z-[100] px-2 sm:px-4 transition-all duration-300">
             <LiquidGlass
                 displacementScale={0}
                 blurAmount={12}
                 saturation={110}
                 elasticity={0}
                 cornerRadius={100}
-                padding={isCompact ? "8px 12px" : "12px 16px"}
+                padding={isCompact ? "6px 10px" : "8px 12px"}
                 centered={false}
                 compact
                 overLight={true}
                 className={`w-full shadow-lg rounded-full transition-all duration-300 max-w-7xl`}
                 style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255,255,255,0.1)' }}
             >
-                <div className="flex items-center justify-between w-full px-1 gap-4 md:gap-8 lg:gap-10 transition-all duration-300 h-16">
+                <div className="flex items-center justify-between w-full px-1 gap-2 transition-all duration-300 h-12 sm:h-16">
                     {/* Logo Section */}
-                    <Link href="/" className="flex items-center gap-2 md:gap-4 group shrink-0">
-                        <div className="w-10 h-10 md:w-12 md:h-12 relative">
+                    <Link href="/" className="flex items-center gap-2 group shrink-0">
+                        <div className="w-8 h-8 sm:w-12 sm:h-12 relative">
                             <Image src="/logo.svg" alt="Craftor Logo" fill className="object-contain" />
                         </div>
-                        <span className="font-black text-xl md:text-2xl tracking-tighter transition-colors">
+                        <span className="font-black text-lg sm:text-2xl tracking-tighter transition-colors">
                             <span className="text-gray-900 group-hover:text-purple-700 transition-colors">Resume</span>
-                            <span className="text-purple-600 group-hover:text-purple-500 transition-colors">Craftor</span>
+                            <span className="text-purple-600 group-hover:text-purple-500 transition-colors hidden vsm:inline">Craftor</span>
                         </span>
                     </Link>
 

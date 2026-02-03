@@ -118,35 +118,35 @@ const RightPanel = memo(() => (
 export const DashboardHero = () => {
     return (
         <section className="px-0 py-4 md:px-6 md:py-6 lg:px-10 lg:py-8">
-            <div className="relative rounded-none md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 p-8 md:p-12 lg:p-20 shadow-2xl shadow-purple-900/40 text-white">
+            <div className="relative rounded-none md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 p-6 md:p-12 lg:p-20 shadow-2xl shadow-purple-900/40 text-white">
 
                 {/* Background */}
                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,white,transparent_60%)] pointer-events-none" />
 
-                <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                     {/* LEFT */}
-                    <div className="max-w-2xl text-center md:text-left">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs md:text-sm text-purple-200 mb-6">
+                    <div className="max-w-lg text-center md:text-left mx-auto md:mx-0">
+                        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 border border-white/10 text-xs md:text-sm text-purple-200 mb-4 md:mb-6">
                             <Sparkles size={14} className="text-yellow-300" />
                             New Generation Editor
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 leading-snug md:leading-[1.1] tracking-tight">
                             Create Professional Resumes{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-pink-200">
                                 in Minutes
                             </span>
                         </h1>
 
-                        <p className="text-base md:text-lg lg:text-xl text-purple-100/80 mb-10 max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-purple-100/80 mb-6 md:mb-10 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
                             Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create stunning documents that get you hired.
                         </p>
 
                         <Link
                             href="/resume-builder"
-                            className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-purple-950 rounded-2xl font-bold hover:shadow-xl hover:shadow-white/20 transition-all active:scale-[0.98] w-full sm:w-auto"
+                            className="group inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-purple-950 rounded-2xl font-bold hover:shadow-xl hover:shadow-white/20 transition-all active:scale-[0.98] w-full sm:w-auto"
                         >
-                            <Plus size={22} className="text-purple-600 transition-transform group-hover:rotate-90" />
+                            <Plus size={20} className="text-purple-600 transition-transform group-hover:rotate-90" />
                             Create New Design
                         </Link>
                     </div>
