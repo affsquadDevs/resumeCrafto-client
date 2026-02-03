@@ -348,6 +348,14 @@ export const LayersPanelContent = () => {
     const sendToBack = useEditorStore((state) => state.sendToBack);
     const reorderElements = useEditorStore((state) => state.reorderElements);
 
+    const [isMobile, setIsMobile] = React.useState(false);
+    React.useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 768);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
+
     const sensors = useSensors(
         useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
         useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
@@ -366,18 +374,20 @@ export const LayersPanelContent = () => {
 
     return (
         <div className="flex-1 flex flex-col min-h-0 bg-white">
-            <PropertiesSection selectedId={firstSelectedId} />
+            {!isMobile && <PropertiesSection selectedId={firstSelectedId} />}
 
-            <div className="p-3 flex flex-col gap-4 overflow-y-auto">
+            <div className={`p-3 flex flex-col gap-4 overflow-y-auto ${isMobile ? 'pb-24' : ''}`}>
                 <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                     {pages.map((page) => {
                         const pageElements = sortedElements.filter(el => el.pageId === page.id);
                         return (
                             <div key={page.id} className="flex flex-col gap-2">
-                                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                                    <span>Page {page.order + 1}</span>
-                                    <span className="h-px bg-gray-100 flex-1"></span>
-                                </div>
+                                {!isMobile && (
+                                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+                                        <span>Page {page.order + 1}</span>
+                                        <span className="h-px bg-gray-100 flex-1"></span>
+                                    </div>
+                                )}
                                 {pageElements.length === 0 && (
                                     <div className="text-center text-gray-300 text-xs py-2 italic">Empty Page</div>
                                 )}

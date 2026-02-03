@@ -98,26 +98,26 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                 className={`w-full shadow-lg rounded-full transition-all duration-300 max-w-7xl`}
                 style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255,255,255,0.1)' }}
             >
-                <div className="flex items-center justify-between w-full px-1 gap-10 transition-all duration-300 h-16">
+                <div className="flex items-center justify-between w-full px-1 gap-4 md:gap-8 lg:gap-10 transition-all duration-300 h-16">
                     {/* Logo Section */}
-                    <Link href="/" className="flex items-center gap-4 group shrink-0">
-                        <div className="w-12 h-12 relative">
+                    <Link href="/" className="flex items-center gap-2 md:gap-4 group shrink-0">
+                        <div className="w-10 h-10 md:w-12 md:h-12 relative">
                             <Image src="/logo.svg" alt="Craftor Logo" fill className="object-contain" />
                         </div>
-                        <span className="font-black text-2xl tracking-tighter transition-colors">
+                        <span className="font-black text-xl md:text-2xl tracking-tighter transition-colors">
                             <span className="text-gray-900 group-hover:text-purple-700 transition-colors">Resume</span>
                             <span className="text-purple-600 group-hover:text-purple-500 transition-colors">Craftor</span>
                         </span>
                     </Link>
 
                     {/* Navigation */}
-                    <nav className="hidden md:flex items-center gap-3">
+                    <nav className="hidden md:flex items-center gap-1 md:gap-3">
                         {navLinks.map(link => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 className={`
-            text-[10px] font-bold uppercase tracking-[0.15em] transition-all px-5 py-2 rounded-full
+            text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] transition-all px-3 md:px-5 py-2 rounded-full
             ${pathname === link.href
                                         ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/50'
                                         : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50/30'}
@@ -144,7 +144,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                             <button
                                 onClick={() => setIsMoreOpen(!isMoreOpen)}
                                 className={`
-            text-[10px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-full
+            text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] px-3 md:px-5 py-2 rounded-full
             text-gray-400 transition-all duration-200
             hover:text-purple-600 hover:bg-purple-50/30 hover:shadow-md
         `}
@@ -198,22 +198,22 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                     </nav>
 
                     {/* Auth / Profile */}
-                    <div className="hidden lg:flex items-center gap-4 shrink-0">
+                    <div className="hidden lg:flex items-center gap-2 md:gap-4 shrink-0">
                         {status === 'authenticated' ? (
                             <>
-                                <Link href="/resume-builder" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-purple-200">
+                                <Link href="/resume-builder" className="bg-purple-600 hover:bg-purple-700 text-white px-4 xl:px-8 py-3 rounded-full text-[10px] xl:text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-purple-200">
                                     Create New
                                 </Link>
 
                                 <div className="pl-2 border-l border-gray-200 relative" ref={profileRef}>
                                     <button
                                         onClick={() => setIsProfileOpen(!isProfileOpen)}
-                                        className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all font-bold ${isProfileOpen ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50/50'}`}
+                                        className={`flex items-center gap-2 px-2 md:px-3 py-2 rounded-xl transition-all font-bold ${isProfileOpen ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50/50'}`}
                                     >
                                         <div className="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center overflow-hidden">
                                             {user?.image ? <Image src={user.image} alt={user.name || ''} width={32} height={32} /> : <CircleUser size={20} />}
                                         </div>
-                                        <span className="text-sm">{user?.name?.split(' ')[0] || 'Profile'}</span>
+                                        <span className="text-sm hidden xl:block">{user?.name?.split(' ')[0] || 'Profile'}</span>
                                     </button>
 
                                     <AnimatePresence>

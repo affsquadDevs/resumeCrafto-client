@@ -236,6 +236,7 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
                             justifyContent: element.styles.textAlign === 'center' ? 'center' : element.styles.textAlign === 'right' ? 'flex-end' : 'flex-start',
                             cursor: isEditing ? 'text' : 'inherit',
                             // Prevent rotation form doubling if we did outer rotation (which we didn't)
+                            pointerEvents: isEditing ? 'auto' : 'none',
                         }}
                         contentEditable={isEditing}
                         suppressContentEditableWarning

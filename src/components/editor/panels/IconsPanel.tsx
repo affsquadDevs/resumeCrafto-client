@@ -7,14 +7,27 @@ import { useIconify } from '@/hooks/useIconify';
 
 export const IconsPanel = () => {
     const addElement = useEditorStore((state) => state.addElement);
+    const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
     const {
         searchQuery,
         setSearchQuery,
         remoteIcons,
         isLoading,
-        selectIcon,
+        selectIcon: baseSelectIcon,
         clearSearch
     } = useIconify('icons');
+
+    const selectIcon = async (name: string) => {
+        await baseSelectIcon(name);
+        setMobileActivePanel(null);
+    };
+
+    const handleAddFeatured = (icon: any) => {
+        addElement('icon', {
+            styles: { iconPath: icon.path, viewBox: '0 0 24 24' }
+        });
+        setMobileActivePanel(null);
+    };
 
     return (
         <div className="flex flex-col gap-4">
@@ -56,11 +69,7 @@ export const IconsPanel = () => {
                 ].map((icon) => (
                     <button
                         key={icon.name}
-                        onClick={() =>
-                            addElement('icon', {
-                                styles: { iconPath: icon.path, viewBox: '0 0 24 24' }
-                            })
-                        }
+                        onClick={() => handleAddFeatured(icon)}
                         className="
                         aspect-square flex flex-col items-center justify-center p-3
                         rounded-2xl bg-white border border-gray-50

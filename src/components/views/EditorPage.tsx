@@ -26,19 +26,81 @@ export default function EditorPage() {
     const setResumeInfo = useEditorStore((state) => state.setResumeInfo);
     const selectElement = useEditorStore((state) => state.selectElement);
     const setSelection = useEditorStore((state) => state.setSelection);
-
+    const setZoom = useEditorStore((state) => state.setZoom);
     const { data: session } = useSession();
+
+    // UI State
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [showLayers, setShowLayers] = useState(true);
+    const [showToolbar, setShowToolbar] = useState(true);
+    const [isSavingTemplate, setIsSavingTemplate] = useState(false);
+    const [isExporting, setIsExporting] = useState(false);
+    const [showShareConfirm, setShowShareConfirm] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
     const [isSelecting, setIsSelecting] = useState(false);
     const [selectionBox, setSelectionBox] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
     const startPointRef = useRef<{ x: number; y: number } | null>(null);
 
-    // UI State
-    const [showLayers, setShowLayers] = useState(true);
-    const [isSavingTemplate, setIsSavingTemplate] = useState(false);
-    const [isExporting, setIsExporting] = useState(false);
-    const [showShareConfirm, setShowShareConfirm] = useState(false);
-    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    // Auto-responsive layout logic
+    const handleAutoFit = useRef(() => {
+        const width = window.innerWidth;
+        const isMobile = width < 768;
+        if (isMobile) {
+            setZoom(0.45);
+            return;
+        }
+
+        const sidebarWidth = isSidebarCollapsed ? 70 : 300;
+        const layersWidth = showLayers ? 280 : 0;
+        const canvasPadding = 120;
+        const availableWidth = width - sidebarWidth - layersWidth - canvasPadding;
+
+        const fitZoom = Math.max(0.35, Math.min(1.1, availableWidth / A4_WIDTH));
+        setZoom(Number(fitZoom.toFixed(2)));
+    });
+
+    // Update the ref function whenever dependencies change
+    useEffect(() => {
+        handleAutoFit.current = () => {
+            const width = window.innerWidth;
+            const isMobile = width < 768;
+            if (isMobile) {
+                setZoom(0.45);
+                return;
+            }
+
+            const sidebarWidth = isSidebarCollapsed ? 70 : 300;
+            const layersWidth = showLayers ? 280 : 0;
+            const canvasPadding = 120;
+            const availableWidth = width - sidebarWidth - layersWidth - canvasPadding;
+
+            const fitZoom = Math.max(0.35, Math.min(1.1, availableWidth / A4_WIDTH));
+            setZoom(Number(fitZoom.toFixed(2)));
+        };
+    }, [isSidebarCollapsed, showLayers, setZoom]);
+
+    // Apply auto-fit when panels toggle
+    useEffect(() => {
+        handleAutoFit.current();
+    }, [isSidebarCollapsed, showLayers]);
+
+    // Handle Window Resize
+    useEffect(() => {
+        const onResize = () => {
+            const width = window.innerWidth;
+
+            // Auto-collapse/hide logic for specific breakpoints
+            if (width < 1280) setIsSidebarCollapsed(true);
+            if (width < 1024) setShowLayers(false);
+
+            handleAutoFit.current();
+        };
+
+        onResize(); // Initial set
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
+    }, []);
 
     useEditorShortcuts();
 
@@ -235,12 +297,17 @@ export default function EditorPage() {
 
     return (
         <div className="flex h-screen w-screen overflow-hidden bg-gray-100 relative">
-            <Sidebar />
+            <Sidebar
+                isCollapsed={isSidebarCollapsed}
+                onCollapse={setIsSidebarCollapsed}
+            />
 
             <main className="flex-1 h-full overflow-hidden relative flex flex-col">
                 <EditorHeader
                     showLayers={showLayers}
                     setShowLayers={setShowLayers}
+                    showToolbar={showToolbar}
+                    setShowToolbar={setShowToolbar}
                     onExport={handleExport}
                     onSaveTemplate={() => setShowShareConfirm(true)}
                     isSavingTemplate={isSavingTemplate || isExporting}
@@ -317,7 +384,18 @@ export default function EditorPage() {
                     </div>
                 )}
 
-                <Toolbar />
+                <AnimatePresence>
+                    {showToolbar && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden shrink-0"
+                        >
+                            <Toolbar />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <div className="flex-1 flex overflow-hidden">
                     {/* Canvas Area */}

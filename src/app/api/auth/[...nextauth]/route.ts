@@ -48,9 +48,14 @@ export const authOptions: NextAuthOptions = {
         strategy: 'jwt',
     },
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger, session }) {
             if (user) {
-                token.id = user.id;
+                // ONLY store the ID in the token to keep it small.
+                // authorize() might return a huge object (e.g. base64 image),
+                // but we must not let that get into the JWT cookie.
+                return {
+                    id: user.id
+                };
             }
             return token;
         },

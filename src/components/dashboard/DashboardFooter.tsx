@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,7 +8,7 @@ import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRig
 export const DashboardFooter = () => {
     return (
         <footer className="bg-white border-t border-gray-100/50 pt-20 pb-10">
-            <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="max-w-7xl mx-auto px-6 md:px-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
                     {/* Brand & Info */}
                     <div className="lg:col-span-4 space-y-8">

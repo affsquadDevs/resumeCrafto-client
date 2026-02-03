@@ -1,4 +1,5 @@
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
+import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Footer } from "@/components/layout/Footer";
 import { Sparkles, FileText, Wand2, Download, Zap, Shield, Palette, Globe } from "lucide-react";
 
@@ -157,7 +158,7 @@ export default function HowItWorksPage() {
                     </a>
                 </div>
             </main>
-            <Footer />
+            <DashboardFooter />
         </div>
     );
 }

@@ -18,7 +18,7 @@ export default function TemplatesPage() {
     const { data: session } = useSession();
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
     const [searchQuery, setSearchQuery] = useState('');
-    const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [activeCategory, setActiveCategory] = useState<string>('Standard');
     const [dbTemplates, setDbTemplates] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [templateToDelete, setTemplateToDelete] = useState<string | null>(null);
@@ -95,13 +95,13 @@ export default function TemplatesPage() {
         }
     };
 
-    const categories = ['All', 'My Templates', 'Premium', 'Shared Examples'];
+    const categories = ['All', 'Standard', 'My Templates', 'Premium', 'Shared Examples'];
 
     // Combine static and DB templates
     // Combine and shuffle templates
     const shuffledTemplates = React.useMemo(() => {
         const all = [
-            ...TEMPLATES.map(t => ({ ...t, isStatic: true, type: 'Premium' })),
+            ...TEMPLATES.map(t => ({ ...t, isStatic: true, type: 'Standard' })),
             ...dbTemplates.map(t => ({ ...t, isStatic: false, type: 'Shared Example' }))
         ];
         return [...all].sort(() => Math.random() - 0.5);
@@ -116,7 +116,8 @@ export default function TemplatesPage() {
 
         const matchesCategory = activeCategory === 'All' ||
             (activeCategory === 'My Templates' && template.userId === (session?.user as any)?.id) ||
-            (activeCategory === 'Premium' && template.isStatic) ||
+            (activeCategory === 'Standard' && template.type === 'Standard') ||
+            (activeCategory === 'Premium' && template.isStatic && template.type !== 'Standard') ||
             (activeCategory === 'Shared Examples' && !template.isStatic);
 
         return matchesSearch && matchesCategory;

@@ -1,5 +1,7 @@
+"use client"
+
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
-import { Footer } from "@/components/layout/Footer";
+import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
 
 export default function ContactPage() {
     return (
@@ -23,7 +25,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </main>
-            <Footer />
+            <DashboardFooter />
         </div>
     );
 }

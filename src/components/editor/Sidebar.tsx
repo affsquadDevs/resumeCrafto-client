@@ -5,9 +5,13 @@ import { DesignPanel } from './panels/DesignPanel';
 import { ElementsPanel } from './panels/ElementsPanel';
 import { IconsPanel } from './panels/IconsPanel';
 
-export const Sidebar = () => {
+interface SidebarProps {
+    isCollapsed?: boolean;
+    onCollapse?: (collapsed: boolean) => void;
+}
+
+export const Sidebar = ({ isCollapsed = false, onCollapse }: SidebarProps) => {
     const [width, setWidth] = React.useState(300);
-    const [isCollapsed, setIsCollapsed] = React.useState(false);
     const [isResizing, setIsResizing] = React.useState(false);
     const [activeTab, setActiveTab] = React.useState<'design' | 'elements' | 'icons'>('design');
 
@@ -22,7 +26,7 @@ export const Sidebar = () => {
             const newWidth = startWidth + (mouseMoveEvent.clientX - startX);
             if (newWidth >= 80 && newWidth <= 500) {
                 setWidth(newWidth);
-                setIsCollapsed(newWidth < 180);
+                onCollapse?.(newWidth < 180);
             }
         };
 
@@ -44,7 +48,7 @@ export const Sidebar = () => {
             {/* Navigation Rail */}
             <div className="w-[70px] border-r border-gray-50 flex flex-col items-center py-6 gap-6 bg-white shrink-0 z-20">
                 <button
-                    onClick={() => { setActiveTab('design'); setIsCollapsed(false); }}
+                    onClick={() => { setActiveTab('design'); onCollapse?.(false); }}
                     className={`flex flex-col items-center justify-center gap-1.5 w-full transition-all relative group ${activeTab === 'design' ? 'text-purple-600' : 'text-gray-400 hover:text-gray-600'}`}
                 >
                     {activeTab === 'design' && <div className="absolute left-0 w-1 h-8 bg-purple-600 rounded-r-full" />}
@@ -54,7 +58,7 @@ export const Sidebar = () => {
                     <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">Design</span>
                 </button>
                 <button
-                    onClick={() => { setActiveTab('elements'); setIsCollapsed(false); }}
+                    onClick={() => { setActiveTab('elements'); onCollapse?.(false); }}
                     className={`flex flex-col items-center justify-center gap-1.5 w-full transition-all relative group ${activeTab === 'elements' ? 'text-purple-600' : 'text-gray-400 hover:text-gray-600'}`}
                 >
                     {activeTab === 'elements' && <div className="absolute left-0 w-1 h-8 bg-purple-600 rounded-r-full" />}
@@ -64,7 +68,7 @@ export const Sidebar = () => {
                     <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">Elements</span>
                 </button>
                 <button
-                    onClick={() => { setActiveTab('icons'); setIsCollapsed(false); }}
+                    onClick={() => { setActiveTab('icons'); onCollapse?.(false); }}
                     className={`flex flex-col items-center justify-center gap-1.5 w-full transition-all relative group ${activeTab === 'icons' ? 'text-purple-600' : 'text-gray-400 hover:text-gray-600'}`}
                 >
                     {activeTab === 'icons' && <div className="absolute left-0 w-1 h-8 bg-purple-600 rounded-r-full" />}
@@ -90,7 +94,7 @@ export const Sidebar = () => {
                 />
 
                 <button
-                    onClick={() => setIsCollapsed(!isCollapsed)}
+                    onClick={() => onCollapse?.(!isCollapsed)}
                     className="absolute -right-3 top-10 w-6 h-6 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:text-purple-600 shadow-md z-30 transition-all hover:scale-110 active:scale-95"
                     style={{ transform: `${isCollapsed ? 'rotate(180deg)' : ''}` }}
                 >

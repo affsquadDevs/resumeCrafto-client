@@ -6,6 +6,12 @@ import { Type, Square, Circle, Star, Minus, Image as ImageIcon } from 'lucide-re
 
 export const ElementsPanel = () => {
     const addElement = useEditorStore((state) => state.addElement);
+    const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
+
+    const handleAdd = (type: any, payload?: any) => {
+        addElement(type, payload);
+        setMobileActivePanel(null);
+    };
 
     return (
         <div className="flex flex-col gap-4">
@@ -13,7 +19,7 @@ export const ElementsPanel = () => {
 
             <div className="grid grid-cols-2 gap-3">
                 <button
-                    onClick={() => addElement('text')}
+                    onClick={() => handleAdd('text')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
                     title="Text Box"
                 >
@@ -24,7 +30,7 @@ export const ElementsPanel = () => {
                 </button>
 
                 <button
-                    onClick={() => addElement('shape')}
+                    onClick={() => handleAdd('shape')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
                     title="Rectangle"
                 >
@@ -35,7 +41,7 @@ export const ElementsPanel = () => {
                 </button>
 
                 <button
-                    onClick={() => addElement('shape', { shapeType: 'circle', styles: { borderRadius: '50%' } })}
+                    onClick={() => handleAdd('shape', { shapeType: 'circle', styles: { borderRadius: '50%' } })}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
                     title="Circle"
                 >
@@ -46,7 +52,7 @@ export const ElementsPanel = () => {
                 </button>
 
                 <button
-                    onClick={() => addElement('star')}
+                    onClick={() => handleAdd('star')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
                     title="Star"
                 >
@@ -57,7 +63,7 @@ export const ElementsPanel = () => {
                 </button>
 
                 <button
-                    onClick={() => addElement('shape', { height: 4, styles: { backgroundColor: '#000000' } })}
+                    onClick={() => handleAdd('shape', { height: 4, styles: { backgroundColor: '#000000' } })}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
                     title="Line"
                 >
@@ -79,7 +85,7 @@ export const ElementsPanel = () => {
                                 const reader = new FileReader();
                                 reader.onload = (event) => {
                                     const src = event.target?.result as string;
-                                    addElement('image', {
+                                    handleAdd('image', {
                                         src,
                                         styles: { backgroundColor: 'transparent' }
                                     });

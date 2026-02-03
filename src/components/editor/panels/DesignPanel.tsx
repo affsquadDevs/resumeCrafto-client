@@ -11,13 +11,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const DesignPanel = () => {
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
+    const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
     const { data: session } = useSession();
     const [dbTemplates, setDbTemplates] = useState<any[]>([]);
     const [resumes, setResumes] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [activeCategory, setActiveCategory] = useState<string>('Standard');
 
-    const categories = ['All', 'My Designs', 'Premium', 'Shared'];
+    const categories = ['All', 'Standard', 'My Designs', 'Shared'];
 
     useEffect(() => {
         const fetchData = async () => {
@@ -46,7 +47,7 @@ export const DesignPanel = () => {
     }, []);
 
     const filteredTemplates = useMemo(() => {
-        const staticTemplates = TEMPLATES.map(t => ({ ...t, isStatic: true, type: 'Premium', source: 'template' }));
+        const staticTemplates = TEMPLATES.map(t => ({ ...t, isStatic: true, type: 'Standard', source: 'template' }));
         const sharedTemplates = dbTemplates.map(t => ({ ...t, isStatic: false, type: 'Shared', source: 'template' }));
         const userResumes = resumes.map(r => ({ ...r, isStatic: false, type: 'Resume', source: 'resume' }));
 
@@ -57,7 +58,8 @@ export const DesignPanel = () => {
             if (activeCategory === 'My Designs') {
                 return template.userId === (session?.user as any)?.id;
             }
-            if (activeCategory === 'Premium') return template.isStatic;
+            if (activeCategory === 'Standard') return template.type === 'Standard';
+            if (activeCategory === 'Premium') return template.isStatic && template.type !== 'Standard'; // Assuming Premium will be different later
             if (activeCategory === 'Shared') return !template.isStatic && template.userId !== (session?.user as any)?.id && template.source === 'template';
             return true;
         });
@@ -100,7 +102,10 @@ export const DesignPanel = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 key={template.id}
-                                onClick={() => loadTemplate(template.elements || template.data)}
+                                onClick={() => {
+                                    loadTemplate(template.elements || template.data);
+                                    setMobileActivePanel(null);
+                                }}
                                 className="group relative flex flex-col gap-2 text-left"
                             >
                                 <div className="relative aspect-[1/1.414] bg-white rounded-2xl overflow-hidden border border-gray-100 group-hover:border-purple-500 transition-all shadow-sm group-hover:shadow-xl group-hover:shadow-purple-100/50">

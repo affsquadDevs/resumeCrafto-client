@@ -42,7 +42,7 @@ export const FAQBlock = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="px-10 py-20 bg-gray-50">
+        <section className="px-6 md:px-10 py-20 bg-gray-50">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">

@@ -2,6 +2,7 @@ import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react";
+import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 
 // Placeholder blog posts - replace with actual data from CMS or database
 const featuredPost = {
@@ -153,7 +154,7 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            <Footer />
+            <DashboardFooter />
         </div>
     );
 }
