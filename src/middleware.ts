@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function middleware(req: NextRequest) {
     const token = await getToken({
         req,
-        secret: process.env.NEXTAUTH_SECRET || 'fallback-secret-for-dev',
+        secret: process.env.NEXTAUTH_SECRET,
     });
 
     const isAuthPage = req.nextUrl.pathname.startsWith('/api/auth');

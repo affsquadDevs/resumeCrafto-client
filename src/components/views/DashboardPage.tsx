@@ -20,19 +20,21 @@ const DesignCard = dynamic(() => import('@/components/dashboard/DesignCard').the
 });
 
 const DashboardFooter = dynamic(() => import('@/components/dashboard/DashboardFooter').then(mod => mod.DashboardFooter));
-const FeaturesGrid = dynamic(() => import('@/components/dashboard/FeaturesGrid').then(mod => mod.FeaturesGrid));
-const FAQBlock = dynamic(() => import('@/components/dashboard/FAQBlock').then(mod => mod.FAQBlock));
 
 
 export default function DashboardPage() {
     const router = useRouter();
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
     const setResumeInfo = useEditorStore((state) => state.setResumeInfo);
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [resumes, setResumes] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/');
+            return;
+        }
         const fetchResumes = async () => {
             if (!session) {
                 setIsLoading(false);
@@ -51,7 +53,7 @@ export default function DashboardPage() {
             }
         };
         fetchResumes();
-    }, [session]);
+    }, [session, status, router]);
 
     const handleSelectTemplate = (templateId: string | null, isResume: boolean = false) => {
         if (isResume && templateId) {
@@ -198,9 +200,6 @@ export default function DashboardPage() {
                         </Link>
                     </div>
                 </section>
-
-                <FeaturesGrid />
-                <FAQBlock />
 
                 <DashboardFooter />
             </main>

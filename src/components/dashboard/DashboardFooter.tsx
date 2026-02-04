@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRight } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRight, AtSign as Threads } from 'lucide-react';
 
 export const DashboardFooter = () => {
     return (
@@ -27,9 +27,8 @@ export const DashboardFooter = () => {
                                     <span className="text-purple-600 group-hover:text-purple-500 transition-colors">Craftor</span>
                                 </span>
                             </Link>
-                            <p className="text-gray-500 text-base leading-relaxed max-w-sm">
-                                Empowering professionals to create world-class documents.
-                                The ultimate design tool for documents, resumes, and portfolios.
+                            <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-medium">
+                                Disclaimer: ResumeCraftor is an independent tool and is not affiliated with any employer, job board, or recruitment agency. The documents and templates provided are for personal use and professional development.
                             </p>
                         </div>
 
@@ -37,6 +36,7 @@ export const DashboardFooter = () => {
                             {[
                                 { Icon: Facebook, href: 'https://www.facebook.com/people/ResumeCraftor/61586853676415/' },
                                 { Icon: Instagram, href: 'https://www.instagram.com/resumecraftor26' },
+                                { Icon: Threads, href: 'https://www.threads.net/@resumecraftor26' },
                                 { Icon: Youtube, href: 'https://www.youtube.com/@ResumeCraftor' }
                             ].map((social, i) => (
                                 <Link
@@ -55,10 +55,23 @@ export const DashboardFooter = () => {
                         <div className="space-y-6">
                             <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Platform</h4>
                             <ul className="space-y-4">
-                                {['Editor', 'Templates', 'Features', 'Pricing'].map((item) => (
-                                    <li key={item}>
-                                        <Link href={`/${item.toLowerCase()}`} className="text-gray-500 hover:text-purple-600 text-sm font-medium transition-colors">
-                                            {item}
+                                {[
+                                    { name: 'Home', href: '/' },
+                                    { name: 'How It Works', href: '/how-it-works', emphasized: true },
+                                    { name: 'Templates', href: '/templates' },
+                                    { name: 'Settings', href: '/settings' }
+                                ].map((item) => (
+                                    <li key={item.name}>
+                                        <Link
+                                            href={item.href}
+                                            className={`
+                                                ${item.emphasized
+                                                    ? 'text-purple-600 font-black'
+                                                    : 'text-gray-500 font-medium'} 
+                                                hover:text-purple-600 text-sm transition-colors
+                                            `}
+                                        >
+                                            {item.name}
                                         </Link>
                                     </li>
                                 ))}
@@ -68,10 +81,11 @@ export const DashboardFooter = () => {
                             <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Company</h4>
                             <ul className="space-y-4">
                                 {[
-                                    { name: 'About', href: '/about' },
+                                    { name: 'About Us', href: '/about' },
                                     { name: 'Blog', href: '/blog' },
-                                    { name: 'Careers', href: '/careers' },
-                                    { name: 'Privacy', href: '/privacy-policy' }
+                                    { name: 'Contact', href: '/contact' },
+                                    { name: 'Privacy Policy', href: '/privacy-policy' },
+                                    { name: 'Terms of Service', href: '/terms-of-service' }
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="text-gray-500 hover:text-purple-600 text-sm font-medium transition-colors">
@@ -109,8 +123,6 @@ export const DashboardFooter = () => {
                 <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-6 text-xs font-medium text-gray-400">
                         <span>© 2026 ResumeCraftor. All rights reserved.</span>
-                        <Link href="/terms" className="hover:text-gray-600 transition-colors">Terms of Service</Link>
-                        <Link href="/cookies" className="hover:text-gray-600 transition-colors">Cookies</Link>
                     </div>
 
                     <div className="flex items-center gap-2">

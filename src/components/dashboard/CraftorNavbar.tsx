@@ -39,17 +39,22 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
 
     // Sync session user with Zustand store
     React.useEffect(() => {
-        if (session?.user && !user) {
-            setUser({
-                id: (session.user as any).id,
-                name: session.user.name,
-                email: session.user.email,
-                image: session.user.image,
-            });
-        } else if (!session?.user && user) {
+        // Only sync when status is settled (authenticated or unauthenticated)
+        if (status === 'loading') return;
+
+        if (session?.user) {
+            if (!user || user.id !== (session.user as any).id) {
+                setUser({
+                    id: (session.user as any).id,
+                    name: session.user.name,
+                    email: session.user.email,
+                    image: session.user.image,
+                });
+            }
+        } else if (user) {
             setUser(null);
         }
-    }, [session, user, setUser]);
+    }, [session, status, user, setUser]);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const openLogin = () => setAuthModal({ isOpen: true, mode: 'login' });
@@ -199,7 +204,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
 
                     {/* Auth / Profile */}
                     <div className="hidden lg:flex items-center gap-2 md:gap-4 shrink-0">
-                        {status === 'authenticated' ? (
+                        {status === 'loading' ? (
+                            <div className="w-20 h-8 animate-pulse bg-gray-100 rounded-full" />
+                        ) : status === 'authenticated' ? (
                             <>
                                 <Link href="/resume-builder" className="bg-purple-600 hover:bg-purple-700 text-white px-4 xl:px-8 py-3 rounded-full text-[10px] xl:text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-purple-200">
                                     Create New
@@ -286,7 +293,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         style={{ background: 'rgba(255,255,255,0.95)', border: '1px solid rgba(255,255,255,0.2)' }}
                     >
                         <nav className="flex flex-col gap-1">
-                            {[...navLinks, ...extraLinks, { name: status === 'authenticated' ? 'My Designs' : 'Start Designing', href: '/resume-builder' }].map(link => (
+                            {[...navLinks, ...extraLinks, { name: status === 'authenticated' ? 'My Designs' : 'Start Designing', href: status === 'authenticated' ? '/dashboard' : '/resume-builder' }].map(link => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
@@ -297,7 +304,11 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                     {link.href === '/resume-builder' && <Sparkles size={16} />}
                                 </Link>
                             ))}
-                            {status !== 'authenticated' && (
+                            {status === 'loading' ? (
+                                <div className="px-6 py-4 rounded-xl bg-gray-50/50">
+                                    <div className="w-24 h-5 animate-pulse bg-gray-200 rounded" />
+                                </div>
+                            ) : status !== 'authenticated' && (
                                 <button onClick={() => { setIsMenuOpen(false); openLogin(); }} className="flex items-center justify-between px-6 py-4 rounded-xl font-bold text-gray-600 hover:bg-gray-50 transition-all text-left">
                                     <span>Login / Register</span>
                                     <CircleUser size={16} />

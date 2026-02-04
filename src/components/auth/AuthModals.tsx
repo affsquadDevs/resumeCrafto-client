@@ -54,7 +54,11 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                 });
 
                 if (result?.error) throw new Error(result.error);
+
+                // Refresh the router to update the session state
+                const { useRouter } = await import('next/navigation');
                 onClose();
+                window.location.reload(); // Hard reload is sometimes safer to ensure all context providers update
             } else {
                 const result = await signIn('credentials', {
                     email,
@@ -63,7 +67,9 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                 });
 
                 if (result?.error) throw new Error(result.error);
+
                 onClose();
+                window.location.reload();
             }
         } catch (err: any) {
             setError(err.message);

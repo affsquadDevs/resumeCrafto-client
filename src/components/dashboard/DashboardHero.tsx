@@ -1,6 +1,9 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Plus, Sparkles, Settings2, Share2, Download, CircleUser } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import { useUserStore } from '@/store/useUserStore';
 
 const ToolbarButton = memo(({ icon: Icon }: { icon: any }) => (
     <div className="w-6 h-6 rounded flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
@@ -116,6 +119,11 @@ const RightPanel = memo(() => (
 ));
 
 export const DashboardHero = () => {
+    const { data: session } = useSession();
+    const { setAuthModal } = useUserStore();
+    const pathname = usePathname();
+    const router = useRouter();
+
     return (
         <section className="px-0 py-4 md:px-6 md:py-6 lg:px-10 lg:py-8">
             <div className="relative rounded-none md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 p-6 md:p-12 lg:p-20 shadow-2xl shadow-purple-900/40 text-white">
@@ -142,13 +150,7 @@ export const DashboardHero = () => {
                             Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create stunning documents that get you hired.
                         </p>
 
-                        <Link
-                            href="/resume-builder"
-                            className="group inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-white text-purple-950 rounded-2xl font-bold hover:shadow-xl hover:shadow-white/20 transition-all active:scale-[0.98] w-full sm:w-auto"
-                        >
-                            <Plus size={20} className="text-purple-600 transition-transform group-hover:rotate-90" />
-                            Create New Design
-                        </Link>
+
                     </div>
 
                     {/* RIGHT */}
