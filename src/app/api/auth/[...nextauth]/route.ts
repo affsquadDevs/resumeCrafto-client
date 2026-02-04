@@ -1,4 +1,5 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import bcrypt from 'bcryptjs';
@@ -7,6 +8,11 @@ import { prisma } from '@/lib/prisma';
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma as any),
     providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            allowDangerousEmailAccountLinking: true,
+        }),
         CredentialsProvider({
             name: 'credentials',
             credentials: {
@@ -48,14 +54,29 @@ export const authOptions: NextAuthOptions = {
         strategy: 'jwt',
     },
     callbacks: {
+        async signIn({ user, account, profile }) {
+            if (account?.provider === 'google' && (profile as any)?.picture && !user.image) {
+                try {
+                    await prisma.user.update({
+                        where: { id: user.id },
+                        data: { image: (profile as any).picture },
+                    });
+                } catch (error) {
+                    console.error('Error updating user image from Google:', error);
+                }
+            }
+            return true;
+        },
+        async redirect({ url, baseUrl }) {
+            // Allows relative callback URLs
+            if (url.startsWith("/")) return `${baseUrl}${url}`;
+            // Allows callback URLs on the same origin
+            else if (new URL(url).origin === baseUrl) return url;
+            return baseUrl;
+        },
         async jwt({ token, user, trigger, session }) {
             if (user) {
-                // ONLY store the ID in the token to keep it small.
-                // authorize() might return a huge object (e.g. base64 image),
-                // but we must not let that get into the JWT cookie.
-                return {
-                    id: user.id
-                };
+                token.id = user.id;
             }
             return token;
         },
@@ -97,6 +118,7 @@ export const authOptions: NextAuthOptions = {
     pages: {
         signIn: '/', // We use modals on home page
     },
+    debug: process.env.NODE_ENV === 'development',
 };
 
 const handler = NextAuth(authOptions);

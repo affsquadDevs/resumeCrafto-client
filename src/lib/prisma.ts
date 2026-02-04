@@ -1,12 +1,6 @@
-let PrismaClient: any;
-try {
-    PrismaClient = require('../generated/prisma').PrismaClient;
-} catch (error) {
-    console.error('❌ Prisma Client not found! Please run: npx prisma generate');
-    throw new Error('Prisma Client is not generated. Run "npx prisma generate" first.');
-}
+import { PrismaClient } from '@prisma/client';
 
-const globalForPrisma = global as unknown as { prisma: any };
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
 export const prisma =
     globalForPrisma.prisma ||
