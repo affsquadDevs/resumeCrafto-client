@@ -24,7 +24,7 @@ export default function FAQSchema() {
                 "name": "Are ResumeCraftor templates ATS-friendly?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, all ResumeCraftor templates are designed to be ATS (Applicant Tracking System) friendly. We use clean formatting, standard fonts, and proper structure to ensure your resume passes through ATS systems and reaches human recruiters."
+                    "text": "Yes. ResumeCraftor templates are designed with ATS compatibility in mind. We use clean formatting, standard fonts, and structured layouts that align with commonly used applicant tracking systems. However, ATS behavior may vary by employer, and compatibility cannot be guaranteed in all cases."
                 }
             },
             {

@@ -19,9 +19,15 @@ export default function ContactPage() {
 
                     <div className="p-8 rounded-2xl bg-neutral-900/50 border border-white/10 backdrop-blur-sm">
                         <p className="mb-4 text-neutral-300">Primary Contact:</p>
-                        <a href="mailto:hello@affsquad.com" className="text-2xl font-semibold text-purple-400 hover:text-purple-300 transition-colors">
-                            hello@affsquad.com
+                        <a href="mailto:hello@resumecraftor.com" className="text-2xl font-semibold text-purple-400 hover:text-purple-300 transition-colors">
+                            hello@resumecraftor.com
                         </a>
+
+                        <div className="mt-8 pt-6 border-t border-white/5">
+                            <p className="text-sm text-neutral-500 leading-relaxed max-w-lg mx-auto">
+                                For general questions, technical support, or account-related inquiries, please contact us using the email above. By contacting us, you agree that your information will be used solely to respond to your inquiry, in accordance with our <a href="/privacy-policy" className="text-purple-400/80 hover:text-purple-300 transition-colors">Privacy Policy</a>.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </main>

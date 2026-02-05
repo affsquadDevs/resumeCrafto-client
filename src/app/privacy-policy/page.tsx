@@ -10,6 +10,9 @@ export default function PrivacyPolicyPage() {
                     Privacy Policy
                 </h1>
                 <div className="prose prose-invert prose-lg max-w-none space-y-8">
+                    <p className="text-neutral-300 leading-relaxed">
+                        ResumeCraftor is operated by the ResumeCraftor team and provided as an independent online service.
+                    </p>
                     <p className="text-neutral-400 text-sm">Last updated: {new Date().toLocaleDateString()}</p>
 
                     <section>
@@ -85,8 +88,7 @@ export default function PrivacyPolicyPage() {
                         <h2 className="text-2xl font-bold text-white mt-12 mb-4">5. Data Retention</h2>
                         <p className="text-neutral-300 leading-relaxed">
                             We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy.
-                            Account information and resume data are stored while your account is active and for a reasonable period after
-                            account deletion to comply with legal obligations. You can request deletion of your data at any time.
+                            Account information and resume data are stored while your account is active and for a limited period thereafter, unless a longer retention period is required by law. You can request deletion of your data at any time.
                         </p>
                     </section>
 
@@ -131,6 +133,11 @@ export default function PrivacyPolicyPage() {
                         <p className="text-neutral-300 leading-relaxed mt-4">
                             You can control cookies through your browser settings. Note that disabling certain cookies may affect
                             the functionality of our platform.
+                        </p>
+                        <p className="text-neutral-300 leading-relaxed mt-4">
+                            We may use third-party advertising services, including Google AdSense, to display ads on our website.
+                            These services may use cookies or similar technologies to serve ads based on users’ visits to this and
+                            other websites. Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 transition-colors">Google’s Ads Settings</a>.
                         </p>
                     </section>
 
@@ -179,8 +186,8 @@ export default function PrivacyPolicyPage() {
                         <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-6">
                             <p className="text-white font-semibold mb-2">ResumeCraftor Privacy Team</p>
                             <p className="text-neutral-300">
-                                Email: <a href="mailto:hello@affsquad.com" className="text-purple-400 hover:text-purple-300 transition-colors">
-                                    hello@affsquad.com
+                                Email: <a href="mailto:hello@resumecraftor.com" className="text-purple-400 hover:text-purple-300 transition-colors">
+                                    hello@resumecraftor.com
                                 </a>
                             </p>
                         </div>

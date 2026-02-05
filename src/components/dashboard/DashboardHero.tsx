@@ -147,8 +147,7 @@ export const DashboardHero = () => {
                         </h1>
 
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-purple-100/80 mb-6 md:mb-10 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
-                            Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create stunning documents that get you hired.
-                        </p>
+                            Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create polished documents designed to support your job applications.                        </p>
 
 
                     </div>

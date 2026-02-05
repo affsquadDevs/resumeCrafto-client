@@ -11,7 +11,7 @@ export const FeaturesGrid = () => {
         {
             icon: Shield,
             title: "ATS-Optimized",
-            description: "Pass applicant tracking systems with templates designed for maximum compatibility",
+            description: "Designed for compatibility with common applicant tracking systems",
             color: "from-green-500 to-emerald-500"
         },
         {

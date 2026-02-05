@@ -20,7 +20,7 @@ export default function HowItWorksPage() {
                     </h1>
 
                     <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
-                        Create a professional, ATS-optimized resume in minutes. Our intelligent platform guides you through every step of building a resume that gets you hired.
+                        Create a professional, ATS-optimized resume in minutes. Our platform guides you through each step of building a resume designed to support your job applications.
                     </p>
                 </div>
 
@@ -43,7 +43,7 @@ export default function HowItWorksPage() {
                             icon: Download,
                             step: "03",
                             title: "Export & Apply",
-                            desc: "Download your polished resume as a PDF and start applying to your dream jobs with confidence."
+                            desc: "Download your polished resume as a PDF and start applying for roles with a professional document."
                         }
                     ].map((item, i) => (
                         <div key={i} className="relative group">
@@ -63,7 +63,7 @@ export default function HowItWorksPage() {
                 <div className="mb-24">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">Powerful Features</h2>
-                        <p className="text-gray-600 text-lg">Everything you need to create a winning resume</p>
+                        <p className="text-gray-600 text-lg">Everything you need to create a professional resume</p>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
@@ -76,7 +76,7 @@ export default function HowItWorksPage() {
                             {
                                 icon: Shield,
                                 title: "ATS-Optimized",
-                                desc: "Pass applicant tracking systems with optimized formatting",
+                                desc: "Сompatible with commonly used applicant tracking systems through clean, optimized formatting.",
                                 color: "text-green-600 bg-green-50"
                             },
                             {
@@ -117,7 +117,7 @@ export default function HowItWorksPage() {
                             },
                             {
                                 title: "Browse Professional Templates",
-                                desc: "Explore our collection of modern resume templates. Each one is designed to be ATS-friendly and visually stunning."
+                                desc: "Explore our collection of modern resume templates. Each template is designed with ATS compatibility in mind and a clean, professional layout."
                             },
                             {
                                 title: "Use the Smart Editor",
@@ -162,9 +162,8 @@ export default function HowItWorksPage() {
                         Ready to Build Your Resume?
                     </h2>
 
-                    <p className="text-purple-100 text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
-                        Join thousands of professionals who landed their dream jobs with ResumeCraftor
-                    </p>
+                    <p className="text-purple-100 text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-sm sm:max-w-xl md:max-w-3xl mx-auto">
+                        Join professionals worldwide who use ResumeCraftor to build modern, job-ready resumes.                    </p>
 
                     <a
                         href="/resume-builder"

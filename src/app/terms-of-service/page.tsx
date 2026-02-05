@@ -1,4 +1,5 @@
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
+import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 
 export default function TermsOfServicePage() {
     return (
@@ -22,7 +23,7 @@ export default function TermsOfServicePage() {
                                 <li>**Create an Account:** While you can try the editor as a guest, we recommend creating an account to save your progress and access all features.</li>
                                 <li>**Respect Copyright:** improved content templates are provided for your personal use. Do not redistribute or sell our templates or designs as your own.</li>
                                 <li>**Accurate Information:** You agree to provide accurate and truthful information in your resumes and CVs. We are not responsible for any consequences resulting from false information.</li>
-                                <li>**Personal Use Only:** Our free service is intended for personal, non-commercial use.</li>
+                                <li>**Personal Use Only:** Our free service is intended for individual resume and CV creation. Commercial redistribution or resale of templates or generated documents is not permitted.</li>
                             </ul>
                         </section>
 
@@ -58,9 +59,24 @@ export default function TermsOfServicePage() {
                                 By accessing and using this service, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.
                             </p>
                         </section>
+                        <section>
+                            <h2 className="text-2xl font-bold text-white mt-12 mb-4">Contact Information</h2>
+                            <p className="text-neutral-300 leading-relaxed mb-4">
+                                If you have any questions or concerns regarding these Terms, please contact us at:
+                            </p>
+                            <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-6">
+                                <p className="text-white font-semibold mb-2">ResumeCraftor Support Team</p>
+                                <p className="text-neutral-300">
+                                    Email: <a href="mailto:hello@resumecraftor.com" className="text-purple-400 hover:text-purple-300 transition-colors">
+                                        hello@resumecraftor.com
+                                    </a>
+                                </p>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </main>
+            <DashboardFooter />
         </div>
     );
 }

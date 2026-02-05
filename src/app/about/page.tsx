@@ -31,11 +31,11 @@ export default function AboutPage() {
                             </h1>
 
                             <p className="block md:hidden text-gray-400 text-lg leading-relaxed font-medium">
-                                Craftor was founded in 2024 to simplify professional design.
+                                ResumeCraftor was founded in 2024 to simplify professional design.
                             </p>
 
                             <p className="hidden md:block max-w-3xl text-gray-400 text-lg md:text-xl leading-relaxed font-medium">
-                                Craftor was founded in 2024 to remove complexity from professional
+                                ResumeCraftor was founded in 2024 to remove complexity from professional
                                 design. We build tools that help people create clean, accurate,
                                 and modern documents without wasting time on formatting.
                             </p>
@@ -50,16 +50,9 @@ export default function AboutPage() {
                             Our story
                         </h2>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                            Craftor started as a small internal project focused on one idea:
-                            professional documents should be easy to create and impossible
-                            to break. Over time, the product evolved into a full platform
-                            used by millions of people around the world.
-                        </p>
+                            ResumeCraftor started as a small internal project focused on making professional documents easy to create and reliable. It has since grown into a resume-building platform.                        </p>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                            From resumes and cover letters to structured layouts and export
-                            formats, every feature is designed to follow real-world standards
-                            used by recruiters and companies.
-                        </p>
+                            From resumes and cover letters to layouts and export options, each feature is designed to support clear and consistent document creation.                        </p>
                     </div>
                 </section>
 
@@ -76,7 +69,7 @@ export default function AboutPage() {
                             that help you get results.
                         </p>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                            Craftor is built for people who care about details and want their
+                            ResumeCraftor is built for people who care about details and want their
                             work to speak for itself.
                         </p>
                     </div>
@@ -86,7 +79,7 @@ export default function AboutPage() {
                 <section className="px-6 lg:px-10 pb-32">
                     <div className="max-w-3xl mx-auto space-y-6">
                         <h2 className="text-3xl md:text-4xl font-black tracking-tight">
-                            The team behind Craftor
+                            The team behind ResumeCraftor
                         </h2>
                         <p className="text-gray-600 leading-relaxed text-lg">
                             We are a distributed team of engineers and designers working

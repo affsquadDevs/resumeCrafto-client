@@ -40,7 +40,7 @@ export const Footer = () => {
                         </p>
                         <div className="mt-2">
                             <p className="text-xs text-gray-500 mb-1">Contact us:</p>
-                            <Link href="/contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">hello@affsquad.com</Link>
+                            <Link href="/contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">hello@resumecraftor.com</Link>
                         </div>
                         <div className="flex items-center gap-4">
                             <a href="#" className="text-gray-400 hover:text-purple-600 transition-colors">

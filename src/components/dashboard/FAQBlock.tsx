@@ -14,7 +14,7 @@ const faqs = [
     },
     {
         question: "Are ResumeCraftor templates ATS-friendly?",
-        answer: "Yes, all ResumeCraftor templates are designed to be ATS (Applicant Tracking System) friendly. We use clean formatting, standard fonts, and proper structure to ensure your resume passes through ATS systems and reaches human recruiters."
+        answer: 'Yes. ResumeCraftor templates are designed with ATS compatibility in mind.\nWe use clean formatting, standard fonts, and structured layouts that align with commonly used applicant tracking systems. However, ATS behavior may vary by employer, and compatibility cannot be guaranteed in all cases.'
     },
     {
         question: "Can I edit my resume after downloading it?",
@@ -77,7 +77,12 @@ export const FAQBlock = () => {
                             >
                                 <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-2">
                                     <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                        {faq.answer}
+                                        {faq.answer.split('\n').map((part, i) => (
+                                            <span key={i}>
+                                                {part}
+                                                <br />
+                                            </span>
+                                        ))}
                                     </p>
                                 </div>
                             </div>

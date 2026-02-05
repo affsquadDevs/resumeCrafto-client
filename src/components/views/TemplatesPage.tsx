@@ -95,7 +95,7 @@ export default function TemplatesPage() {
         }
     };
 
-    const categories = ['All', 'Standard', 'My Templates', 'Premium', 'Shared Examples'];
+    const categories = ['All', 'Standard', 'My Templates', 'Shared Examples'];
 
     // Combine static and DB templates
     // Combine and shuffle templates
@@ -146,9 +146,7 @@ export default function TemplatesPage() {
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"> Masterpiece.</span>
                                 </h1>
                                 <p className="text-base md:text-xl text-gray-400 leading-relaxed font-medium mb-10 max-w-2xl mx-auto md:ml-0">
-                                    Choose from our curated collection of industry-standard templates.
-                                    Each one is meticulously crafted to pass ATS filters and visual standards.
-                                </p>
+                                    Choose from our curated collection of industry-standard templates. Each template is designed with ATS compatibility in mind and follows clean, professional formatting standards.                                </p>
                             </div>
                         </div>
                     </div>
@@ -227,6 +225,19 @@ export default function TemplatesPage() {
                                 <p className="text-gray-400 font-medium">Try adjusting your search or filters to find what you&apos;re looking for.</p>
                             </div>
                         )}
+                    </div>
+                </section>
+
+                {/* SEO Description Section */}
+                <section className="px-6 lg:px-10 pb-24 -mt-12">
+                    <div className="max-w-7xl mx-auto border-t border-gray-100 pt-16">
+                        <div className="max-w-2xl">
+                            <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium">
+                                Our resume templates are designed to balance visual clarity and structural simplicity.
+                                Clean layouts, readable typography, and standardized sections help ensure compatibility
+                                with common applicant tracking systems while maintaining a professional appearance.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
