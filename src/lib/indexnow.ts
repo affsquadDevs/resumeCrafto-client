@@ -17,15 +17,7 @@ export async function submitToIndexNow(urls: string[]) {
             }),
         });
 
-        if (response.ok) {
-            console.log("IndexNow submission successful");
-            return true;
-        } else {
-            console.error("IndexNow submission failed", response.status, response.statusText);
-            return false;
-        }
     } catch (error) {
-        console.error("IndexNow submission error", error);
         return false;
     }
 }

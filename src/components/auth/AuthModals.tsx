@@ -68,8 +68,12 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
 
                 // Refresh the router to update the session state
                 const { useRouter } = await import('next/navigation');
+                // GTM event - store in session storage to fire after reload
+                sessionStorage.setItem('pending_sign_up', 'true');
+                sessionStorage.setItem('user_email', email);
+
                 onClose();
-                window.location.reload(); // Hard reload is sometimes safer to ensure all context providers update
+                setTimeout(() => window.location.reload(), 500);
             } else {
                 const result = await signIn('credentials', {
                     email,

@@ -57,6 +57,7 @@ export async function POST(req: Request) {
             return NextResponse.json(resume);
         } else {
             // Create new
+            const count = await prisma.resume.count({ where: { userId: user.id } });
             const resume = await prisma.resume.create({
                 data: {
                     name: name || 'Untitled Resume',
@@ -70,7 +71,8 @@ export async function POST(req: Request) {
                 console.error("Failed to submit to IndexNow:", err)
             );
 
-            return NextResponse.json(resume);
+            const isFirst = count === 0;
+            return NextResponse.json({ ...resume, isFirst });
         }
     } catch (error) {
         console.error('Resume save error:', error);

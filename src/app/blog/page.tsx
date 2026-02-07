@@ -18,7 +18,7 @@ const blogPosts = [
         date: '2026-02-05',
         readTime: '10 min read',
         category: 'Career Tips',
-        slug: 'ats-optimization-explained',
+        slug: 'ats-optimization-getting-past-the-robots',
         image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d',
     },
     {
@@ -31,6 +31,28 @@ const blogPosts = [
         category: 'Branding',
         slug: 'building-your-personal-brand-through-your-resume',
         image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173',
+    },
+    {
+        id: '3',
+        title: 'How to Choose the Right Resume Template for Your Career',
+        excerpt: 'Learn how to choose the right resume template based on your role, experience level, and professional goals without sacrificing clarity or compatibility.',
+        author: 'ResumeCraftor Editorial Team',
+        date: '2026-02-06',
+        readTime: '7 min read',
+        category: 'Resume Guide',
+        slug: 'how-to-choose-the-perfect-resume-template',
+        image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4',
+    },
+    {
+        id: '4',
+        title: 'How to Build a Professional Resume: Step-by-Step Guide',
+        excerpt: 'A clear, step-by-step guide to building a professional resume—from structure and summaries to experience, skills, and formatting best practices.',
+        author: 'ResumeCraftor Editorial Team',
+        date: '2026-02-06',
+        readTime: '12 min read',
+        category: 'Resume Guide',
+        slug: 'how-to-build-a-professional-resume-step-by-step',
+        image: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f',
     }
 ];
 

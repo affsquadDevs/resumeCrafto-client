@@ -250,6 +250,18 @@ export default function EditorPage() {
                 const savedResume = await res.json();
                 setResumeInfo(savedResume.id, savedResume.name);
 
+                if (savedResume.isFirst) {
+                    sessionStorage.setItem('pending_cv_created', 'true');
+                    sessionStorage.setItem('cv_id', savedResume.id);
+
+                    // Also try direct push for immediate feedback if no reload happens
+                    const { pushToDataLayer } = await import('@/utils/analytics');
+                    pushToDataLayer('cv_created', {
+                        user_id: session?.user?.email || '',
+                        cv_id: savedResume.id
+                    });
+                }
+
                 // Then, trigger download
                 setMessage({ type: 'success', text: 'Preparing PDF...' });
                 const mod = await import('@/utils/exportUtils');

@@ -49,6 +49,7 @@ export const metadata: Metadata = {
 
 import { AuthContext } from "@/context/AuthContext";
 import { LazyAuthModal } from "@/components/auth/LazyAuthModal";
+import { GlobalAnalytics } from "@/components/analytics/GlobalAnalytics";
 import { Suspense } from "react";
 
 export default function RootLayout({
@@ -91,6 +92,7 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <AuthContext>
+          <GlobalAnalytics />
           {children}
           <Suspense fallback={null}>
             <LazyAuthModal />
