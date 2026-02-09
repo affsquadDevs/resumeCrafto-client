@@ -21,12 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     const blogPosts = [
-        'future-of-resume-design-ai',
-        'resume-mistakes-cost-interview',
-        'choose-perfect-resume-template',
-        'psychology-color-resume-design',
-        'ats-optimization-getting-past-robots',
-        'building-personal-brand-resume',
+        'ats-optimization-getting-past-the-robots',
+        'building-your-personal-brand-through-your-resume',
+        'how-to-choose-the-perfect-resume-template',
+        'how-to-build-a-professional-resume-step-by-step',
     ].map((slug) => ({
         url: `${baseUrl}/blog/${slug}`,
         lastModified: new Date(),
