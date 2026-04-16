@@ -8,6 +8,7 @@ import { DashboardHero } from '@/components/dashboard/DashboardHero';
 const DashboardFooter = dynamic(() => import('@/components/dashboard/DashboardFooter').then(mod => mod.DashboardFooter));
 const FeaturesGrid = dynamic(() => import('@/components/dashboard/FeaturesGrid').then(mod => mod.FeaturesGrid));
 const FAQBlock = dynamic(() => import('@/components/dashboard/FAQBlock').then(mod => mod.FAQBlock));
+const BlogPreview = dynamic(() => import('@/components/dashboard/BlogPreview').then(mod => mod.BlogPreview));
 
 export default function LandingPage() {
     return (
@@ -17,6 +18,7 @@ export default function LandingPage() {
                 <CraftorNavbar />
                 <DashboardHero />
                 <FeaturesGrid />
+                <BlogPreview />
                 <FAQBlock />
                 <DashboardFooter />
             </main>

@@ -1969,7 +1969,10 @@ export async function generateMetadata({
                     alt: ogImageAlt,
                 }
             ],
-        }
+        },
+        alternates: {
+            canonical: `${baseUrl}/blog/${slug}`,
+        },
     };
 }
 
