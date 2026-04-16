@@ -28,7 +28,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "How to Write a Resume That Sounds More Strategic, Not Just Operational",
         description: "Learn how to present your work in a more strategic way so your resume shows business thinking, prioritization, and professional maturity.",
         category: "Career Tips",
-        date: "2026-04-16",
+        date: "2026-04-15",
         author: "ResumeCraftor Editorial Team",
         readTime: "8 min read",
         image: "/assets/photo/Resume%20comparison_%20operational%20vs%20strategic.png",
@@ -149,7 +149,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "How to Make Your Resume Sound More Senior Without Exaggerating",
         description: "Learn how to present your experience in stronger, more senior language without exaggerating achievements or overstating your role.",
         category: "Career Tips",
-        date: "2026-04-16",
+        date: "2026-04-02",
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/Resume%20comparison%20for%20career%20progression.png",
@@ -336,7 +336,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "Resume Keywords for ATS: How to Use Them Naturally",
         description: "Learn how to use ATS resume keywords naturally so applicant tracking systems recognize your relevance without keyword stuffing.",
         category: "Resume Guide",
-        date: "2026-04-16",
+        date: "2026-03-20",
         author: "ResumeCraftor Editorial Team",
         readTime: "8 min read",
         image: "/assets/photo/Job%20search%20with%20ATS%20keywords%20analysis.png",
@@ -557,7 +557,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "ATS Resume Formatting Tips: What to Use and What to Avoid",
         description: "Learn which resume formatting choices help applicant tracking systems parse your resume correctly and which design mistakes often reduce ATS compatibility.",
         category: "Resume Formatting",
-        date: "2026-04-16",
+        date: "2026-03-10",
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/ATS%20resume%20formatting%20guide.png",
@@ -741,7 +741,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "What Is an ATS Resume? Meaning, Format, and Best Practices",
         description: "Learn what an ATS resume really is, how applicant tracking systems read resumes, and which formatting, file types, and best practices improve compatibility and readability.",
         category: "Resume Guide",
-        date: "2026-04-16",
+        date: "2026-02-25",
         author: "ResumeCraftor Editorial Team",
         readTime: "10 min read",
         image: "/assets/photo/ATS%20resume%20guide%20in%20a%20modern%20office.png",
@@ -874,7 +874,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "How to Make Your Resume Reflect Leadership Even If You Never Managed a Team",
         description: "Learn how to show leadership on your resume through ownership, initiative, judgment, and influence, even without formal management experience.",
         category: "Leadership",
-        date: "2026-04-16",
+        date: "2026-02-10",
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/Resume%20strategy%20for%20leadership%20success.png",
@@ -1074,7 +1074,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "ATS Optimization Explained: How Applicant Tracking Systems Work",
         description: "Learn how ATS (Applicant Tracking Systems) process resumes, common compatibility issues, and practical ways to improve ATS optimization without sacrificing readability.",
         category: "Career Tips",
-        date: "2026-02-05",
+        date: "2026-01-20",
         author: "ResumeCraftor Editorial Team",
         readTime: "10 min read",
         image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
@@ -1262,7 +1262,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "Building Your Personal Brand Through Your Resume (Practical Guide)",
         description: "A practical guide to expressing your personal brand on a resume using focused messaging, consistent structure, and evidence-based experience.",
         category: "Branding",
-        date: "2026-02-05",
+        date: "2026-01-05",
         author: "ResumeCraftor Editorial Team",
         readTime: "8 min read",
         image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
@@ -1492,7 +1492,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "How to Choose the Right Resume Template for Your Career",
         description: "Learn how to choose the right resume template based on your role, experience level, and professional goals without sacrificing clarity or compatibility.",
         category: "Resume Guide",
-        date: "2026-02-06",
+        date: "2025-12-15",
         author: "ResumeCraftor Editorial Team",
         readTime: "7 min read",
         image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4",
@@ -1699,7 +1699,7 @@ const postsContent: Record<string, BlogPost> = {
         title: "How to Build a Professional Resume: Step-by-Step Guide",
         description: "A clear, step-by-step guide to building a professional resume—from structure and summaries to experience, skills, and formatting best practices.",
         category: "Resume Guide",
-        date: "2026-02-06",
+        date: "2025-11-20",
         author: "ResumeCraftor Editorial Team",
         readTime: "12 min read",
         image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f",
@@ -2167,7 +2167,7 @@ export default async function BlogPostPage({
                         <div className="flex items-center gap-4 text-sm text-gray-500 font-medium pb-12 border-b border-gray-100">
                             <span className="font-bold text-gray-900">{post.author}</span>
                             <span>•</span>
-                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>•</span>
                             <span>{post.readTime}</span>
                         </div>
