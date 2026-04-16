@@ -16,6 +16,11 @@ type BlogPost = {
     image: string;
     content: React.ReactNode;
     faq?: { q: string; a: string }[];
+    keywords?: string[];
+    alternativeHeadline?: string;
+    about?: { "@type": string; name: string }[];
+    mentions?: { "@type": string; name: string }[];
+    wordCount?: number;
 };
 
 const postsContent: Record<string, BlogPost> = {
@@ -27,27 +32,36 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "8 min read",
         image: "/assets/photo/Resume%20comparison_%20operational%20vs%20strategic.png",
+        keywords: [
+            "strategic resume",
+            "resume strategic thinking",
+            "strategic vs operational resume",
+            "resume business context",
+            "resume prioritization",
+            "resume professional maturity",
+            "how to write a strategic resume",
+            "resume decision making",
+            "cross-functional resume experience",
+            "resume leadership without title"
+        ],
         content: (
             <>
                 <p>A resume often underperforms not because the candidate lacks strong experience, but because the document presents that experience only at the surface level. Many professionals accurately describe what they were responsible for, which systems they used, and which tasks they handled each week, yet the final result still reads flatter than the actual role they performed. Recruiters reading such resumes may understand the mechanics of the work, but they do not immediately see the thinking behind it.</p>
                 <p>This is one of the most common reasons why capable candidates receive weaker responses than expected. A resume that stays purely operational tells the reader what happened, but it does not explain how the candidate approached decisions, how priorities were managed, or how the work connected to broader objectives. In modern hiring, especially beyond junior roles, employers increasingly look for signals that a candidate understands not only execution, but also context.</p>
                 <p>Strategic language does not mean sounding exaggerated or artificially senior. It means allowing the resume to reveal how professional thinking influenced work. Many candidates already operate strategically every day without realizing that none of that judgment appears in the way they describe themselves.</p>
-
                 <h2 className="text-2xl font-bold mt-8 mb-4">What Recruiters Actually Mean When They Look for Strategic Thinking</h2>
                 <p>When recruiters say that a resume should sound strategic, they are rarely asking for executive language. In most cases, they are looking for signs that the candidate understands why certain work mattered, how choices were made, and where effort influenced something larger than immediate output.</p>
                 <p>A sentence such as &quot;Managed digital campaigns across several markets&quot; is not wrong, but it leaves too many questions unanswered. A recruiter still does not know whether those campaigns were routine, whether priorities changed over time, whether the work involved budget decisions, or whether performance influenced next steps.</p>
-                <p>Strategic wording only creates value when the resume remains technically readable from the start, which is why understanding how applicant tracking systems process resumes remains a practical foundation.</p>
+                <p>Strategic wording only creates value when the resume remains technically readable from the start, which is why understanding how <a href="/blog/ats-optimization-getting-past-the-robots" className="text-purple-600 hover:underline">applicant tracking systems</a> process resumes remains a practical foundation.</p>
                 <p>When the same experience is framed with context, the impression changes significantly. If the sentence explains that campaigns were managed across several markets while budget priorities were adjusted according to lead quality, seasonality, or product demand, the recruiter immediately sees evidence of professional judgment.</p>
                 <p>This does not change the truth of the role. It simply reveals more of what was already happening inside the work.</p>
-
                 <h2 className="text-2xl font-bold mt-8 mb-4">Why Context Changes the Entire Strength of a Resume</h2>
                 <p>Many resumes sound operational because they describe actions without showing purpose. Yet purpose is often where strategic value begins.</p>
                 <p>For example, saying that weekly reports were prepared tells the reader only that a recurring task existed. It does not explain why those reports mattered. When the same work is described as reporting used to identify underperforming acquisition channels or support monthly allocation decisions, the task suddenly becomes more meaningful.</p>
                 <p>The same principle applies across almost every profession. A dashboard is rarely important simply because it exists. It matters because someone used it to monitor performance, reduce uncertainty, or improve visibility. A launch plan matters because it coordinated dependencies. A CRM update matters because accurate data improved forecasting reliability.</p>
                 <p>Recruiters often respond strongly to this type of context because it helps them understand whether a candidate simply completed assignments or understood how work contributed to business decisions.</p>
-
                 <h2 className="text-2xl font-bold mt-8 mb-4">Strategic Language Often Comes from Showing Decision Logic</h2>
-                <p>One of the strongest signals of strategic maturity is visible decision-making. Strategic language becomes even stronger when a resume also reflects influence and initiative, especially for candidates learning how to show leadership without having managed a team.</p>
+                <p>One of the strongest signals of strategic maturity is visible decision-making. Strategic language becomes even stronger when a resume also reflects influence and initiative, especially for candidates learning <a href="/blog/how-to-make-your-resume-reflect-leadership" className="text-purple-600 hover:underline">how to show leadership</a> without having managed a team.</p>
                 <p>Many professionals make meaningful decisions daily but describe their work as though those decisions never existed. They write that projects were handled, campaigns were launched, systems were updated, or tasks were delivered, yet the resume never explains how one direction was chosen over another.</p>
                 <p>A stronger resume often introduces subtle evidence of reasoning. Instead of saying that multiple launches were handled simultaneously, a candidate can explain that launch timing was adjusted according to resource readiness, approval timelines, or regional priorities.</p>
                 <p>This small shift changes how the same experience feels.</p>
@@ -139,9 +153,23 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/Resume%20comparison%20for%20career%20progression.png",
+        keywords: [
+            "resume senior language",
+            "make resume sound senior",
+            "resume wording for senior roles",
+            "professional resume tone",
+            "resume personal brand",
+            "resume positioning for experienced candidates",
+            "senior resume writing",
+            "resume language without exaggeration",
+            "career growth resume tips",
+            "how recruiters read seniority in resumes"
+        ],
         content: (
             <>
                 <p>A large number of resumes fail not because the candidate lacks strong experience, but because the experience is presented in language that underplays scope, decision-making, and professional maturity. Two people may have worked at very similar levels of responsibility, yet one resume immediately communicates authority while the other reads as routine execution. In hiring, that difference matters more than many candidates realize.</p>
+
+                <p>Seniority on a resume is less about years of experience and more about the presence of professional judgment. It is about moving from describing what you did to explaining why you did it and how it influenced the environment around you. This clarity is an essential part of <a href="/blog/building-your-personal-brand-through-your-resume" className="text-purple-600 hover:underline">personal branding</a> for experienced professionals.</p>
                 <p>Recruiters often form their first impression within seconds. They do not only look for years of experience or recognizable employers. They also read for signals of ownership, judgment, influence, and business understanding. A resume that sounds senior usually reflects these signals clearly, even before a recruiter studies details deeply.</p>
                 <p>This does not mean inflating achievements or inventing leadership. In fact, exaggeration usually creates inconsistencies that experienced recruiters quickly notice. Strong senior positioning comes from describing real work in language that properly reflects its level of impact.</p>
                 <p>Many candidates unknowingly write in a way that reduces perceived seniority. They focus only on tasks, omit decision-making context, hide strategic contributions, or describe important work too narrowly. The result is that genuine experience appears smaller than it actually was. A stronger resume does not make work look bigger than it was. It makes the real scope visible.</p>
@@ -312,6 +340,18 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "8 min read",
         image: "/assets/photo/Job%20search%20with%20ATS%20keywords%20analysis.png",
+        keywords: [
+            "ATS resume keywords",
+            "resume keywords for ATS",
+            "applicant tracking system keywords",
+            "resume keyword optimization",
+            "how to use resume keywords",
+            "ATS keyword matching",
+            "job description keywords resume",
+            "resume writing for ATS",
+            "keyword stuffing resume",
+            "resume keyword strategy"
+        ],
         content: (
             <>
                 <p>When people hear that applicant tracking systems scan resumes for keywords, many immediately assume success depends on inserting as many job description terms as possible. This often leads to resumes that feel artificial, repetitive, or overloaded with phrases that sound copied rather than earned. In reality, keyword optimization works best when it reflects genuine alignment between a candidate’s experience and the language employers use to define a role. Keyword strategy works best when the resume already follows the broader principles of ATS resume construction and document compatibility.</p>
@@ -521,6 +561,34 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/ATS%20resume%20formatting%20guide.png",
+        alternativeHeadline: "How to Format a Resume for ATS Compatibility",
+        about: [
+            { "@type": "Thing", "name": "ATS resume formatting" },
+            { "@type": "Thing", "name": "Applicant Tracking System" },
+            { "@type": "Thing", "name": "Resume writing" }
+        ],
+        keywords: [
+            "ATS resume formatting tips",
+            "ATS-friendly resume format",
+            "how to format a resume for ATS",
+            "resume formatting for applicant tracking systems",
+            "ATS resume layout",
+            "best resume format for ATS",
+            "ATS-compatible resume",
+            "single-column resume ATS",
+            "resume fonts for ATS",
+            "ATS resume best practices",
+            "resume design mistakes for ATS",
+            "resume formatting mistakes",
+            "PDF vs Word for ATS resume",
+            "ATS resume headings",
+            "how applicant tracking systems read resumes",
+            "resume structure for ATS",
+            "ATS resume file format",
+            "job application resume formatting",
+            "professional resume formatting",
+            "resume parsing tips"
+        ],
         content: (
             <>
                 <p>Formatting is one of the most misunderstood parts of resume writing in the age of applicant tracking systems. Many job seekers assume that formatting is mostly visual, something designed to make a resume look polished or attractive for recruiters. In reality, formatting affects much more than appearance. It determines how clearly your information is interpreted by software, how easily recruiters scan your experience, and whether important details remain intact when your resume enters an employer’s hiring system.</p>
@@ -677,6 +745,13 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "10 min read",
         image: "/assets/photo/ATS%20resume%20guide%20in%20a%20modern%20office.png",
+        keywords: [
+            "ATS resume",
+            "Applicant Tracking System",
+            "ATS-friendly resume",
+            "resume formatting",
+            "resume best practices"
+        ],
         content: (
             <>
                 <p>When job seekers hear the phrase “ATS resume,” it often sounds like a different kind of resume with hidden rules, technical formatting tricks, or special keywords designed to impress software. In reality, an ATS resume is not a separate document type. It is simply a resume written and formatted in a way that makes it easier for applicant tracking systems to read, organize, and interpret.</p>
@@ -803,6 +878,37 @@ const postsContent: Record<string, BlogPost> = {
         author: "ResumeCraftor Editorial Team",
         readTime: "9 min read",
         image: "/assets/photo/Resume%20strategy%20for%20leadership%20success.png",
+        alternativeHeadline: "How to Show Leadership on Your Resume Without a Management Title",
+        wordCount: 1450,
+        keywords: [
+            "resume leadership without management",
+            "how to show leadership on resume",
+            "leadership resume examples",
+            "resume leadership language",
+            "resume ownership wording",
+            "resume initiative examples",
+            "resume leadership without direct reports",
+            "cross-functional leadership resume",
+            "resume personal brand leadership",
+            "resume influence without title",
+            "resume leadership signals",
+            "how recruiters spot leadership on resume",
+            "resume career growth language",
+            "resume for future leadership roles",
+            "leadership positioning on resume"
+        ],
+        about: [
+            { "@type": "Thing", "name": "Resume writing" },
+            { "@type": "Thing", "name": "Leadership" },
+            { "@type": "Thing", "name": "Personal branding" },
+            { "@type": "Thing", "name": "Career development" }
+        ],
+        mentions: [
+            { "@type": "Thing", "name": "Ownership" },
+            { "@type": "Thing", "name": "Initiative" },
+            { "@type": "Thing", "name": "Cross-functional coordination" },
+            { "@type": "Thing", "name": "Professional influence" }
+        ],
         faq: [
             {
                 q: "Can leadership appear on a resume without management experience?",
@@ -851,12 +957,12 @@ const postsContent: Record<string, BlogPost> = {
                 <hr className="border-gray-200 my-12" />
 
                 <section className="mb-16">
-                    <h2 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">Leadership Often Starts with Ownership, Not with Team Management</h2>
+                    <h2 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">Ownership and Decision-Making: The Core of Strategic Leadership</h2>
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
-                        One of the clearest early leadership signals is ownership. A candidate who consistently took responsibility for outcomes, solved problems without waiting for instruction, or improved unclear situations was already operating beyond basic execution. Yet resumes often describe these situations too narrowly.
+                        One of the clearest signals of leadership is visible ownership. This means describing work not just as something you were assigned, but as something you managed and made decisions about. When you explain that you adjusted a process based on feedback or prioritized tasks according to commercial urgency, you are demonstrating leadership judgment.
                     </p>
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
-                        For example, writing that a process was maintained says very little. If the same work is described as taking ownership of a reporting process that had recurring delays and improving its reliability across weekly cycles, the recruiter immediately sees stronger professional maturity. Ownership matters because it signals that the person did not only complete assigned tasks. It suggests that they cared about stability, quality, and consequences.
+                        This type of ownership is also a critical element of <a href="/blog/building-your-personal-brand-through-your-resume" className="text-purple-600 hover:underline">personal branding</a>. It helps recruiters see you as a proactive professional who understands context and takes responsibility for results.
                     </p>
                     <p className="text-gray-600 leading-relaxed font-medium">
                         Employers often interpret this as early leadership readiness because people who naturally take ownership usually require less supervision and contribute more predictably under pressure.
@@ -885,7 +991,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         For example, a candidate may never have supervised anyone officially, yet still became the person others asked for help during launches, reporting cycles, technical transitions, or client escalations.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         That deserves visibility. A stronger resume can explain that internal guidance was provided during key workflows, that colleagues relied on process clarification, or that complex handovers were coordinated to improve delivery quality. Recruiters often read this as natural leadership because it suggests trust from peers. Trust is often one of the earliest forms of leadership.
                     </p>
                 </section>
@@ -1071,14 +1177,14 @@ const postsContent: Record<string, BlogPost> = {
                 <hr className="border-gray-200 my-12" />
 
                 <section className="mb-16">
-                    <h2 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">Common ATS Compatibility Issues (and Why They Happen)</h2>
+                    <h2 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">Common Compatibility Issues (and Why They Happen)</h2>
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Many ATS-related problems stem from design choices that prioritize appearance over structure. Multi-column layouts, decorative icons, text boxes, and embedded graphics may look appealing, but they can confuse parsing software. When text is placed inside shapes or images, some systems cannot read it properly.
                     </p>
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Another frequent issue involves inconsistent or unclear section labels. For example, using creative headings instead of standard terms like “Work Experience” or “Education” can make it harder for the system to recognize what information belongs where.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         File format also matters. While many systems accept both PDF and DOCX files, some older or more restrictive platforms handle one better than the other. Even within PDFs, the way the file is generated can affect how text is extracted.
                     </p>
                     <p className="text-gray-600 leading-relaxed font-medium">
@@ -1095,7 +1201,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Effective keyword usage does not mean copying and pasting the job description into your resume. Instead, it involves reflecting relevant terminology naturally within your experience and skills descriptions. When your past roles genuinely align with a position, the appropriate keywords usually appear organically.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Overloading a resume with repeated terms or adding skills you do not possess can be counterproductive. Not only does this reduce readability for human reviewers, but it can also raise credibility concerns during later interview stages.
                     </p>
                 </section>
@@ -1251,7 +1357,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Then consider what you want to be known for. This can be a functional specialty, a type of problem you solve, a set of tools you use, or the kind of environment you thrive in. For example, you might be known for “building scalable reporting,” “leading onboarding,” “improving conversion funnels,” or “driving operational consistency.”
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Finally, identify proof. Branding is strongest when supported by measurable outcomes, concrete responsibilities, and real examples. If you cannot support a brand claim with evidence, it may not belong in the resume. This step matters because many resumes fail by trying to represent everything. Branding forces prioritization.
                     </p>
                 </section>
@@ -1266,7 +1372,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         A helpful approach is to use a role-specific headline followed by a short summary that reinforces your theme. The headline should be clear and searchable, especially for roles that appear in ATS filters. For example, “Product Marketing Manager” or “Data Analyst” is usually better than a creative title.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         The summary should do three things. It should state your specialty, indicate your scope or level, and hint at the kind of value you contribute. It does not need to be long. Two to four sentences are usually enough to establish a coherent brand. A summary becomes branding when it is specific. It becomes noise when it is generic.
                     </p>
                 </section>
@@ -1296,7 +1402,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         If your brand is “process improvement,” your bullet points should show improvements. If your brand is “customer success,” your experience should show retention, onboarding outcomes, renewals, or customer satisfaction. If your brand is “engineering reliability,” your experience should show stability, performance, incident reduction, or improved delivery.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         You do not need dramatic numbers to show impact. Even small, concrete improvements are effective when presented clearly. You can also use non-numeric evidence, such as leading cross-functional collaboration, creating documentation that reduces confusion, or building systems that improve consistency. When your experience repeatedly supports the same theme, your brand becomes credible.
                     </p>
                 </section>
@@ -1329,7 +1435,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Branding means placing emphasis where it supports your story. Recruiters notice what you highlight. The order of sections, the amount of space devoted to certain content, and the clarity of headings all reinforce your professional identity.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         The best resumes feel intentional in both content and structure. Visual hierarchy and <a href="/blog/how-to-choose-the-perfect-resume-template" className="text-purple-600 hover:underline">resume design</a> choices should reinforce your brand without distracting from content.                    </p>
                 </section>
 
@@ -1346,7 +1452,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         However, tailoring becomes risky when it introduces claims you cannot support. A resume should never present a persona that collapses under basic interview questions.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         When done well, tailoring makes your personal brand sharper rather than inconsistent. It’s also important to consider <a href="/blog/ats-optimization-getting-past-the-robots" className="text-purple-600 hover:underline">ATS compatibility</a> when tailoring resumes for different roles.                    </p>
                 </section>
 
@@ -1363,7 +1469,7 @@ const postsContent: Record<string, BlogPost> = {
                     <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         A third mistake is confusing formatting with branding. A stylish template can help readability, but it cannot replace a clear story. Branding comes from the combination of focus and evidence.
                     </p>
-                    <p className="text-gray-600 leading-relaxed font-medium">
+                    <p className="text-gray-600 leading-relaxed mb-6 font-medium">
                         Finally, many candidates underestimate the power of specificity. Specific roles, specific tools, and specific outcomes are what create a believable professional identity.
                     </p>
                 </section>
@@ -1959,6 +2065,7 @@ export default async function BlogPostPage({
             "@id": postUrl
         },
         "headline": post.title,
+        ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
         "description": post.description,
         "image": [post.image],
         "author": {
@@ -1977,9 +2084,13 @@ export default async function BlogPostPage({
         },
         "datePublished": `${post.date}T09:00:00+00:00`,
         "dateModified": `${post.date}T09:00:00+00:00`,
+        ...(post.keywords && { "keywords": post.keywords.join(", ") }),
+        ...(post.wordCount && { "wordCount": post.wordCount }),
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "articleSection": post.category
+        "articleSection": post.category,
+        ...(post.about && { "about": post.about }),
+        ...(post.mentions && { "mentions": post.mentions })
     };
 
     // Standardized Article Schema for all posts
@@ -1987,6 +2098,7 @@ export default async function BlogPostPage({
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": post.title,
+        ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
         "description": post.description,
         "author": {
             "@type": "Organization",
@@ -2003,7 +2115,9 @@ export default async function BlogPostPage({
         "datePublished": `${post.date}T09:00:00+00:00`,
         "dateModified": `${post.date}T09:00:00+00:00`,
         "mainEntityOfPage": postUrl,
-        "image": post.image
+        "image": post.image,
+        ...(post.keywords && { "keywords": post.keywords.join(", ") }),
+        ...(post.about && { "about": post.about })
     };
 
     return (
