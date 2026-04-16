@@ -205,9 +205,6 @@ export default function BlogPage() {
                                             <span>{post.author}</span>
                                             <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-gray-400">
-                                            <span>{post.readTime}</span>
-                                        </div>
                                     </div>
                                 </div>
                             </Link>
