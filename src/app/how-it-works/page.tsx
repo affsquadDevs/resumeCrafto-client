@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Footer } from "@/components/layout/Footer";
 import { Sparkles, FileText, Wand2, Download, Zap, Shield, Palette, Globe } from "lucide-react";
+
+export const metadata: Metadata = {
+    title: "How It Works",
+    description: "See how ResumeCraftor works in three simple steps: choose a template, build and customize your resume, then download a polished ATS-friendly PDF.",
+    alternates: { canonical: "/how-it-works" },
+    openGraph: {
+        title: "How It Works",
+        description: "See how ResumeCraftor works in three simple steps.",
+        url: "https://resumecraftor.com/how-it-works",
+        type: "website",
+    },
+};
 
 export default function HowItWorksPage() {
     return (
@@ -171,6 +185,17 @@ export default function HowItWorksPage() {
                     >
                         Start Building Now →
                     </a>
+
+                    <p className="text-purple-100 text-sm md:text-base mt-6 md:mt-8">
+                        Prefer to explore first?{" "}
+                        <Link href="/templates" className="font-bold text-white underline hover:text-purple-50">
+                            Browse our resume templates
+                        </Link>{" "}
+                        or{" "}
+                        <Link href="/blog" className="font-bold text-white underline hover:text-purple-50">
+                            read our resume writing guides
+                        </Link>.
+                    </p>
                 </div>
             </main>
             <DashboardFooter />

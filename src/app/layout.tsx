@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -16,8 +16,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ResumeCraftor",
-  description: "Create professional resumes with ResumeCraftor",
+  metadataBase: new URL("https://resumecraftor.com"),
+  title: {
+    default: "ResumeCraftor — Free ATS-Friendly Resume Builder",
+    template: "%s | ResumeCraftor",
+  },
+  description: "Build a professional, ATS-optimized resume in minutes with ResumeCraftor's free online resume builder. Pick a template, customize, and download a polished PDF.",
+  applicationName: "ResumeCraftor",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -30,8 +42,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 1024,
+        height: 1024,
         alt: "ResumeCraftor - Professional Resume Builder",
       },
     ],
@@ -43,7 +55,16 @@ export const metadata: Metadata = {
     title: "ResumeCraftor - Professional Resume Builder",
     description: "Create professional, ATS-optimized resumes in minutes with ResumeCraftor.",
     images: ["/og/og-image.png"],
+    site: "@resumecraftor",
+    creator: "@resumecraftor",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#7c3aed",
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light",
 };
 
 
@@ -61,15 +82,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5TQ4B5WN');`
-          }}
-        />
+        <Script id="gtm-init" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TQ4B5WN');` }} />
         {/* End Google Tag Manager */}
         <Script
           async
@@ -111,8 +124,8 @@ export default function RootLayout({
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://resumecraftor.com/logo.png",
-                "width": 512,
-                "height": 512
+                "width": 2238,
+                "height": 2238
               },
               "image": "https://resumecraftor.com/og/og-image.png",
               "sameAs": [
@@ -140,6 +153,22 @@ export default function RootLayout({
                 "Create resume",
                 "Create CV"
               ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://resumecraftor.com/#website",
+              "url": "https://resumecraftor.com/",
+              "name": "ResumeCraftor",
+              "inLanguage": "en",
+              "publisher": {
+                "@id": "https://resumecraftor.com/#organization"
+              }
             })
           }}
         />

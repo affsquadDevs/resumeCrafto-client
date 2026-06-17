@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { blogPosts } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://resumecraftor.com';
@@ -20,23 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    const blogPosts = [
-        'how-to-write-a-strategic-resume',
-        'how-to-make-your-resume-sound-more-senior',
-        'resume-keywords-for-ats',
-        'ats-resume-formatting-tips',
-        'what-is-an-ats-resume',
-        'how-to-make-your-resume-reflect-leadership',
-        'ats-optimization-getting-past-the-robots',
-        'building-your-personal-brand-through-your-resume',
-        'how-to-choose-the-perfect-resume-template',
-        'how-to-build-a-professional-resume-step-by-step',
-    ].map((slug) => ({
-        url: `${baseUrl}/blog/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
+    const blogRoutes = blogPosts.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.date),
+        changeFrequency: 'monthly' as const,
         priority: 0.7,
     }));
 
-    return [...staticRoutes, ...blogPosts];
+    return [...staticRoutes, ...blogRoutes];
 }

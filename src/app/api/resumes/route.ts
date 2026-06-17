@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prisma';
-import { submitToIndexNow } from '@/lib/indexnow';
 
 export async function GET() {
     try {
@@ -49,11 +48,6 @@ export async function POST(req: Request) {
                 }
             });
 
-            // Trigger IndexNow (fire and forget)
-            submitToIndexNow([`https://resumecraftor.com/resume/${resume.id}`]).catch(err =>
-                console.error("Failed to submit to IndexNow:", err)
-            );
-
             return NextResponse.json(resume);
         } else {
             // Create new
@@ -65,11 +59,6 @@ export async function POST(req: Request) {
                     userId: user.id
                 }
             });
-
-            // Trigger IndexNow
-            submitToIndexNow([`https://resumecraftor.com/resume/${resume.id}`]).catch(err =>
-                console.error("Failed to submit to IndexNow:", err)
-            );
 
             const isFirst = count === 0;
             return NextResponse.json({ ...resume, isFirst });

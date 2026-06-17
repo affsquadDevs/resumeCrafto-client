@@ -140,11 +140,11 @@ export default function TemplatesPage() {
                                     <Sparkles size={14} className="text-yellow-400" />
                                     Premium Library
                                 </div>
-                                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
+                                <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
                                     Start with a
                                     <br className="sm:hidden" />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"> Masterpiece.</span>
-                                </h1>
+                                </h2>
                                 <p className="text-base md:text-xl text-gray-400 leading-relaxed font-medium mb-10 max-w-2xl mx-auto md:ml-0">
                                     Choose from our curated collection of industry-standard templates. Each template is designed with ATS compatibility in mind and follows clean, professional formatting standards.                                </p>
                             </div>

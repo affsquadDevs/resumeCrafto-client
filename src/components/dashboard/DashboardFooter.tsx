@@ -34,14 +34,17 @@ export const DashboardFooter = () => {
 
                         <div className="flex gap-4">
                             {[
-                                { Icon: Facebook, href: 'https://www.facebook.com/people/ResumeCraftor/61586853676415/' },
-                                { Icon: Instagram, href: 'https://www.instagram.com/resumecraftor26' },
-                                { Icon: Threads, href: 'https://www.threads.net/@resumecraftor26' },
-                                { Icon: Youtube, href: 'https://www.youtube.com/@ResumeCraftor' }
+                                { Icon: Facebook, href: 'https://www.facebook.com/people/ResumeCraftor/61586853676415/', label: 'Facebook' },
+                                { Icon: Instagram, href: 'https://www.instagram.com/resumecraftor26', label: 'Instagram' },
+                                { Icon: Threads, href: 'https://www.threads.net/@resumecraftor26', label: 'Threads' },
+                                { Icon: Youtube, href: 'https://www.youtube.com/@ResumeCraftor', label: 'YouTube' }
                             ].map((social, i) => (
                                 <Link
                                     key={i}
                                     href={social.href}
+                                    aria-label={`ResumeCraftor on ${social.label}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:text-purple-600 hover:border-purple-200 hover:bg-purple-50 transition-all duration-300"
                                 >
                                     <social.Icon size={18} />
@@ -110,9 +113,11 @@ export const DashboardFooter = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                aria-label="Email address"
+                                autoComplete="email"
                                 className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pl-12 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
                             />
-                            <button className="absolute right-2 top-2 bottom-2 px-4 bg-gray-950 text-white rounded-xl hover:bg-purple-600 transition-colors flex items-center justify-center">
+                            <button type="submit" aria-label="Subscribe" className="absolute right-2 top-2 bottom-2 px-4 bg-gray-950 text-white rounded-xl hover:bg-purple-600 transition-colors flex items-center justify-center">
                                 <ArrowRight size={18} />
                             </button>
                         </form>

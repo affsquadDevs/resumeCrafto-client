@@ -1,11 +1,12 @@
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Blog & Career Tips | ResumeCraftor",
+    title: "Blog & Career Tips",
     description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression. Learn how to create a professional resume that gets interviews.",
     openGraph: {
         title: "Blog & Career Tips | ResumeCraftor",
@@ -14,14 +15,20 @@ export const metadata: Metadata = {
         siteName: "ResumeCraftor",
         images: [
             {
-                url: "https://resumecraftor.com/og/blog-index.png",
-                width: 1200,
-                height: 630,
+                url: "https://resumecraftor.com/og/og-image.png",
+                width: 1024,
+                height: 1024,
                 alt: "ResumeCraftor Blog",
             }
         ],
         locale: "en_US",
         type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Blog & Career Tips | ResumeCraftor",
+        description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
+        images: ["https://resumecraftor.com/og/og-image.png"],
     },
     alternates: {
         canonical: "https://resumecraftor.com/blog",
@@ -76,10 +83,12 @@ export default function BlogPage() {
                                 className="group cursor-pointer rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-purple-200 transition-all duration-500 bg-white"
                             >
                                 <div className="aspect-video relative overflow-hidden">
-                                    <img
+                                    <Image
                                         src={post.image}
                                         alt={post.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                                     />
                                     <div className="absolute top-4 left-4">
                                         <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-purple-600 text-xs font-bold shadow-sm">

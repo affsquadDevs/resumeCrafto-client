@@ -148,6 +148,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         >
                             <button
                                 onClick={() => setIsMoreOpen(!isMoreOpen)}
+                                aria-expanded={isMoreOpen}
+                                aria-haspopup="menu"
                                 className={`
             text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] px-3 md:px-5 py-2 rounded-full
             text-gray-400 transition-all duration-200
@@ -215,6 +217,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                 <div className="pl-2 border-l border-gray-200 relative" ref={profileRef}>
                                     <button
                                         onClick={() => setIsProfileOpen(!isProfileOpen)}
+                                        aria-expanded={isProfileOpen}
+                                        aria-haspopup="menu"
                                         className={`flex items-center gap-2 px-2 md:px-3 py-2 rounded-xl transition-all font-bold ${isProfileOpen ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50/50'}`}
                                     >
                                         <div className="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center overflow-hidden">
@@ -269,6 +273,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                     {/* Mobile Menu Toggle */}
                     <button
                         onClick={toggleMenu}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-menu"
                         className="lg:hidden w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-900 transition-colors"
                     >
                         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -278,7 +285,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-[calc(100%+12px)] left-2 right-2 max-h-[80vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200 z-[100] rounded-3xl no-scrollbar">
+                <div id="mobile-menu" className="lg:hidden absolute top-[calc(100%+12px)] left-2 right-2 max-h-[80vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200 z-[100] rounded-3xl no-scrollbar">
                     <LiquidGlass
                         displacementScale={0}
                         blurAmount={16}
