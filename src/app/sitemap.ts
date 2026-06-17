@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/blog-data';
+import { roles } from '@/lib/roles';
+import { authors } from '@/lib/authors';
+import { POSTS_PER_PAGE } from '@/components/dashboard/BlogListing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://resumecraftor.com';
@@ -14,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/terms-of-service',
         '/resume-builder',
         '/templates',
+        '/resume-examples',
+        '/cover-letter-builder',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
@@ -28,5 +33,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    return [...staticRoutes, ...blogRoutes];
+    // Paginated blog index pages (page 1 lives at /blog)
+    const totalBlogPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
+    const blogPageRoutes = Array.from({ length: Math.max(0, totalBlogPages - 1) }, (_, i) => ({
+        url: `${baseUrl}/blog/page/${i + 2}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.4,
+    }));
+
+    const roleRoutes = roles.map((role) => ({
+        url: `${baseUrl}/resume-templates/${role.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
+    const authorRoutes = authors.map((author) => ({
+        url: `${baseUrl}/author/${author.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.4,
+    }));
+
+    return [
+        ...staticRoutes,
+        ...blogRoutes,
+        ...blogPageRoutes,
+        ...roleRoutes,
+        ...authorRoutes,
+    ];
 }

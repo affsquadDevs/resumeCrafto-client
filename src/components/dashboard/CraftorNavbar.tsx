@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ChevronLeft, CircleUser, Menu, X, Sparkles, Settings, LogOut } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/useUserStore';
 import dynamic from 'next/dynamic';
 
@@ -159,14 +158,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                 More
                             </button>
 
-                            <AnimatePresence>
-                                {isMoreOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 5, scale: 0.95, transition: { delay: 0.2 } }}
-                                        transition={{ duration: 0.25 }}
-                                        className="absolute top-full left-0 mt-2 w-44 z-50"
+                            {isMoreOpen && (
+                                    <div
+                                        className="absolute top-full left-0 mt-2 w-44 z-50 animate-in fade-in zoom-in-95 duration-200"
                                     >
                                         <LiquidGlass
                                             displacementScale={0}
@@ -198,9 +192,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                                 ))}
                                             </nav>
                                         </LiquidGlass>
-                                    </motion.div>
+                                    </div>
                                 )}
-                            </AnimatePresence>
                         </div>
                     </nav>
 
@@ -227,13 +220,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                         <span className="text-sm hidden xl:block">{user?.name?.split(' ')[0] || 'Profile'}</span>
                                     </button>
 
-                                    <AnimatePresence>
-                                        {isProfileOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 10, scale: 0.95, transition: { delay: 0.2 } }}
-                                                className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 z-[60]"
+                                    {isProfileOpen && (
+                                            <div
+                                                className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 z-[60] animate-in fade-in zoom-in-95 duration-200"
                                             >
                                                 <div className="px-5 py-4 border-b border-gray-50 mb-1">
                                                     <p className="text-sm font-black text-gray-900 truncate">{user?.name}</p>
@@ -253,9 +242,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                                     <LogOut size={18} />
                                                     <span>Logout</span>
                                                 </button>
-                                            </motion.div>
+                                            </div>
                                         )}
-                                    </AnimatePresence>
                                 </div>
                             </>
                         ) : (

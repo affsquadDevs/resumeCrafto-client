@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Metadata } from "next";
+import { getAuthorByName } from "@/lib/authors";
 
 type BlogPost = {
     title: string;
@@ -1991,6 +1992,8 @@ export default async function BlogPostPage({
     const baseUrl = "https://resumecraftor.com";
     const postUrl = `${baseUrl}/blog/${slug}`;
     const absImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
+    const author = getAuthorByName(post.author);
+    const authorUrl = author ? `${baseUrl}/author/${author.slug}` : `${baseUrl}/`;
 
     // Standardized Breadcrumb Schema with Hierarchy support
     const getBreadcrumbs = () => {
@@ -2062,9 +2065,9 @@ export default async function BlogPostPage({
         "description": post.description,
         "image": [absImage],
         "author": {
-            "@type": "Organization",
+            "@type": author?.type ?? "Organization",
             "name": post.author,
-            "url": `${baseUrl}/`
+            "url": authorUrl
         },
         "publisher": {
             "@type": "Organization",
@@ -2127,7 +2130,7 @@ export default async function BlogPostPage({
                         </h1>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500 font-medium pb-12 border-b border-gray-100">
-                            <span className="font-bold text-gray-900">{post.author}</span>
+                            <Link href={author ? `/author/${author.slug}` : "/blog"} className="font-bold text-gray-900 hover:text-purple-600 transition-colors">{post.author}</Link>
                             <span>•</span>
                             <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>•</span>
