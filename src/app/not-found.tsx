@@ -41,11 +41,11 @@ export default function NotFound() {
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-gray-950 text-white rounded-2xl font-bold hover:bg-purple-600 transition-all duration-300 shadow-xl shadow-gray-950/10 active:scale-[0.98]"
                     >
                         <Home size={20} />
-                        Go to Dashboard
+                        Go to Homepage
                     </Link>
 
                     <button
-                        onClick={() => window.history.back()}
+                        onClick={() => { if (typeof window !== "undefined" && window.history.length > 1) { window.history.back(); } else { window.location.href = "/"; } }}
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-gray-50 text-gray-700 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300"
                     >
                         <ArrowLeft size={20} />

@@ -1,10 +1,21 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from "next";
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
+
+export const metadata: Metadata = {
+    title: "About ResumeCraftor",
+    description: "Learn about ResumeCraftor — the team and mission behind the free, ATS-friendly online resume builder used by professionals worldwide.",
+    alternates: { canonical: "/about" },
+    openGraph: {
+        title: "About ResumeCraftor",
+        description: "The team and mission behind ResumeCraftor.",
+        url: "https://resumecraftor.com/about",
+        type: "website",
+    },
+};
 
 export default function AboutPage() {
     return (
@@ -16,14 +27,7 @@ export default function AboutPage() {
                 <section className="px-1 md:px-6 lg:px-10 pb-24">
                     <div className="max-w-7xl mx-auto">
                         <div className="bg-gray-950 text-white rounded-3xl px-8 py-16 md:px-16 md:py-24">
-                            <h1 className="block md:hidden text-3xl font-black tracking-tight leading-snug mb-6">
-                                Design tools for
-                                <span className="block text-lg sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                                    professionals
-                                </span>
-                            </h1>
-
-                            <h1 className="hidden md:block text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-10">
+                            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black tracking-tight leading-snug md:leading-[1.1] mb-6 md:mb-10">
                                 Design tools built for
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                                     real professionals
@@ -53,6 +57,17 @@ export default function AboutPage() {
                             ResumeCraftor started as a small internal project focused on making professional documents easy to create and reliable. It has since grown into a resume-building platform.                        </p>
                         <p className="text-gray-600 leading-relaxed text-lg">
                             From resumes and cover letters to layouts and export options, each feature is designed to support clear and consistent document creation.                        </p>
+                        <p className="text-gray-600 leading-relaxed text-lg">
+                            Ready to get started? You can{" "}
+                            <Link href="/templates" className="text-purple-600 font-semibold hover:text-purple-700 underline">
+                                browse our resume templates
+                            </Link>{" "}
+                            or{" "}
+                            <Link href="/blog" className="text-purple-600 font-semibold hover:text-purple-700 underline">
+                                read our resume writing guides
+                            </Link>{" "}
+                            to learn more.
+                        </p>
                     </div>
                 </section>
 

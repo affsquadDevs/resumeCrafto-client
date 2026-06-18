@@ -17,6 +17,11 @@ export async function submitToIndexNow(urls: string[]) {
             }),
         });
 
+        if (!response.ok) {
+            console.error("IndexNow submission failed", response.status, await response.text());
+            return false;
+        }
+        return true;
     } catch (error) {
         return false;
     }

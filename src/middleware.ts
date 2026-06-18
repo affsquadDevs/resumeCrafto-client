@@ -20,5 +20,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/resume-builder/:path*', '/settings/:path*'],
+    matcher: ['/settings/:path*'],
 };

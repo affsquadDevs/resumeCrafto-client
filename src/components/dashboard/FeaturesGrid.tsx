@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Zap, Shield, Palette, Cloud, Download, Users, Clock, Star } from 'lucide-react';
 
 export const FeaturesGrid = () => {
@@ -81,6 +82,16 @@ export const FeaturesGrid = () => {
                             </p>
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-12 text-center text-base md:text-lg text-gray-600">
+                    <Link href="/templates" className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-4">
+                        See all resume templates
+                    </Link>
+                    <span className="mx-2 text-gray-300">·</span>
+                    <Link href="/blog" className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-4">
+                        Read our resume guides
+                    </Link>
                 </div>
             </div>
         </section>

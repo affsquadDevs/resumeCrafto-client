@@ -149,7 +149,20 @@ export const DashboardHero = () => {
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-purple-100/80 mb-6 md:mb-10 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
                             Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create polished documents designed to support your job applications.                        </p>
 
-
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                            <Link
+                                href="/resume-builder"
+                                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-purple-500 hover:bg-purple-400 text-white font-bold shadow-lg shadow-purple-900/40 transition-colors"
+                            >
+                                Build my resume — free
+                            </Link>
+                            <Link
+                                href="/templates"
+                                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/30 hover:bg-white/10 text-white font-semibold transition-colors"
+                            >
+                                Browse templates
+                            </Link>
+                        </div>
                     </div>
 
                     {/* RIGHT */}

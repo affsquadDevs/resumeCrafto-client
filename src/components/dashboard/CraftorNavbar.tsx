@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ChevronLeft, CircleUser, Menu, X, Sparkles, Settings, LogOut } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/useUserStore';
 import dynamic from 'next/dynamic';
 
@@ -148,6 +147,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         >
                             <button
                                 onClick={() => setIsMoreOpen(!isMoreOpen)}
+                                aria-expanded={isMoreOpen}
+                                aria-haspopup="menu"
                                 className={`
             text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] px-3 md:px-5 py-2 rounded-full
             text-gray-400 transition-all duration-200
@@ -157,14 +158,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                 More
                             </button>
 
-                            <AnimatePresence>
-                                {isMoreOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 5, scale: 0.95, transition: { delay: 0.2 } }}
-                                        transition={{ duration: 0.25 }}
-                                        className="absolute top-full left-0 mt-2 w-44 z-50"
+                            {isMoreOpen && (
+                                    <div
+                                        className="absolute top-full left-0 mt-2 w-44 z-50 animate-in fade-in zoom-in-95 duration-200"
                                     >
                                         <LiquidGlass
                                             displacementScale={0}
@@ -196,9 +192,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                                 ))}
                                             </nav>
                                         </LiquidGlass>
-                                    </motion.div>
+                                    </div>
                                 )}
-                            </AnimatePresence>
                         </div>
                     </nav>
 
@@ -215,6 +210,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                 <div className="pl-2 border-l border-gray-200 relative" ref={profileRef}>
                                     <button
                                         onClick={() => setIsProfileOpen(!isProfileOpen)}
+                                        aria-expanded={isProfileOpen}
+                                        aria-haspopup="menu"
                                         className={`flex items-center gap-2 px-2 md:px-3 py-2 rounded-xl transition-all font-bold ${isProfileOpen ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50/50'}`}
                                     >
                                         <div className="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center overflow-hidden">
@@ -223,13 +220,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                         <span className="text-sm hidden xl:block">{user?.name?.split(' ')[0] || 'Profile'}</span>
                                     </button>
 
-                                    <AnimatePresence>
-                                        {isProfileOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 10, scale: 0.95, transition: { delay: 0.2 } }}
-                                                className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 z-[60]"
+                                    {isProfileOpen && (
+                                            <div
+                                                className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 z-[60] animate-in fade-in zoom-in-95 duration-200"
                                             >
                                                 <div className="px-5 py-4 border-b border-gray-50 mb-1">
                                                     <p className="text-sm font-black text-gray-900 truncate">{user?.name}</p>
@@ -249,9 +242,8 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                                     <LogOut size={18} />
                                                     <span>Logout</span>
                                                 </button>
-                                            </motion.div>
+                                            </div>
                                         )}
-                                    </AnimatePresence>
                                 </div>
                             </>
                         ) : (
@@ -269,6 +261,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                     {/* Mobile Menu Toggle */}
                     <button
                         onClick={toggleMenu}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-menu"
                         className="lg:hidden w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-900 transition-colors"
                     >
                         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -278,7 +273,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-[calc(100%+12px)] left-2 right-2 max-h-[80vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200 z-[100] rounded-3xl no-scrollbar">
+                <div id="mobile-menu" className="lg:hidden absolute top-[calc(100%+12px)] left-2 right-2 max-h-[80vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200 z-[100] rounded-3xl no-scrollbar">
                     <LiquidGlass
                         displacementScale={0}
                         blurAmount={16}

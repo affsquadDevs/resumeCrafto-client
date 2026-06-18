@@ -1,7 +1,18 @@
-"use client"
-
+import type { Metadata } from "next";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
+
+export const metadata: Metadata = {
+    title: "Contact Us",
+    description: "Contact the ResumeCraftor team for support, feedback, or account questions. We're happy to help you build a better resume.",
+    alternates: { canonical: "/contact" },
+    openGraph: {
+        title: "Contact Us",
+        description: "Contact the ResumeCraftor team for support, feedback, or account questions.",
+        url: "https://resumecraftor.com/contact",
+        type: "website",
+    },
+};
 
 export default function ContactPage() {
     return (

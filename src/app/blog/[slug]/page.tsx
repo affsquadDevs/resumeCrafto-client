@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Metadata } from "next";
+import { getAuthorByName } from "@/lib/authors";
 
 type BlogPost = {
     title: string;
@@ -1929,21 +1930,7 @@ export async function generateMetadata({
 
     const baseUrl = "https://resumecraftor.com";
 
-    // Set ogImage based on slug with fallbacks
-    let ogImage = post.image;
-    if (slug === "building-your-personal-brand-through-your-resume") {
-        ogImage = `${baseUrl}/og/personal-brand-resume.png`;
-    } else if (slug === "how-to-make-your-resume-reflect-leadership") {
-        ogImage = "https://resumecraftor.com/blog-assets/how-to-make-your-resume-reflect-leadership-hero.png";
-    } else if (slug === "what-is-an-ats-resume") {
-        ogImage = `${baseUrl}/og/what-is-an-ats-resume.png`;
-    } else if (slug === "ats-resume-formatting-tips") {
-        ogImage = "https://resumecraftor.com/blog-assets/ats-resume-formatting-tips-hero.png";
-    } else if (slug === "resume-keywords-for-ats") {
-        ogImage = "https://resumecraftor.com/blog-assets/resume-keywords-for-ats-hero.png";
-    } else if (slug === "how-to-make-your-resume-sound-more-senior") {
-        ogImage = "https://resumecraftor.com/blog-assets/how-to-make-your-resume-sound-more-senior-hero.png";
-    }
+    const ogImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
 
     // Standardize OG Description
     const ogDescription = post.description;
@@ -1961,14 +1948,17 @@ export async function generateMetadata({
             type: "article",
             siteName: "ResumeCraftor",
             locale: "en_US",
-            images: [
-                {
-                    url: ogImage,
-                    width: 1200,
-                    height: 630,
-                    alt: ogImageAlt,
-                }
-            ],
+            publishedTime: `${post.date}T09:00:00+00:00`,
+            modifiedTime: `${post.date}T09:00:00+00:00`,
+            authors: [post.author],
+            section: post.category,
+            images: [{ url: ogImage, alt: ogImageAlt }],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.description,
+            images: [ogImage],
         },
         alternates: {
             canonical: `${baseUrl}/blog/${slug}`,
@@ -2001,6 +1991,9 @@ export default async function BlogPostPage({
 
     const baseUrl = "https://resumecraftor.com";
     const postUrl = `${baseUrl}/blog/${slug}`;
+    const absImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
+    const author = getAuthorByName(post.author);
+    const authorUrl = author ? `${baseUrl}/author/${author.slug}` : `${baseUrl}/`;
 
     // Standardized Breadcrumb Schema with Hierarchy support
     const getBreadcrumbs = () => {
@@ -2070,11 +2063,11 @@ export default async function BlogPostPage({
         "headline": post.title,
         ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
         "description": post.description,
-        "image": [post.image],
+        "image": [absImage],
         "author": {
-            "@type": "Organization",
+            "@type": author?.type ?? "Organization",
             "name": post.author,
-            "url": `${baseUrl}/`
+            "url": authorUrl
         },
         "publisher": {
             "@type": "Organization",
@@ -2096,33 +2089,6 @@ export default async function BlogPostPage({
         ...(post.mentions && { "mentions": post.mentions })
     };
 
-    // Standardized Article Schema for all posts
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": post.title,
-        ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
-        "description": post.description,
-        "author": {
-            "@type": "Organization",
-            "name": post.author
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "ResumeCraftor",
-            "logo": {
-                "@type": "ImageObject",
-                "url": `${baseUrl}/logo.png`
-            }
-        },
-        "datePublished": `${post.date}T09:00:00+00:00`,
-        "dateModified": `${post.date}T09:00:00+00:00`,
-        "mainEntityOfPage": postUrl,
-        "image": post.image,
-        ...(post.keywords && { "keywords": post.keywords.join(", ") }),
-        ...(post.about && { "about": post.about })
-    };
-
     return (
         <div className="min-h-screen bg-white selection:bg-purple-100 selection:text-purple-700">
             {/* SEO Schemas */}
@@ -2133,10 +2099,6 @@ export default async function BlogPostPage({
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
             />
             {faqSchema && (
                 <script
@@ -2168,7 +2130,7 @@ export default async function BlogPostPage({
                         </h1>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500 font-medium pb-12 border-b border-gray-100">
-                            <span className="font-bold text-gray-900">{post.author}</span>
+                            <Link href={author ? `/author/${author.slug}` : "/blog"} className="font-bold text-gray-900 hover:text-purple-600 transition-colors">{post.author}</Link>
                             <span>•</span>
                             <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>•</span>

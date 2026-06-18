@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
+
+export const metadata: Metadata = {
+    title: "Privacy Policy",
+    description: "Read the ResumeCraftor privacy policy: what data we collect, how we use it, and your rights.",
+    alternates: { canonical: "/privacy-policy" },
+};
 
 export default function PrivacyPolicyPage() {
     return (

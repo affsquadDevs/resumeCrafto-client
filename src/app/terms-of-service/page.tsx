@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
+
+export const metadata: Metadata = {
+    title: "Terms of Service",
+    description: "Read the ResumeCraftor terms of service governing the use of our resume builder.",
+    alternates: { canonical: "/terms-of-service" },
+};
 
 export default function TermsOfServicePage() {
     return (
