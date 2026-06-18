@@ -146,7 +146,7 @@ export default function RootLayout({
                   "areaServed": "Worldwide"
                 }
               ],
-              "foundingDate": "2026",
+              "foundingDate": "2024",
               "areaServed": "Worldwide",
               "knowsAbout": [
                 "Resume writing",
