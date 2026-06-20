@@ -1,24 +1,48 @@
-import { getToken } from 'next-auth/jwt';
-import { NextRequest, NextResponse } from 'next/server';
+import createMiddleware from "next-intl/middleware";
+import { getToken } from "next-auth/jwt";
+import { NextRequest, NextResponse } from "next/server";
+import { routing } from "./i18n/routing";
+
+const intlMiddleware = createMiddleware(routing);
+
+// Logical routes that require authentication (matched after the locale prefix
+// is stripped, so /settings, /de/settings, /uk/settings are all covered).
+const PROTECTED = ["/settings"];
+
+// Only non-default locales carry a URL prefix (localePrefix: "as-needed"), so
+// `en` is intentionally excluded here.
+const prefixLocales = routing.locales.filter((l) => l !== routing.defaultLocale);
+const LOCALE_PREFIX = new RegExp(`^/(${prefixLocales.join("|")})(?=/|$)`);
 
 export async function middleware(req: NextRequest) {
-    const token = await getToken({
-        req,
-        secret: process.env.NEXTAUTH_SECRET,
-    });
+  const { pathname } = req.nextUrl;
 
-    const isAuthPage = req.nextUrl.pathname.startsWith('/api/auth');
+  // Split any locale prefix off the path to test the logical route.
+  const localeMatch = pathname.match(LOCALE_PREFIX);
+  const localePrefix = localeMatch ? localeMatch[0] : "";
+  const pathWithoutLocale = pathname.slice(localePrefix.length) || "/";
 
-    // If it's a protected route and no token, redirect to home with auth=login
-    if (!token && !isAuthPage) {
-        const url = new URL('/', req.url);
-        url.searchParams.set('auth', 'login');
-        return NextResponse.redirect(url);
+  const isProtected = PROTECTED.some(
+    (p) => pathWithoutLocale === p || pathWithoutLocale.startsWith(`${p}/`)
+  );
+
+  if (isProtected) {
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    if (!token) {
+      // Send unauthenticated users to the localized home with the login modal.
+      const url = new URL(`${localePrefix}/`, req.url);
+      url.searchParams.set("auth", "login");
+      return NextResponse.redirect(url);
     }
+  }
 
-    return NextResponse.next();
+  // Locale negotiation / rewriting for everything else (en stays at root).
+  return intlMiddleware(req);
 }
 
 export const config = {
-    matcher: ['/settings/:path*'],
+  // Run on everything except API routes, Next internals, and files with an
+  // extension (static assets, /sitemap.xml, /robots.txt, the IndexNow key .txt,
+  // /manifest.webmanifest, favicons — these must stay non-localized).
+  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
 };
