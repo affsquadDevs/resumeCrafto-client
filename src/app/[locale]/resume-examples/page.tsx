@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { roles } from "@/lib/roles";
@@ -21,8 +21,10 @@ export const metadata: Metadata = {
     },
 };
 
-export default function ResumeExamplesPage() {
-    const t = useTranslations("ResumeExamplesPage");
+export default async function ResumeExamplesPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("ResumeExamplesPage");
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",

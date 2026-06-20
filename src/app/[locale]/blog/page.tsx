@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import { BlogListing, POSTS_PER_PAGE } from "@/components/dashboard/BlogListing";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
     title: "Blog & Career Tips",
@@ -23,7 +24,9 @@ export const metadata: Metadata = {
     },
 };
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
     const posts = blogPosts.slice(0, POSTS_PER_PAGE);
 

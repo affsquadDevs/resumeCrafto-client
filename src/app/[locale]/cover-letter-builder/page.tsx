@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -49,8 +49,10 @@ const faqs = [
     },
 ];
 
-export default function CoverLetterBuilderPage() {
-    const t = useTranslations("CoverLetterBuilderPage");
+export default async function CoverLetterBuilderPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("CoverLetterBuilderPage");
 
     const steps = [
         { titleKey: "step1Title", descKey: "step1Desc" },

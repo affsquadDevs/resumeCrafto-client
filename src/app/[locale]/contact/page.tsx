@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
 
@@ -15,8 +15,10 @@ export const metadata: Metadata = {
     },
 };
 
-export default function ContactPage() {
-    const t = useTranslations("ContactPage");
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("ContactPage");
     return (
         <div className="min-h-screen bg-neutral-950 text-white selection:bg-purple-500/30 overflow-hidden">
             <CraftorNavbar />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 
@@ -9,8 +9,10 @@ export const metadata: Metadata = {
     alternates: { canonical: "/terms-of-service" },
 };
 
-export default function TermsOfServicePage() {
-    const t = useTranslations("TermsOfServicePage");
+export default async function TermsOfServicePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("TermsOfServicePage");
     return (
         <div className="min-h-screen bg-neutral-950 text-white">
             <CraftorNavbar />

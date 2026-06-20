@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import EditorPage from '@/components/views/EditorPage';
 import WebApplicationSchema from '@/components/seo/WebApplicationSchema';
 
@@ -15,8 +15,10 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Page() {
-  const t = useTranslations("ResumeBuilderPage");
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("ResumeBuilderPage");
   return (
     <>
       <WebApplicationSchema />

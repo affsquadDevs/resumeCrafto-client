@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
 
@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     },
 };
 
-export default function AboutPage() {
-    const t = useTranslations("AboutPage");
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("AboutPage");
     return (
         <div className="min-h-screen bg-white text-gray-900">
             <CraftorNavbar />
