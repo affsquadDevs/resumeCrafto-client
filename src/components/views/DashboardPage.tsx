@@ -1,13 +1,13 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { ChevronRight, Trash2, Loader2 } from 'lucide-react';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 
 import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "@/i18n/navigation";
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';

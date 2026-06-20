@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { Layers, ChevronLeft, ChevronDown, FileDown, LayoutPanelTop, Check, Loader2, SlidersHorizontal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/useUserStore';

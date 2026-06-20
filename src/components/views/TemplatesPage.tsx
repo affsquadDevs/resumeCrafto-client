@@ -8,7 +8,7 @@ import { DesignCard } from '@/components/dashboard/DesignCard';
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
 import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "@/i18n/navigation";
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
 import { useSession } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';

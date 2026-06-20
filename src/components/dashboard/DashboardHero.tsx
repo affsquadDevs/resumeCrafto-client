@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { Link } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { Plus, Sparkles, Settings2, Share2, Download, CircleUser } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useUserStore } from '@/store/useUserStore';

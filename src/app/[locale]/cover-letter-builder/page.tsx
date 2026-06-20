@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";

@@ -1,6 +1,6 @@
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";

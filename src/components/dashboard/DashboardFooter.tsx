@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import Image from 'next/image';
 import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRight, AtSign as Threads } from 'lucide-react';
 import { useTranslations } from 'next-intl';
