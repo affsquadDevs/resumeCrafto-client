@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { FileText, Plus } from 'lucide-react';
 import { EditorElement } from '@/store/useEditorStore';
 import { TemplatePreview } from '@/components/editor/TemplatePreview';
@@ -19,6 +20,8 @@ export const DesignCard = ({
     isCreateNew,
     templateElements
 }: DesignCardProps) => {
+    const t = useTranslations('DesignCard');
+
     return (
         <div className="group cursor-pointer">
             <div
@@ -50,7 +53,7 @@ export const DesignCard = ({
                     {!isCreateNew && (
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex items-end">
                             <div className="w-full p-4 bg-white/90 backdrop-blur-md rounded-2xl text-center font-bold text-sm text-purple-600 shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                Use Template
+                                {t('useTemplate')}
                             </div>
                         </div>
                     )}

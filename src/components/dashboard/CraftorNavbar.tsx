@@ -8,6 +8,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useUserStore } from '@/store/useUserStore';
 import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
 
 const LiquidGlass = dynamic(() => import('@/components/ui/liquid-glass/LiquidGlass'), {
     loading: () => <div className="w-full h-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-full" />,
@@ -23,6 +24,7 @@ interface CraftorNavbarProps {
 }
 
 export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTab, setActiveTab }: CraftorNavbarProps) => {
+    const t = useTranslations('CraftorNavbar');
     const isCompact = mode === 'compact';
     const pathname = usePathname();
     const { data: session, status } = useSession();
@@ -74,17 +76,17 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'Templates', href: '/templates' },
-        { name: 'Blog', href: '/blog' },
+        { name: t('linkHome'), href: '/' },
+        { name: t('linkTemplates'), href: '/templates' },
+        { name: t('linkBlog'), href: '/blog' },
     ];
 
     const extraLinks = [
-        { name: 'How It Works', href: '/how-it-works' },
-        { name: 'About Us', href: '/about' },
-        { name: 'Contact', href: '/contact' },
-        { name: 'Terms of Service', href: '/terms-of-service' },
-        { name: 'Settings', href: '/settings' },
+        { name: t('linkHowItWorks'), href: '/how-it-works' },
+        { name: t('linkAboutUs'), href: '/about' },
+        { name: t('linkContact'), href: '/contact' },
+        { name: t('linkTermsOfService'), href: '/terms-of-service' },
+        { name: t('linkSettings'), href: '/settings' },
     ];
 
     return (
@@ -106,7 +108,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                     {/* Logo Section */}
                     <Link href="/" className="flex items-center gap-2 group shrink-0">
                         <div className="w-8 h-8 sm:w-12 sm:h-12 relative">
-                            <Image src="/logo.svg" alt="Craftor Logo" fill className="object-contain" />
+                            <Image src="/logo.svg" alt={t('logoAlt')} fill className="object-contain" />
                         </div>
                         <span className="font-black text-lg sm:text-2xl tracking-tighter transition-colors">
                             <span className="text-gray-900 group-hover:text-purple-700 transition-colors">Resume</span>
@@ -155,7 +157,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
             hover:text-purple-600 hover:bg-purple-50/30 hover:shadow-md
         `}
                             >
-                                More
+                                {t('more')}
                             </button>
 
                             {isMoreOpen && (
@@ -204,7 +206,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         ) : status === 'authenticated' ? (
                             <>
                                 <Link href="/resume-builder" className="bg-purple-600 hover:bg-purple-700 text-white px-4 xl:px-8 py-3 rounded-full text-[10px] xl:text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-purple-200">
-                                    Create New
+                                    {t('createNew')}
                                 </Link>
 
                                 <div className="pl-2 border-l border-gray-200 relative" ref={profileRef}>
@@ -217,7 +219,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                         <div className="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center overflow-hidden">
                                             {user?.image ? <Image src={user.image} alt={user.name || ''} width={32} height={32} /> : <CircleUser size={20} />}
                                         </div>
-                                        <span className="text-sm hidden xl:block">{user?.name?.split(' ')[0] || 'Profile'}</span>
+                                        <span className="text-sm hidden xl:block">{user?.name?.split(' ')[0] || t('profile')}</span>
                                     </button>
 
                                     {isProfileOpen && (
@@ -233,14 +235,14 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                                     className="w-full flex items-center gap-3 px-5 py-3 text-sm font-bold text-gray-600 hover:bg-gray-50 hover:text-purple-600 transition-all text-left"
                                                 >
                                                     <Settings size={18} />
-                                                    <span>Profile Settings</span>
+                                                    <span>{t('profileSettings')}</span>
                                                 </button>
                                                 <button
                                                     onClick={() => signOut()}
                                                     className="w-full flex items-center gap-3 px-5 py-3 text-sm font-bold text-red-500 hover:bg-red-50 transition-all text-left"
                                                 >
                                                     <LogOut size={18} />
-                                                    <span>Logout</span>
+                                                    <span>{t('logout')}</span>
                                                 </button>
                                             </div>
                                         )}
@@ -249,10 +251,10 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         ) : (
                             <>
                                 <button onClick={openLogin} className="text-gray-500 hover:text-gray-900 font-black uppercase tracking-widest text-[10px] px-4 py-2">
-                                    Sign In
+                                    {t('signIn')}
                                 </button>
                                 <button onClick={openRegister} className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-purple-200">
-                                    Get Started
+                                    {t('getStarted')}
                                 </button>
                             </>
                         )}
@@ -261,7 +263,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                     {/* Mobile Menu Toggle */}
                     <button
                         onClick={toggleMenu}
-                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-label={isMenuOpen ? t('closeMenu') : t('openMenu')}
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-menu"
                         className="lg:hidden w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-900 transition-colors"
@@ -288,7 +290,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                         style={{ background: 'rgba(255,255,255,0.95)', border: '1px solid rgba(255,255,255,0.2)' }}
                     >
                         <nav className="flex flex-col gap-1">
-                            {[...navLinks, ...extraLinks, { name: status === 'authenticated' ? 'My Designs' : 'Start Designing', href: status === 'authenticated' ? '/dashboard' : '/resume-builder' }].map(link => (
+                            {[...navLinks, ...extraLinks, { name: status === 'authenticated' ? t('myDesigns') : t('startDesigning'), href: status === 'authenticated' ? '/dashboard' : '/resume-builder' }].map(link => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
@@ -305,13 +307,13 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                 </div>
                             ) : status !== 'authenticated' && (
                                 <button onClick={() => { setIsMenuOpen(false); openLogin(); }} className="flex items-center justify-between px-6 py-4 rounded-xl font-bold text-gray-600 hover:bg-gray-50 transition-all text-left">
-                                    <span>Login / Register</span>
+                                    <span>{t('loginRegister')}</span>
                                     <CircleUser size={16} />
                                 </button>
                             )}
                             {status === 'authenticated' && (
                                 <button onClick={() => { setIsMenuOpen(false); signOut(); }} className="flex items-center justify-between px-6 py-4 rounded-xl font-bold text-red-600 hover:bg-red-50 transition-all text-left">
-                                    <span>Logout</span>
+                                    <span>{t('logout')}</span>
                                     <LogOut size={16} />
                                 </button>
                             )}

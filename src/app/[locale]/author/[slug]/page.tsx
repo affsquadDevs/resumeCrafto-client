@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { authors, getAuthor } from "@/lib/authors";
 import { blogPosts } from "@/lib/blog-data";
 
@@ -45,9 +46,11 @@ export async function generateMetadata({
 export default async function AuthorPage({
     params,
 }: {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ locale: string; slug: string }>;
 }) {
-    const { slug } = await params;
+    const { locale, slug } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("AuthorPage");
     const author = getAuthor(slug);
 
     if (!author) {
@@ -117,7 +120,7 @@ export default async function AuthorPage({
 
                     <section className="mb-16">
                         <h2 className="text-2xl font-black text-gray-900 mb-6 tracking-tight">
-                            Areas of expertise
+                            {t("areasOfExpertise")}
                         </h2>
                         <ul className="flex flex-wrap gap-3">
                             {author.expertise.map((item) => (
@@ -133,12 +136,12 @@ export default async function AuthorPage({
 
                     <section>
                         <h2 className="text-2xl font-black text-gray-900 mb-8 tracking-tight">
-                            Articles by {author.name}
+                            {t("articlesBy", { name: author.name })}
                         </h2>
 
                         {authorPosts.length === 0 ? (
                             <p className="text-gray-600 font-medium">
-                                No articles published yet.
+                                {t("noArticles")}
                             </p>
                         ) : (
                             <div className="grid md:grid-cols-2 gap-8">
@@ -147,7 +150,7 @@ export default async function AuthorPage({
                                         href={`/blog/${post.slug}`}
                                         key={post.id}
                                         title={post.title}
-                                        aria-label={`Read article: ${post.title}`}
+                                        aria-label={t("readArticleAria", { title: post.title })}
                                         className="group cursor-pointer rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-purple-200 transition-all duration-500 bg-white p-8"
                                     >
                                         <div className="mb-4">
@@ -170,7 +173,7 @@ export default async function AuthorPage({
                                                 })}
                                             </span>
                                             <span className="flex items-center gap-2 text-purple-600">
-                                                Read Article
+                                                {t("readArticle")}
                                                 <ArrowRight
                                                     size={18}
                                                     className="group-hover:translate-x-1 transition-transform"

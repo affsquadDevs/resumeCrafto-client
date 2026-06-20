@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, ChevronRight, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 import { useUserStore } from '@/store/useUserStore';
 
 export const ProfileSection = () => {
+    const t = useTranslations('ProfileSection');
     const { data: session, update } = useSession();
     const { user: storeUser, updateUser } = useUserStore();
     const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +65,7 @@ export const ProfileSection = () => {
             if (res.ok) {
                 setOriginalProfile(profile);
                 updateUser(profile); // Update global store only on save
-                setMessage({ type: 'success', text: 'Changes saved successfully!' });
+                setMessage({ type: 'success', text: t('toastSaveSuccess') });
 
                 // Update NextAuth session
                 const updates: any = {};
@@ -74,10 +76,10 @@ export const ProfileSection = () => {
                     await update(updates);
                 }
             } else {
-                setMessage({ type: 'error', text: 'Failed to save changes.' });
+                setMessage({ type: 'error', text: t('toastSaveError') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Something went wrong.' });
+            setMessage({ type: 'error', text: t('toastGenericError') });
         } finally {
             setIsSaving(false);
             setTimeout(() => setMessage(null), 3000);
@@ -90,12 +92,12 @@ export const ProfileSection = () => {
 
         // Basic validation
         if (!file.type.startsWith('image/')) {
-            setMessage({ type: 'error', text: 'Please upload an image file.' });
+            setMessage({ type: 'error', text: t('toastInvalidImage') });
             return;
         }
 
         if (file.size > 5 * 1024 * 1024) {
-            setMessage({ type: 'error', text: 'File size should be less than 5MB.' });
+            setMessage({ type: 'error', text: t('toastFileTooLarge') });
             return;
         }
 
@@ -115,10 +117,10 @@ export const ProfileSection = () => {
                 const data = await res.json();
                 setProfile(prev => ({ ...prev, image: data.imageUrl }));
             } else {
-                setMessage({ type: 'error', text: 'Failed to upload photo.' });
+                setMessage({ type: 'error', text: t('toastUploadError') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Something went wrong.' });
+            setMessage({ type: 'error', text: t('toastGenericError') });
         } finally {
             setIsSaving(false);
             setTimeout(() => setMessage(null), 3000);
@@ -148,7 +150,7 @@ export const ProfileSection = () => {
 
             {/* Profile Photo Section */}
             <section>
-                <h3 className="text-xl font-black text-gray-900 tracking-tight mb-8">Profile Photo</h3>
+                <h3 className="text-xl font-black text-gray-900 tracking-tight mb-8">{t('profilePhotoTitle')}</h3>
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 p-6 md:p-8 bg-white border border-gray-100 rounded-3xl md:rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow">
                     <div className="relative group shrink-0">
                         <input
@@ -162,7 +164,7 @@ export const ProfileSection = () => {
                             {profile.image ? (
                                 <img
                                     src={profile.image}
-                                    alt="Profile"
+                                    alt={t('profilePhotoAlt')}
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -186,7 +188,7 @@ export const ProfileSection = () => {
                                 disabled={isSaving}
                                 className="w-full sm:w-auto px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-sm disabled:opacity-50"
                             >
-                                {isSaving ? 'Uploading...' : 'Change Photo'}
+                                {isSaving ? t('uploading') : t('changePhoto')}
                             </button>
                             {profile.image && (
                                 <button
@@ -194,7 +196,7 @@ export const ProfileSection = () => {
                                     disabled={isSaving}
                                     className="w-full sm:w-auto px-6 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition-all disabled:opacity-50"
                                 >
-                                    Remove Photo
+                                    {t('removePhoto')}
                                 </button>
                             )}
                         </div>
@@ -207,7 +209,7 @@ export const ProfileSection = () => {
                 <div className="group border-b border-gray-100 pb-8 hover:border-purple-100 transition-colors">
                     <div className="flex items-center justify-between">
                         <div className="flex-1 mr-4">
-                            <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Name</h4>
+                            <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">{t('nameLabel')}</h4>
                             {isEditingName ? (
                                 <input
                                     type="text"
@@ -229,7 +231,7 @@ export const ProfileSection = () => {
                                     }}
                                 />
                             ) : (
-                                <p className="text-lg font-bold text-gray-900 tracking-tight">{profile.name || 'Set your name'}</p>
+                                <p className="text-lg font-bold text-gray-900 tracking-tight">{profile.name || t('namePlaceholder')}</p>
                             )}
                         </div>
                         <button
@@ -241,7 +243,7 @@ export const ProfileSection = () => {
                             }}
                             className="px-5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-700 hover:border-purple-200 hover:text-purple-600 transition-all shadow-sm shrink-0"
                         >
-                            {isEditingName ? 'Done' : 'Edit'}
+                            {isEditingName ? t('done') : t('edit')}
                         </button>
                     </div>
                 </div>
@@ -249,17 +251,17 @@ export const ProfileSection = () => {
                 <div className="group border-b border-gray-100 pb-8 hover:border-purple-100 transition-colors">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Email Address</h4>
+                            <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">{t('emailLabel')}</h4>
                             <p className="text-lg font-bold text-gray-900 tracking-tight">{profile.email}</p>
                         </div>
                         <div className="px-5 py-2.5 bg-gray-50 border border-gray-100 rounded-xl text-xs font-bold text-gray-400 cursor-not-allowed">
-                            Permanent
+                            {t('permanent')}
                         </div>
                     </div>
                 </div>
 
                 <div className="group border-b border-gray-100 pb-8 hover:border-purple-100 transition-colors">
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">What are you planning to use Craftor for?</h4>
+                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">{t('usageLabel')}</h4>
                     <div className="relative max-w-md">
                         <select
                             value={profile.usage}
@@ -269,10 +271,10 @@ export const ProfileSection = () => {
                             className="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl outline-none focus:border-purple-300 font-bold text-gray-700 appearance-none shadow-sm cursor-pointer transition-all disabled:opacity-50"
                             disabled={isSaving}
                         >
-                            <option>Student</option>
-                            <option>Professional</option>
-                            <option>Business Owner</option>
-                            <option>Personal Use</option>
+                            <option value="Student">{t('usageStudent')}</option>
+                            <option value="Professional">{t('usageProfessional')}</option>
+                            <option value="Business Owner">{t('usageBusinessOwner')}</option>
+                            <option value="Personal Use">{t('usagePersonalUse')}</option>
                         </select>
                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                             <ChevronRight className="rotate-90" size={20} />
@@ -280,13 +282,13 @@ export const ProfileSection = () => {
                     </div>
                     <div className="mt-4 p-6 bg-blue-50/50 border border-blue-100 rounded-2xl">
                         <p className="text-sm text-blue-700 font-medium leading-relaxed">
-                            We adapt the platform to best meet your needs as a {profile.usage.toLowerCase()}. You can change these settings at any time.
+                            {t('usageDescription', { usage: profile.usage.toLowerCase() })}
                         </p>
                     </div>
                 </div>
 
                 <div className="group pb-8">
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Language</h4>
+                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">{t('languageLabel')}</h4>
                     <div className="relative max-w-md">
                         <select
                             value={profile.language}
@@ -296,10 +298,10 @@ export const ProfileSection = () => {
                             className="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl outline-none focus:border-purple-300 font-bold text-gray-700 appearance-none shadow-sm cursor-pointer transition-all disabled:opacity-50"
                             disabled={isSaving}
                         >
-                            <option>English (US)</option>
-                            <option>Ukrainian</option>
-                            <option>Spanish</option>
-                            <option>French</option>
+                            <option value="English (US)">{t('languageEnglishUS')}</option>
+                            <option value="Ukrainian">{t('languageUkrainian')}</option>
+                            <option value="Spanish">{t('languageSpanish')}</option>
+                            <option value="French">{t('languageFrench')}</option>
                         </select>
                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                             <ChevronRight className="rotate-90" size={20} />
@@ -312,8 +314,8 @@ export const ProfileSection = () => {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[80] w-full max-w-4xl px-6">
                 <div className={`flex items-center justify-between gap-6 p-4 md:p-6 bg-white border border-gray-100 rounded-[2rem] shadow-2xl transition-all duration-500 ${hasChanges ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95 pointer-events-none'}`}>
                     <div className="hidden md:block">
-                        <p className="font-bold text-gray-900">Unsaved changes detected</p>
-                        <p className="text-xs text-gray-500 font-medium italic">Your profile has been modified but not saved yet.</p>
+                        <p className="font-bold text-gray-900">{t('unsavedChangesTitle')}</p>
+                        <p className="text-xs text-gray-500 font-medium italic">{t('unsavedChangesDescription')}</p>
                     </div>
                     <div className="flex items-center gap-3 w-full md:w-auto">
                         <button
@@ -323,7 +325,7 @@ export const ProfileSection = () => {
                             }}
                             className="flex-1 md:flex-none px-6 py-3 text-gray-500 font-bold hover:bg-gray-50 rounded-xl transition-all"
                         >
-                            Reset
+                            {t('reset')}
                         </button>
                         <button
                             onClick={handleSave}
@@ -331,7 +333,7 @@ export const ProfileSection = () => {
                             className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-8 py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition-all shadow-lg shadow-purple-200 active:scale-95 disabled:opacity-50"
                         >
                             {isSaving ? <Loader2 size={18} className="animate-spin" /> : <Check size={18} />}
-                            {isSaving ? 'Save Changes' : 'Save Changes'}
+                            {isSaving ? t('saveChanges') : t('saveChanges')}
                         </button>
                     </div>
                 </div>

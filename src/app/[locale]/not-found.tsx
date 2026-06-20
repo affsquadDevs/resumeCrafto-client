@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Home, ArrowLeft, Search, FileX } from 'lucide-react';
 
 export default function NotFound() {
+    const t = useTranslations("NotFoundPage");
     return (
         <div className="min-h-screen w-full bg-white flex flex-col items-center justify-center p-6 relative">
             {/* Subtle Gradient Glows */}
@@ -27,11 +29,10 @@ export default function NotFound() {
                         404
                     </h1>
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">
-                        Page not found
+                        {t("title")}
                     </h2>
                     <p className="text-gray-500 text-lg max-w-md mx-auto leading-relaxed">
-                        The page you are looking for doesn&apos;t exist or has been moved.
-                        Let&apos;s get you back to creating.
+                        {t("description")}
                     </p>
                 </div>
 
@@ -41,7 +42,7 @@ export default function NotFound() {
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-gray-950 text-white rounded-2xl font-bold hover:bg-purple-600 transition-all duration-300 shadow-xl shadow-gray-950/10 active:scale-[0.98]"
                     >
                         <Home size={20} />
-                        Go to Homepage
+                        {t("goHome")}
                     </Link>
 
                     <button
@@ -49,7 +50,7 @@ export default function NotFound() {
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-gray-50 text-gray-700 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300"
                     >
                         <ArrowLeft size={20} />
-                        Go Back
+                        {t("goBack")}
                     </button>
                 </div>
 

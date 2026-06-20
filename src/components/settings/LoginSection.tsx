@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { Lock, LogIn, Loader2, Check, AlertCircle } from 'lucide-react';
 import { signOut } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 
 export const LoginSection = () => {
+    const t = useTranslations('LoginSection');
     const [isChangingPassword, setIsChangingPassword] = useState(false);
     const [passwords, setPasswords] = useState({ current: '', new: '', confirm: '' });
     const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,7 @@ export const LoginSection = () => {
     const handlePasswordChange = async (e: React.FormEvent) => {
         e.preventDefault();
         if (passwords.new !== passwords.confirm) {
-            setMessage({ type: 'error', text: 'New passwords do not match.' });
+            setMessage({ type: 'error', text: t('toastPasswordMismatch') });
             return;
         }
 
@@ -29,15 +31,15 @@ export const LoginSection = () => {
             });
 
             if (res.ok) {
-                setMessage({ type: 'success', text: 'Password updated successfully!' });
+                setMessage({ type: 'success', text: t('toastPasswordSuccess') });
                 setPasswords({ current: '', new: '', confirm: '' });
                 setIsChangingPassword(false);
             } else {
                 const data = await res.json();
-                setMessage({ type: 'error', text: data.error || 'Failed to update password.' });
+                setMessage({ type: 'error', text: data.error || t('toastPasswordError') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Something went wrong.' });
+            setMessage({ type: 'error', text: t('toastGenericError') });
         } finally {
             setIsLoading(false);
             setTimeout(() => setMessage(null), 3000);
@@ -54,7 +56,7 @@ export const LoginSection = () => {
             )}
 
             <section>
-                <h3 className="text-xl font-black text-gray-900 tracking-tight mb-8">Login Settings</h3>
+                <h3 className="text-xl font-black text-gray-900 tracking-tight mb-8">{t('loginSettingsTitle')}</h3>
                 <div className="space-y-6 bg-white border border-gray-100 rounded-3xl md:rounded-[2rem] p-6 md:p-8 shadow-sm">
                     <div className="flex flex-col gap-6 group border-b border-gray-50 pb-6 last:border-0 last:pb-0">
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
@@ -63,15 +65,15 @@ export const LoginSection = () => {
                                     <Lock size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-gray-900">Password</h4>
-                                    <p className="text-sm text-gray-500 font-medium italic">Update your account password</p>
+                                    <h4 className="font-bold text-gray-900">{t('passwordTitle')}</h4>
+                                    <p className="text-sm text-gray-500 font-medium italic">{t('passwordSubtitle')}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setIsChangingPassword(!isChangingPassword)}
                                 className="w-full sm:w-auto px-5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-700 hover:border-purple-200 hover:text-purple-600 transition-all shadow-sm"
                             >
-                                {isChangingPassword ? 'Cancel' : 'Change Password'}
+                                {isChangingPassword ? t('cancel') : t('changePassword')}
                             </button>
                         </div>
 
@@ -79,7 +81,7 @@ export const LoginSection = () => {
                             <form onSubmit={handlePasswordChange} className="space-y-4 pt-4 animate-in fade-in duration-300">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Current Password</label>
+                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('currentPasswordLabel')}</label>
                                         <input
                                             type="password"
                                             required
@@ -90,7 +92,7 @@ export const LoginSection = () => {
                                     </div>
                                     <div className="hidden md:block"></div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">New Password</label>
+                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('newPasswordLabel')}</label>
                                         <input
                                             type="password"
                                             required
@@ -100,7 +102,7 @@ export const LoginSection = () => {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Confirm New Password</label>
+                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('confirmPasswordLabel')}</label>
                                         <input
                                             type="password"
                                             required
@@ -117,7 +119,7 @@ export const LoginSection = () => {
                                         className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition-all shadow-md active:scale-95 disabled:opacity-50"
                                     >
                                         {isLoading && <Loader2 size={18} className="animate-spin" />}
-                                        Update Password
+                                        {t('updatePassword')}
                                     </button>
                                 </div>
                             </form>
@@ -130,15 +132,15 @@ export const LoginSection = () => {
                                 <LogIn className="rotate-180" size={24} />
                             </div>
                             <div>
-                                <h4 className="font-bold text-gray-900">Logout</h4>
-                                <p className="text-sm text-gray-500 font-medium">Log out of your current session</p>
+                                <h4 className="font-bold text-gray-900">{t('logoutTitle')}</h4>
+                                <p className="text-sm text-gray-500 font-medium">{t('logoutSubtitle')}</p>
                             </div>
                         </div>
                         <button
                             onClick={() => signOut({ callbackUrl: '/' })}
                             className="w-full sm:w-auto px-5 py-2.5 text-red-500 font-bold hover:bg-red-50 rounded-xl transition-all"
                         >
-                            Log out
+                            {t('logout')}
                         </button>
                     </div>
                 </div>

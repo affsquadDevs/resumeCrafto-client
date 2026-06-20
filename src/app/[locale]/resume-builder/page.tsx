@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
 import EditorPage from '@/components/views/EditorPage';
 import WebApplicationSchema from '@/components/seo/WebApplicationSchema';
 
@@ -15,12 +16,18 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const t = useTranslations("ResumeBuilderPage");
   return (
     <>
       <WebApplicationSchema />
       <section className="sr-only">
-        <h1>Free Online Resume Builder</h1>
-        <p>ResumeCraftor is a free online resume and CV builder that helps you create a professional, ATS-optimized resume in minutes. Start from a <a href="/templates">professional resume template</a>, customize every section with an intuitive drag-and-drop editor, and export a polished PDF. New to resumes? Read our <a href="/blog">resume writing and ATS guides</a>.</p>
+        <h1>{t("srHeading")}</h1>
+        <p>
+          {t.rich("srDescription", {
+            templatesLink: (chunks) => <a href="/templates">{chunks}</a>,
+            blogLink: (chunks) => <a href="/blog">{chunks}</a>,
+          })}
+        </p>
       </section>
       <EditorPage />
     </>

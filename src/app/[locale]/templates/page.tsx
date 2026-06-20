@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
 import TemplatesPage from '@/components/views/TemplatesPage';
 
 export const metadata: Metadata = {
@@ -14,11 +15,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+    const t = useTranslations("TemplatesIndexPage");
     return (
         <>
             <section className="sr-only">
-                <h1>Professional Resume Templates</h1>
-                <p>Choose from a library of free, ATS-friendly resume templates designed for every career stage — from student and entry-level resumes to senior, executive, and creative roles. Every ResumeCraftor template uses clean, single-column-friendly formatting that applicant tracking systems can parse, and you can customize colors, fonts, and layout in minutes before exporting a polished PDF.</p>
+                <h1>{t("srHeading")}</h1>
+                <p>{t("srDescription")}</p>
             </section>
             <TemplatesPage />
         </>

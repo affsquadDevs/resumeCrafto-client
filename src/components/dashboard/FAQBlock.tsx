@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/lib/faq-data';
 
 export const FAQBlock = () => {
+    const t = useTranslations('FAQBlock');
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
@@ -12,10 +14,10 @@ export const FAQBlock = () => {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-10 md:mb-16 px-4 md:px-0">
                     <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-2 md:mb-4 text-gray-900">
-                        Frequently Asked Questions
+                        {t('heading')}
                     </h2>
                     <p className="text-sm sm:text-base md:text-xl text-gray-600">
-                        Everything you need to know about ResumeCraftor
+                        {t('subheading')}
                     </p>
                 </div>
 

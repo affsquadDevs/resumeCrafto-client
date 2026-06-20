@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Layers, ChevronLeft, ChevronDown, FileDown, LayoutPanelTop, Check, Loader2, SlidersHorizontal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/useUserStore';
+import { useTranslations } from 'next-intl';
 
 interface EditorHeaderProps {
     showLayers: boolean;
@@ -26,6 +27,7 @@ export const EditorHeader = ({
     isSavingTemplate,
     resumeName
 }: EditorHeaderProps) => {
+    const t = useTranslations("EditorHeader");
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const menuRef = React.useRef<HTMLDivElement>(null);
 
@@ -42,12 +44,12 @@ export const EditorHeader = ({
     return (
         <header className="h-14 bg-white border-b border-gray-200 flex items-center px-2 sm:px-4 justify-between shrink-0 z-20 sticky top-0">
             <div className="flex items-center gap-1.5 sm:gap-4 min-w-0">
-                <Link href="/" className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-gray-600 transition-colors" title="Back to Dashboard">
+                <Link href="/" className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-gray-600 transition-colors" title={t('backToDashboard')}>
                     <ChevronLeft size={20} />
                 </Link>
                 <div className="flex flex-col min-w-0">
-                    <h1 className="text-xs sm:text-sm font-bold text-gray-900 leading-none truncate max-w-[80px] xs:max-w-[120px] sm:max-w-none">{resumeName || 'Untitled'}</h1>
-                    <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1 hidden sm:block">A4 Standard</span>
+                    <h1 className="text-xs sm:text-sm font-bold text-gray-900 leading-none truncate max-w-[80px] xs:max-w-[120px] sm:max-w-none">{resumeName || t('untitled')}</h1>
+                    <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1 hidden sm:block">{t('a4Standard')}</span>
                 </div>
             </div>
 
@@ -55,7 +57,7 @@ export const EditorHeader = ({
                 <button
                     onClick={() => setShowToolbar(!showToolbar)}
                     className={`p-1.5 sm:p-2 rounded-xl transition-all duration-300 ${showToolbar ? 'bg-purple-50 text-purple-600 ring-1 ring-purple-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
-                    title="Toggle Toolbar"
+                    title={t('toggleToolbar')}
                 >
                     <SlidersHorizontal size={18} />
                 </button>
@@ -63,7 +65,7 @@ export const EditorHeader = ({
                 <button
                     onClick={() => setShowLayers(!showLayers)}
                     className={`p-1.5 sm:p-2 rounded-xl transition-all duration-300 ${showLayers ? 'bg-purple-50 text-purple-600 ring-1 ring-purple-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
-                    title="Toggle Layers"
+                    title={t('toggleLayers')}
                 >
                     <Layers size={18} />
                 </button>
@@ -75,8 +77,8 @@ export const EditorHeader = ({
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="flex items-center gap-1 sm:gap-2 px-3 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95"
                     >
-                        <span className="hidden vsm:inline">Share</span>
-                        <span className="vsm:hidden">Export</span>
+                        <span className="hidden vsm:inline">{t('share')}</span>
+                        <span className="vsm:hidden">{t('export')}</span>
                         <ChevronDown size={14} className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`} />
                     </button>
 
@@ -89,7 +91,7 @@ export const EditorHeader = ({
                                 className="absolute right-0 mt-2 w-64 bg-white border border-gray-100 rounded-2xl shadow-2xl p-2 z-[100]"
                             >
                                 <div className="px-3 py-2 mb-2">
-                                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Editor Actions</p>
+                                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{t('editorActions')}</p>
                                 </div>
 
                                 <button
@@ -103,9 +105,9 @@ export const EditorHeader = ({
                                         {isSavingTemplate ? <Loader2 size={18} className="animate-spin" /> : <FileDown size={18} />}
                                     </div>
                                     <div className="text-left">
-                                        <p className="text-sm font-bold">Download PDF</p>
+                                        <p className="text-sm font-bold">{t('downloadPdf')}</p>
                                         <p className="text-[10px] text-gray-400">
-                                            {isSavingTemplate ? 'Saving...' : 'Export as high quality file'}
+                                            {isSavingTemplate ? t('saving') : t('exportHighQuality')}
                                         </p>
                                     </div>
                                 </button>
@@ -122,14 +124,14 @@ export const EditorHeader = ({
                                         {isSavingTemplate ? <Loader2 size={18} className="animate-spin" /> : <LayoutPanelTop size={18} />}
                                     </div>
                                     <div className="text-left">
-                                        <p className="text-sm font-bold leading-tight">Share this Resume Example with Everyone</p>
-                                        <p className="text-[10px] text-gray-400 italic">Make this design a public template</p>
+                                        <p className="text-sm font-bold leading-tight">{t('shareExampleTitle')}</p>
+                                        <p className="text-[10px] text-gray-400 italic">{t('shareExampleSubtitle')}</p>
                                     </div>
                                 </button>
 
                                 <div className="mt-2 pt-2 border-t border-gray-50">
                                     <p className="text-[9px] text-center text-gray-400 font-medium px-4">
-                                        Changes are automatically saved to your browser session.
+                                        {t('autoSaveNote')}
                                     </p>
                                 </div>
                             </motion.div>

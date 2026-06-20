@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Plus, Sparkles, Settings2, Share2, Download, CircleUser } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useUserStore } from '@/store/useUserStore';
+import { useTranslations } from 'next-intl';
 
 const ToolbarButton = memo(({ icon: Icon }: { icon: any }) => (
     <div className="w-6 h-6 rounded flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
@@ -52,17 +53,20 @@ const Toolbar = memo(() => (
     </div>
 ));
 
-const ExportBadge = memo(() => (
-    <div className="absolute -bottom-4 -left-4 bg-gray-900/90 border border-white/10 p-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce z-20">
-        <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-green-500 to-emerald-500 flex items-center justify-center shrink-0">
-            <Download size={20} className="text-white" />
+const ExportBadge = memo(() => {
+    const t = useTranslations("DashboardHero");
+    return (
+        <div className="absolute -bottom-4 -left-4 bg-gray-900/90 border border-white/10 p-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce z-20">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-green-500 to-emerald-500 flex items-center justify-center shrink-0">
+                <Download size={20} className="text-white" />
+            </div>
+            <div className="whitespace-nowrap">
+                <div className="text-[10px] text-white/50 font-bold">{t('exportLabel')}</div>
+                <div className="text-sm font-bold text-white leading-tight">{t('pdfReady')}</div>
+            </div>
         </div>
-        <div className="whitespace-nowrap">
-            <div className="text-[10px] text-white/50 font-bold">EXPORT</div>
-            <div className="text-sm font-bold text-white leading-tight">PDF Ready</div>
-        </div>
-    </div>
-));
+    );
+});
 
 const RightPanel = memo(() => (
     <div className="hidden lg:block relative [perspective:900px] group/card pl-10">
@@ -119,6 +123,7 @@ const RightPanel = memo(() => (
 ));
 
 export const DashboardHero = () => {
+    const t = useTranslations("DashboardHero");
     const { data: session } = useSession();
     const { setAuthModal } = useUserStore();
     const pathname = usePathname();
@@ -136,31 +141,35 @@ export const DashboardHero = () => {
                     <div className="max-w-lg text-center md:text-left mx-auto md:mx-0">
                         <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 border border-white/10 text-xs md:text-sm text-purple-200 mb-4 md:mb-6">
                             <Sparkles size={14} className="text-yellow-300" />
-                            New Generation Editor
+                            {t('badge')}
                         </div>
 
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 leading-snug md:leading-[1.1] tracking-tight">
-                            Create Professional Resumes{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-pink-200">
-                                in Minutes
-                            </span>
+                            {t.rich('heroTitle', {
+                                highlight: (chunks) => (
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-pink-200">
+                                        {chunks}
+                                    </span>
+                                ),
+                            })}
                         </h1>
 
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-purple-100/80 mb-6 md:mb-10 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:ml-0 font-medium leading-relaxed">
-                            Build ATS-optimized resumes with our intuitive drag-and-drop editor. Choose from professional templates and create polished documents designed to support your job applications.                        </p>
+                            {t('heroSubtitle')}
+                        </p>
 
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
                             <Link
                                 href="/resume-builder"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-purple-500 hover:bg-purple-400 text-white font-bold shadow-lg shadow-purple-900/40 transition-colors"
                             >
-                                Build my resume — free
+                                {t('ctaBuildResume')}
                             </Link>
                             <Link
                                 href="/templates"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/30 hover:bg-white/10 text-white font-semibold transition-colors"
                             >
-                                Browse templates
+                                {t('ctaBrowseTemplates')}
                             </Link>
                         </div>
                     </div>

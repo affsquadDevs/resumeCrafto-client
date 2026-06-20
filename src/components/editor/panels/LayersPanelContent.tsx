@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore } from '@/store/useEditorStore';
 import { ChevronUp, ChevronDown, Sliders } from 'lucide-react';
 import {
@@ -22,6 +23,7 @@ import { CSS } from '@dnd-kit/utilities';
 
 // Properties Panel Component (Internal)
 const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
+    const t = useTranslations('LayersPanelContent');
     const elements = useEditorStore((state) => state.elements);
     const updateElement = useEditorStore((state) => state.updateElement);
     const saveHistory = useEditorStore((state) => state.saveHistory);
@@ -68,7 +70,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
     if (!selectedElement) {
         return (
             <div className="p-8 border-b border-gray-100 text-[13px] font-bold text-gray-400 text-center uppercase tracking-widest bg-gray-50/30">
-                Select an item to edit
+                {t('selectItemToEdit')}
             </div>
         );
     }
@@ -79,12 +81,12 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
         <div className="p-4 border-b border-gray-100 flex flex-col gap-5 bg-white">
             <div className="flex items-center gap-2 font-bold text-gray-900 text-[12px] uppercase tracking-wider">
                 <Sliders size={14} className="text-purple-600" />
-                <span>Properties</span>
+                <span>{t('properties')}</span>
             </div>
 
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1">
-                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">Position</label>
+                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('position')}</label>
                     <div className="flex gap-2">
                         <div className="flex items-center gap-1 flex-1">
                             <span className="text-xs text-gray-400 font-mono">X</span>
@@ -109,7 +111,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
                     </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">Size</label>
+                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('size')}</label>
                     <div className="flex gap-2">
                         <div className="flex items-center gap-1 flex-1">
                             <span className="text-xs text-gray-400 font-mono">W</span>
@@ -137,7 +139,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
 
             <div className="flex flex-col gap-1">
                 <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">
-                    {type === 'text' ? 'Text Color' : 'Fill Color'}
+                    {type === 'text' ? t('textColor') : t('fillColor')}
                 </label>
                 <input
                     type="color"
@@ -156,7 +158,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
 
             {type === 'text' && (
                 <div className="flex flex-col gap-1">
-                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">Content</label>
+                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('content')}</label>
                     <textarea
                         value={content || ''}
                         onFocus={() => saveHistory()}
@@ -170,7 +172,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
                 {type === 'shape' && (
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center justify-between">
-                            <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">Radius</label>
+                            <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('radius')}</label>
                             <span className="text-[10px] text-gray-400 font-mono">{parseInt(styles.borderRadius) || 0}px</span>
                         </div>
                         <input
@@ -186,7 +188,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
                 )}
 
                 <div className="flex flex-col gap-3">
-                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">Shadow</label>
+                    <label className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('shadow')}</label>
                     <div className="grid grid-cols-3 gap-1 mb-1">
                         <div />
                         <button
@@ -228,7 +230,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
 
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center justify-between">
-                            <span className="text-[10px] text-gray-400 uppercase">Intensity</span>
+                            <span className="text-[10px] text-gray-400 uppercase">{t('intensity')}</span>
                             <span className="text-[10px] text-gray-400 font-mono">
                                 {styles.boxShadow ? parseInt(styles.boxShadow.split(' ')[2]) : 0}
                             </span>
@@ -257,6 +259,7 @@ const PropertiesSection = ({ selectedId }: { selectedId: string | null }) => {
 
 // Sortable Item Component (Internal)
 const SortableLayerItem = ({ el, isSelected, onSelect, onToggle, onBringToFront, onSendToBack }: any) => {
+    const t = useTranslations('LayersPanelContent');
     const {
         attributes,
         listeners,
@@ -294,21 +297,21 @@ const SortableLayerItem = ({ el, isSelected, onSelect, onToggle, onBringToFront,
             }}
         >
             <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500 overflow-hidden shrink-0 border border-gray-200">
-                {el.type === 'text' && 'Tt'}
+                {el.type === 'text' && t('thumbText')}
                 {(el.type === 'shape' || el.type === 'icon' || el.type === 'star') && (
                     <div className="w-3 h-3 bg-gray-400 rounded-sm" style={{ backgroundColor: el.styles.backgroundColor }} />
                 )}
                 {el.type === 'image' && el.src ? (
                     <img src={el.src} className="w-full h-full object-cover" />
-                ) : (el.type === 'image' && 'Img')}
+                ) : (el.type === 'image' && t('thumbImage'))}
             </div>
 
             <div className="flex-1 min-w-0 text-sm flex flex-col justify-center">
                 <div className="truncate font-medium text-gray-700 leading-tight italic">
-                    {el.type === 'text' ? (el.content || 'Text') :
-                        el.type === 'shape' ? 'Shape' :
-                            el.type === 'icon' ? 'Icon' :
-                                el.type === 'star' ? 'Star' : 'Image'}
+                    {el.type === 'text' ? (el.content || t('layerText')) :
+                        el.type === 'shape' ? t('layerShape') :
+                            el.type === 'icon' ? t('layerIcon') :
+                                el.type === 'star' ? t('layerStar') : t('layerImage')}
                 </div>
             </div>
 
@@ -339,6 +342,7 @@ const SortableLayerItem = ({ el, isSelected, onSelect, onToggle, onBringToFront,
 };
 
 export const LayersPanelContent = () => {
+    const t = useTranslations('LayersPanelContent');
     const elements = useEditorStore((state) => state.elements);
     const pages = useEditorStore((state) => state.pages);
     const selectedIds = useEditorStore((state) => state.selectedIds);
@@ -384,12 +388,12 @@ export const LayersPanelContent = () => {
                             <div key={page.id} className="flex flex-col gap-2">
                                 {!isMobile && (
                                     <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                                        <span>Page {page.order + 1}</span>
+                                        <span>{t('pageLabel', { number: page.order + 1 })}</span>
                                         <span className="h-px bg-gray-100 flex-1"></span>
                                     </div>
                                 )}
                                 {pageElements.length === 0 && (
-                                    <div className="text-center text-gray-300 text-xs py-2 italic">Empty Page</div>
+                                    <div className="text-center text-gray-300 text-xs py-2 italic">{t('emptyPage')}</div>
                                 )}
                                 <SortableContext items={pageElements.map(el => el.id)} strategy={verticalListSortingStrategy}>
                                     {pageElements.map((el) => (
@@ -409,7 +413,7 @@ export const LayersPanelContent = () => {
                     })}
                 </DndContext>
                 {elements.length === 0 && pages.length === 0 && (
-                    <div className="text-center text-gray-400 text-sm mt-10 italic">No elements</div>
+                    <div className="text-center text-gray-400 text-sm mt-10 italic">{t('noElements')}</div>
                 )}
             </div>
         </div>

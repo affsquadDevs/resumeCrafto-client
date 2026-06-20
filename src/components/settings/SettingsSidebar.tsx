@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { User, LogIn, ChevronLeft } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface SidebarItem {
     id: string;
@@ -15,9 +16,10 @@ interface SettingsSidebarProps {
 }
 
 export const SettingsSidebar = ({ activeTab, setActiveTab }: SettingsSidebarProps) => {
+    const t = useTranslations('SettingsSidebar');
     const sidebarItems: SidebarItem[] = [
-        { id: 'profile', label: 'Your Profile', icon: <User size={20} /> },
-        { id: 'login', label: 'Login', icon: <LogIn size={20} /> },
+        { id: 'profile', label: t('profile'), icon: <User size={20} /> },
+        { id: 'login', label: t('login'), icon: <LogIn size={20} /> },
     ];
 
     return (
@@ -26,7 +28,7 @@ export const SettingsSidebar = ({ activeTab, setActiveTab }: SettingsSidebarProp
                 <Link href="/" className="p-2 hover:bg-gray-50 rounded-xl transition-colors text-gray-400 hover:text-gray-900">
                     <ChevronLeft size={24} strokeWidth={2.5} />
                 </Link>
-                <span className="font-extrabold text-2xl tracking-tight text-gray-900">Settings</span>
+                <span className="font-extrabold text-2xl tracking-tight text-gray-900">{t('settings')}</span>
             </div>
 
             <nav className="flex-1 px-4 py-8 overflow-y-auto space-y-1">

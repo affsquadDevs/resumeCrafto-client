@@ -2,6 +2,7 @@ import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import type { BlogPostMeta } from "@/lib/blog-data";
 
@@ -18,6 +19,7 @@ interface BlogListingProps {
 }
 
 export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps) {
+    const t = useTranslations("BlogListing");
     return (
         <div className="min-h-screen bg-white selection:bg-purple-100 selection:text-purple-700">
             <CraftorNavbar />
@@ -26,7 +28,7 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-16">
                         <h1 className="text-2xl md:text-4xl font-black text-gray-900 mb-6 tracking-tight">
-                            {currentPage > 1 ? `Latest Articles — Page ${currentPage}` : "Latest Articles"}
+                            {currentPage > 1 ? t("heroTitlePaged", { page: currentPage }) : t("heroTitle")}
                         </h1>
                     </div>
 
@@ -36,7 +38,7 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
                                 href={`/blog/${post.slug}`}
                                 key={post.id}
                                 title={post.title}
-                                aria-label={`Read article: ${post.title}`}
+                                aria-label={t("readArticleAria", { title: post.title })}
                                 className="group cursor-pointer rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-purple-200 transition-all duration-500 bg-white"
                             >
                                 <div className="aspect-video relative overflow-hidden">
@@ -66,7 +68,7 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
                                             <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                         </div>
                                         <div className="flex items-center gap-2 text-purple-600">
-                                            <span>Read Article</span>
+                                            <span>{t("readArticle")}</span>
                                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     </div>
@@ -76,14 +78,14 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
                     </div>
 
                     {totalPages > 1 && (
-                        <nav className="flex items-center justify-center gap-2 mt-16" aria-label="Blog pagination">
+                        <nav className="flex items-center justify-center gap-2 mt-16" aria-label={t("paginationAria")}>
                             {currentPage > 1 && (
                                 <Link
                                     href={pageHref(currentPage - 1)}
                                     rel="prev"
                                     className="px-4 py-2 rounded-xl font-bold text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                                 >
-                                    Previous
+                                    {t("previous")}
                                 </Link>
                             )}
                             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -104,7 +106,7 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
                                     rel="next"
                                     className="px-4 py-2 rounded-xl font-bold text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                                 >
-                                    Next
+                                    {t("next")}
                                 </Link>
                             )}
                         </nav>
@@ -120,16 +122,16 @@ export function BlogListing({ posts, currentPage, totalPages }: BlogListingProps
 
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-                        Ready to Create Your Perfect Resume?
+                        {t("ctaTitle")}
                     </h2>
                     <p className="text-xl text-purple-100 mb-8">
-                        Join professionals who use ResumeCraftor to create clean, professional resumes.
+                        {t("ctaSubtitle")}
                     </p>
                     <Link
                         href="/resume-builder"
                         className="inline-flex items-center gap-3 bg-white text-purple-600 px-8 py-4 rounded-full font-black text-lg hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105"
                     >
-                        <span>Start Creating Now</span>
+                        <span>{t("ctaButton")}</span>
                         <ArrowRight size={20} />
                     </Link>
                 </div>

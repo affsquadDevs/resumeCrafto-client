@@ -2,12 +2,14 @@ import React from 'react';
 import { useEditorStore } from '@/store/useEditorStore';
 import { Lock, Unlock, Copy, Trash2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 interface FloatingToolbarProps {
     elementId: string;
 }
 
 export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) => {
+    const t = useTranslations("FloatingToolbar");
     const element = useEditorStore((state) => state.elements.find(el => el.id === elementId));
     const toggleLock = useEditorStore((state) => state.toggleLock);
     const deleteElement = useEditorStore((state) => state.deleteElement);
@@ -55,12 +57,12 @@ export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) =
             <button
                 onClick={handleToggleLock}
                 className={`p-2 rounded-full transition-all duration-200 relative group ${element.locked ? 'bg-purple-100 text-purple-600' : 'hover:bg-gray-100 text-gray-600 hover:scale-110 active:scale-95'}`}
-                title={element.locked ? "Unlock" : "Lock"}
+                title={element.locked ? t('unlock') : t('lock')}
             >
                 {element.locked ? <Lock size={18} /> : <Unlock size={18} />}
                 {/* Tooltip */}
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2.5 py-1.5 bg-gray-900 text-white text-[11px] rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 whitespace-nowrap shadow-xl z-[1001] font-medium">
-                    {element.locked ? "Розблокировать" : "Блокировка"}
+                    {element.locked ? t('tooltipUnlock') : t('tooltipLock')}
                 </div>
             </button>
 
@@ -69,7 +71,7 @@ export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) =
             <button
                 onClick={handleDuplicate}
                 className="p-2 hover:bg-gray-100 rounded-full text-gray-600 transition-all duration-200 hover:scale-110 active:scale-95"
-                title="Duplicate"
+                title={t('duplicate')}
             >
                 <Copy size={18} />
             </button>
@@ -77,7 +79,7 @@ export const FloatingToolbar: React.FC<FloatingToolbarProps> = ({ elementId }) =
             <button
                 onClick={handleDelete}
                 className="p-2 hover:bg-red-50 text-gray-600 hover:text-red-500 rounded-full transition-all duration-200 hover:scale-110 active:scale-95"
-                title="Delete"
+                title={t('delete')}
             >
                 <Trash2 size={18} />
             </button>

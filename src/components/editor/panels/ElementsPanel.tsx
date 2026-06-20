@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore } from '@/store/useEditorStore';
 import { Type, Square, Circle, Star, Minus, Image as ImageIcon } from 'lucide-react';
 
 export const ElementsPanel = () => {
+    const t = useTranslations('ElementsPanel');
     const addElement = useEditorStore((state) => state.addElement);
     const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
 
@@ -15,62 +17,62 @@ export const ElementsPanel = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <p className="text-[11px] text-gray-400 font-bold mb-1 uppercase tracking-widest pl-1">Add to Canvas</p>
+            <p className="text-[11px] text-gray-400 font-bold mb-1 uppercase tracking-widest pl-1">{t('addToCanvas')}</p>
 
             <div className="grid grid-cols-2 gap-3">
                 <button
                     onClick={() => handleAdd('text')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
-                    title="Text Box"
+                    title={t('textBox')}
                 >
                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                         <Type size={24} />
                     </div>
-                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Text Box</span>
+                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('textBox')}</span>
                 </button>
 
                 <button
                     onClick={() => handleAdd('shape')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
-                    title="Rectangle"
+                    title={t('rectangle')}
                 >
                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                         <Square size={24} />
                     </div>
-                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Rectangle</span>
+                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('rectangle')}</span>
                 </button>
 
                 <button
                     onClick={() => handleAdd('shape', { shapeType: 'circle', styles: { borderRadius: '50%' } })}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
-                    title="Circle"
+                    title={t('circle')}
                 >
                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                         <Circle size={24} />
                     </div>
-                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Circle</span>
+                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('circle')}</span>
                 </button>
 
                 <button
                     onClick={() => handleAdd('star')}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
-                    title="Star"
+                    title={t('star')}
                 >
                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                         <Star size={24} />
                     </div>
-                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Star</span>
+                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('star')}</span>
                 </button>
 
                 <button
                     onClick={() => handleAdd('shape', { height: 4, styles: { backgroundColor: '#000000' } })}
                     className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30"
-                    title="Line"
+                    title={t('line')}
                 >
                     <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                         <Minus size={24} />
                     </div>
-                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Line</span>
+                    <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('line')}</span>
                 </button>
 
                 <div className="relative">
@@ -98,12 +100,12 @@ export const ElementsPanel = () => {
                     <button
                         onClick={() => document.getElementById('image-upload-panel')?.click()}
                         className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white border border-gray-50 hover:bg-purple-50/50 hover:border-purple-100 transition-all duration-300 group hover:scale-[1.05] active:scale-95 hover:shadow-xl hover:shadow-purple-100/30 w-full"
-                        title="Image"
+                        title={t('image')}
                     >
                         <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-purple-100 group-hover:text-purple-600 text-gray-500 shrink-0 transition-all duration-300">
                             <ImageIcon size={24} />
                         </div>
-                        <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">Image</span>
+                        <span className="font-bold text-[12px] text-gray-600 group-hover:text-purple-900 tracking-tight">{t('image')}</span>
                     </button>
                 </div>
             </div>

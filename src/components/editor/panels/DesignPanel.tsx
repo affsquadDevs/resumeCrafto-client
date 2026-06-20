@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore, EditorElement } from '@/store/useEditorStore';
 import { TEMPLATES } from '@/utils/templates';
 import { TemplatePreview } from '@/components/editor/TemplatePreview';
@@ -10,6 +11,7 @@ import { Loader2, User, Sparkles, Globe, Layout } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const DesignPanel = () => {
+    const t = useTranslations('DesignPanel');
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
     const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
     const { data: session } = useSession();
@@ -19,6 +21,12 @@ export const DesignPanel = () => {
     const [activeCategory, setActiveCategory] = useState<string>('Standard');
 
     const categories = ['All', 'Standard', 'My Designs', 'Shared'];
+    const categoryLabels: Record<string, string> = {
+        'All': t('categoryAll'),
+        'Standard': t('categoryStandard'),
+        'My Designs': t('categoryMyDesigns'),
+        'Shared': t('categoryShared'),
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,7 +76,7 @@ export const DesignPanel = () => {
     return (
         <div className="flex flex-col gap-6">
             <div className="px-1">
-                <h3 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">Design Library</h3>
+                <h3 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">{t('designLibrary')}</h3>
 
                 {/* Categories */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
@@ -81,7 +89,7 @@ export const DesignPanel = () => {
                                 : 'bg-white border-gray-100 text-gray-500 hover:border-purple-200 hover:text-purple-600'
                                 }`}
                         >
-                            {cat}
+                            {categoryLabels[cat] ?? cat}
                         </button>
                     ))}
                 </div>
@@ -90,7 +98,7 @@ export const DesignPanel = () => {
             {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-12 text-gray-400 gap-3">
                     <Loader2 className="animate-spin" size={24} />
-                    <p className="text-[10px] font-bold uppercase tracking-widest">Loading templates...</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t('loadingTemplates')}</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-2 gap-4">
@@ -129,7 +137,7 @@ export const DesignPanel = () => {
                                     </div>
 
                                     <div className="absolute inset-0 bg-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <span className="text-[10px] text-white font-extrabold px-3 py-1.5 bg-purple-600 rounded-lg shadow-xl translate-y-4 group-hover:translate-y-0 transition-all duration-300">Apply</span>
+                                        <span className="text-[10px] text-white font-extrabold px-3 py-1.5 bg-purple-600 rounded-lg shadow-xl translate-y-4 group-hover:translate-y-0 transition-all duration-300">{t('apply')}</span>
                                     </div>
                                 </div>
                                 <p className="text-[10px] text-gray-500 font-extrabold truncate px-1 group-hover:text-purple-600 transition-colors uppercase tracking-tight">{template.name}</p>
@@ -140,7 +148,7 @@ export const DesignPanel = () => {
                     {filteredTemplates.length === 0 && (
                         <div className="col-span-2 py-12 flex flex-col items-center justify-center text-gray-400 gap-3 border-2 border-dashed border-gray-50 rounded-3xl">
                             <Layout size={32} className="opacity-20" />
-                            <p className="text-[10px] font-bold uppercase tracking-widest">No templates found</p>
+                            <p className="text-[10px] font-bold uppercase tracking-widest">{t('noTemplatesFound')}</p>
                         </div>
                     )}
                 </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { roles, getRole } from "@/lib/roles";
@@ -42,9 +43,11 @@ export async function generateMetadata({
 export default async function ResumeTemplateRolePage({
     params,
 }: {
-    params: Promise<{ role: string }>;
+    params: Promise<{ locale: string; role: string }>;
 }) {
-    const { role: slug } = await params;
+    const { locale, role: slug } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations("RoleTemplatePage");
     const role = getRole(slug);
 
     if (!role) {
@@ -92,7 +95,7 @@ export default async function ResumeTemplateRolePage({
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent leading-tight">
-                        {role.title} Resume Template
+                        {t("heroTitle", { role: role.title })}
                     </h1>
 
                     <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
@@ -106,18 +109,17 @@ export default async function ResumeTemplateRolePage({
                         href="/resume-builder"
                         className="inline-block bg-gradient-to-r from-purple-600 to-purple-800 text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-wider hover:opacity-95 transition-opacity shadow-xl"
                     >
-                        Build my {role.title} resume →
+                        {t("buildCta", { role: role.title })}
                     </Link>
                 </div>
 
                 {/* Key skills & keywords */}
                 <section className="mb-16">
                     <h2 className="text-2xl md:text-3xl font-black mb-6 text-gray-900">
-                        Key skills &amp; keywords
+                        {t("keySkillsTitle")}
                     </h2>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                        Include these ATS keywords where they genuinely reflect your experience so
-                        applicant tracking systems can match your {role.title} resume to the role.
+                        {t("keySkillsDescription", { role: role.title })}
                     </p>
                     <div className="flex flex-wrap gap-3">
                         {role.keySkills.map((skill) => (
@@ -134,7 +136,7 @@ export default async function ResumeTemplateRolePage({
                 {/* Resume tips */}
                 <section className="mb-16 bg-gradient-to-br from-purple-50 to-white rounded-3xl p-6 md:p-10 border border-purple-100">
                     <h2 className="text-2xl md:text-3xl font-black mb-8 text-gray-900">
-                        Resume tips for {role.title}s
+                        {t("tipsTitle", { role: role.title })}
                     </h2>
                     <div className="space-y-6">
                         {role.tips.map((tip, i) => (
@@ -153,7 +155,7 @@ export default async function ResumeTemplateRolePage({
                 {/* Relevant templates */}
                 <section className="mb-16">
                     <h2 className="text-2xl md:text-3xl font-black mb-6 text-gray-900">
-                        Recommended templates for {role.title}s
+                        {t("recommendedTitle", { role: role.title })}
                     </h2>
                     <div className="grid sm:grid-cols-2 gap-4 mb-8">
                         {role.templateNames.map((name) => (
@@ -169,44 +171,47 @@ export default async function ResumeTemplateRolePage({
                         href="/templates"
                         className="inline-block bg-white text-purple-700 border-2 border-purple-600 px-6 py-3 rounded-full font-black text-sm uppercase tracking-wider hover:bg-purple-50 transition-colors"
                     >
-                        Browse all templates →
+                        {t("browseAll")}
                     </Link>
                 </section>
 
                 {/* Internal links */}
                 <section className="mb-16 border-t border-gray-100 pt-10">
                     <p className="text-gray-600 leading-relaxed">
-                        Looking for more inspiration? Explore{" "}
-                        <Link
-                            href="/resume-examples"
-                            className="font-bold text-purple-700 underline hover:text-purple-900"
-                        >
-                            resume examples by role
-                        </Link>{" "}
-                        or read our{" "}
-                        <Link
-                            href="/blog"
-                            className="font-bold text-purple-700 underline hover:text-purple-900"
-                        >
-                            resume writing guides
-                        </Link>
-                        .
+                        {t.rich("internalLinks", {
+                            examplesLink: (chunks) => (
+                                <Link
+                                    href="/resume-examples"
+                                    className="font-bold text-purple-700 underline hover:text-purple-900"
+                                >
+                                    {chunks}
+                                </Link>
+                            ),
+                            guidesLink: (chunks) => (
+                                <Link
+                                    href="/blog"
+                                    className="font-bold text-purple-700 underline hover:text-purple-900"
+                                >
+                                    {chunks}
+                                </Link>
+                            ),
+                        })}
                     </p>
                 </section>
 
                 {/* CTA Section */}
                 <div className="text-center bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl p-6 md:p-12 text-white">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 md:mb-4">
-                        Ready to build your {role.title} resume?
+                        {t("ctaTitle", { role: role.title })}
                     </h2>
                     <p className="text-purple-100 text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto">
-                        Start with an ATS-friendly template and customize it in minutes.
+                        {t("ctaDescription")}
                     </p>
                     <Link
                         href="/resume-builder"
                         className="inline-block bg-white text-purple-700 px-6 py-3 md:px-8 md:py-4 rounded-full font-black text-xs sm:text-sm md:text-sm uppercase tracking-wider hover:bg-purple-50 transition-colors shadow-xl"
                     >
-                        Build my {role.title} resume →
+                        {t("buildCta", { role: role.title })}
                     </Link>
                 </div>
             </main>

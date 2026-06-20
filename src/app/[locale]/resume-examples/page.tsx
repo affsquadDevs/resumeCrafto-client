@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { roles } from "@/lib/roles";
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
 };
 
 export default function ResumeExamplesPage() {
+    const t = useTranslations("ResumeExamplesPage");
+
     const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -72,17 +75,15 @@ export default function ResumeExamplesPage() {
                 {/* Hero */}
                 <div className="text-center mb-12 md:mb-20 px-4 md:px-0">
                     <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold mb-4 md:mb-6">
-                        <span>Resume Examples</span>
+                        <span>{t("heroBadge")}</span>
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
-                        Resume Examples by Role
+                        {t("heroTitle")}
                     </h1>
 
                     <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
-                        Find role-specific guidance for your next application. Each guide includes
-                        tailored tips, ATS keywords, and free, ATS-friendly templates so you can
-                        build a resume that fits your job.
+                        {t("heroDescription")}
                     </p>
                 </div>
 
@@ -92,7 +93,7 @@ export default function ResumeExamplesPage() {
                         <Link
                             key={role.slug}
                             href={`/resume-templates/${role.slug}`}
-                            aria-label={`${role.title} resume template`}
+                            aria-label={t("roleCardAriaLabel", { role: role.title })}
                             className="group rounded-3xl border border-gray-100 p-8 bg-white hover:shadow-2xl hover:border-purple-200 transition-all duration-300"
                         >
                             <span className="inline-block px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-bold mb-4">
@@ -111,37 +112,40 @@ export default function ResumeExamplesPage() {
                 {/* Internal links */}
                 <div className="text-center mb-24 border-t border-gray-100 pt-12">
                     <p className="text-gray-600 leading-relaxed">
-                        You can also{" "}
-                        <Link
-                            href="/templates"
-                            className="font-bold text-purple-700 underline hover:text-purple-900"
-                        >
-                            browse all resume templates
-                        </Link>{" "}
-                        or read our{" "}
-                        <Link
-                            href="/blog"
-                            className="font-bold text-purple-700 underline hover:text-purple-900"
-                        >
-                            resume writing guides
-                        </Link>
-                        .
+                        {t.rich("internalLinks", {
+                            templatesLink: (chunks) => (
+                                <Link
+                                    href="/templates"
+                                    className="font-bold text-purple-700 underline hover:text-purple-900"
+                                >
+                                    {chunks}
+                                </Link>
+                            ),
+                            blogLink: (chunks) => (
+                                <Link
+                                    href="/blog"
+                                    className="font-bold text-purple-700 underline hover:text-purple-900"
+                                >
+                                    {chunks}
+                                </Link>
+                            ),
+                        })}
                     </p>
                 </div>
 
                 {/* CTA Section */}
                 <div className="text-center bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl p-6 md:p-12 text-white">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 md:mb-4">
-                        Ready to Build Your Resume?
+                        {t("ctaTitle")}
                     </h2>
                     <p className="text-purple-100 text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto">
-                        Pick a role, start with an ATS-friendly template, and customize it in minutes.
+                        {t("ctaDescription")}
                     </p>
                     <Link
                         href="/resume-builder"
                         className="inline-block bg-white text-purple-700 px-6 py-3 md:px-8 md:py-4 rounded-full font-black text-xs sm:text-sm md:text-sm uppercase tracking-wider hover:bg-purple-50 transition-colors shadow-xl"
                     >
-                        Start Building Now →
+                        {t("ctaButton")}
                     </Link>
                 </div>
             </main>

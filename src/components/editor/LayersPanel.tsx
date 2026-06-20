@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Layers } from 'lucide-react';
 import { LayersPanelContent } from './panels/LayersPanelContent';
+import { useTranslations } from 'next-intl';
 
 export const LayersPanel = () => {
+    const t = useTranslations("LayersPanel");
     const [width, setWidth] = useState(280);
     const [isResizing, setIsResizing] = useState(false);
 
@@ -43,7 +45,7 @@ export const LayersPanel = () => {
             <div className="h-14 px-6 border-b border-gray-100 flex items-center justify-between font-bold text-gray-900 shrink-0">
                 <div className="flex items-center gap-2">
                     <Layers size={18} className="text-purple-600" />
-                    <span className="text-sm uppercase tracking-wider">Layers</span>
+                    <span className="text-sm uppercase tracking-wider">{t('layers')}</span>
                 </div>
             </div>
 
