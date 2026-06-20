@@ -404,6 +404,10 @@
   "Layout": {
     "skipToContent": "Skip to content"
   },
+  "LocaleSwitcher": {
+    "selectLanguage": "Select language",
+    "language": "Language"
+  },
   "LoginSection": {
     "toastPasswordMismatch": "New passwords do not match.",
     "toastPasswordSuccess": "Password updated successfully!",

@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ChevronLeft, CircleUser, Menu, X, Sparkles, Settings, LogOut } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { useSession, signOut } from 'next-auth/react';
 import { useUserStore } from '@/store/useUserStore';
 import dynamic from 'next/dynamic';
@@ -201,6 +202,7 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
 
                     {/* Auth / Profile */}
                     <div className="hidden lg:flex items-center gap-2 md:gap-4 shrink-0">
+                        <LocaleSwitcher />
                         {status === 'loading' ? (
                             <div className="w-20 h-8 animate-pulse bg-gray-100 rounded-full" />
                         ) : status === 'authenticated' ? (
@@ -317,6 +319,9 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
                                     <LogOut size={16} />
                                 </button>
                             )}
+                            <div className="mt-1 border-t border-gray-100 pt-1">
+                                <LocaleSwitcher variant="menu" onNavigate={() => setIsMenuOpen(false)} />
+                            </div>
                         </nav>
                     </LiquidGlass>
                 </div>
