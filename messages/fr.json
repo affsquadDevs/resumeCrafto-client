@@ -46,6 +46,10 @@
     "readArticleAria": "Lire l'article : {title}",
     "readArticle": "Lire l'article"
   },
+  "BlogArticle": {
+    "backToBlog": "Retour au blog",
+    "faqTitle": "Questions fréquentes"
+  },
   "BlogListing": {
     "heroTitle": "Derniers articles",
     "heroTitlePaged": "Derniers articles — Page {page}",

@@ -46,6 +46,10 @@
     "readArticleAria": "Läs artikel: {title}",
     "readArticle": "Läs artikel"
   },
+  "BlogArticle": {
+    "backToBlog": "Tillbaka till bloggen",
+    "faqTitle": "Vanliga frågor"
+  },
   "BlogListing": {
     "heroTitle": "Senaste artiklarna",
     "heroTitlePaged": "Senaste artiklarna — Sida {page}",

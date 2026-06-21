@@ -5,7 +5,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Metadata } from "next";
-import { getAuthorByName } from "@/lib/authors";
+import { getLocalizedAuthorByName } from "@/lib/authors";
+import { getLocalizedArticle, localizeArticleHtml } from "@/lib/content/articles";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type BlogPost = {
     title: string;
@@ -1921,47 +1923,47 @@ export async function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-    const { slug } = await params;
+    const { locale, slug } = await params;
     const post = postsContent[slug];
 
     if (!post) return { title: "Article Not Found" };
 
+    const article = getLocalizedArticle(slug, locale);
+    const metaTitle = article?.title ?? post.title;
+    const metaDescription = article?.description ?? post.description;
+    const metaCategory = article?.category ?? post.category;
+
     const baseUrl = "https://resumecraftor.com";
+    const path = locale === "en" ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
 
     const ogImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
 
-    // Standardize OG Description
-    const ogDescription = post.description;
-
-    // Standardize OG Image Alt
-    const ogImageAlt = post.title;
-
     return {
-        title: post.title,
-        description: post.description,
+        title: metaTitle,
+        description: metaDescription,
         openGraph: {
-            title: post.title,
-            description: ogDescription,
-            url: `${baseUrl}/blog/${slug}`,
+            title: metaTitle,
+            description: metaDescription,
+            url: `${baseUrl}${path}`,
             type: "article",
             siteName: "ResumeCraftor",
-            locale: "en_US",
+            locale,
             publishedTime: `${post.date}T09:00:00+00:00`,
             modifiedTime: `${post.date}T09:00:00+00:00`,
             authors: [post.author],
-            section: post.category,
-            images: [{ url: ogImage, alt: ogImageAlt }],
+            section: metaCategory,
+            images: [{ url: ogImage, alt: metaTitle }],
         },
         twitter: {
             card: "summary_large_image",
-            title: post.title,
-            description: post.description,
+            title: metaTitle,
+            description: metaDescription,
             images: [ogImage],
         },
         alternates: {
-            canonical: `${baseUrl}/blog/${slug}`,
+            canonical: `${baseUrl}${path}`,
         },
     };
 }
@@ -1969,17 +1971,27 @@ export async function generateMetadata({
 export default async function BlogPostPage({
     params,
 }: {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ locale: string; slug: string }>;
 }) {
-    const { slug } = await params;
+    const { locale, slug } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations();
     const post = postsContent[slug];
 
     if (!post) notFound();
 
-    const faqSchema = post.faq ? {
+    const article = getLocalizedArticle(slug, locale);
+    const title = article?.title ?? post.title;
+    const category = article?.category ?? post.category;
+    const readTime = article?.readTime ?? post.readTime;
+    const description = article?.description ?? post.description;
+    const keywords = article?.keywords ?? post.keywords;
+    const faq = article?.faq ?? post.faq;
+
+    const faqSchema = faq ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": post.faq.map(item => ({
+        "mainEntity": faq.map(item => ({
             "@type": "Question",
             "name": item.q,
             "acceptedAnswer": {
@@ -1992,7 +2004,7 @@ export default async function BlogPostPage({
     const baseUrl = "https://resumecraftor.com";
     const postUrl = `${baseUrl}/blog/${slug}`;
     const absImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
-    const author = getAuthorByName(post.author);
+    const author = getLocalizedAuthorByName(post.author, locale);
     const authorUrl = author ? `${baseUrl}/author/${author.slug}` : `${baseUrl}/`;
 
     // Standardized Breadcrumb Schema with Hierarchy support
@@ -2031,14 +2043,14 @@ export default async function BlogPostPage({
             items.push({
                 "@type": "ListItem",
                 "position": 4,
-                "name": post.title,
+                "name": title,
                 "item": postUrl
             });
         } else {
             items.push({
                 "@type": "ListItem",
                 "position": 3,
-                "name": post.title,
+                "name": title,
                 "item": postUrl
             });
         }
@@ -2060,9 +2072,9 @@ export default async function BlogPostPage({
             "@type": "WebPage",
             "@id": postUrl
         },
-        "headline": post.title,
+        "headline": title,
         ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
-        "description": post.description,
+        "description": description,
         "image": [absImage],
         "author": {
             "@type": author?.type ?? "Organization",
@@ -2080,11 +2092,11 @@ export default async function BlogPostPage({
         },
         "datePublished": `${post.date}T09:00:00+00:00`,
         "dateModified": `${post.date}T09:00:00+00:00`,
-        ...(post.keywords && { "keywords": post.keywords.join(", ") }),
+        ...(keywords && { "keywords": keywords.join(", ") }),
         ...(post.wordCount && { "wordCount": post.wordCount }),
-        "inLanguage": "en",
+        "inLanguage": locale,
         "isAccessibleForFree": true,
-        "articleSection": post.category,
+        "articleSection": category,
         ...(post.about && { "about": post.about }),
         ...(post.mentions && { "mentions": post.mentions })
     };
@@ -2118,23 +2130,23 @@ export default async function BlogPostPage({
                             className="inline-flex items-center gap-2 text-gray-400 hover:text-purple-600 font-bold mb-10 transition-colors"
                         >
                             <ArrowLeft size={20} />
-                            <span>Back to Blog</span>
+                            <span>{t("BlogArticle.backToBlog")}</span>
                         </Link>
 
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-bold mb-6">
-                            {post.category}
+                            {category}
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-[1.1] mb-8 tracking-tight">
-                            {post.title}
+                            {title}
                         </h1>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500 font-medium pb-12 border-b border-gray-100">
                             <Link href={author ? `/author/${author.slug}` : "/blog"} className="font-bold text-gray-900 hover:text-purple-600 transition-colors">{post.author}</Link>
                             <span>•</span>
-                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            <span>{new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>•</span>
-                            <span>{post.readTime}</span>
+                            <span>{readTime}</span>
                         </div>
                     </div>
 
@@ -2142,21 +2154,25 @@ export default async function BlogPostPage({
                     <div className="aspect-[21/9] rounded-3xl overflow-hidden mb-16 bg-gray-100 shadow-2xl">
                         <img
                             src={post.image}
-                            alt={post.title}
+                            alt={title}
                             className="w-full h-full object-cover"
                         />
                     </div>
 
                     {/* Content */}
                     <div className="max-w-none">
-                        {post.content}
+                        {article?.contentHtml ? (
+                            <div dangerouslySetInnerHTML={{ __html: localizeArticleHtml(article.contentHtml, locale) }} />
+                        ) : (
+                            post.content
+                        )}
 
                         {/* FAQ Section */}
-                        {post.faq && (
+                        {faq && (
                             <section className="mt-24 pt-16 border-t-2 border-gray-900">
-                                <h2 className="text-4xl font-black text-gray-900 mb-12 tracking-tight">Frequently Asked Questions</h2>
+                                <h2 className="text-4xl font-black text-gray-900 mb-12 tracking-tight">{t("BlogArticle.faqTitle")}</h2>
                                 <div className="space-y-0 text-left">
-                                    {post.faq.map((item, index) => (
+                                    {faq.map((item, index) => (
                                         <div key={index} className="group border-b border-gray-200 py-10 first:border-t-0">
                                             <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
                                                 {item.q}
@@ -2181,16 +2197,16 @@ export default async function BlogPostPage({
 
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                        Ready to Create Your Perfect Resume?
+                        {t("BlogListing.ctaTitle")}
                     </h2>
                     <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
-                        Join professionals who use ResumeCraftor to create clean, professional resumes that work for both people and ATS systems.
+                        {t("BlogListing.ctaSubtitle")}
                     </p>
                     <Link
                         href="/resume-builder"
                         className="inline-flex items-center gap-3 bg-white text-gray-950 px-8 py-4 rounded-2xl font-black text-lg hover:bg-purple-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95"
                     >
-                        <span>Start Creating Now</span>
+                        <span>{t("BlogListing.ctaButton")}</span>
                         <ArrowRight size={20} />
                     </Link>
                 </div>

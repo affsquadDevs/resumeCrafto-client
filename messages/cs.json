@@ -46,6 +46,10 @@
     "readArticleAria": "Přečíst článek: {title}",
     "readArticle": "Přečíst článek"
   },
+  "BlogArticle": {
+    "backToBlog": "Zpět na blog",
+    "faqTitle": "Často kladené otázky"
+  },
   "BlogListing": {
     "heroTitle": "Nejnovější články",
     "heroTitlePaged": "Nejnovější články — strana {page}",

@@ -46,6 +46,10 @@
     "readArticleAria": "Διαβάστε το άρθρο: {title}",
     "readArticle": "Διαβάστε το άρθρο"
   },
+  "BlogArticle": {
+    "backToBlog": "Επιστροφή στο ιστολόγιο",
+    "faqTitle": "Συχνές ερωτήσεις"
+  },
   "BlogListing": {
     "heroTitle": "Πρόσφατα άρθρα",
     "heroTitlePaged": "Πρόσφατα άρθρα — Σελίδα {page}",

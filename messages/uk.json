@@ -46,6 +46,10 @@
     "readArticleAria": "Читати статтю: {title}",
     "readArticle": "Читати статтю"
   },
+  "BlogArticle": {
+    "backToBlog": "Назад до блогу",
+    "faqTitle": "Поширені запитання"
+  },
   "BlogListing": {
     "heroTitle": "Останні статті",
     "heroTitlePaged": "Останні статті — сторінка {page}",
