@@ -1,11 +1,13 @@
 "use client"
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import Image from 'next/image';
 import { Facebook, Youtube, Instagram, Twitter, Linkedin, Github, Mail, ArrowRight, AtSign as Threads } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const DashboardFooter = () => {
+    const t = useTranslations('DashboardFooter');
     return (
         <footer className="bg-white border-t border-gray-100/50 pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -17,7 +19,7 @@ export const DashboardFooter = () => {
                                 <div className="w-12 h-12 relative transition-transform group-hover:scale-110 duration-500">
                                     <Image
                                         src="/logo.svg"
-                                        alt="Craftor Logo"
+                                        alt={t('logoAlt')}
                                         fill
                                         className="object-contain"
                                     />
@@ -28,7 +30,7 @@ export const DashboardFooter = () => {
                                 </span>
                             </Link>
                             <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-medium">
-                                Disclaimer: ResumeCraftor is an independent tool and is not affiliated with any employer, job board, or recruitment agency. The documents and templates provided are for personal use and professional development.
+                                {t('disclaimer')}
                             </p>
                         </div>
 
@@ -42,7 +44,7 @@ export const DashboardFooter = () => {
                                 <Link
                                     key={i}
                                     href={social.href}
-                                    aria-label={`ResumeCraftor on ${social.label}`}
+                                    aria-label={t('socialAriaLabel', { platform: social.label })}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:text-purple-600 hover:border-purple-200 hover:bg-purple-50 transition-all duration-300"
@@ -56,13 +58,13 @@ export const DashboardFooter = () => {
                     {/* Navigation Columns */}
                     <div className="lg:col-span-4 grid grid-cols-2 gap-8">
                         <div className="space-y-6">
-                            <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Platform</h4>
+                            <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">{t('platformHeading')}</h4>
                             <ul className="space-y-4">
                                 {[
-                                    { name: 'Home', href: '/' },
-                                    { name: 'How It Works', href: '/how-it-works', emphasized: true },
-                                    { name: 'Templates', href: '/templates' },
-                                    { name: 'Settings', href: '/settings' }
+                                    { name: t('linkHome'), href: '/' },
+                                    { name: t('linkHowItWorks'), href: '/how-it-works', emphasized: true },
+                                    { name: t('linkTemplates'), href: '/templates' },
+                                    { name: t('linkSettings'), href: '/settings' }
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link
@@ -81,14 +83,14 @@ export const DashboardFooter = () => {
                             </ul>
                         </div>
                         <div className="space-y-6">
-                            <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Company</h4>
+                            <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">{t('companyHeading')}</h4>
                             <ul className="space-y-4">
                                 {[
-                                    { name: 'About Us', href: '/about' },
-                                    { name: 'Blog', href: '/blog' },
-                                    { name: 'Contact', href: '/contact' },
-                                    { name: 'Privacy Policy', href: '/privacy-policy' },
-                                    { name: 'Terms of Service', href: '/terms-of-service' }
+                                    { name: t('linkAboutUs'), href: '/about' },
+                                    { name: t('linkBlog'), href: '/blog' },
+                                    { name: t('linkContact'), href: '/contact' },
+                                    { name: t('linkPrivacyPolicy'), href: '/privacy-policy' },
+                                    { name: t('linkTermsOfService'), href: '/terms-of-service' }
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="text-gray-500 hover:text-purple-600 text-sm font-medium transition-colors">
@@ -102,9 +104,9 @@ export const DashboardFooter = () => {
 
                     {/* Newsletter Section */}
                     <div className="lg:col-span-4 space-y-6">
-                        <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">Stay Updated</h4>
+                        <h4 className="text-gray-950 font-bold text-sm uppercase tracking-widest">{t('newsletterHeading')}</h4>
                         <p className="text-gray-500 text-sm leading-relaxed">
-                            Join over 5,000+ creators receiving our weekly design tips and template updates.
+                            {t('newsletterDescription')}
                         </p>
                         <form className="relative group" onSubmit={(e) => e.preventDefault()}>
                             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-gray-400 transition-colors group-focus-within:text-purple-500">
@@ -112,12 +114,12 @@ export const DashboardFooter = () => {
                             </div>
                             <input
                                 type="email"
-                                placeholder="Enter your email"
-                                aria-label="Email address"
+                                placeholder={t('emailPlaceholder')}
+                                aria-label={t('emailAriaLabel')}
                                 autoComplete="email"
                                 className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 pl-12 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
                             />
-                            <button type="submit" aria-label="Subscribe" className="absolute right-2 top-2 bottom-2 px-4 bg-gray-950 text-white rounded-xl hover:bg-purple-600 transition-colors flex items-center justify-center">
+                            <button type="submit" aria-label={t('subscribeAriaLabel')} className="absolute right-2 top-2 bottom-2 px-4 bg-gray-950 text-white rounded-xl hover:bg-purple-600 transition-colors flex items-center justify-center">
                                 <ArrowRight size={18} />
                             </button>
                         </form>
@@ -127,12 +129,12 @@ export const DashboardFooter = () => {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-6 text-xs font-medium text-gray-400">
-                        <span>© 2026 ResumeCraftor. All rights reserved.</span>
+                        <span>{t('copyright')}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-xs font-bold text-gray-500 uppercase tracking-tighter">Systems Operational</span>
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-tighter">{t('systemsOperational')}</span>
                     </div>
                 </div>
             </div>

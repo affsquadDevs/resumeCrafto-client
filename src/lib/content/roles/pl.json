@@ -1,0 +1,244 @@
+{
+  "software-engineer": {
+    "title": "Inżynier oprogramowania",
+    "category": "Technologia",
+    "summary": "Zaprezentuj swoją wiedzę techniczną, wdrożone projekty i wymierny wpływ w rolach inżynierskich.",
+    "intro": "Dobre CV inżyniera oprogramowania łączy szerokie kompetencje techniczne z dowodami realnego wpływu. Rekruterzy i menedżerowie inżynierii chcą zobaczyć języki i systemy, z którymi pracujesz, ale zatrudniają na podstawie efektów, takich jak wdrożone funkcje, zmniejszone opóźnienia i rozwiązane problemy. Zacznij od rezultatów i poprzyj je technologiami, których użyłeś.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "REST APIs",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Projektowanie systemów"
+    ],
+    "tips": [
+      "Każdy punkt zaczynaj od mocnego czasownika i wymiernego rezultatu, np. „Skróciłem czas odpowiedzi API o 40%”.",
+      "Wymień swoje główne języki i frameworki w dedykowanej sekcji umiejętności, aby system ATS mógł je szybko dopasować.",
+      "Dodaj link do profilu GitHub lub portfolio, które prezentuje realny, działający kod.",
+      "Opisz skalę, na jakiej pracowałeś (liczba żądań na sekundę, użytkowników, wolumen danych), aby nadać kontekst swojemu wpływowi.",
+      "Dopasuj prezentowane technologie do opisu stanowiska, zamiast wymieniać każdą technologię, z jaką miałeś styczność."
+    ]
+  },
+  "ux-designer": {
+    "title": "Projektant UX",
+    "category": "Design",
+    "summary": "Podkreśl swój proces projektowy, metody badawcze i efekty produktowe, do których przyczyniła się Twoja praca.",
+    "intro": "CV projektanta UX powinno czytać się jak argumentacja tego, jak myślisz, a nie tylko jako lista narzędzi. Zespoły rekrutacyjne szukają jasnego procesu: badań, ideacji, prototypowania i walidacji, powiązanych z efektami takimi jak wyższa skuteczność realizacji zadań czy lepsza konwersja. Połącz swoje rzemiosło z biznesowym wpływem, jaki przyniosły Twoje projekty.",
+    "keySkills": [
+      "User Research",
+      "Wireframing",
+      "Prototypowanie",
+      "Figma",
+      "Testy użyteczności",
+      "Architektura informacji",
+      "Projektowanie interakcji",
+      "Systemy projektowe",
+      "Dostępność"
+    ],
+    "tips": [
+      "Każdą rolę zaczynaj od problemu, który rozwiązywałeś, i efektu, jaki dostarczyłeś, a nie tylko od ekranów, które zaprojektowałeś.",
+      "Zawsze dołączaj link do portfolio z dwoma lub trzema pogłębionymi studiami przypadku.",
+      "Tam, gdzie to możliwe, podawaj wpływ w liczbach, np. „Zwiększyłem ukończenie onboardingu o 22%”.",
+      "Wymień zastosowane metody badań i testów, aby Twój proces był widoczny także dla osób spoza branży projektowej.",
+      "Utrzymuj układ czysty i dobrze rozplanowany; Twoje CV samo w sobie jest próbką projektową."
+    ]
+  },
+  "accountant": {
+    "title": "Księgowy",
+    "category": "Finanse",
+    "summary": "Wykaż się dokładnością, znajomością przepisów oraz kontrolą nad procesami finansowymi, za które odpowiadasz.",
+    "intro": "CV księgowego ocenia się pod kątem precyzji, wiarygodności i zaufania. Pracodawcy chcą zobaczyć odpowiednie certyfikaty, systemy, w których pracujesz, oraz nieskazitelną historię dokładnego i terminowego raportowania. Spraw, by Twoja dbałość o szczegóły była widoczna zarówno w treści, jak i w formatowaniu strony.",
+    "keySkills": [
+      "Sprawozdawczość finansowa",
+      "Zobowiązania",
+      "Należności",
+      "Księga główna",
+      "Uzgodnienia",
+      "GAAP",
+      "Rozliczenia podatkowe",
+      "QuickBooks",
+      "Excel",
+      "Audyt"
+    ],
+    "tips": [
+      "Certyfikaty takie jak CPA umieść w widocznym miejscu w górnej części strony.",
+      "Określ w liczbach skalę tego, czym zarządzasz, np. budżety, wolumen transakcji lub liczbę kont.",
+      "Wymień oprogramowanie księgowe i systemy ERP, które znasz, aby system ATS mógł je dopasować.",
+      "Wyróżnij sukcesy w zakresie zgodności, takie jak czyste audyty czy ograniczenie błędów w raportowaniu.",
+      "Zachowaj zachowawcze i nienaganne formatowanie; dokładność jest częścią Twojego przekazu."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Inżynier mechanik",
+    "category": "Inżynieria",
+    "summary": "Przedstaw swoje doświadczenie w projektowaniu, narzędzia techniczne i produkty, które pomogłeś stworzyć.",
+    "intro": "CV inżyniera mechanika powinno łączyć kompetencje techniczne z namacalnymi rezultatami: zaprojektowanymi częściami, wprowadzonymi produktami czy obniżonymi kosztami. Menedżerowie rekrutujący szukają biegłości w CAD, znajomości odpowiednich norm oraz praktycznego doświadczenia w całym cyklu życia produktu. Pokaż zarówno to, co stworzyłeś, jak i efekt, który to przyniosło.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Analiza metodą elementów skończonych",
+      "GD&T",
+      "Projektowanie produktu",
+      "Prototypowanie",
+      "Procesy produkcyjne",
+      "Analiza tolerancji"
+    ],
+    "tips": [
+      "Wymień narzędzia CAD i symulacyjne, których używasz, oraz swój poziom biegłości w każdym z nich.",
+      "Podaj w liczbach efekty, takie jak zmniejszona masa, zaoszczędzone koszty czy skrócony czas cyklu.",
+      "Odwołaj się do norm i metodologii, według których pracujesz, np. GD&T lub ISO.",
+      "Wyróżnij współpracę międzydziałową z produkcją, jakością i dostawcami.",
+      "Uwzględnij wszelkie patenty, opublikowane projekty lub prace dyplomowe, które pokazują zastosowaną wiedzę."
+    ]
+  },
+  "project-manager": {
+    "title": "Kierownik projektu",
+    "category": "Zarządzanie",
+    "summary": "Udowodnij, że dostarczasz projekty na czas, w ramach budżetu i z wymiernymi rezultatami biznesowymi.",
+    "intro": "CV kierownika projektu stoi i upada na rezultatach. Pracodawcy chcą dowodów, że potrafisz określić zakres prac, zarządzać interesariuszami oraz realizować zadania w ramach terminów i budżetów. Zacznij od rezultatów prowadzonych projektów, a następnie pokaż metodyki i narzędzia, które do nich doprowadziły.",
+    "keySkills": [
+      "Planowanie projektów",
+      "Zarządzanie interesariuszami",
+      "Agile",
+      "Scrum",
+      "Zarządzanie ryzykiem",
+      "Budżetowanie",
+      "Jira",
+      "Tworzenie roadmap",
+      "Przywództwo międzydziałowe"
+    ],
+    "tips": [
+      "Określ w liczbach zakres każdego projektu: wielkość budżetu, liczebność zespołu i harmonogram.",
+      "Punkty zaczynaj od efektów dostarczenia, np. „Zrealizowałem migrację o wartości 1,2 mln USD dwa tygodnie przed terminem”.",
+      "Wymień posiadane certyfikaty, takie jak PMP lub CSM.",
+      "Pokaż zarządzanie interesariuszami i współpracę międzydziałową, a nie tylko śledzenie zadań.",
+      "Dopasuj eksponowaną metodykę do roli, czy to Agile, Waterfall, czy podejście hybrydowe."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Menedżer marketingu",
+    "category": "Marketing",
+    "summary": "Powiąż kampanie z przychodami, wzrostem i kanałami, które wyskalowałeś.",
+    "intro": "CV menedżera marketingu powinno czytać się jak historia wzrostu. Zespoły rekrutacyjne chcą zobaczyć, które kanały prowadzisz, jakie kampanie realizowałeś oraz jaki pipeline lub przychód one wygenerowały. Oprzyj swoje doświadczenie na wskaźnikach, aby Twój wpływ był nie do przeoczenia.",
+    "keySkills": [
+      "Zarządzanie kampaniami",
+      "SEO",
+      "Content marketing",
+      "Płatne pozyskiwanie",
+      "Analityka marketingowa",
+      "Email marketing",
+      "Strategia marki",
+      "Google Analytics",
+      "Generowanie leadów",
+      "Automatyzacja marketingu"
+    ],
+    "tips": [
+      "Podaj w liczbach rezultaty, takie jak wygenerowane leady, obniżony CAC czy przychód, na który miałeś wpływ.",
+      "Wymień kanały i platformy, które prowadzisz, aby pasowały do słów kluczowych z ogłoszenia.",
+      "Pokaż odpowiedzialność za budżet i zwrot, jaki na nim wypracowałeś.",
+      "Wyróżnij sztandarową kampanię z jasnymi liczbami przed i po.",
+      "Wykaż się zarówno strategią, jak i realizacją, a nie tylko jednym z tych obszarów."
+    ]
+  },
+  "student": {
+    "title": "Student",
+    "category": "Stanowiska początkowe",
+    "summary": "Przekuj zajęcia, projekty i staże w przekonujące pierwsze CV.",
+    "intro": "CV na stanowisko początkowe zdobywa zaproszenia na rozmowy, maksymalnie wykorzystując ograniczone formalne doświadczenie. Zajęcia, projekty, staże oraz przywództwo w działalności pozauczelnianej — wszystko się liczy, gdy ujmiesz to wokół umiejętności i rezultatów. Skup się na tym, co potrafisz, popierając to konkretnymi przykładami, zamiast usprawiedliwiać krótką historię zatrudnienia.",
+    "keySkills": [
+      "Komunikacja",
+      "Praca zespołowa",
+      "Zarządzanie czasem",
+      "Microsoft Office",
+      "Badania",
+      "Rozwiązywanie problemów",
+      "Zdolność adaptacji",
+      "Przywództwo"
+    ],
+    "tips": [
+      "Umieść wykształcenie blisko góry i dołącz istotne zajęcia, średnią ocen, jeśli jest wysoka, oraz wyróżnienia.",
+      "Traktuj projekty zajęciowe i staże jak pracę, z punktami skupionymi na rezultatach.",
+      "Wyróżnij przywództwo w kołach, sporcie lub wolontariacie, aby pokazać inicjatywę.",
+      "Zmieść CV na jednej stronie i zastosuj czysty, łatwy do przejrzenia układ.",
+      "Dopasuj sekcję umiejętności do konkretnych stanowisk, o które aplikujesz."
+    ]
+  },
+  "community-manager": {
+    "title": "Community manager",
+    "category": "Marketing",
+    "summary": "Pokaż, jak rozwijasz, angażujesz i utrzymujesz odbiorców w różnych kanałach.",
+    "intro": "CV community managera powinno udowodnić, że potrafisz budować i utrzymywać zaangażowaną społeczność. Zespoły rekrutacyjne szukają wskaźników wzrostu, wyników zaangażowania oraz dowodów, że potrafisz reprezentować głos marki, prowadząc jednocześnie realne rozmowy. Połącz platformy, którymi zarządzasz, z osiągniętymi rezultatami.",
+    "keySkills": [
+      "Angażowanie społeczności",
+      "Zarządzanie mediami społecznościowymi",
+      "Tworzenie treści",
+      "Moderacja",
+      "Głos marki",
+      "Analityka",
+      "Discord",
+      "Obsługa klienta",
+      "Koordynacja wydarzeń"
+    ],
+    "tips": [
+      "Tam, gdzie to możliwe, podawaj w liczbach wzrost społeczności, wskaźnik zaangażowania i retencję.",
+      "Wymień platformy i narzędzia, którymi zarządzasz, takie jak Discord, Slack czy kanały społecznościowe.",
+      "Pokaż, jak radziłeś sobie z eskalacjami lub jak odwróciłeś negatywny nastrój.",
+      "Wyróżnij kampanie lub wydarzenia, które prowadziłeś, oraz uczestnictwo, jakie wywołały.",
+      "Wykaż się spójnym głosem marki, podając konkretne przykłady."
+    ]
+  },
+  "creative-writer": {
+    "title": "Twórca treści kreatywnych",
+    "category": "Pisanie",
+    "summary": "Pozwól, by Twój styl, wszechstronność i opublikowane prace przemówiły za Ciebie.",
+    "intro": "CV twórcy treści kreatywnych powinno pokazywać wszechstronność, niezawodność i wyraźny styl. Redaktorzy i klienci chcą zobaczyć opublikowane prace, formaty, które obsługujesz, oraz Twoją zdolność do dostarczania dopracowanych tekstów w terminie. Zacznij od osiągnięć i pozwól, by portfolio wykonało resztę pracy.",
+    "keySkills": [
+      "Copywriting",
+      "Storytelling",
+      "Redakcja",
+      "Strategia treści",
+      "SEO Writing",
+      "Badania",
+      "Korekta",
+      "Głos marki",
+      "CMS"
+    ],
+    "tips": [
+      "Zawsze dołączaj link do portfolio z wyselekcjonowanym zestawem swoich najlepszych prac.",
+      "Wymień znaczące publikacje, podpisy autorskie lub klientów, aby zbudować wiarygodność.",
+      "Pokaż wszechstronność, nazywając formaty, w których piszesz, np. teksty długie, scenariusze czy copy.",
+      "Tam, gdzie to możliwe, podawaj zasięg w liczbach, np. czytelnictwo lub zaangażowanie przy opublikowanych pracach.",
+      "Utrzymuj samo CV zwięzłe i wolne od literówek; jest ono próbką Twojego pisania."
+    ]
+  },
+  "sales-representative": {
+    "title": "Przedstawiciel handlowy",
+    "category": "Sprzedaż",
+    "summary": "Zacznij od realizacji planu, zamkniętych transakcji i przychodu, który wygenerowałeś.",
+    "intro": "CV przedstawiciela handlowego to przede wszystkim liczby. Menedżerowie rekrutujący szukają realizacji planu sprzedaży, wielkości transakcji oraz tego, jak konsekwentnie osiągasz cele. Postaw swoje wyniki na pierwszym planie i poprzyj je procesem oraz narzędziami, których użyłeś, aby je osiągnąć.",
+    "keySkills": [
+      "Generowanie leadów",
+      "Prospecting",
+      "Negocjacje",
+      "CRM",
+      "Salesforce",
+      "Zarządzanie pipeline'em",
+      "Finalizacja sprzedaży",
+      "Zarządzanie kontami",
+      "Cold calling"
+    ],
+    "tips": [
+      "Każdą rolę zaczynaj od realizacji planu, np. „Osiągnąłem 128% planu w 2025 roku”.",
+      "Podawaj w liczbach wielkość transakcji, wygenerowany przychód i wielkość swojego portfela klientów.",
+      "Wymień CRM i narzędzia sprzedażowe, których używasz, aby pasowały do słów kluczowych ATS.",
+      "Pokaż rozwój, taki jak nagrody President's Club czy awanse.",
+      "Wyróżnij wyniki zarówno w pozyskiwaniu nowych klientów, jak i w rozwoju kont, aby pokazać wszechstronność."
+    ]
+  }
+}

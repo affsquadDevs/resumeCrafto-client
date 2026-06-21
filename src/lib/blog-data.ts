@@ -1,3 +1,14 @@
+import blogPl from "./content/blog/pl.json";
+import blogEs from "./content/blog/es.json";
+import blogPt from "./content/blog/pt.json";
+import blogFr from "./content/blog/fr.json";
+import blogIt from "./content/blog/it.json";
+import blogDe from "./content/blog/de.json";
+import blogUk from "./content/blog/uk.json";
+import blogSv from "./content/blog/sv.json";
+import blogCs from "./content/blog/cs.json";
+import blogEl from "./content/blog/el.json";
+
 export interface BlogPostMeta {
     id: string;
     title: string;
@@ -122,3 +133,24 @@ export const blogPosts: BlogPostMeta[] = [
         image: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f',
     }
 ];
+
+// Per-locale, per-slug overrides of the translatable post metadata.
+type BlogTranslation = Partial<Pick<BlogPostMeta, "title" | "excerpt" | "category" | "readTime">>;
+
+const BLOG_TRANSLATIONS = {
+    pl: blogPl, es: blogEs, pt: blogPt, fr: blogFr, it: blogIt,
+    de: blogDe, uk: blogUk, sv: blogSv, cs: blogCs, el: blogEl,
+} as Record<string, Record<string, BlogTranslation>>;
+
+export function getLocalizedBlogPosts(locale: string): BlogPostMeta[] {
+    const tr = BLOG_TRANSLATIONS[locale];
+    if (!tr) return blogPosts;
+    return blogPosts.map((p) => ({ ...p, ...(tr[p.slug] ?? {}) }));
+}
+
+export function getLocalizedBlogPost(slug: string, locale: string): BlogPostMeta | undefined {
+    const base = blogPosts.find((p) => p.slug === slug);
+    if (!base) return undefined;
+    const t = BLOG_TRANSLATIONS[locale]?.[slug];
+    return t ? { ...base, ...t } : base;
+}

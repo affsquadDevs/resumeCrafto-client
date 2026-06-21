@@ -1,54 +1,57 @@
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from 'next-intl';
 import { Zap, Shield, Palette, Cloud, Download, Users, Clock, Star } from 'lucide-react';
 
 export const FeaturesGrid = () => {
+    const t = useTranslations('FeaturesGrid');
+
     const features = [
         {
             icon: Zap,
-            title: "Lightning Fast",
-            description: "Create professional resumes in under 10 minutes with our streamlined editor",
+            title: t('lightningFastTitle'),
+            description: t('lightningFastDescription'),
             color: "from-yellow-500 to-orange-500"
         },
         {
             icon: Shield,
-            title: "ATS-Optimized",
-            description: "Designed for compatibility with common applicant tracking systems",
+            title: t('atsOptimizedTitle'),
+            description: t('atsOptimizedDescription'),
             color: "from-green-500 to-emerald-500"
         },
         {
             icon: Palette,
-            title: "Fully Customizable",
-            description: "Drag, drop, and style every element to match your personal brand",
+            title: t('customizableTitle'),
+            description: t('customizableDescription'),
             color: "from-purple-500 to-pink-500"
         },
         {
             icon: Cloud,
-            title: "Cloud Sync",
-            description: "Access your resumes anywhere, anytime, on any device with auto-save",
+            title: t('cloudSyncTitle'),
+            description: t('cloudSyncDescription'),
             color: "from-blue-500 to-cyan-500"
         },
         {
             icon: Download,
-            title: "PDF Export",
-            description: "Download high-quality PDFs ready for job applications",
+            title: t('pdfExportTitle'),
+            description: t('pdfExportDescription'),
             color: "from-indigo-500 to-purple-500"
         },
         {
             icon: Users,
-            title: "Multiple Resumes",
-            description: "Create and manage unlimited resume designs for different opportunities",
+            title: t('multipleResumesTitle'),
+            description: t('multipleResumesDescription'),
             color: "from-pink-500 to-rose-500"
         },
         {
             icon: Clock,
-            title: "Auto-Save",
-            description: "Never lose your work with automatic saving as you type",
+            title: t('autoSaveTitle'),
+            description: t('autoSaveDescription'),
             color: "from-teal-500 to-green-500"
         },
         {
             icon: Star,
-            title: "Professional Templates",
-            description: "Choose from dozens of modern, recruiter-approved templates",
+            title: t('professionalTemplatesTitle'),
+            description: t('professionalTemplatesDescription'),
             color: "from-amber-500 to-yellow-500"
         }
     ];
@@ -58,10 +61,10 @@ export const FeaturesGrid = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
-                        Everything You Need to Succeed
+                        {t('heading')}
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Powerful features designed to help you create the perfect resume
+                        {t('subheading')}
                     </p>
                 </div>
 
@@ -86,11 +89,11 @@ export const FeaturesGrid = () => {
 
                 <div className="mt-12 text-center text-base md:text-lg text-gray-600">
                     <Link href="/templates" className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-4">
-                        See all resume templates
+                        {t('seeAllTemplates')}
                     </Link>
                     <span className="mx-2 text-gray-300">·</span>
                     <Link href="/blog" className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-4">
-                        Read our resume guides
+                        {t('readGuides')}
                     </Link>
                 </div>
             </div>

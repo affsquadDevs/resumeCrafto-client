@@ -4,6 +4,7 @@ import { ChevronLeft, Layout, Square, Smartphone } from 'lucide-react';
 import { DesignPanel } from './panels/DesignPanel';
 import { ElementsPanel } from './panels/ElementsPanel';
 import { IconsPanel } from './panels/IconsPanel';
+import { useTranslations } from 'next-intl';
 
 interface SidebarProps {
     isCollapsed?: boolean;
@@ -11,6 +12,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ isCollapsed = false, onCollapse }: SidebarProps) => {
+    const t = useTranslations("Sidebar");
     const [width, setWidth] = React.useState(300);
     const [isResizing, setIsResizing] = React.useState(false);
     const [activeTab, setActiveTab] = React.useState<'design' | 'elements' | 'icons'>('design');
@@ -55,7 +57,7 @@ export const Sidebar = ({ isCollapsed = false, onCollapse }: SidebarProps) => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${activeTab === 'design' ? 'bg-purple-100/50 text-purple-600 shadow-sm shadow-purple-100' : 'group-hover:bg-gray-50'}`}>
                         <Layout size={22} />
                     </div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">Design</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">{t('design')}</span>
                 </button>
                 <button
                     onClick={() => { setActiveTab('elements'); onCollapse?.(false); }}
@@ -65,7 +67,7 @@ export const Sidebar = ({ isCollapsed = false, onCollapse }: SidebarProps) => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${activeTab === 'elements' ? 'bg-purple-100/50 text-purple-600 shadow-sm shadow-purple-100' : 'group-hover:bg-gray-50'}`}>
                         <Square size={22} />
                     </div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">Elements</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">{t('elements')}</span>
                 </button>
                 <button
                     onClick={() => { setActiveTab('icons'); onCollapse?.(false); }}
@@ -75,7 +77,7 @@ export const Sidebar = ({ isCollapsed = false, onCollapse }: SidebarProps) => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${activeTab === 'icons' ? 'bg-purple-100/50 text-purple-600 shadow-sm shadow-purple-100' : 'group-hover:bg-gray-50'}`}>
                         <Smartphone size={22} />
                     </div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">Icons</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">{t('icons')}</span>
                 </button>
             </div>
 

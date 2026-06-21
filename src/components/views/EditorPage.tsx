@@ -15,10 +15,12 @@ import { useEditorShortcuts } from '@/hooks/useEditorShortcuts';
 import { Check, AlertCircle, Globe, ShieldQuestion, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 
 const A4_WIDTH = 794; // approx 210mm at 96dpi
 
 export default function EditorPage() {
+    const t = useTranslations("EditorPage");
     const zoom = useEditorStore((state) => state.zoom);
     const elements = useEditorStore((state) => state.elements);
     const resumeId = useEditorStore((state) => state.resumeId);
@@ -226,13 +228,13 @@ export default function EditorPage() {
 
     const handleExport = async () => {
         if (!session) {
-            setMessage({ type: 'error', text: 'Please login to download' });
+            setMessage({ type: 'error', text: t('errorLoginToDownload') });
             setTimeout(() => setMessage(null), 3000);
             return;
         }
 
         setIsExporting(true);
-        setMessage({ type: 'success', text: 'Saving your design...' });
+        setMessage({ type: 'success', text: t('savingDesign') });
 
         try {
             // First, save to backend
@@ -263,17 +265,17 @@ export default function EditorPage() {
                 }
 
                 // Then, trigger download
-                setMessage({ type: 'success', text: 'Preparing PDF...' });
+                setMessage({ type: 'success', text: t('preparingPdf') });
                 const mod = await import('@/utils/exportUtils');
                 await mod.downloadPDF();
 
-                setMessage({ type: 'success', text: 'Downloaded successfully!' });
+                setMessage({ type: 'success', text: t('downloadedSuccessfully') });
             } else {
-                setMessage({ type: 'error', text: 'Failed to save before download.' });
+                setMessage({ type: 'error', text: t('errorSaveBeforeDownload') });
             }
         } catch (error) {
             console.error('Export error:', error);
-            setMessage({ type: 'error', text: 'Something went wrong.' });
+            setMessage({ type: 'error', text: t('errorSomethingWentWrong') });
         } finally {
             setIsExporting(false);
             setTimeout(() => setMessage(null), 3000);
@@ -289,18 +291,18 @@ export default function EditorPage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: `Shared Example ${new Date().toLocaleDateString()}`,
+                    name: t('sharedExampleName', { date: new Date().toLocaleDateString() }),
                     data: elements
                 }),
             });
 
             if (res.ok) {
-                setMessage({ type: 'success', text: 'Design shared with everyone!' });
+                setMessage({ type: 'success', text: t('designSharedWithEveryone') });
             } else {
-                setMessage({ type: 'error', text: 'Failed to share design.' });
+                setMessage({ type: 'error', text: t('errorShareDesign') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Something went wrong.' });
+            setMessage({ type: 'error', text: t('errorSomethingWentWrong') });
         } finally {
             setIsSavingTemplate(false);
             setTimeout(() => setMessage(null), 3000);
@@ -356,11 +358,11 @@ export default function EditorPage() {
                                     </div>
 
                                     <h3 className="text-2xl font-black text-gray-900 tracking-tight mb-4">
-                                        Share this Resume Example with Everyone?
+                                        {t('shareModalTitle')}
                                     </h3>
 
                                     <p className="text-gray-500 font-medium leading-relaxed mb-8">
-                                        By proceeding, you agree to make this design public. It will be added to the common templates library for all users to see and use as a reference.
+                                        {t('shareModalDescription')}
                                     </p>
 
                                     <div className="flex flex-col gap-3">
@@ -368,20 +370,20 @@ export default function EditorPage() {
                                             onClick={handleSaveTemplate}
                                             className="w-full py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-purple-200 active:scale-95"
                                         >
-                                            Yes, Share with Everyone
+                                            {t('shareModalConfirm')}
                                         </button>
                                         <button
                                             onClick={() => setShowShareConfirm(false)}
                                             className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-gray-600 rounded-2xl font-bold transition-all active:scale-95"
                                         >
-                                            Cancel
+                                            {t('cancel')}
                                         </button>
                                     </div>
                                 </div>
                                 <div className="bg-gray-50 px-8 py-4 border-t border-gray-100 flex items-center gap-3">
                                     <ShieldQuestion size={18} className="text-gray-400" />
                                     <p className="text-[11px] text-gray-400 font-bold uppercase tracking-widest">
-                                        This action cannot be undone by you
+                                        {t('shareModalUndoNote')}
                                     </p>
                                 </div>
                             </motion.div>

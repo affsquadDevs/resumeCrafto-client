@@ -1,19 +1,21 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Search, Filter, Layout, Sparkles, ArrowRight } from 'lucide-react';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 import { DesignCard } from '@/components/dashboard/DesignCard';
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
 import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "@/i18n/navigation";
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
 import { useSession } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trash2, EyeOff, Eye, Loader2, Globe, User, Check, AlertCircle, AlertTriangle, X } from 'lucide-react';
 
 export default function TemplatesPage() {
+    const t = useTranslations("TemplatesPage");
     const router = useRouter();
     const { data: session } = useSession();
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
@@ -66,10 +68,10 @@ export default function TemplatesPage() {
             const res = await fetch(`/api/templates?id=${id}`, { method: 'DELETE' });
             if (res.ok) {
                 setDbTemplates(prev => prev.filter(t => t.id !== id));
-                setMessage({ type: 'success', text: 'Template deleted' });
+                setMessage({ type: 'success', text: t('toastDeleted') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Failed to delete' });
+            setMessage({ type: 'error', text: t('toastDeleteFailed') });
         } finally {
             setTimeout(() => setMessage(null), 3000);
         }
@@ -86,16 +88,22 @@ export default function TemplatesPage() {
             if (res.ok) {
                 const updated = await res.json();
                 setDbTemplates(prev => prev.map(t => t.id === id ? updated : t));
-                setMessage({ type: 'success', text: !currentStatus ? 'Public' : 'Hidden' });
+                setMessage({ type: 'success', text: !currentStatus ? t('toastPublic') : t('toastHidden') });
             }
         } catch (error) {
-            setMessage({ type: 'error', text: 'Failed to update' });
+            setMessage({ type: 'error', text: t('toastUpdateFailed') });
         } finally {
             setTimeout(() => setMessage(null), 3000);
         }
     };
 
     const categories = ['All', 'Standard', 'My Templates', 'Shared Examples'];
+    const categoryLabels: Record<string, string> = {
+        'All': t('categoryAll'),
+        'Standard': t('categoryStandard'),
+        'My Templates': t('categoryMyTemplates'),
+        'Shared Examples': t('categorySharedExamples'),
+    };
 
     // Combine static and DB templates
     // Combine and shuffle templates
@@ -138,15 +146,19 @@ export default function TemplatesPage() {
                             <div className="relative z-10 max-w-3xl text-center md:text-left">
                                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs md:text-sm font-bold text-purple-200 mb-8">
                                     <Sparkles size={14} className="text-yellow-400" />
-                                    Premium Library
+                                    {t('heroBadge')}
                                 </div>
                                 <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-                                    Start with a
-                                    <br className="sm:hidden" />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"> Masterpiece.</span>
+                                    {t.rich('heroTitle', {
+                                        br: () => <br className="sm:hidden" />,
+                                        highlight: (chunks) => (
+                                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">{chunks}</span>
+                                        ),
+                                    })}
                                 </h2>
                                 <p className="text-base md:text-xl text-gray-400 leading-relaxed font-medium mb-10 max-w-2xl mx-auto md:ml-0">
-                                    Choose from our curated collection of industry-standard templates. Each template is designed with ATS compatibility in mind and follows clean, professional formatting standards.                                </p>
+                                    {t('heroDescription')}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -165,7 +177,7 @@ export default function TemplatesPage() {
                                         : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                                         }`}
                                 >
-                                    {cat}
+                                    {categoryLabels[cat] ?? cat}
                                 </button>
                             ))}
                         </div>
@@ -173,7 +185,7 @@ export default function TemplatesPage() {
                         {isLoading ? (
                             <div className="py-32 flex flex-col items-center justify-center gap-4 text-gray-400">
                                 <Loader2 size={40} className="animate-spin" />
-                                <p className="font-bold uppercase tracking-widest text-xs">Curating Masterpieces...</p>
+                                <p className="font-bold uppercase tracking-widest text-xs">{t('loading')}</p>
                             </div>
                         ) : filteredTemplates.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 pt-8">
@@ -181,7 +193,7 @@ export default function TemplatesPage() {
                                     <div key={template.id} className="group relative">
                                         <DesignCard
                                             title={template.name}
-                                            date={template.isStatic ? "Official Premium" : `Shared by ${template.user?.name || 'User'}`}
+                                            date={template.isStatic ? t('officialPremium') : t('sharedBy', { name: template.user?.name || t('defaultUser') })}
                                             templateElements={template.isStatic ? template.elements : template.data}
                                             onClick={() => handleSelectTemplate(template)}
                                         />
@@ -191,14 +203,14 @@ export default function TemplatesPage() {
                                                 <button
                                                     onClick={(e) => handleToggleVisibility(template.id, template.isPublic, e)}
                                                     className={`p-2 rounded-xl border shadow-xl backdrop-blur-md transition-all active:scale-90 ${template.isPublic ? 'bg-white/80 text-blue-600 border-blue-100' : 'bg-gray-900/80 text-white border-gray-700'}`}
-                                                    title={template.isPublic ? "Visible to everyone" : "Private (only you see this)"}
+                                                    title={template.isPublic ? t('visibleTooltip') : t('privateTooltip')}
                                                 >
                                                     {template.isPublic ? <Globe size={18} /> : <EyeOff size={18} />}
                                                 </button>
                                                 <button
                                                     onClick={(e) => handleDelete(template.id, e)}
                                                     className="p-2 bg-red-500/80 text-white rounded-xl border border-red-400 shadow-xl backdrop-blur-md hover:bg-red-600 transition-all active:scale-90"
-                                                    title="Delete Template"
+                                                    title={t('deleteTooltip')}
                                                 >
                                                     <Trash2 size={18} />
                                                 </button>
@@ -209,7 +221,7 @@ export default function TemplatesPage() {
                                             <div className="absolute top-4 left-4 pointer-events-none">
                                                 <div className="px-3 py-1 bg-gray-900 text-white text-[10px] font-bold rounded-lg flex items-center gap-2 shadow-xl border border-gray-700">
                                                     <EyeOff size={12} />
-                                                    PRIVATE
+                                                    {t('privateBadge')}
                                                 </div>
                                             </div>
                                         )}
@@ -221,8 +233,8 @@ export default function TemplatesPage() {
                                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-50 rounded-[2rem] text-gray-300 mb-6">
                                     <Layout size={40} />
                                 </div>
-                                <h3 className="text-2xl font-black text-gray-900 mb-2">No templates found</h3>
-                                <p className="text-gray-400 font-medium">Try adjusting your search or filters to find what you&apos;re looking for.</p>
+                                <h3 className="text-2xl font-black text-gray-900 mb-2">{t('emptyTitle')}</h3>
+                                <p className="text-gray-400 font-medium">{t('emptyDescription')}</p>
                             </div>
                         )}
                     </div>
@@ -233,9 +245,7 @@ export default function TemplatesPage() {
                     <div className="max-w-7xl mx-auto border-t border-gray-100 pt-16">
                         <div className="max-w-2xl">
                             <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium">
-                                Our resume templates are designed to balance visual clarity and structural simplicity.
-                                Clean layouts, readable typography, and standardized sections help ensure compatibility
-                                with common applicant tracking systems while maintaining a professional appearance.
+                                {t('seoDescription')}
                             </p>
                         </div>
                     </div>
@@ -273,11 +283,11 @@ export default function TemplatesPage() {
                                 </div>
 
                                 <h3 className="text-2xl font-black text-gray-900 tracking-tight mb-4">
-                                    Delete this template?
+                                    {t('deleteModalTitle')}
                                 </h3>
 
                                 <p className="text-gray-500 font-medium leading-relaxed mb-8">
-                                    Are you sure you want to delete this template? This action is permanent and will remove it for everyone.
+                                    {t('deleteModalDescription')}
                                 </p>
 
                                 <div className="flex flex-col gap-3">
@@ -285,13 +295,13 @@ export default function TemplatesPage() {
                                         onClick={confirmDelete}
                                         className="w-full py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-red-200 active:scale-95"
                                     >
-                                        Yes, Delete Permanent
+                                        {t('deleteConfirm')}
                                     </button>
                                     <button
                                         onClick={() => setTemplateToDelete(null)}
                                         className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-gray-600 rounded-2xl font-bold transition-all active:scale-95"
                                     >
-                                        Cancel
+                                        {t('cancel')}
                                     </button>
                                 </div>
                             </div>

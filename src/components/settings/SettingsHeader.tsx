@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 
 interface SettingsHeaderProps {
@@ -8,5 +9,6 @@ interface SettingsHeaderProps {
 }
 
 export const SettingsHeader = ({ activeTab, setActiveTab }: SettingsHeaderProps) => {
-    return <CraftorNavbar mode="compact" title="Settings" backUrl="/" activeTab={activeTab} setActiveTab={setActiveTab} />;
+    const t = useTranslations('SettingsHeader');
+    return <CraftorNavbar mode="compact" title={t('title')} backUrl="/" activeTab={activeTab} setActiveTab={setActiveTab} />;
 };

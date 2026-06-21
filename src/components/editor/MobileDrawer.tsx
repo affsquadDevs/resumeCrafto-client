@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore } from '@/store/useEditorStore';
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
 import { DesignPanel } from './panels/DesignPanel';
@@ -10,6 +11,7 @@ import { LayersPanelContent } from './panels/LayersPanelContent';
 import { X } from 'lucide-react';
 
 export const MobileDrawer = () => {
+    const t = useTranslations('MobileDrawer');
     const { mobileActivePanel, setMobileActivePanel } = useEditorStore();
     const [isVisible, setIsVisible] = useState(false);
 
@@ -38,10 +40,10 @@ export const MobileDrawer = () => {
 
     const getTitle = () => {
         switch (mobileActivePanel) {
-            case 'design': return 'Design & Templates';
-            case 'elements': return 'Add Elements';
-            case 'icons': return 'Search Icons';
-            case 'layers': return 'Layers & Properties';
+            case 'design': return t('titleDesign');
+            case 'elements': return t('titleElements');
+            case 'icons': return t('titleIcons');
+            case 'layers': return t('titleLayers');
             default: return '';
         }
     };

@@ -2,8 +2,10 @@ import React from 'react';
 import { useEditorStore } from '@/store/useEditorStore';
 import { Minus, Plus } from 'lucide-react';
 import * as Slider from '@radix-ui/react-slider';
+import { useTranslations } from 'next-intl';
 
 export const ZoomControls = () => {
+    const t = useTranslations("ZoomControls");
     const zoom = useEditorStore((state) => state.zoom);
     const setZoom = useEditorStore((state) => state.setZoom);
 
@@ -42,7 +44,7 @@ export const ZoomControls = () => {
                 </Slider.Track>
                 <Slider.Thumb
                     className="block w-4 h-4 bg-white border border-gray-300 shadow hover:bg-gray-50 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-purple-400"
-                    aria-label="Zoom"
+                    aria-label={t('zoom')}
                 />
             </Slider.Root>
 

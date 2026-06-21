@@ -1,18 +1,20 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { Layout, Square, Smartphone, Layers, X, Minus, Plus } from 'lucide-react';
 import { useEditorStore } from '@/store/useEditorStore';
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
 
 export const MobileEditorNav = () => {
+    const t = useTranslations('MobileEditorNav');
     const { mobileActivePanel, setMobileActivePanel, zoom, setZoom } = useEditorStore();
 
     const navItems = [
-        { id: 'design', icon: Layout, label: 'Design' },
-        { id: 'elements', icon: Square, label: 'Elements' },
-        { id: 'icons', icon: Smartphone, label: 'Icons' },
-        { id: 'layers', icon: Layers, label: 'Layers' },
+        { id: 'design', icon: Layout, label: t('navDesign') },
+        { id: 'elements', icon: Square, label: t('navElements') },
+        { id: 'icons', icon: Smartphone, label: t('navIcons') },
+        { id: 'layers', icon: Layers, label: t('navLayers') },
     ] as const;
 
     const stepZoom = (amount: number) => {

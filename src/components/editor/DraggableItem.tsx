@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Rnd } from 'react-rnd';
 import { useEditorStore } from '@/store/useEditorStore';
 import { FloatingToolbar } from './FloatingToolbar';
@@ -31,6 +32,7 @@ const Handle = ({ type }: { type: 'circle' | 'rect' }) => (
 );
 
 export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
+    const t = useTranslations('DraggableItem');
     const element = useEditorStore((state) =>
         state.elements.find((el) => el.id === id)
     );
@@ -254,7 +256,7 @@ export const DraggableItem: React.FC<DraggableItemProps> = ({ id }) => {
                 ) : element.type === 'image' ? (
                     <img
                         src={element.src}
-                        alt="Uploaded element"
+                        alt={t('uploadedElementAlt')}
                         style={{
                             width: '100%',
                             height: '100%',

@@ -1,0 +1,244 @@
+{
+  "software-engineer": {
+    "title": "Softwarový inženýr",
+    "category": "Technologie",
+    "summary": "Předveďte svou technickou hloubku, dokončené projekty a měřitelný dopad pro inženýrské pozice.",
+    "intro": "Silný životopis softwarového inženýra vyvažuje technickou šíři s důkazy o skutečném dopadu. Náboráři a inženýrští manažeři chtějí vidět jazyky a systémy, se kterými pracujete, ale najímají na základě výsledků, jako jsou dodané funkce, snížená latence a vyřešené problémy. Začněte výsledky a podložte je technologickým stackem, který jste použili.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "REST API",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Návrh systémů"
+    ],
+    "tips": [
+      "Každou odrážku začněte silným slovesem a měřitelným výsledkem, například „Snížil jsem dobu odezvy API o 40 %.“",
+      "Své hlavní jazyky a frameworky uveďte ve vyhrazené sekci dovedností, aby je ATS dokázal rychle spárovat.",
+      "Přidejte odkaz na GitHub profil nebo portfolio, které demonstruje reálný, spustitelný kód.",
+      "Popište škálu, na které jste pracovali (požadavky za sekundu, počet uživatelů, objem dat), abyste svému dopadu dali kontext.",
+      "Stack, který zdůrazňujete, přizpůsobte popisu pozice, místo abyste vypisovali každou technologii, které jste se kdy dotkli."
+    ]
+  },
+  "ux-designer": {
+    "title": "UX designér",
+    "category": "Design",
+    "summary": "Vyzdvihněte svůj designový proces, výzkumné metody a produktové výsledky, které vaše práce přinesla.",
+    "intro": "Životopis UX designéra by se měl číst jako argument pro to, jak přemýšlíte, ne jen jako seznam nástrojů. Náborové týmy hledají jasný proces: výzkum, generování nápadů, prototypování a validaci, propojené s výsledky, jako je vyšší úspěšnost úkolů nebo vyšší konverze. Spojte své řemeslo s obchodním dopadem, který vaše návrhy přinesly.",
+    "keySkills": [
+      "Uživatelský výzkum",
+      "Wireframing",
+      "Prototypování",
+      "Figma",
+      "Testování použitelnosti",
+      "Informační architektura",
+      "Návrh interakcí",
+      "Designové systémy",
+      "Přístupnost"
+    ],
+    "tips": [
+      "Každou pozici uveďte problémem, který jste řešili, a výsledkem, který jste dodali, ne jen obrazovkami, které jste navrhli.",
+      "Vždy přidejte odkaz na portfolio se dvěma nebo třemi podrobnými případovými studiemi.",
+      "Kde to jde, vyčíslete dopad, například „Zvýšil jsem dokončení onboardingu o 22 %.“",
+      "Pojmenujte výzkumné a testovací metody, které jste použili, aby byl váš proces viditelný i pro nedesignéry.",
+      "Udržujte rozvržení čisté a vzdušné; váš životopis je sám o sobě ukázkou designu."
+    ]
+  },
+  "accountant": {
+    "title": "Účetní",
+    "category": "Finance",
+    "summary": "Prokažte přesnost, znalost předpisů a finanční kontroly, za které odpovídáte.",
+    "intro": "Životopis účetního se posuzuje podle preciznosti, důvěryhodnosti a důvěry. Zaměstnavatelé chtějí vidět relevantní certifikace, systémy, ve kterých pracujete, a čistou historii přesného a včasného výkaznictví. Svou pečlivost k detailu prokažte jak obsahem, tak formátováním stránky.",
+    "keySkills": [
+      "Finanční výkaznictví",
+      "Závazky",
+      "Pohledávky",
+      "Hlavní kniha",
+      "Vyrovnávání účtů",
+      "GAAP",
+      "Příprava daní",
+      "QuickBooks",
+      "Excel",
+      "Audit"
+    ],
+    "tips": [
+      "Certifikace jako CPA uveďte viditelně v horní části stránky.",
+      "Vyčíslete rozsah toho, co spravujete, například rozpočty, objem transakcí nebo počet účtů.",
+      "Pojmenujte účetní software a ERP systémy, které znáte, aby je ATS dokázal spárovat.",
+      "Zdůrazněte úspěchy v oblasti compliance, jako jsou čisté audity nebo snížení chyb ve výkaznictví.",
+      "Udržujte formátování konzervativní a bezchybné; přesnost je součástí sdělení."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Strojní inženýr",
+    "category": "Strojírenství",
+    "summary": "Představte své zkušenosti s návrhem, technické nástroje a produkty, které jste pomohli přivést k životu.",
+    "intro": "Životopis strojního inženýra by měl propojit technické schopnosti s hmatatelnými výsledky: navržené díly, uvedené produkty nebo snížené náklady. Náboroví manažeři hledají znalost CAD, relevantní normy a praktické zkušenosti napříč životním cyklem produktu. Ukažte jak to, co jste vytvořili, tak výsledek, který to přineslo.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Analýza metodou konečných prvků",
+      "GD&T",
+      "Návrh produktů",
+      "Prototypování",
+      "Výrobní procesy",
+      "Analýza tolerancí"
+    ],
+    "tips": [
+      "Uveďte CAD a simulační nástroje, které používáte, a úroveň své zdatnosti v každém z nich.",
+      "Vyčíslete výsledky, jako je snížená hmotnost, ušetřené náklady nebo zkrácený výrobní čas.",
+      "Odkažte na normy a metodiky, podle kterých pracujete, například GD&T nebo ISO.",
+      "Zdůrazněte mezioborovou spolupráci s výrobou, kvalitou a dodavateli.",
+      "Zahrňte případné patenty, publikované návrhy nebo závěrečné projekty, které prokazují aplikované dovednosti."
+    ]
+  },
+  "project-manager": {
+    "title": "Projektový manažer",
+    "category": "Management",
+    "summary": "Dokažte, že dodáváte projekty včas, v rámci rozpočtu a s měřitelnými obchodními výsledky.",
+    "intro": "Životopis projektového manažera stojí a padá na výsledcích. Zaměstnavatelé chtějí důkaz, že umíte vymezit rozsah práce, řídit zúčastněné strany a dodávat v termínech a rozpočtu. Začněte výsledky projektů, které jste vedli, a poté ukažte metodiky a nástroje, které vás k nim dovedly.",
+    "keySkills": [
+      "Plánování projektů",
+      "Řízení zúčastněných stran",
+      "Agile",
+      "Scrum",
+      "Řízení rizik",
+      "Sestavování rozpočtu",
+      "Jira",
+      "Tvorba roadmap",
+      "Mezioborové vedení"
+    ],
+    "tips": [
+      "U každého projektu vyčíslete rozsah: velikost rozpočtu, počet členů týmu a časový rámec.",
+      "Odrážky začínejte výsledky dodání, například „Dodal jsem migraci za 1,2 mil. USD o dva týdny dříve.“",
+      "Pojmenujte své certifikace, jako jsou PMP nebo CSM, pokud je máte.",
+      "Ukažte řízení zúčastněných stran a mezioborovou koordinaci, ne jen sledování úkolů.",
+      "Metodiku, kterou zdůrazňujete, přizpůsobte pozici, ať už jde o Agile, Waterfall, nebo hybridní přístup."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Marketingový manažer",
+    "category": "Marketing",
+    "summary": "Propojte kampaně s tržbami, růstem a kanály, které jste škálovali.",
+    "intro": "Životopis marketingového manažera by se měl číst jako příběh růstu. Náborové týmy chtějí vidět, které kanály vlastníte, jaké kampaně jste vedli a jaký pipeline nebo tržby přinesly. Ukotvěte své zkušenosti v metrikách, aby váš dopad nešlo přehlédnout.",
+    "keySkills": [
+      "Řízení kampaní",
+      "SEO",
+      "Obsahový marketing",
+      "Placená akvizice",
+      "Marketingová analytika",
+      "E-mailový marketing",
+      "Strategie značky",
+      "Google Analytics",
+      "Generování leadů",
+      "Marketingová automatizace"
+    ],
+    "tips": [
+      "Vyčíslete výsledky, jako jsou vygenerované leady, snížený CAC nebo ovlivněné tržby.",
+      "Pojmenujte kanály a platformy, které vlastníte, aby odpovídaly klíčovým slovům v inzerátu.",
+      "Ukažte odpovědnost za rozpočet a návratnost, kterou jste z něj získali.",
+      "Zdůrazněte vlajkovou kampaň s jasnými čísly před a po.",
+      "Prokažte jak strategii, tak realizaci, ne jen jedno z nich."
+    ]
+  },
+  "student": {
+    "title": "Student",
+    "category": "Začínající",
+    "summary": "Proměňte studium, projekty a stáže v přesvědčivý první životopis.",
+    "intro": "Životopis pro začátečníky si vyslouží pozvánky na pohovor tím, že maximálně využije omezené formální zkušenosti. Studium, projekty, stáže a vedení v mimoškolních aktivitách se počítají, pokud je zarámujete kolem dovedností a výsledků. Zaměřte se na to, co umíte, podpořeno konkrétními příklady, místo abyste se omlouvali za krátkou pracovní historii.",
+    "keySkills": [
+      "Komunikace",
+      "Týmová práce",
+      "Time management",
+      "Microsoft Office",
+      "Výzkum",
+      "Řešení problémů",
+      "Adaptabilita",
+      "Vedení lidí"
+    ],
+    "tips": [
+      "Vzdělání umístěte do horní části a uveďte relevantní předměty, prospěch (pokud je dobrý) a ocenění.",
+      "K projektům z výuky a stážím přistupujte jako k zaměstnání, s odrážkami zaměřenými na výsledky.",
+      "Zdůrazněte vedení v klubech, sportu nebo dobrovolnictví, abyste ukázali iniciativu.",
+      "Udržujte životopis na jedné stránce a používejte čisté, snadno čitelné rozvržení.",
+      "Sekci dovedností přizpůsobte konkrétním pozicím, o které se ucházíte."
+    ]
+  },
+  "community-manager": {
+    "title": "Community manažer",
+    "category": "Marketing",
+    "summary": "Ukažte, jak rozšiřujete, zapojujete a udržujete publikum napříč kanály.",
+    "intro": "Životopis community manažera by měl dokázat, že umíte vybudovat a udržet zapojené publikum. Náborové týmy hledají metriky růstu, výsledky zapojení a důkazy, že dokážete reprezentovat hlas značky a zároveň zvládat skutečné konverzace. Spojte platformy, které spravujete, s výsledky, které jste přinesli.",
+    "keySkills": [
+      "Zapojení komunity",
+      "Správa sociálních sítí",
+      "Tvorba obsahu",
+      "Moderace",
+      "Hlas značky",
+      "Analytika",
+      "Discord",
+      "Zákaznická podpora",
+      "Koordinace akcí"
+    ],
+    "tips": [
+      "Kde to jde, vyčíslete růst komunity, míru zapojení a retenci.",
+      "Pojmenujte platformy a nástroje, které spravujete, jako jsou Discord, Slack nebo sociální kanály.",
+      "Ukažte, jak jste zvládli eskalace nebo otočili negativní náladu.",
+      "Zdůrazněte kampaně nebo akce, které jste vedli, a účast, kterou přinesly.",
+      "Prokažte konzistentní hlas značky na konkrétních příkladech."
+    ]
+  },
+  "creative-writer": {
+    "title": "Kreativní textař",
+    "category": "Psaní",
+    "summary": "Nechte za sebe mluvit svůj styl, šíři a publikovanou tvorbu.",
+    "intro": "Životopis kreativního textaře by měl prokázat šíři, spolehlivost a osobitý styl. Editoři a klienti chtějí vidět publikovanou tvorbu, formáty, které zvládáte, a vaši schopnost dodat vybroušený text v termínu. Začněte referencemi a nechte těžkou práci odvést portfolio.",
+    "keySkills": [
+      "Copywriting",
+      "Vyprávění příběhů",
+      "Redakční úpravy",
+      "Obsahová strategie",
+      "SEO psaní",
+      "Výzkum",
+      "Korektury",
+      "Hlas značky",
+      "CMS"
+    ],
+    "tips": [
+      "Vždy přidejte odkaz na portfolio s pečlivě vybranou ukázkou svých nejlepších prací.",
+      "Uveďte významné publikace, autorské články nebo klienty, abyste si vybudovali důvěryhodnost.",
+      "Ukažte šíři tím, že pojmenujete formáty, které píšete, jako jsou dlouhé texty, scénáře nebo reklamní texty.",
+      "Kde to jde, vyčíslete dosah, například čtenost nebo zapojení u publikované tvorby.",
+      "Udržujte samotný životopis úsporný a bez překlepů; je to ukázka vašeho psaní."
+    ]
+  },
+  "sales-representative": {
+    "title": "Obchodní zástupce",
+    "category": "Obchod",
+    "summary": "Začněte plněním kvót, uzavřenými obchody a tržbami, které jste přinesli.",
+    "intro": "Životopis obchodního zástupce je v zásadě o číslech. Náboroví manažeři hledají plnění kvót, velikost obchodů a to, jak konzistentně plníte cíle. Své výsledky postavte do popředí a podložte je procesem a nástroji, které jste použili k jejich dosažení.",
+    "keySkills": [
+      "Generování leadů",
+      "Vyhledávání zákazníků",
+      "Vyjednávání",
+      "CRM",
+      "Salesforce",
+      "Správa pipeline",
+      "Uzavírání obchodů",
+      "Správa klíčových zákazníků",
+      "Studené hovory"
+    ],
+    "tips": [
+      "Každou pozici začněte plněním kvóty, například „Dosáhl jsem 128 % kvóty v roce 2025.“",
+      "Vyčíslete velikost obchodů, vygenerované tržby a velikost svého portfolia zákazníků.",
+      "Pojmenujte CRM a obchodní nástroje, které používáte, aby odpovídaly klíčovým slovům ATS.",
+      "Ukažte postup, jako jsou ocenění President's Club nebo povýšení.",
+      "Zdůrazněte výsledky jak v získávání nových zákazníků, tak v růstu stávajících, abyste ukázali šíři."
+    ]
+  }
+}

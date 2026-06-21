@@ -1,11 +1,13 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export const Footer = () => {
+    const t = useTranslations('Footer');
     const [email, setEmail] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +27,7 @@ export const Footer = () => {
                             <div className="w-10 h-10 relative">
                                 <Image
                                     src="/logo.svg"
-                                    alt="ResumeCraftor Logo"
+                                    alt={t('logoAlt')}
                                     fill
                                     className="object-contain"
                                 />
@@ -36,10 +38,10 @@ export const Footer = () => {
                             </span>
                         </Link>
                         <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
-                            Empowering professionals to create world-class documents. The ultimate design tool for documents, resumes, and portfolios.
+                            {t('brandDescription')}
                         </p>
                         <div className="mt-2">
-                            <p className="text-xs text-gray-500 mb-1">Contact us:</p>
+                            <p className="text-xs text-gray-500 mb-1">{t('contactLabel')}</p>
                             <Link href="/contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">hello@resumecraftor.com</Link>
                         </div>
                         <div className="flex items-center gap-4">
@@ -63,38 +65,38 @@ export const Footer = () => {
 
                     {/* Platform Column */}
                     <div>
-                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">Platform</h3>
+                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">{t('platformHeading')}</h3>
                         <ul className="space-y-3">
-                            <li><Link href="/resume-builder" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Resume Builder</Link></li>
-                            <li><Link href="/templates" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Templates</Link></li>
-                            <li><Link href="/how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">How It Works</Link></li>
-                            <li><Link href="/pricing" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Pricing</Link></li>
+                            <li><Link href="/resume-builder" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkResumeBuilder')}</Link></li>
+                            <li><Link href="/templates" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkTemplates')}</Link></li>
+                            <li><Link href="/how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkHowItWorks')}</Link></li>
+                            <li><Link href="/pricing" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkPricing')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Company Column */}
                     <div>
-                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">Company</h3>
+                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">{t('companyHeading')}</h3>
                         <ul className="space-y-3">
-                            <li><Link href="/about" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">About</Link></li>
-                            <li><Link href="/blog" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Blog</Link></li>
-                            <li><Link href="/contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Careers</Link></li>
-                            <li><Link href="/privacy-policy" className="text-purple-600 hover:text-purple-700 transition-colors text-sm font-semibold">Privacy</Link></li>
+                            <li><Link href="/about" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkAbout')}</Link></li>
+                            <li><Link href="/blog" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkBlog')}</Link></li>
+                            <li><Link href="/contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">{t('linkCareers')}</Link></li>
+                            <li><Link href="/privacy-policy" className="text-purple-600 hover:text-purple-700 transition-colors text-sm font-semibold">{t('linkPrivacy')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Newsletter Column */}
                     <div>
-                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">Stay Updated</h3>
+                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-6">{t('newsletterHeading')}</h3>
                         <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                            Join over 5,000+ creators receiving our weekly design tips and template updates.
+                            {t('newsletterDescription')}
                         </p>
                         <form onSubmit={handleSubmit} className="relative">
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Enter your email"
+                                placeholder={t('emailPlaceholder')}
                                 className="w-full px-4 py-3 pr-12 text-sm border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                                 required
                             />

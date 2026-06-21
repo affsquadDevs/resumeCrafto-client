@@ -1,16 +1,17 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { ChevronRight, Trash2, Loader2 } from 'lucide-react';
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 
 import { TEMPLATES } from '@/utils/templates';
 import { useEditorStore } from '@/store/useEditorStore';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "@/i18n/navigation";
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
 
 import { DashboardHero } from '@/components/dashboard/DashboardHero';
 
@@ -23,6 +24,7 @@ const DashboardFooter = dynamic(() => import('@/components/dashboard/DashboardFo
 
 
 export default function DashboardPage() {
+    const t = useTranslations("DashboardPage");
     const router = useRouter();
     const loadTemplate = useEditorStore((state) => state.loadTemplate);
     const setResumeInfo = useEditorStore((state) => state.setResumeInfo);
@@ -77,14 +79,14 @@ export default function DashboardPage() {
         } else {
             // New blank
             loadTemplate([]);
-            setResumeInfo(null, 'Untitled Resume');
+            setResumeInfo(null, t('untitledResume'));
         }
         router.push('/resume-builder');
     };
 
     const handleDeleteResume = async (id: string, e: React.MouseEvent) => {
         e.stopPropagation();
-        if (!confirm('Are you sure you want to delete this design?')) return;
+        if (!confirm(t('deleteConfirm'))) return;
         try {
             const res = await fetch(`/api/resumes?id=${id}`, { method: 'DELETE' });
             if (res.ok) {
@@ -106,23 +108,23 @@ export default function DashboardPage() {
                 <section className="px-6 md:px-10 pb-12">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                         <div className="flex items-center gap-3 flex-wrap">
-                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">My Designs</h3>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">{t('myDesignsTitle')}</h3>
                             <span className="px-3 py-1 bg-purple-50 text-purple-600 text-[10px] font-bold rounded-full border border-purple-100 uppercase tracking-wider whitespace-nowrap">
-                                {resumes.length} {resumes.length === 1 ? 'Design' : 'Designs'}
+                                {resumes.length} {resumes.length === 1 ? t('designSingular') : t('designPlural')}
                             </span>
                         </div>
                         <Link
                             href="/templates"
                             className="text-sm font-bold text-gray-400 hover:text-purple-600 transition-colors flex items-center gap-1 group whitespace-nowrap"
                         >
-                            View All <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            {t('viewAll')} <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12">
                         <DesignCard
-                            title="Create from Scratch"
-                            date="Blank Canvas"
+                            title={t('createFromScratch')}
+                            date={t('blankCanvas')}
                             isCreateNew
                             onClick={() => handleSelectTemplate(null)}
                         />
@@ -130,7 +132,7 @@ export default function DashboardPage() {
                         {isLoading ? (
                             <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-400 gap-4">
                                 <Loader2 className="animate-spin" size={40} />
-                                <p className="font-bold">Loading your designs...</p>
+                                <p className="font-bold">{t('loadingDesigns')}</p>
                             </div>
                         ) : resumes.length > 0 ? (
                             resumes.map((resume) => (
@@ -151,7 +153,7 @@ export default function DashboardPage() {
                             ))
                         ) : (
                             <div className="col-span-full md:col-span-1 py-10 px-8 border-2 border-dashed border-gray-200 rounded-[2.5rem] flex flex-col items-center justify-center text-center">
-                                <p className="text-gray-400 font-medium text-sm">You haven&apos;t created any designs yet.</p>
+                                <p className="text-gray-400 font-medium text-sm">{t('noDesigns')}</p>
                             </div>
                         )}
                     </div>
@@ -161,16 +163,16 @@ export default function DashboardPage() {
                 <section className="px-6 md:px-10 pb-12 mt-8">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                         <div className="flex items-center gap-3 flex-wrap">
-                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Standard Templates</h3>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">{t('standardTemplatesTitle')}</h3>
                             <span className="px-3 py-1 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full border border-gray-200 uppercase tracking-wider whitespace-nowrap">
-                                {TEMPLATES.length} Library
+                                {TEMPLATES.length} {t('library')}
                             </span>
                         </div>
                         <Link
                             href="/templates"
                             className="text-sm font-bold text-gray-400 hover:text-purple-600 transition-colors flex items-center gap-1 group whitespace-nowrap"
                         >
-                            Explore All <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            {t('exploreAll')} <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </div>
 
@@ -179,7 +181,7 @@ export default function DashboardPage() {
                             <DesignCard
                                 key={template.id}
                                 title={template.name}
-                                date="Official Template"
+                                date={t('officialTemplate')}
                                 templateElements={template.elements}
                                 onClick={() => handleSelectTemplate(template.id)}
                             />
@@ -194,8 +196,8 @@ export default function DashboardPage() {
                                 <ChevronRight size={32} />
                             </div>
                             <div>
-                                <h4 className="font-black text-gray-900">View More</h4>
-                                <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">Full Library</p>
+                                <h4 className="font-black text-gray-900">{t('viewMore')}</h4>
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">{t('fullLibrary')}</p>
                             </div>
                         </Link>
                     </div>

@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore } from '@/store/useEditorStore';
 import { Loader2, Search, X } from 'lucide-react';
 import { useIconify } from '@/hooks/useIconify';
 
 export const IconsPanel = () => {
+    const t = useTranslations('IconsPanel');
     const addElement = useEditorStore((state) => state.addElement);
     const setMobileActivePanel = useEditorStore((state) => state.setMobileActivePanel);
     const {
@@ -29,14 +31,26 @@ export const IconsPanel = () => {
         setMobileActivePanel(null);
     };
 
+    const featuredIconLabels: Record<string, string> = {
+        'Telegram': t('iconTelegram'),
+        'Viber': t('iconViber'),
+        'WhatsApp': t('iconWhatsApp'),
+        'LinkedIn': t('iconLinkedIn'),
+        'Email': t('iconEmail'),
+        'Phone': t('iconPhone'),
+        'Web': t('iconWeb'),
+        'Map Pin': t('iconMapPin'),
+        'Instagram': t('iconInstagram'),
+    };
+
     return (
         <div className="flex flex-col gap-4">
             <div className="mb-2">
-                <p className="text-xs text-gray-500 font-semibold mb-2 uppercase tracking-wider whitespace-nowrap px-1">Social & Contact</p>
+                <p className="text-xs text-gray-500 font-semibold mb-2 uppercase tracking-wider whitespace-nowrap px-1">{t('socialAndContact')}</p>
                 <div className="relative">
                     <input
                         type="text"
-                        placeholder="Search icons..."
+                        placeholder={t('searchPlaceholder')}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full pl-9 pr-3 py-2 bg-gray-50/80 border border-gray-100 rounded-xl text-[12px] focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:bg-white transition-all shadow-inner"
@@ -79,7 +93,7 @@ export const IconsPanel = () => {
                         active:scale-95
                         group
                     "
-                        title={icon.name}
+                        title={featuredIconLabels[icon.name] ?? icon.name}
                     >
                         <div className="w-12 h-12 flex items-center justify-center text-gray-400 group-hover:text-purple-600 transition-colors duration-300">
                             <svg
@@ -95,7 +109,7 @@ export const IconsPanel = () => {
                         </div>
 
                         <span className="text-[11px] font-bold text-gray-500 group-hover:text-purple-700 mt-2 truncate w-full text-center transition-colors duration-300">
-                            {icon.name}
+                            {featuredIconLabels[icon.name] ?? icon.name}
                         </span>
                     </button>
                 ))}
@@ -104,7 +118,7 @@ export const IconsPanel = () => {
                 {isLoading ? (
                     <div className="col-span-2 py-8 flex flex-col items-center justify-center text-gray-400 gap-2">
                         <Loader2 className="animate-spin" size={20} />
-                        <span className="text-xs">Searching database...</span>
+                        <span className="text-xs">{t('searchingDatabase')}</span>
                     </div>
                 ) : remoteIcons.length > 0 ? (
                     remoteIcons.map((iconName) => (
@@ -141,7 +155,7 @@ export const IconsPanel = () => {
                     ))
                 ) : searchQuery && !isLoading && (
                     <div className="col-span-2 py-8 text-center text-xs text-gray-400">
-                        No icons found for "{searchQuery}"
+                        {t('noIconsFound', { query: searchQuery })}
                     </div>
                 )}
             </div>

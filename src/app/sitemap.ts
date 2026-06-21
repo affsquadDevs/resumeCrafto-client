@@ -3,58 +3,58 @@ import { blogPosts } from '@/lib/blog-data';
 import { roles } from '@/lib/roles';
 import { authors } from '@/lib/authors';
 import { POSTS_PER_PAGE } from '@/components/dashboard/BlogListing';
+import { routing } from '@/i18n/routing';
+import { localizedUrl } from '@/lib/seo';
+
+type EntryOpts = {
+    changeFrequency: 'weekly' | 'monthly';
+    priority: number;
+    lastModified: Date;
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://resumecraftor.com';
+    // Emit one entry per locale for each logical path, each carrying the full
+    // set of hreflang alternates. Listing every localized URL also means the
+    // IndexNow cron (which reads sitemap().url) submits all locale variants.
+    const entriesFor = (path: string, opts: EntryOpts): MetadataRoute.Sitemap => {
+        const languages: Record<string, string> = {};
+        for (const loc of routing.locales) languages[loc] = localizedUrl(path, loc);
+        languages['x-default'] = localizedUrl(path, routing.defaultLocale);
 
-    const staticRoutes = [
-        '',
-        '/how-it-works',
-        '/about',
-        '/contact',
-        '/blog',
-        '/privacy-policy',
-        '/terms-of-service',
-        '/resume-builder',
-        '/templates',
-        '/resume-examples',
+        return routing.locales.map((loc) => ({
+            url: localizedUrl(path, loc),
+            lastModified: opts.lastModified,
+            changeFrequency: opts.changeFrequency,
+            priority: opts.priority,
+            alternates: { languages },
+        }));
+    };
+
+    const staticPaths = [
+        '/', '/how-it-works', '/about', '/contact', '/blog', '/privacy-policy',
+        '/terms-of-service', '/resume-builder', '/templates', '/resume-examples',
         '/cover-letter-builder',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.8,
-    }));
+    ];
+    const staticRoutes = staticPaths.flatMap((p) =>
+        entriesFor(p, { changeFrequency: 'monthly', priority: p === '/' ? 1 : 0.8, lastModified: new Date() })
+    );
 
-    const blogRoutes = blogPosts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
+    const blogRoutes = blogPosts.flatMap((post) =>
+        entriesFor(`/blog/${post.slug}`, { changeFrequency: 'monthly', priority: 0.7, lastModified: new Date(post.date) })
+    );
 
-    // Paginated blog index pages (page 1 lives at /blog)
     const totalBlogPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
-    const blogPageRoutes = Array.from({ length: Math.max(0, totalBlogPages - 1) }, (_, i) => ({
-        url: `${baseUrl}/blog/page/${i + 2}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.4,
-    }));
+    const blogPageRoutes = Array.from({ length: Math.max(0, totalBlogPages - 1) }, (_, i) =>
+        entriesFor(`/blog/page/${i + 2}`, { changeFrequency: 'weekly', priority: 0.4, lastModified: new Date() })
+    ).flat();
 
-    const roleRoutes = roles.map((role) => ({
-        url: `${baseUrl}/resume-templates/${role.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
+    const roleRoutes = roles.flatMap((role) =>
+        entriesFor(`/resume-templates/${role.slug}`, { changeFrequency: 'monthly', priority: 0.7, lastModified: new Date() })
+    );
 
-    const authorRoutes = authors.map((author) => ({
-        url: `${baseUrl}/author/${author.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.4,
-    }));
+    const authorRoutes = authors.flatMap((author) =>
+        entriesFor(`/author/${author.slug}`, { changeFrequency: 'monthly', priority: 0.4, lastModified: new Date() })
+    );
 
     return [
         ...staticRoutes,

@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/lib/blog-data';
+import { useLocale, useTranslations } from 'next-intl';
+import { getLocalizedBlogPosts } from '@/lib/blog-data';
 
 export const BlogPreview = () => {
+    const t = useTranslations("BlogPreview");
+    const locale = useLocale();
     // Take the 3 latest posts
-    const latestPosts = blogPosts.slice(0, 3);
+    const latestPosts = getLocalizedBlogPosts(locale).slice(0, 3);
 
     return (
         <section className="py-24 px-6 bg-white">
@@ -14,17 +17,19 @@ export const BlogPreview = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
-                            Latest from <span className="text-purple-600">Our Blog</span>
+                            {t.rich("heading", {
+                                highlight: (chunks) => <span className="text-purple-600">{chunks}</span>,
+                            })}
                         </h2>
                         <p className="text-xl text-gray-600 font-medium leading-relaxed">
-                            Expert advice on resume writing, career strategy, and standing out in a competitive job market.
+                            {t("subheading")}
                         </p>
                     </div>
                     <Link
                         href="/blog"
                         className="group inline-flex items-center gap-2 text-purple-600 font-bold text-lg hover:text-purple-700 transition-colors"
                     >
-                        <span>View all articles</span>
+                        <span>{t("viewAll")}</span>
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
@@ -35,7 +40,7 @@ export const BlogPreview = () => {
                             href={`/blog/${post.slug}`}
                             key={post.id}
                             title={post.title}
-                            aria-label={`Read article: ${post.title}`}
+                            aria-label={t("readArticleAria", { title: post.title })}
                             className="group flex flex-col rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:border-purple-200 transition-all duration-500 bg-white h-full"
                         >
                             <div className="aspect-video relative overflow-hidden">
@@ -61,11 +66,11 @@ export const BlogPreview = () => {
                                 </p>
                                 <div className="pt-6 border-t border-gray-50 flex items-center justify-between">
                                     <div className="flex items-center gap-2 text-purple-600 font-bold text-sm">
-                                        <span>Read Article</span>
+                                        <span>{t("readArticle")}</span>
                                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </div>
                                     <span className="text-xs text-gray-400 font-bold">
-                                        {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                        {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
                                     </span>
                                 </div>
                             </div>

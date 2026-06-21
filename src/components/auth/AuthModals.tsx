@@ -5,6 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, User, Loader2, Sparkles } from 'lucide-react';
 import { signIn } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 import LiquidGlass from '@/components/ui/liquid-glass/LiquidGlass';
 
 interface AuthModalsProps {
@@ -14,6 +15,7 @@ interface AuthModalsProps {
 }
 
 export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModalsProps) => {
+    const t = useTranslations('AuthModals');
     const [mode, setMode] = useState<'login' | 'register'>(initialMode);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -33,11 +35,11 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
         const urlParams = new URLSearchParams(window.location.search);
         const error = urlParams.get('error');
         if (error === 'Callback') {
-            setError('Account linking failed. If you previously signed up with email, please sign in with password first or use a different account.');
+            setError(t('errorCallback'));
         } else if (error) {
-            setError('Authentication failed. Please try again.');
+            setError(t('errorAuthFailed'));
         }
-    }, [isOpen]);
+    }, [isOpen, t]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -54,7 +56,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
 
                 if (!res.ok) {
                     const data = await res.json();
-                    throw new Error(data.message || 'Registration failed');
+                    throw new Error(data.message || t('errorRegistrationFailed'));
                 }
 
                 // Auto login after registration
@@ -143,12 +145,12 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                     <Sparkles className="text-white" size={20} />
                                                 </div>
                                                 <Dialog.Title className="text-xl font-black text-gray-900 tracking-tight">
-                                                    {mode === 'login' ? 'Welcome Back' : 'Create Account'}
+                                                    {mode === 'login' ? t('titleLogin') : t('titleRegister')}
                                                 </Dialog.Title>
                                                 <p className="text-gray-500 text-[13px] mt-1 font-medium">
                                                     {mode === 'login'
-                                                        ? 'Sign in to access your saved resumes'
-                                                        : 'Join thousands of professionals today'}
+                                                        ? t('subtitleLogin')
+                                                        : t('subtitleRegister')}
                                                 </p>
                                             </div>
 
@@ -161,7 +163,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                             <form onSubmit={handleSubmit} className="space-y-4">
                                                 {mode === 'register' && (
                                                     <div className="group">
-                                                        <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">Full Name</label>
+                                                        <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">{t('fullNameLabel')}</label>
                                                         <div className="relative">
                                                             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-600 transition-colors">
                                                                 <User size={18} />
@@ -171,7 +173,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                                 value={name}
                                                                 onChange={(e) => setName(e.target.value)}
                                                                 className="w-full bg-white/50 border border-gray-100 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500/50 transition-all font-medium text-gray-900 text-sm"
-                                                                placeholder="John Doe"
+                                                                placeholder={t('fullNamePlaceholder')}
                                                                 required
                                                             />
                                                         </div>
@@ -179,7 +181,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                 )}
 
                                                 <div className="group">
-                                                    <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">Email Address</label>
+                                                    <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">{t('emailLabel')}</label>
                                                     <div className="relative">
                                                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-600 transition-colors">
                                                             <Mail size={18} />
@@ -189,14 +191,14 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                             value={email}
                                                             onChange={(e) => setEmail(e.target.value)}
                                                             className="w-full bg-white/50 border border-gray-100 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500/50 transition-all font-medium text-gray-900 text-sm"
-                                                            placeholder="name@example.com"
+                                                            placeholder={t('emailPlaceholder')}
                                                             required
                                                         />
                                                     </div>
                                                 </div>
 
                                                 <div className="group">
-                                                    <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">Password</label>
+                                                    <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1 ml-1">{t('passwordLabel')}</label>
                                                     <div className="relative">
                                                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-600 transition-colors">
                                                             <Lock size={18} />
@@ -221,7 +223,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                         <Loader2 className="animate-spin" size={18} />
                                                     ) : (
                                                         <>
-                                                            {mode === 'login' ? 'Sign In' : 'Create Account'}
+                                                            {mode === 'login' ? t('submitLogin') : t('submitRegister')}
                                                             <Sparkles size={14} className="group-hover:rotate-12 transition-transform" />
                                                         </>
                                                     )}
@@ -230,7 +232,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
 
                                             <div className="mt-4 flex items-center gap-4">
                                                 <div className="flex-1 h-px bg-gray-100" />
-                                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">or</span>
+                                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{t('dividerOr')}</span>
                                                 <div className="flex-1 h-px bg-gray-100" />
                                             </div>
 
@@ -260,14 +262,14 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                         fill="#EA4335"
                                                     />
                                                 </svg>
-                                                <span>Continue with Google</span>
+                                                <span>{t('continueWithGoogle')}</span>
                                             </button>
 
                                             <div className="mt-6 pt-4 border-t border-gray-100 text-center">
                                                 <p className="text-gray-500 text-xs font-medium">
                                                     {mode === 'login'
-                                                        ? "Don't have an account?"
-                                                        : "Already have an account?"}
+                                                        ? t('noAccountPrompt')
+                                                        : t('hasAccountPrompt')}
                                                     <button
                                                         onClick={() => {
                                                             setMode(mode === 'login' ? 'register' : 'login');
@@ -275,7 +277,7 @@ export const AuthModals = ({ isOpen, onClose, initialMode = 'login' }: AuthModal
                                                         }}
                                                         className="ml-2 text-purple-600 font-bold hover:underline"
                                                     >
-                                                        {mode === 'login' ? 'Sign Up' : 'Sign In'}
+                                                        {mode === 'login' ? t('toggleToRegister') : t('toggleToLogin')}
                                                     </button>
                                                 </p>
                                             </div>

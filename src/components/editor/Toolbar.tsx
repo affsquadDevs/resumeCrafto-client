@@ -1,7 +1,9 @@
 import { useEditorStore } from '@/store/useEditorStore';
 import { Trash2, Palette, AlignLeft, AlignCenter, AlignRight, Bold, Italic, Group, Ungroup } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const Toolbar = () => {
+    const t = useTranslations("Toolbar");
     const selectedIds = useEditorStore((state) => state.selectedIds);
     const elements = useEditorStore((state) => state.elements);
     const updateElement = useEditorStore((state) => state.updateElement);
@@ -17,7 +19,7 @@ export const Toolbar = () => {
     if (!firstSelected) {
         return (
             <div className="h-12 bg-white border-b border-gray-200 flex items-center px-4 text-sm text-gray-500">
-                Select an element to edit
+                {t('selectElementToEdit')}
             </div>
         );
     }
@@ -45,7 +47,7 @@ export const Toolbar = () => {
         <div className="h-14 bg-white border-b border-gray-200 flex items-center px-4 gap-4 animate-in fade-in slide-in-from-top-2 overflow-x-auto scrollbar-hide shrink-0 whitespace-nowrap">
             <div className="flex items-center gap-2 border-r border-gray-200 pr-4">
                 <span className="text-xs font-semibold text-gray-500 uppercase">
-                    {isMultiSelect ? `${selectedIds.length} items` : firstSelected.type}
+                    {isMultiSelect ? t('itemsCount', { count: selectedIds.length }) : firstSelected.type}
                 </span>
             </div>
 
@@ -53,7 +55,7 @@ export const Toolbar = () => {
             {isMultiSelect && (
                 <div className="flex items-center gap-1 border-r border-gray-200 pr-4">
                     <button onClick={groupSelected} className="flex items-center gap-1 px-2 py-1 hover:bg-gray-100 rounded text-sm">
-                        <Group size={16} /> Group
+                        <Group size={16} /> {t('group')}
                     </button>
                 </div>
             )}
@@ -62,7 +64,7 @@ export const Toolbar = () => {
             {selectedElements.some(el => el.groupId) && (
                 <div className="flex items-center gap-1 border-r border-gray-200 pr-4">
                     <button onClick={ungroupSelected} className="flex items-center gap-1 px-2 py-1 hover:bg-gray-100 rounded text-sm">
-                        <Ungroup size={16} /> Ungroup
+                        <Ungroup size={16} /> {t('ungroup')}
                     </button>
                 </div>
             )}
@@ -93,7 +95,7 @@ export const Toolbar = () => {
                             onChange={(e) => handleChange('fontSize', `${e.target.value}px`)}
                             className="w-16 h-8 border border-gray-300 rounded px-2 text-sm"
                         />
-                        <span className="text-sm text-gray-500">px</span>
+                        <span className="text-sm text-gray-500">{t('pxUnit')}</span>
                     </div>
 
                     <div className="flex items-center gap-1 bg-gray-100 rounded p-1">
@@ -121,7 +123,7 @@ export const Toolbar = () => {
 
             {firstSelected.type === 'shape' && (
                 <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600">Radius:</span>
+                    <span className="text-sm text-gray-600">{t('radius')}</span>
                     <input
                         type="number"
                         value={parseInt(firstSelected.styles.borderRadius) || 0}
@@ -136,7 +138,7 @@ export const Toolbar = () => {
             <button
                 onClick={handleDelete}
                 className="flex items-center justify-center p-2 text-red-500 hover:bg-red-50 rounded-md transition-colors"
-                title="Delete Element"
+                title={t('deleteElement')}
             >
                 <Trash2 size={20} />
             </button>

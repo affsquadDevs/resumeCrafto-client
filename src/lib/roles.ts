@@ -1,3 +1,14 @@
+import rolesPl from "./content/roles/pl.json";
+import rolesEs from "./content/roles/es.json";
+import rolesPt from "./content/roles/pt.json";
+import rolesFr from "./content/roles/fr.json";
+import rolesIt from "./content/roles/it.json";
+import rolesDe from "./content/roles/de.json";
+import rolesUk from "./content/roles/uk.json";
+import rolesSv from "./content/roles/sv.json";
+import rolesCs from "./content/roles/cs.json";
+import rolesEl from "./content/roles/el.json";
+
 export interface ResumeRole {
     slug: string;          // kebab, e.g. "software-engineer"
     title: string;         // e.g. "Software Engineer"
@@ -286,4 +297,26 @@ export const roles: ResumeRole[] = [
 
 export function getRole(slug: string): ResumeRole | undefined {
     return roles.find((role) => role.slug === slug);
+}
+
+// Per-locale, per-slug overrides of the translatable fields. Empty JSON until
+// translated, in which case the English source is returned unchanged.
+type RoleTranslation = Partial<Pick<ResumeRole, "title" | "category" | "summary" | "intro" | "keySkills" | "tips">>;
+
+const ROLE_TRANSLATIONS = {
+    pl: rolesPl, es: rolesEs, pt: rolesPt, fr: rolesFr, it: rolesIt,
+    de: rolesDe, uk: rolesUk, sv: rolesSv, cs: rolesCs, el: rolesEl,
+} as Record<string, Record<string, RoleTranslation>>;
+
+export function getLocalizedRoles(locale: string): ResumeRole[] {
+    const tr = ROLE_TRANSLATIONS[locale];
+    if (!tr) return roles;
+    return roles.map((r) => ({ ...r, ...(tr[r.slug] ?? {}) }));
+}
+
+export function getLocalizedRole(slug: string, locale: string): ResumeRole | undefined {
+    const base = getRole(slug);
+    if (!base) return undefined;
+    const t = ROLE_TRANSLATIONS[locale]?.[slug];
+    return t ? { ...base, ...t } : base;
 }

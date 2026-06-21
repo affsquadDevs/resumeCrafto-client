@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { useEditorStore } from '@/store/useEditorStore';
 import { DraggableItem } from './DraggableItem';
 import { DistanceGuides } from './DistanceGuides';
 
 export const Canvas = () => {
+    const t = useTranslations('Canvas');
     const pages = useEditorStore((state) => state.pages);
     const addPage = useEditorStore((state) => state.addPage);
     const setActivePage = useEditorStore((state) => state.setActivePage);
@@ -28,7 +30,7 @@ export const Canvas = () => {
 
                     {/* Page Number Indicator */}
                     <div className="absolute -left-12 top-0 text-gray-400 font-medium text-sm">
-                        Page {page.order + 1}
+                        {t('pageLabel', { number: page.order + 1 })}
                     </div>
                 </div>
             ))}
@@ -38,7 +40,7 @@ export const Canvas = () => {
                 onClick={addPage}
                 className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-full shadow-sm border border-gray-200 transition-all hover:shadow-md"
             >
-                <span>+ Add Page</span>
+                <span>{t('addPage')}</span>
             </button>
         </div>
     );
