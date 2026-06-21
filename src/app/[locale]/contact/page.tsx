@@ -6,13 +6,14 @@ import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Contact Us",
-        description: "Contact the ResumeCraftor team for support, feedback, or account questions. We're happy to help you build a better resume.",
+        title: t("contactTitle"),
+        description: t("contactDescription"),
         alternates: buildAlternates("/contact", locale),
         openGraph: {
-            title: "Contact Us",
-            description: "Contact the ResumeCraftor team for support, feedback, or account questions.",
+            title: t("contactTitle"),
+            description: t("contactDescription"),
             url: localizedUrl("/contact", locale),
             type: "website",
             locale: ogLocale(locale),

@@ -8,14 +8,13 @@ import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Resume Examples by Job & Role",
-        description:
-            "Browse free, ATS-friendly resume examples by job and role. Find role-specific tips, keywords, and templates for software engineers, designers, accountants, managers, and more.",
+        title: t("resumeExamplesTitle"),
+        description: t("resumeExamplesDescription"),
         openGraph: {
-            title: "Resume Examples by Job & Role",
-            description:
-                "Browse free, ATS-friendly resume examples by job and role, with tailored tips, keywords, and templates for every career.",
+            title: t("resumeExamplesTitle"),
+            description: t("resumeExamplesDescription"),
             url: localizedUrl("/resume-examples", locale),
             type: "website",
             locale: ogLocale(locale),

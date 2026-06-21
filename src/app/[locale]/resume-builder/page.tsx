@@ -6,13 +6,14 @@ import WebApplicationSchema from '@/components/seo/WebApplicationSchema';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
   return {
-    title: "Free Online Resume Builder",
-    description: "Build a professional, ATS-optimized resume online for free. Drag-and-drop editor, professional templates, and instant PDF export — no design skills needed.",
+    title: t("resumeBuilderTitle"),
+    description: t("resumeBuilderDescription"),
     alternates: buildAlternates("/resume-builder", locale),
     openGraph: {
-      title: "Free Online Resume Builder | ResumeCraftor",
-      description: "Build a professional, ATS-optimized resume online for free.",
+      title: t("resumeBuilderTitle"),
+      description: t("resumeBuilderDescription"),
       url: localizedUrl("/resume-builder", locale),
       locale: ogLocale(locale),
       type: "website"

@@ -1,17 +1,18 @@
 import { Metadata } from "next";
 import { getLocalizedBlogPosts } from "@/lib/blog-data";
 import { BlogListing, POSTS_PER_PAGE } from "@/components/dashboard/BlogListing";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Blog & Career Tips",
-        description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression. Learn how to create a professional resume that gets interviews.",
+        title: t("blogTitle"),
+        description: t("blogDescription"),
         openGraph: {
-            title: "Blog & Career Tips | ResumeCraftor",
-            description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
+            title: t("blogTitle"),
+            description: t("blogDescription"),
             url: localizedUrl("/blog", locale),
             siteName: "ResumeCraftor",
             locale: ogLocale(locale),
@@ -19,8 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         },
         twitter: {
             card: "summary_large_image",
-            title: "Blog & Career Tips | ResumeCraftor",
-            description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
+            title: t("blogTitle"),
+            description: t("blogDescription"),
         },
         alternates: buildAlternates("/blog", locale),
     };
