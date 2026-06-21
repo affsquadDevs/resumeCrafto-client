@@ -7,6 +7,7 @@ import React from "react";
 import { Metadata } from "next";
 import { getLocalizedAuthorByName } from "@/lib/authors";
 import { getLocalizedArticle, localizeArticleHtml } from "@/lib/content/articles";
+import { blogPosts, getLocalizedBlogPost } from "@/lib/blog-data";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
@@ -1916,9 +1917,10 @@ const postsContent: Record<string, BlogPost> = {
 };
 
 export async function generateStaticParams() {
-    return Object.keys(postsContent).map((slug) => ({
-        slug: slug,
-    }));
+    // Cover both legacy articles (postsContent) and new data-driven articles
+    // (blog-data only). blogPosts is the superset of every published slug.
+    const slugs = new Set([...blogPosts.map((p) => p.slug), ...Object.keys(postsContent)]);
+    return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -1928,17 +1930,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { locale, slug } = await params;
     const post = postsContent[slug];
-
-    if (!post) return { title: "Article Not Found" };
-
     const article = getLocalizedArticle(slug, locale);
-    const metaTitle = article?.title ?? post.title;
-    const metaDescription = article?.description ?? post.description;
-    const metaCategory = article?.category ?? post.category;
+    const enArticle = getLocalizedArticle(slug, "en");
+    const meta = getLocalizedBlogPost(slug, locale);
+
+    if (!post && !enArticle) return { title: "Article Not Found" };
+
+    const metaTitle = article?.title ?? meta?.title ?? post?.title ?? enArticle?.title ?? "";
+    const metaDescription = article?.description ?? post?.description ?? enArticle?.description ?? meta?.excerpt ?? "";
+    const metaCategory = article?.category ?? meta?.category ?? post?.category ?? "";
+    const date = post?.date ?? meta?.date ?? "";
+    const authorName = post?.author ?? meta?.author ?? "ResumeCraftor Editorial Team";
+    const image = post?.image ?? meta?.image ?? "";
 
     const baseUrl = "https://resumecraftor.com";
 
-    const ogImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
+    const ogImage = image.startsWith("http") ? image : `${baseUrl}${image}`;
 
     return {
         title: metaTitle,
@@ -1950,9 +1957,9 @@ export async function generateMetadata({
             type: "article",
             siteName: "ResumeCraftor",
             locale: ogLocale(locale),
-            publishedTime: `${post.date}T09:00:00+00:00`,
-            modifiedTime: `${post.date}T09:00:00+00:00`,
-            authors: [post.author],
+            publishedTime: `${date}T09:00:00+00:00`,
+            modifiedTime: `${date}T09:00:00+00:00`,
+            authors: [authorName],
             section: metaCategory,
             images: [{ url: ogImage, alt: metaTitle }],
         },
@@ -1975,16 +1982,26 @@ export default async function BlogPostPage({
     setRequestLocale(locale);
     const t = await getTranslations();
     const post = postsContent[slug];
-
-    if (!post) notFound();
-
     const article = getLocalizedArticle(slug, locale);
-    const title = article?.title ?? post.title;
-    const category = article?.category ?? post.category;
-    const readTime = article?.readTime ?? post.readTime;
-    const description = article?.description ?? post.description;
-    const keywords = article?.keywords ?? post.keywords;
-    const faq = article?.faq ?? post.faq;
+    const enArticle = getLocalizedArticle(slug, "en");
+    const meta = getLocalizedBlogPost(slug, locale);
+
+    if (!post && !enArticle) notFound();
+
+    const title = article?.title ?? meta?.title ?? post?.title ?? enArticle?.title ?? "";
+    const category = article?.category ?? meta?.category ?? post?.category ?? "";
+    const readTime = article?.readTime ?? meta?.readTime ?? post?.readTime ?? "";
+    const description = article?.description ?? post?.description ?? enArticle?.description ?? meta?.excerpt ?? "";
+    const keywords = article?.keywords ?? post?.keywords ?? enArticle?.keywords;
+    const faq = article?.faq ?? post?.faq ?? enArticle?.faq;
+    const date = post?.date ?? meta?.date ?? "";
+    const authorName = post?.author ?? meta?.author ?? "ResumeCraftor Editorial Team";
+    const image = post?.image ?? meta?.image ?? "";
+    const bodyHtml = article?.contentHtml ?? (locale === "en" ? enArticle?.contentHtml : undefined);
+    const alternativeHeadline = post?.alternativeHeadline;
+    const wordCount = post?.wordCount;
+    const aboutEntities = post?.about;
+    const mentionsEntities = post?.mentions;
 
     const faqSchema = faq ? {
         "@context": "https://schema.org",
@@ -2001,8 +2018,8 @@ export default async function BlogPostPage({
 
     const baseUrl = "https://resumecraftor.com";
     const postUrl = `${baseUrl}/blog/${slug}`;
-    const absImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
-    const author = getLocalizedAuthorByName(post.author, locale);
+    const absImage = image.startsWith("http") ? image : `${baseUrl}${image}`;
+    const author = getLocalizedAuthorByName(authorName, locale);
     const authorUrl = author ? `${baseUrl}/author/${author.slug}` : `${baseUrl}/`;
 
     // Standardized Breadcrumb Schema with Hierarchy support
@@ -2071,12 +2088,12 @@ export default async function BlogPostPage({
             "@id": postUrl
         },
         "headline": title,
-        ...(post.alternativeHeadline && { "alternativeHeadline": post.alternativeHeadline }),
+        ...(alternativeHeadline && { "alternativeHeadline": alternativeHeadline }),
         "description": description,
         "image": [absImage],
         "author": {
             "@type": author?.type ?? "Organization",
-            "name": post.author,
+            "name": authorName,
             "url": authorUrl
         },
         "publisher": {
@@ -2088,15 +2105,15 @@ export default async function BlogPostPage({
                 "url": `${baseUrl}/logo.png`
             }
         },
-        "datePublished": `${post.date}T09:00:00+00:00`,
-        "dateModified": `${post.date}T09:00:00+00:00`,
+        "datePublished": `${date}T09:00:00+00:00`,
+        "dateModified": `${date}T09:00:00+00:00`,
         ...(keywords && { "keywords": keywords.join(", ") }),
-        ...(post.wordCount && { "wordCount": post.wordCount }),
+        ...(wordCount && { "wordCount": wordCount }),
         "inLanguage": locale,
         "isAccessibleForFree": true,
         "articleSection": category,
-        ...(post.about && { "about": post.about }),
-        ...(post.mentions && { "mentions": post.mentions })
+        ...(aboutEntities && { "about": aboutEntities }),
+        ...(mentionsEntities && { "mentions": mentionsEntities })
     };
 
     return (
@@ -2140,9 +2157,9 @@ export default async function BlogPostPage({
                         </h1>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500 font-medium pb-12 border-b border-gray-100">
-                            <Link href={author ? `/author/${author.slug}` : "/blog"} className="font-bold text-gray-900 hover:text-purple-600 transition-colors">{post.author}</Link>
+                            <Link href={author ? `/author/${author.slug}` : "/blog"} className="font-bold text-gray-900 hover:text-purple-600 transition-colors">{authorName}</Link>
                             <span>•</span>
-                            <span>{new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            <span>{new Date(date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>•</span>
                             <span>{readTime}</span>
                         </div>
@@ -2151,7 +2168,7 @@ export default async function BlogPostPage({
                     {/* Featured Image */}
                     <div className="aspect-[21/9] rounded-3xl overflow-hidden mb-16 bg-gray-100 shadow-2xl">
                         <img
-                            src={post.image}
+                            src={image}
                             alt={title}
                             className="w-full h-full object-cover"
                         />
@@ -2159,10 +2176,10 @@ export default async function BlogPostPage({
 
                     {/* Content */}
                     <div className="max-w-none">
-                        {article?.contentHtml ? (
-                            <div dangerouslySetInnerHTML={{ __html: localizeArticleHtml(article.contentHtml, locale) }} />
+                        {bodyHtml ? (
+                            <div dangerouslySetInnerHTML={{ __html: localizeArticleHtml(bodyHtml, locale) }} />
                         ) : (
-                            post.content
+                            post?.content
                         )}
 
                         {/* FAQ Section */}

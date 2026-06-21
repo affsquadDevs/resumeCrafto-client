@@ -8,6 +8,7 @@ import articlesUk from "./articles/uk.json";
 import articlesSv from "./articles/sv.json";
 import articlesCs from "./articles/cs.json";
 import articlesEl from "./articles/el.json";
+import articlesEn from "./articles/en.json";
 
 // A fully-translated blog article for a non-English locale. English articles
 // keep their original JSX bodies (in the page), so there is no `en` entry here.
@@ -22,6 +23,10 @@ export interface LocalizedArticle {
 }
 
 const ARTICLE_TRANSLATIONS = {
+    // `en` only contains the new data-driven articles; legacy articles keep
+    // their JSX bodies in the page and are absent here (so getLocalizedArticle
+    // returns undefined for them in English, and the page renders the JSX).
+    en: articlesEn,
     pl: articlesPl, es: articlesEs, pt: articlesPt, fr: articlesFr, it: articlesIt,
     de: articlesDe, uk: articlesUk, sv: articlesSv, cs: articlesCs, el: articlesEl,
 } as Record<string, Record<string, LocalizedArticle>>;
