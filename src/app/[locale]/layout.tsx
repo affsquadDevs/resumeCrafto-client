@@ -173,7 +173,7 @@ export default async function RootLayout({
                   "areaServed": "Worldwide"
                 }
               ],
-              "foundingDate": "2024",
+              "foundingDate": "2026",
               "areaServed": "Worldwide",
               "knowsAbout": [
                 "Resume writing",
