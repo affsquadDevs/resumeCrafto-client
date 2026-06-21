@@ -8,15 +8,14 @@ import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Free Cover Letter Builder",
-        description:
-            "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job description, and keep it ATS-friendly so recruiters notice you.",
+        title: t("coverLetterTitle"),
+        description: t("coverLetterDescription"),
         alternates: buildAlternates("/cover-letter-builder", locale),
         openGraph: {
-            title: "Free Cover Letter Builder | ResumeCraftor",
-            description:
-                "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job, and keep it ATS-friendly.",
+            title: t("coverLetterTitle"),
+            description: t("coverLetterDescription"),
             url: localizedUrl("/cover-letter-builder", locale),
             locale: ogLocale(locale),
             type: "website",

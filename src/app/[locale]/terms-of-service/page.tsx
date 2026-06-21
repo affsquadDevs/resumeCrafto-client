@@ -2,12 +2,24 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Terms of Service",
-    description: "Read the ResumeCraftor terms of service governing the use of our resume builder.",
-    alternates: { canonical: "/terms-of-service" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
+    return {
+        title: t("termsTitle"),
+        description: t("termsDescription"),
+        alternates: buildAlternates("/terms-of-service", locale),
+        openGraph: {
+            title: t("termsTitle"),
+            description: t("termsDescription"),
+            url: localizedUrl("/terms-of-service", locale),
+            locale: ogLocale(locale),
+            type: "website",
+        },
+    };
+}
 
 export default async function TermsOfServicePage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

@@ -6,9 +6,10 @@ import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Privacy Policy",
-        description: "Read the ResumeCraftor privacy policy: what data we collect, how we use it, and your rights.",
+        title: t("privacyTitle"),
+        description: t("privacyDescription"),
         alternates: buildAlternates("/privacy-policy", locale),
     };
 }

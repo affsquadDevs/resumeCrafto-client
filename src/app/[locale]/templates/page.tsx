@@ -5,13 +5,14 @@ import TemplatesPage from '@/components/views/TemplatesPage';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "Professional Resume Templates (ATS-Friendly)",
-        description: "Browse free, professionally designed, ATS-friendly resume templates for every role and experience level. Pick one and customize it in minutes with ResumeCraftor.",
+        title: t("templatesTitle"),
+        description: t("templatesDescription"),
         alternates: buildAlternates("/templates", locale),
         openGraph: {
-            title: "Professional Resume Templates (ATS-Friendly) | ResumeCraftor",
-            description: "Browse free, ATS-friendly resume templates for every role.",
+            title: t("templatesTitle"),
+            description: t("templatesDescription"),
             url: localizedUrl("/templates", locale),
             locale: ogLocale(locale),
             type: "website"

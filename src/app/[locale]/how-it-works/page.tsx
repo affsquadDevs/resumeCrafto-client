@@ -9,13 +9,14 @@ import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Meta" });
     return {
-        title: "How It Works",
-        description: "See how ResumeCraftor works in three simple steps: choose a template, build and customize your resume, then download a polished ATS-friendly PDF.",
+        title: t("howItWorksTitle"),
+        description: t("howItWorksDescription"),
         alternates: buildAlternates("/how-it-works", locale),
         openGraph: {
-            title: "How It Works",
-            description: "See how ResumeCraftor works in three simple steps.",
+            title: t("howItWorksTitle"),
+            description: t("howItWorksDescription"),
             url: localizedUrl("/how-it-works", locale),
             locale: ogLocale(locale),
             type: "website",
