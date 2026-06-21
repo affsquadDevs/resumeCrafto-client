@@ -5,8 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { authors, getAuthor } from "@/lib/authors";
-import { blogPosts } from "@/lib/blog-data";
+import { authors, getLocalizedAuthor } from "@/lib/authors";
+import { getLocalizedBlogPosts } from "@/lib/blog-data";
 
 export async function generateStaticParams() {
     return authors.map((author) => ({ slug: author.slug }));
@@ -15,10 +15,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-    const { slug } = await params;
-    const author = getAuthor(slug);
+    const { locale, slug } = await params;
+    const author = getLocalizedAuthor(slug, locale);
 
     if (!author) {
         return { title: "Author Not Found" };
@@ -51,14 +51,14 @@ export default async function AuthorPage({
     const { locale, slug } = await params;
     setRequestLocale(locale);
     const t = await getTranslations("AuthorPage");
-    const author = getAuthor(slug);
+    const author = getLocalizedAuthor(slug, locale);
 
     if (!author) {
         notFound();
     }
 
     const canonical = `https://resumecraftor.com/author/${slug}`;
-    const authorPosts = blogPosts.filter((post) => post.author === author.name);
+    const authorPosts = getLocalizedBlogPosts(locale).filter((post) => post.author === author.name);
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -166,7 +166,7 @@ export default async function AuthorPage({
                                         </p>
                                         <div className="flex items-center justify-between text-sm text-gray-500 pt-6 border-t border-gray-50 font-bold">
                                             <span>
-                                                {new Date(post.date).toLocaleDateString("en-US", {
+                                                {new Date(post.date).toLocaleDateString(locale, {
                                                     month: "short",
                                                     day: "numeric",
                                                     year: "numeric",

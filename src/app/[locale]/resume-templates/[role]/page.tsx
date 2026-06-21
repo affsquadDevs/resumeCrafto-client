@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
-import { roles, getRole } from "@/lib/roles";
+import { roles, getLocalizedRole } from "@/lib/roles";
 
 export async function generateStaticParams() {
     return roles.map((r) => ({ role: r.slug }));
@@ -13,10 +13,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: {
-    params: Promise<{ role: string }>;
+    params: Promise<{ locale: string; role: string }>;
 }): Promise<Metadata> {
-    const { role: slug } = await params;
-    const role = getRole(slug);
+    const { locale, role: slug } = await params;
+    const role = getLocalizedRole(slug, locale);
 
     if (!role) {
         return { title: "Resume Template Not Found" };
@@ -48,7 +48,7 @@ export default async function ResumeTemplateRolePage({
     const { locale, role: slug } = await params;
     setRequestLocale(locale);
     const t = await getTranslations("RoleTemplatePage");
-    const role = getRole(slug);
+    const role = getLocalizedRole(slug, locale);
 
     if (!role) {
         notFound();

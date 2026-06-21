@@ -2,13 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { blogPosts } from '@/lib/blog-data';
+import { useLocale, useTranslations } from 'next-intl';
+import { getLocalizedBlogPosts } from '@/lib/blog-data';
 
 export const BlogPreview = () => {
     const t = useTranslations("BlogPreview");
+    const locale = useLocale();
     // Take the 3 latest posts
-    const latestPosts = blogPosts.slice(0, 3);
+    const latestPosts = getLocalizedBlogPosts(locale).slice(0, 3);
 
     return (
         <section className="py-24 px-6 bg-white">
@@ -69,7 +70,7 @@ export const BlogPreview = () => {
                                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </div>
                                     <span className="text-xs text-gray-400 font-bold">
-                                        {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                        {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
                                     </span>
                                 </div>
                             </div>

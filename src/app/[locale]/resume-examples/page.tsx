@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
-import { roles } from "@/lib/roles";
+import { getLocalizedRoles } from "@/lib/roles";
 
 export const metadata: Metadata = {
     title: "Resume Examples by Job & Role",
@@ -25,6 +25,7 @@ export default async function ResumeExamplesPage({ params }: { params: Promise<{
     const { locale } = await params;
     setRequestLocale(locale);
     const t = await getTranslations("ResumeExamplesPage");
+    const localizedRoles = getLocalizedRoles(locale);
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -52,7 +53,7 @@ export default async function ResumeExamplesPage({ params }: { params: Promise<{
         "url": "https://resumecraftor.com/resume-examples",
         "mainEntity": {
             "@type": "ItemList",
-            "itemListElement": roles.map((role, i) => ({
+            "itemListElement": localizedRoles.map((role, i) => ({
                 "@type": "ListItem",
                 "position": i + 1,
                 "name": `${role.title} Resume Template`,
@@ -91,7 +92,7 @@ export default async function ResumeExamplesPage({ params }: { params: Promise<{
 
                 {/* Role grid */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-                    {roles.map((role) => (
+                    {localizedRoles.map((role) => (
                         <Link
                             key={role.slug}
                             href={`/resume-templates/${role.slug}`}

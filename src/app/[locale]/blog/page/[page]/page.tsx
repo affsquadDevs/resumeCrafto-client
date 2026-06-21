@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/blog-data";
+import { blogPosts, getLocalizedBlogPosts } from "@/lib/blog-data";
 import { BlogListing, POSTS_PER_PAGE } from "@/components/dashboard/BlogListing";
+import { setRequestLocale } from "next-intl/server";
 
 const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
 
@@ -39,9 +40,10 @@ export async function generateMetadata({
 export default async function BlogPaginatedPage({
     params,
 }: {
-    params: Promise<{ page: string }>;
+    params: Promise<{ locale: string; page: string }>;
 }) {
-    const { page } = await params;
+    const { locale, page } = await params;
+    setRequestLocale(locale);
     const pageNum = Number(page);
 
     // Page 1 canonically lives at /blog; reject invalid/out-of-range pages.
@@ -50,7 +52,7 @@ export default async function BlogPaginatedPage({
     }
 
     const start = (pageNum - 1) * POSTS_PER_PAGE;
-    const posts = blogPosts.slice(start, start + POSTS_PER_PAGE);
+    const posts = getLocalizedBlogPosts(locale).slice(start, start + POSTS_PER_PAGE);
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
