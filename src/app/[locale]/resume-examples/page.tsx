@@ -4,22 +4,25 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { getLocalizedRoles } from "@/lib/roles";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Resume Examples by Job & Role",
-    description:
-        "Browse free, ATS-friendly resume examples by job and role. Find role-specific tips, keywords, and templates for software engineers, designers, accountants, managers, and more.",
-    openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
         title: "Resume Examples by Job & Role",
         description:
-            "Browse free, ATS-friendly resume examples by job and role, with tailored tips, keywords, and templates for every career.",
-        url: "https://resumecraftor.com/resume-examples",
-        type: "website",
-    },
-    alternates: {
-        canonical: "https://resumecraftor.com/resume-examples",
-    },
-};
+            "Browse free, ATS-friendly resume examples by job and role. Find role-specific tips, keywords, and templates for software engineers, designers, accountants, managers, and more.",
+        openGraph: {
+            title: "Resume Examples by Job & Role",
+            description:
+                "Browse free, ATS-friendly resume examples by job and role, with tailored tips, keywords, and templates for every career.",
+            url: localizedUrl("/resume-examples", locale),
+            type: "website",
+            locale: ogLocale(locale),
+        },
+        alternates: buildAlternates("/resume-examples", locale),
+    };
+}
 
 export default async function ResumeExamplesPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

@@ -5,18 +5,23 @@ import { ArrowRight } from 'lucide-react';
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from '@/components/dashboard/CraftorNavbar';
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "About ResumeCraftor",
-    description: "Learn about ResumeCraftor — the team and mission behind the free, ATS-friendly online resume builder used by professionals worldwide.",
-    alternates: { canonical: "/about" },
-    openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
         title: "About ResumeCraftor",
-        description: "The team and mission behind ResumeCraftor.",
-        url: "https://resumecraftor.com/about",
-        type: "website",
-    },
-};
+        description: "Learn about ResumeCraftor — the team and mission behind the free, ATS-friendly online resume builder used by professionals worldwide.",
+        alternates: buildAlternates("/about", locale),
+        openGraph: {
+            title: "About ResumeCraftor",
+            description: "The team and mission behind ResumeCraftor.",
+            url: localizedUrl("/about", locale),
+            type: "website",
+            locale: ogLocale(locale),
+        },
+    };
+}
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

@@ -5,18 +5,23 @@ import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Footer } from "@/components/layout/Footer";
 import { Sparkles, FileText, Wand2, Download, Zap, Shield, Palette, Globe } from "lucide-react";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "How It Works",
-    description: "See how ResumeCraftor works in three simple steps: choose a template, build and customize your resume, then download a polished ATS-friendly PDF.",
-    alternates: { canonical: "/how-it-works" },
-    openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
         title: "How It Works",
-        description: "See how ResumeCraftor works in three simple steps.",
-        url: "https://resumecraftor.com/how-it-works",
-        type: "website",
-    },
-};
+        description: "See how ResumeCraftor works in three simple steps: choose a template, build and customize your resume, then download a polished ATS-friendly PDF.",
+        alternates: buildAlternates("/how-it-works", locale),
+        openGraph: {
+            title: "How It Works",
+            description: "See how ResumeCraftor works in three simple steps.",
+            url: localizedUrl("/how-it-works", locale),
+            locale: ogLocale(locale),
+            type: "website",
+        },
+    };
+}
 
 export default async function HowItWorksPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

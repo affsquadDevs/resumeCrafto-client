@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { authors, getLocalizedAuthor } from "@/lib/authors";
 import { getLocalizedBlogPosts } from "@/lib/blog-data";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateStaticParams() {
     return authors.map((author) => ({ slug: author.slug }));
@@ -24,20 +25,16 @@ export async function generateMetadata({
         return { title: "Author Not Found" };
     }
 
-    const canonical = `https://resumecraftor.com/author/${slug}`;
-
     return {
         title: author.name,
         description: author.bio,
-        alternates: {
-            canonical,
-        },
+        alternates: buildAlternates(`/author/${slug}`, locale),
         openGraph: {
             title: `${author.name} | ResumeCraftor`,
             description: author.bio,
-            url: canonical,
+            url: localizedUrl(`/author/${slug}`, locale),
             siteName: "ResumeCraftor",
-            locale: "en_US",
+            locale: ogLocale(locale),
             type: "profile",
         },
     };

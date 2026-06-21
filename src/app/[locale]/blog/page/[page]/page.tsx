@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { blogPosts, getLocalizedBlogPosts } from "@/lib/blog-data";
 import { BlogListing, POSTS_PER_PAGE } from "@/components/dashboard/BlogListing";
 import { setRequestLocale } from "next-intl/server";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
 
@@ -16,22 +17,20 @@ export function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: {
-    params: Promise<{ page: string }>;
+    params: Promise<{ locale: string; page: string }>;
 }): Promise<Metadata> {
-    const { page } = await params;
+    const { locale, page } = await params;
     const pageNum = Number(page);
     return {
         title: `Blog & Career Tips — Page ${pageNum}`,
         description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
-        alternates: {
-            canonical: `https://resumecraftor.com/blog/page/${pageNum}`,
-        },
+        alternates: buildAlternates(`/blog/page/${pageNum}`, locale),
         openGraph: {
             title: `Blog & Career Tips — Page ${pageNum} | ResumeCraftor`,
             description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
-            url: `https://resumecraftor.com/blog/page/${pageNum}`,
+            url: localizedUrl(`/blog/page/${pageNum}`, locale),
             siteName: "ResumeCraftor",
-            locale: "en_US",
+            locale: ogLocale(locale),
             type: "website",
         },
     };

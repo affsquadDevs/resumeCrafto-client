@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Privacy Policy",
-    description: "Read the ResumeCraftor privacy policy: what data we collect, how we use it, and your rights.",
-    alternates: { canonical: "/privacy-policy" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+        title: "Privacy Policy",
+        description: "Read the ResumeCraftor privacy policy: what data we collect, how we use it, and your rights.",
+        alternates: buildAlternates("/privacy-policy", locale),
+    };
+}
 
 export default async function PrivacyPolicyPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

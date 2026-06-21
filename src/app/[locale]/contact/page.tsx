@@ -2,18 +2,23 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from '@/components/dashboard/DashboardFooter';
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Contact Us",
-    description: "Contact the ResumeCraftor team for support, feedback, or account questions. We're happy to help you build a better resume.",
-    alternates: { canonical: "/contact" },
-    openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
         title: "Contact Us",
-        description: "Contact the ResumeCraftor team for support, feedback, or account questions.",
-        url: "https://resumecraftor.com/contact",
-        type: "website",
-    },
-};
+        description: "Contact the ResumeCraftor team for support, feedback, or account questions. We're happy to help you build a better resume.",
+        alternates: buildAlternates("/contact", locale),
+        openGraph: {
+            title: "Contact Us",
+            description: "Contact the ResumeCraftor team for support, feedback, or account questions.",
+            url: localizedUrl("/contact", locale),
+            type: "website",
+            locale: ogLocale(locale),
+        },
+    };
+}
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

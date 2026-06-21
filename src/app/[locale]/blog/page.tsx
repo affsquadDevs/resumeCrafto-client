@@ -2,27 +2,29 @@ import { Metadata } from "next";
 import { getLocalizedBlogPosts } from "@/lib/blog-data";
 import { BlogListing, POSTS_PER_PAGE } from "@/components/dashboard/BlogListing";
 import { setRequestLocale } from "next-intl/server";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Blog & Career Tips",
-    description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression. Learn how to create a professional resume that gets interviews.",
-    openGraph: {
-        title: "Blog & Career Tips | ResumeCraftor",
-        description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
-        url: "https://resumecraftor.com/blog",
-        siteName: "ResumeCraftor",
-        locale: "en_US",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Blog & Career Tips | ResumeCraftor",
-        description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
-    },
-    alternates: {
-        canonical: "https://resumecraftor.com/blog",
-    },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+        title: "Blog & Career Tips",
+        description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression. Learn how to create a professional resume that gets interviews.",
+        openGraph: {
+            title: "Blog & Career Tips | ResumeCraftor",
+            description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
+            url: localizedUrl("/blog", locale),
+            siteName: "ResumeCraftor",
+            locale: ogLocale(locale),
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: "Blog & Career Tips | ResumeCraftor",
+            description: "Expert advice on resume writing, ATS optimization, personal branding, and career progression.",
+        },
+        alternates: buildAlternates("/blog", locale),
+    };
+}
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

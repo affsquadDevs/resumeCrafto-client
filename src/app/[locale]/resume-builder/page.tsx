@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 import EditorPage from '@/components/views/EditorPage';
 import WebApplicationSchema from '@/components/seo/WebApplicationSchema';
 
-export const metadata: Metadata = {
-  title: "Free Online Resume Builder",
-  description: "Build a professional, ATS-optimized resume online for free. Drag-and-drop editor, professional templates, and instant PDF export — no design skills needed.",
-  alternates: { canonical: "/resume-builder" },
-  openGraph: {
-    title: "Free Online Resume Builder | ResumeCraftor",
-    description: "Build a professional, ATS-optimized resume online for free.",
-    url: "https://resumecraftor.com/resume-builder",
-    type: "website"
-  }
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Free Online Resume Builder",
+    description: "Build a professional, ATS-optimized resume online for free. Drag-and-drop editor, professional templates, and instant PDF export — no design skills needed.",
+    alternates: buildAlternates("/resume-builder", locale),
+    openGraph: {
+      title: "Free Online Resume Builder | ResumeCraftor",
+      description: "Build a professional, ATS-optimized resume online for free.",
+      url: localizedUrl("/resume-builder", locale),
+      locale: ogLocale(locale),
+      type: "website"
+    }
+  };
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -4,22 +4,25 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Free Cover Letter Builder",
-    description:
-        "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job description, and keep it ATS-friendly so recruiters notice you.",
-    alternates: {
-        canonical: "https://resumecraftor.com/cover-letter-builder",
-    },
-    openGraph: {
-        title: "Free Cover Letter Builder | ResumeCraftor",
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return {
+        title: "Free Cover Letter Builder",
         description:
-            "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job, and keep it ATS-friendly.",
-        url: "https://resumecraftor.com/cover-letter-builder",
-        type: "website",
-    },
-};
+            "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job description, and keep it ATS-friendly so recruiters notice you.",
+        alternates: buildAlternates("/cover-letter-builder", locale),
+        openGraph: {
+            title: "Free Cover Letter Builder | ResumeCraftor",
+            description:
+                "Write a job-winning cover letter in minutes with our free cover letter builder. Follow a proven structure, tailor it to any job, and keep it ATS-friendly.",
+            url: localizedUrl("/cover-letter-builder", locale),
+            locale: ogLocale(locale),
+            type: "website",
+        },
+    };
+}
 
 const faqs = [
     {

@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import { getLocalizedAuthorByName } from "@/lib/authors";
 import { getLocalizedArticle, localizeArticleHtml } from "@/lib/content/articles";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 type BlogPost = {
     title: string;
@@ -1936,7 +1937,6 @@ export async function generateMetadata({
     const metaCategory = article?.category ?? post.category;
 
     const baseUrl = "https://resumecraftor.com";
-    const path = locale === "en" ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
 
     const ogImage = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
 
@@ -1946,10 +1946,10 @@ export async function generateMetadata({
         openGraph: {
             title: metaTitle,
             description: metaDescription,
-            url: `${baseUrl}${path}`,
+            url: localizedUrl(`/blog/${slug}`, locale),
             type: "article",
             siteName: "ResumeCraftor",
-            locale,
+            locale: ogLocale(locale),
             publishedTime: `${post.date}T09:00:00+00:00`,
             modifiedTime: `${post.date}T09:00:00+00:00`,
             authors: [post.author],
@@ -1962,9 +1962,7 @@ export async function generateMetadata({
             description: metaDescription,
             images: [ogImage],
         },
-        alternates: {
-            canonical: `${baseUrl}${path}`,
-        },
+        alternates: buildAlternates(`/blog/${slug}`, locale),
     };
 }
 

@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CraftorNavbar } from "@/components/dashboard/CraftorNavbar";
 import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { roles, getLocalizedRole } from "@/lib/roles";
+import { buildAlternates, ogLocale, localizedUrl } from "@/lib/seo";
 
 export async function generateStaticParams() {
     return roles.map((r) => ({ role: r.slug }));
@@ -22,7 +23,6 @@ export async function generateMetadata({
         return { title: "Resume Template Not Found" };
     }
 
-    const url = `https://resumecraftor.com/resume-templates/${role.slug}`;
     const description = `${role.summary} Use our free, ATS-friendly ${role.title} resume template to build a polished resume in minutes.`;
 
     return {
@@ -31,12 +31,11 @@ export async function generateMetadata({
         openGraph: {
             title: `${role.title} Resume Template (Free & ATS-Friendly)`,
             description,
-            url,
+            url: localizedUrl(`/resume-templates/${role.slug}`, locale),
             type: "website",
+            locale: ogLocale(locale),
         },
-        alternates: {
-            canonical: url,
-        },
+        alternates: buildAlternates(`/resume-templates/${role.slug}`, locale),
     };
 }
 
