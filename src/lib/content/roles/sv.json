@@ -1,1 +1,244 @@
-{}
+{
+  "software-engineer": {
+    "title": "Mjukvaruutvecklare",
+    "category": "Teknik",
+    "summary": "Lyft fram din tekniska bredd, levererade projekt och mätbara resultat för utvecklarroller.",
+    "intro": "Ett starkt CV för mjukvaruutvecklare balanserar teknisk bredd med belägg för verklig påverkan. Rekryterare och utvecklingschefer vill se vilka språk och system du arbetar med, men de anställer utifrån resultat som funktioner du levererat, lägre svarstider och problem du löst. Inled med resultaten och backa upp dem med tekniken du använde.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "REST API:er",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Systemdesign"
+    ],
+    "tips": [
+      "Inled varje punkt med ett starkt verb och ett mätbart resultat, till exempel \"Minskade API:ets svarstid med 40 %.\"",
+      "Lista dina viktigaste språk och ramverk i en särskild kompetenssektion så att ett ATS snabbt kan matcha dem.",
+      "Länka till en GitHub-profil eller portfölj som visar riktig, körbar kod.",
+      "Beskriv den skala du arbetade i (förfrågningar per sekund, användare, datavolym) för att ge sammanhang till din påverkan.",
+      "Anpassa tekniken du lyfter fram efter jobbannonsen i stället för att räkna upp varje teknik du har rört vid."
+    ]
+  },
+  "ux-designer": {
+    "title": "UX-designer",
+    "category": "Design",
+    "summary": "Lyft fram din designprocess, dina researchmetoder och de produktresultat ditt arbete drev fram.",
+    "intro": "Ett CV för en UX-designer ska läsas som ett argument för hur du tänker, inte bara som en lista över verktyg. Rekryterande team letar efter en tydlig process: research, idégenerering, prototyparbete och validering, kopplade till resultat som förbättrad uppgiftslösning eller högre konvertering. Para ihop ditt hantverk med den affärsnytta dina designer levererade.",
+    "keySkills": [
+      "Användarresearch",
+      "Wireframing",
+      "Prototyparbete",
+      "Figma",
+      "Användbarhetstester",
+      "Informationsarkitektur",
+      "Interaktionsdesign",
+      "Designsystem",
+      "Tillgänglighet"
+    ],
+    "tips": [
+      "Inled varje roll med problemet du löste och resultatet du levererade, inte bara skärmarna du designade.",
+      "Inkludera alltid en länk till en portfölj med två eller tre fördjupade case studies.",
+      "Kvantifiera påverkan där du kan, till exempel \"Ökade andelen genomförd onboarding med 22 %.\"",
+      "Namnge de research- och testmetoder du använde så att din process blir synlig även för icke-designers.",
+      "Håll layouten ren och luftig; ditt CV är i sig ett designprov."
+    ]
+  },
+  "accountant": {
+    "title": "Redovisningsekonom",
+    "category": "Ekonomi",
+    "summary": "Visa upp noggrannhet, regelkunskap och de finansiella kontroller du ansvarar för.",
+    "intro": "Ett CV för en redovisningsekonom bedöms utifrån precision, trovärdighet och förtroende. Arbetsgivare vill se relevanta certifieringar, vilka system du arbetar i och en ren historik av korrekt rapportering i rätt tid. Gör din noggrannhet tydlig både i innehållet och i sidans utformning.",
+    "keySkills": [
+      "Finansiell rapportering",
+      "Leverantörsreskontra",
+      "Kundreskontra",
+      "Huvudbok",
+      "Avstämningar",
+      "GAAP",
+      "Skatteberedning",
+      "QuickBooks",
+      "Excel",
+      "Revision"
+    ],
+    "tips": [
+      "Lista certifieringar som CPA tydligt högt upp på sidan.",
+      "Kvantifiera omfattningen av det du hanterar, till exempel budgetar, transaktionsvolym eller antal konton.",
+      "Namnge de redovisnings- och affärssystem du behärskar så att ett ATS kan matcha dem.",
+      "Lyft fram regelefterlevnadsvinster som rena revisioner eller färre rapporteringsfel.",
+      "Håll formateringen konservativ och oklanderlig; noggrannhet är en del av budskapet."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Maskiningenjör",
+    "category": "Ingenjörsvetenskap",
+    "summary": "Presentera din designerfarenhet, dina tekniska verktyg och de produkter du hjälpte till att förverkliga.",
+    "intro": "Ett CV för en maskiningenjör ska koppla teknisk förmåga till påtagliga resultat: komponenter som konstruerats, produkter som lanserats eller kostnader som minskats. Rekryterande chefer scannar efter CAD-kunnande, relevanta standarder och praktisk erfarenhet genom hela produktlivscykeln. Visa både vad du byggde och det resultat det gav.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Finita elementanalys",
+      "GD&T",
+      "Produktdesign",
+      "Prototyparbete",
+      "Tillverkningsprocesser",
+      "Toleransanalys"
+    ],
+    "tips": [
+      "Lista de CAD- och simuleringsverktyg du använder och din kunskapsnivå i vart och ett.",
+      "Kvantifiera resultat som minskad vikt, sparade kostnader eller förbättrad cykeltid.",
+      "Hänvisa till de standarder och metoder du arbetar efter, som GD&T eller ISO.",
+      "Lyft fram tvärfunktionellt arbete med tillverkning, kvalitet och leverantörer.",
+      "Inkludera eventuella patent, publicerade konstruktioner eller examensprojekt som visar tillämpad kompetens."
+    ]
+  },
+  "project-manager": {
+    "title": "Projektledare",
+    "category": "Ledning",
+    "summary": "Bevisa att du levererar projekt i tid, inom budget och med mätbara affärsresultat.",
+    "intro": "Ett CV för en projektledare står och faller med resultaten. Arbetsgivare vill ha bevis på att du kan avgränsa arbete, hantera intressenter och leverera mot deadlines och budgetar. Inled med resultaten från de projekt du drev och visa sedan de metoder och verktyg som tog dig dit.",
+    "keySkills": [
+      "Projektplanering",
+      "Intressenthantering",
+      "Agile",
+      "Scrum",
+      "Riskhantering",
+      "Budgetering",
+      "Jira",
+      "Roadmapping",
+      "Tvärfunktionellt ledarskap"
+    ],
+    "tips": [
+      "Kvantifiera omfattningen i varje projekt: budgetstorlek, teamstorlek och tidplan.",
+      "Inled punkterna med leveransresultat som \"Levererade en migrering på 1,2 miljoner USD två veckor i förtid.\"",
+      "Namnge dina certifieringar som PMP eller CSM om du har dem.",
+      "Visa intressent- och tvärfunktionell hantering, inte bara uppgiftsuppföljning.",
+      "Matcha den metod du betonar mot rollen, oavsett om det är Agile, Vattenfall eller hybrid."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Marknadschef",
+    "category": "Marknadsföring",
+    "summary": "Koppla kampanjer till intäkter, tillväxt och de kanaler du skalade upp.",
+    "intro": "Ett CV för en marknadschef ska läsas som en tillväxtberättelse. Rekryterande team vill se vilka kanaler du ansvarar för, vilka kampanjer du drev och vilken pipeline eller intäkt de genererade. Förankra din erfarenhet i mätetal så att din påverkan blir omöjlig att missa.",
+    "keySkills": [
+      "Kampanjhantering",
+      "SEO",
+      "Innehållsmarknadsföring",
+      "Betald annonsering",
+      "Marknadsanalys",
+      "E-postmarknadsföring",
+      "Varumärkesstrategi",
+      "Google Analytics",
+      "Leadgenerering",
+      "Marknadsautomation"
+    ],
+    "tips": [
+      "Kvantifiera resultat som genererade leads, lägre CAC eller påverkad intäkt.",
+      "Namnge de kanaler och plattformar du ansvarar för så att de matchar jobbets nyckelord.",
+      "Visa ansvar för budget och den avkastning du skapade på den.",
+      "Lyft fram en flaggskeppskampanj med tydliga siffror före och efter.",
+      "Visa både strategi och genomförande, inte bara det ena eller det andra."
+    ]
+  },
+  "student": {
+    "title": "Student",
+    "category": "Instegsnivå",
+    "summary": "Förvandla kurser, projekt och praktik till ett övertygande första CV.",
+    "intro": "Ett CV på instegsnivå vinner intervjuer genom att få ut mesta möjliga av begränsad formell erfarenhet. Kurser, projekt, praktik och ledarskap i föreningslivet räknas alla när de ramas in kring kompetenser och resultat. Fokusera på vad du kan göra, underbyggt av konkreta exempel, i stället för att be om ursäkt för en kort arbetslivshistorik.",
+    "keySkills": [
+      "Kommunikation",
+      "Samarbete",
+      "Tidshantering",
+      "Microsoft Office",
+      "Research",
+      "Problemlösning",
+      "Anpassningsförmåga",
+      "Ledarskap"
+    ],
+    "tips": [
+      "Placera utbildning högt upp och inkludera relevanta kurser, betygssnitt om det är starkt, och utmärkelser.",
+      "Behandla kursprojekt och praktik som jobb, med resultatfokuserade punkter.",
+      "Lyft fram ledarskap i föreningar, idrott eller volontärarbete för att visa initiativförmåga.",
+      "Håll det till en sida och använd en ren, lättöverskådlig layout.",
+      "Anpassa din kompetenssektion till de specifika roller du söker."
+    ]
+  },
+  "community-manager": {
+    "title": "Community manager",
+    "category": "Marknadsföring",
+    "summary": "Visa hur du får målgrupper att växa, engageras och stanna kvar över olika kanaler.",
+    "intro": "Ett CV för en community manager ska bevisa att du kan bygga och upprätthålla en engagerad målgrupp. Rekryterande team letar efter tillväxtmätetal, engagemangsresultat och belägg för att du kan företräda ett varumärkes röst samtidigt som du hanterar verkliga samtal. Para ihop de plattformar du hanterar med de resultat du skapade.",
+    "keySkills": [
+      "Community-engagemang",
+      "Hantering av sociala medier",
+      "Innehållsskapande",
+      "Moderering",
+      "Varumärkesröst",
+      "Analys",
+      "Discord",
+      "Kundsupport",
+      "Eventsamordning"
+    ],
+    "tips": [
+      "Kvantifiera communityts tillväxt, engagemangsgrad och retention där det är möjligt.",
+      "Namnge de plattformar och verktyg du hanterar, som Discord, Slack eller sociala kanaler.",
+      "Visa hur du hanterade eskaleringar eller vände negativ stämning.",
+      "Lyft fram kampanjer eller event du drev och det deltagande de skapade.",
+      "Visa en konsekvent varumärkesröst med konkreta exempel."
+    ]
+  },
+  "creative-writer": {
+    "title": "Kreativ skribent",
+    "category": "Skrivande",
+    "summary": "Låt din röst, din bredd och dina publicerade verk tala för dig.",
+    "intro": "Ett CV för en kreativ skribent ska visa bredd, pålitlighet och en distinkt röst. Redaktörer och kunder vill se publicerat arbete, vilka format du behärskar och din förmåga att leverera färdigslipad text inom deadline. Inled med dina meriter och låt en portfölj göra det tunga jobbet.",
+    "keySkills": [
+      "Copywriting",
+      "Berättande",
+      "Redigering",
+      "Innehållsstrategi",
+      "SEO-skrivande",
+      "Research",
+      "Korrekturläsning",
+      "Varumärkesröst",
+      "CMS"
+    ],
+    "tips": [
+      "Inkludera alltid en portföljlänk med ett kurerat urval av dina bästa texter.",
+      "Lista anmärkningsvärda publikationer, bylines eller kunder för att etablera trovärdighet.",
+      "Visa bredd genom att namnge de format du skriver, som långform, manus eller copy.",
+      "Kvantifiera räckvidd där du kan, till exempel läsekrets eller engagemang på publicerat arbete.",
+      "Håll själva CV:t skarpt och felfritt; det är ett skrivprov."
+    ]
+  },
+  "sales-representative": {
+    "title": "Säljare",
+    "category": "Försäljning",
+    "summary": "Inled med måluppfyllelse, avslutade affärer och de intäkter du drev fram.",
+    "intro": "Ett CV för en säljare handlar i grunden om siffror. Rekryterande chefer scannar efter måluppfyllelse, affärsstorlek och hur konsekvent du nådde dina mål. Sätt dina resultat främst och backa upp dem med den process och de verktyg du använde för att leverera dem.",
+    "keySkills": [
+      "Leadgenerering",
+      "Prospektering",
+      "Förhandling",
+      "CRM",
+      "Salesforce",
+      "Pipelinehantering",
+      "Avslut",
+      "Kundansvar",
+      "Kalla samtal"
+    ],
+    "tips": [
+      "Inled varje roll med måluppfyllelse, till exempel \"Uppnådde 128 % av målet 2025.\"",
+      "Kvantifiera affärsstorlek, genererad intäkt och storleken på din kundportfölj.",
+      "Namnge det CRM och de säljverktyg du använder så att de matchar ATS-nyckelorden.",
+      "Visa progression som utmärkelser i President's Club eller befordringar.",
+      "Lyft fram resultat både inom nyförsäljning och kundtillväxt för att visa bredd."
+    ]
+  }
+}

@@ -1,1 +1,244 @@
-{}
+{
+  "software-engineer": {
+    "title": "Ingegnere del Software",
+    "category": "Tecnologia",
+    "summary": "Metti in evidenza la tua competenza tecnica, i progetti realizzati e l'impatto misurabile per ruoli da ingegnere.",
+    "intro": "Un curriculum efficace per un ingegnere del software bilancia l'ampiezza tecnica con prove di un impatto concreto. Recruiter e responsabili dell'ingegneria vogliono vedere i linguaggi e i sistemi con cui lavori, ma assumono in base ai risultati, come le funzionalità rilasciate, la latenza ridotta e i problemi risolti. Apri con i risultati e supportali con lo stack che hai utilizzato.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "API REST",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Progettazione di Sistemi"
+    ],
+    "tips": [
+      "Apri ogni punto elenco con un verbo forte e un risultato misurabile, ad esempio \"Ridotto il tempo di risposta delle API del 40%\".",
+      "Elenca i tuoi linguaggi e framework principali in una sezione dedicata alle competenze, così un ATS può identificarli rapidamente.",
+      "Inserisci un link a un profilo GitHub o a un portfolio che dimostri codice reale ed eseguibile.",
+      "Descrivi la scala su cui hai lavorato (richieste al secondo, utenti, volume di dati) per dare contesto al tuo impatto.",
+      "Adatta lo stack che metti in risalto alla descrizione del lavoro, invece di elencare ogni tecnologia che hai toccato."
+    ]
+  },
+  "ux-designer": {
+    "title": "UX Designer",
+    "category": "Design",
+    "summary": "Metti in risalto il tuo processo di design, i metodi di ricerca e i risultati di prodotto generati dal tuo lavoro.",
+    "intro": "Un curriculum da UX designer dovrebbe raccontare come ragioni, non essere solo un elenco di strumenti. I team di selezione cercano un processo chiaro: ricerca, ideazione, prototipazione e validazione, collegati a risultati come un maggiore successo nei task o un tasso di conversione più alto. Unisci la tua abilità all'impatto sul business prodotto dai tuoi design.",
+    "keySkills": [
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Figma",
+      "Usability Testing",
+      "Architettura dell'Informazione",
+      "Interaction Design",
+      "Design System",
+      "Accessibilità"
+    ],
+    "tips": [
+      "Apri ogni ruolo con il problema che stavi risolvendo e il risultato ottenuto, non solo con le schermate che hai progettato.",
+      "Includi sempre un link a un portfolio con due o tre case study approfonditi.",
+      "Quantifica l'impatto dove possibile, ad esempio \"Aumentato il completamento dell'onboarding del 22%\".",
+      "Indica i metodi di ricerca e di test che hai utilizzato, così il tuo processo è visibile anche a chi non è designer.",
+      "Mantieni un layout pulito e ben spaziato; il tuo curriculum è esso stesso un esempio di design."
+    ]
+  },
+  "accountant": {
+    "title": "Contabile",
+    "category": "Finanza",
+    "summary": "Dimostra precisione, conoscenza della conformità normativa e i controlli finanziari di cui sei responsabile.",
+    "intro": "Un curriculum da contabile viene valutato in base a precisione, credibilità e affidabilità. I datori di lavoro vogliono vedere le certificazioni pertinenti, i sistemi con cui lavori e una storia impeccabile di reportistica accurata e puntuale. Rendi evidente la tua attenzione ai dettagli sia nel contenuto sia nella formattazione della pagina.",
+    "keySkills": [
+      "Financial Reporting",
+      "Contabilità Fornitori",
+      "Contabilità Clienti",
+      "Libro Mastro Generale",
+      "Riconciliazioni",
+      "GAAP",
+      "Preparazione Fiscale",
+      "QuickBooks",
+      "Excel",
+      "Revisione Contabile"
+    ],
+    "tips": [
+      "Elenca le certificazioni come la CPA in modo ben visibile nella parte alta della pagina.",
+      "Quantifica la dimensione di ciò che gestisci, ad esempio budget, volume delle transazioni o numero di conti.",
+      "Indica i software di contabilità e i sistemi ERP che conosci, così l'ATS può identificarli.",
+      "Metti in risalto i risultati in materia di conformità, come audit superati senza rilievi o errori di reportistica ridotti.",
+      "Mantieni una formattazione conservativa e impeccabile; l'accuratezza fa parte del messaggio."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Ingegnere Meccanico",
+    "category": "Ingegneria",
+    "summary": "Presenta la tua esperienza di progettazione, gli strumenti tecnici e i prodotti che hai contribuito a realizzare.",
+    "intro": "Un curriculum da ingegnere meccanico dovrebbe collegare le competenze tecniche a risultati tangibili: componenti progettati, prodotti lanciati o costi ridotti. I responsabili delle assunzioni cercano padronanza del CAD, standard pertinenti ed esperienza pratica lungo l'intero ciclo di vita del prodotto. Mostra sia ciò che hai realizzato sia il risultato che ne è derivato.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Analisi agli Elementi Finiti",
+      "GD&T",
+      "Progettazione di Prodotto",
+      "Prototyping",
+      "Processi di Produzione",
+      "Analisi delle Tolleranze"
+    ],
+    "tips": [
+      "Elenca gli strumenti CAD e di simulazione che usi e il tuo livello di competenza in ciascuno.",
+      "Quantifica i risultati come peso ridotto, costi risparmiati o tempi di ciclo migliorati.",
+      "Fai riferimento agli standard e alle metodologie con cui lavori, come GD&T o ISO.",
+      "Metti in risalto il lavoro interfunzionale con produzione, qualità e fornitori.",
+      "Includi eventuali brevetti, progetti pubblicati o tesi di laurea che dimostrino competenza applicata."
+    ]
+  },
+  "project-manager": {
+    "title": "Project Manager",
+    "category": "Management",
+    "summary": "Dimostra di saper consegnare i progetti nei tempi, nel budget e con risultati di business misurabili.",
+    "intro": "Un curriculum da project manager si gioca tutto sui risultati. I datori di lavoro vogliono la prova che sai definire l'ambito del lavoro, gestire gli stakeholder e rispettare scadenze e budget. Apri con i risultati dei progetti che hai gestito, poi mostra le metodologie e gli strumenti che ti hanno permesso di raggiungerli.",
+    "keySkills": [
+      "Project Planning",
+      "Gestione degli Stakeholder",
+      "Agile",
+      "Scrum",
+      "Gestione del Rischio",
+      "Budgeting",
+      "Jira",
+      "Roadmapping",
+      "Leadership Interfunzionale"
+    ],
+    "tips": [
+      "Quantifica l'ambito di ogni progetto: dimensione del budget, numero di persone nel team e tempistiche.",
+      "Apri i punti elenco con i risultati della consegna, ad esempio \"Completata una migrazione da 1,2 mln di dollari con due settimane di anticipo\".",
+      "Indica le tue certificazioni come PMP o CSM, se le possiedi.",
+      "Mostra la gestione di stakeholder e team interfunzionali, non solo il monitoraggio dei task.",
+      "Adatta la metodologia che metti in risalto al ruolo, che sia Agile, Waterfall o ibrida."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Marketing Manager",
+    "category": "Marketing",
+    "summary": "Collega le campagne ai ricavi, alla crescita e ai canali che hai fatto crescere.",
+    "intro": "Un curriculum da marketing manager dovrebbe leggersi come una storia di crescita. I team di selezione vogliono vedere quali canali gestisci, le campagne che hai realizzato e la pipeline o i ricavi che hanno generato. Ancora la tua esperienza alle metriche, così il tuo impatto è impossibile da ignorare.",
+    "keySkills": [
+      "Gestione delle Campagne",
+      "SEO",
+      "Content Marketing",
+      "Paid Acquisition",
+      "Marketing Analytics",
+      "Email Marketing",
+      "Strategia di Brand",
+      "Google Analytics",
+      "Lead Generation",
+      "Marketing Automation"
+    ],
+    "tips": [
+      "Quantifica i risultati come lead generati, CAC ridotto o ricavi influenzati.",
+      "Indica i canali e le piattaforme che gestisci, così corrispondono alle parole chiave dell'annuncio.",
+      "Mostra la responsabilità sul budget e il ritorno che hai prodotto su di esso.",
+      "Metti in risalto una campagna di punta con numeri chiari di prima e dopo.",
+      "Dimostra sia la strategia sia l'esecuzione, non solo una delle due."
+    ]
+  },
+  "student": {
+    "title": "Studente",
+    "category": "Primo Impiego",
+    "summary": "Trasforma corsi, progetti e tirocini in un primo curriculum convincente.",
+    "intro": "Un curriculum per il primo impiego ottiene colloqui sfruttando al massimo un'esperienza formale limitata. Corsi, progetti, tirocini e ruoli di leadership nelle attività extracurricolari contano tutti, se inquadrati intorno a competenze e risultati. Concentrati su ciò che sai fare, supportato da esempi concreti, invece di scusarti per una breve esperienza lavorativa.",
+    "keySkills": [
+      "Comunicazione",
+      "Lavoro di Squadra",
+      "Gestione del Tempo",
+      "Microsoft Office",
+      "Ricerca",
+      "Problem Solving",
+      "Adattabilità",
+      "Leadership"
+    ],
+    "tips": [
+      "Metti la formazione nella parte alta e includi corsi pertinenti, la media dei voti se è buona e i riconoscimenti.",
+      "Tratta i progetti universitari e i tirocini come veri lavori, con punti elenco focalizzati sui risultati.",
+      "Metti in risalto la leadership in club, sport o volontariato per dimostrare iniziativa.",
+      "Mantieni il curriculum su una sola pagina e usa un layout pulito e facile da scorrere.",
+      "Adatta la sezione delle competenze ai ruoli specifici per cui ti candidi."
+    ]
+  },
+  "community-manager": {
+    "title": "Community Manager",
+    "category": "Marketing",
+    "summary": "Mostra come fai crescere, coinvolgi e fidelizzi il pubblico sui vari canali.",
+    "intro": "Un curriculum da community manager dovrebbe dimostrare che sai costruire e mantenere un pubblico coinvolto. I team di selezione cercano metriche di crescita, risultati di coinvolgimento e prove che sai rappresentare la voce di un brand gestendo conversazioni reali. Abbina le piattaforme che gestisci ai risultati che hai prodotto.",
+    "keySkills": [
+      "Coinvolgimento della Community",
+      "Gestione dei Social Media",
+      "Creazione di Contenuti",
+      "Moderazione",
+      "Voce del Brand",
+      "Analytics",
+      "Discord",
+      "Assistenza Clienti",
+      "Coordinamento di Eventi"
+    ],
+    "tips": [
+      "Quantifica la crescita della community, il tasso di coinvolgimento e la fidelizzazione dove possibile.",
+      "Indica le piattaforme e gli strumenti che gestisci, come Discord, Slack o i canali social.",
+      "Mostra come hai gestito le escalation o ribaltato un sentiment negativo.",
+      "Metti in risalto le campagne o gli eventi che hai realizzato e la partecipazione che hanno generato.",
+      "Dimostra una voce di brand coerente con esempi concreti."
+    ]
+  },
+  "creative-writer": {
+    "title": "Scrittore Creativo",
+    "category": "Scrittura",
+    "summary": "Lascia che siano la tua voce, la tua versatilità e i tuoi lavori pubblicati a parlare per te.",
+    "intro": "Un curriculum da scrittore creativo dovrebbe dimostrare versatilità, affidabilità e una voce distintiva. Redattori e clienti vogliono vedere lavori pubblicati, i formati che gestisci e la tua capacità di consegnare testi curati nel rispetto delle scadenze. Apri con i tuoi crediti e lascia che sia un portfolio a fare il lavoro pesante.",
+    "keySkills": [
+      "Copywriting",
+      "Storytelling",
+      "Editing",
+      "Content Strategy",
+      "SEO Writing",
+      "Ricerca",
+      "Correzione di Bozze",
+      "Voce del Brand",
+      "CMS"
+    ],
+    "tips": [
+      "Includi sempre un link al portfolio con una selezione curata dei tuoi pezzi migliori.",
+      "Elenca pubblicazioni, firme o clienti di rilievo per stabilire la tua credibilità.",
+      "Mostra la tua versatilità indicando i formati che scrivi, come long-form, sceneggiature o copy.",
+      "Quantifica la portata dove possibile, ad esempio numero di lettori o coinvolgimento sui lavori pubblicati.",
+      "Mantieni il curriculum nitido e privo di errori di battitura; è un campione di scrittura."
+    ]
+  },
+  "sales-representative": {
+    "title": "Rappresentante di Vendita",
+    "category": "Vendite",
+    "summary": "Apri con il raggiungimento degli obiettivi, le trattative chiuse e i ricavi che hai generato.",
+    "intro": "Un curriculum da rappresentante di vendita è fondamentalmente una questione di numeri. I responsabili delle assunzioni cercano il raggiungimento delle quote, la dimensione delle trattative e con quanta costanza centri gli obiettivi. Metti i tuoi risultati in primo piano e supportali con il processo e gli strumenti che hai usato per ottenerli.",
+    "keySkills": [
+      "Lead Generation",
+      "Prospecting",
+      "Negoziazione",
+      "CRM",
+      "Salesforce",
+      "Gestione della Pipeline",
+      "Chiusura delle Trattative",
+      "Gestione dei Clienti",
+      "Cold Calling"
+    ],
+    "tips": [
+      "Apri ogni ruolo con il raggiungimento della quota, ad esempio \"Raggiunto il 128% della quota nel 2025\".",
+      "Quantifica la dimensione delle trattative, i ricavi generati e l'ampiezza del tuo portafoglio clienti.",
+      "Indica il CRM e gli strumenti di vendita che usi, così corrispondono alle parole chiave dell'ATS.",
+      "Mostra la tua progressione, come premi President's Club o promozioni.",
+      "Metti in risalto sia i risultati di acquisizione di nuovi clienti sia quelli di crescita degli account per dimostrare versatilità."
+    ]
+  }
+}

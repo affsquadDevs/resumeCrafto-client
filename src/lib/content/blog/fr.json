@@ -1,1 +1,62 @@
-{}
+{
+  "how-to-write-a-strategic-resume": {
+    "title": "Comment rédiger un CV qui paraît plus stratégique, et pas seulement opérationnel",
+    "excerpt": "Découvrez comment présenter votre travail de façon plus stratégique afin que votre CV reflète une vision business, une capacité de priorisation et une maturité professionnelle.",
+    "category": "Conseils carrière",
+    "readTime": "8 min de lecture"
+  },
+  "how-to-make-your-resume-sound-more-senior": {
+    "title": "Comment donner une tonalité plus senior à votre CV sans exagérer",
+    "excerpt": "Découvrez comment présenter votre expérience dans un langage plus fort et plus senior, sans exagérer vos réalisations ni surévaluer votre rôle.",
+    "category": "Conseils carrière",
+    "readTime": "9 min de lecture"
+  },
+  "resume-keywords-for-ats": {
+    "title": "Mots-clés de CV pour les ATS : comment les utiliser naturellement",
+    "excerpt": "Découvrez comment utiliser naturellement les mots-clés ATS afin que les systèmes de suivi des candidatures reconnaissent votre pertinence sans bourrage de mots-clés.",
+    "category": "Guide du CV",
+    "readTime": "8 min de lecture"
+  },
+  "ats-resume-formatting-tips": {
+    "title": "Conseils de mise en forme du CV pour les ATS : ce qu'il faut utiliser et ce qu'il faut éviter",
+    "excerpt": "Découvrez quels choix de mise en forme aident les systèmes de suivi des candidatures à analyser correctement votre CV et quelles erreurs de design réduisent souvent la compatibilité ATS.",
+    "category": "Mise en forme du CV",
+    "readTime": "9 min de lecture"
+  },
+  "what-is-an-ats-resume": {
+    "title": "Qu'est-ce qu'un CV compatible ATS ? Définition, format et bonnes pratiques",
+    "excerpt": "Découvrez ce qu'est réellement un CV compatible ATS, comment les systèmes de suivi des candidatures lisent les CV, et quels formats, types de fichiers et bonnes pratiques améliorent la compatibilité et la lisibilité.",
+    "category": "Guide du CV",
+    "readTime": "10 min de lecture"
+  },
+  "how-to-make-your-resume-reflect-leadership": {
+    "title": "Comment faire transparaître le leadership dans votre CV même sans avoir jamais encadré d'équipe",
+    "excerpt": "Découvrez comment montrer du leadership dans votre CV grâce à la prise d'initiative, au sens des responsabilités, au jugement et à l'influence, même sans expérience formelle de management.",
+    "category": "Leadership",
+    "readTime": "9 min de lecture"
+  },
+  "ats-optimization-getting-past-the-robots": {
+    "title": "L'optimisation ATS expliquée : comment fonctionnent les systèmes de suivi des candidatures",
+    "excerpt": "Découvrez comment les ATS (systèmes de suivi des candidatures) traitent les CV, les problèmes de compatibilité courants et des moyens concrets d'améliorer l'optimisation ATS sans sacrifier la lisibilité.",
+    "category": "Conseils carrière",
+    "readTime": "10 min de lecture"
+  },
+  "building-your-personal-brand-through-your-resume": {
+    "title": "Construire votre marque personnelle à travers votre CV (guide pratique)",
+    "excerpt": "Découvrez comment construire une marque personnelle claire à travers votre CV grâce à un message ciblé, une structure cohérente et une expérience étayée par des preuves, sans paraître générique.",
+    "category": "Image de marque",
+    "readTime": "8 min de lecture"
+  },
+  "how-to-choose-the-perfect-resume-template": {
+    "title": "Comment choisir le bon modèle de CV pour votre carrière",
+    "excerpt": "Découvrez comment choisir le bon modèle de CV en fonction de votre poste, de votre niveau d'expérience et de vos objectifs professionnels, sans sacrifier la clarté ni la compatibilité.",
+    "category": "Guide du CV",
+    "readTime": "7 min de lecture"
+  },
+  "how-to-build-a-professional-resume-step-by-step": {
+    "title": "Comment construire un CV professionnel : guide étape par étape",
+    "excerpt": "Un guide clair, étape par étape, pour construire un CV professionnel, de la structure et des résumés à l'expérience, aux compétences et aux bonnes pratiques de mise en forme.",
+    "category": "Guide du CV",
+    "readTime": "12 min de lecture"
+  }
+}

@@ -1,1 +1,62 @@
-{}
+{
+  "how-to-write-a-strategic-resume": {
+    "title": "So schreiben Sie einen Lebenslauf, der strategischer statt nur operativ klingt",
+    "excerpt": "Erfahren Sie, wie Sie Ihre Arbeit strategischer darstellen, damit Ihr Lebenslauf unternehmerisches Denken, Priorisierung und berufliche Reife zeigt.",
+    "category": "Karrieretipps",
+    "readTime": "8 Min. Lesezeit"
+  },
+  "how-to-make-your-resume-sound-more-senior": {
+    "title": "So lassen Sie Ihren Lebenslauf erfahrener klingen, ohne zu übertreiben",
+    "excerpt": "Erfahren Sie, wie Sie Ihre Erfahrung in einer stärkeren, erfahreneren Sprache darstellen, ohne Leistungen zu übertreiben oder Ihre Rolle zu überhöhen.",
+    "category": "Karrieretipps",
+    "readTime": "9 Min. Lesezeit"
+  },
+  "resume-keywords-for-ats": {
+    "title": "Lebenslauf-Schlüsselwörter für ATS: So setzen Sie sie natürlich ein",
+    "excerpt": "Erfahren Sie, wie Sie ATS-Schlüsselwörter im Lebenslauf natürlich einsetzen, damit Bewerbermanagementsysteme Ihre Eignung erkennen, ohne Keyword-Stuffing.",
+    "category": "Lebenslauf-Leitfaden",
+    "readTime": "8 Min. Lesezeit"
+  },
+  "ats-resume-formatting-tips": {
+    "title": "Tipps zur ATS-Formatierung des Lebenslaufs: Was Sie nutzen und was Sie vermeiden sollten",
+    "excerpt": "Erfahren Sie, welche Formatierungsentscheidungen Bewerbermanagementsystemen helfen, Ihren Lebenslauf korrekt auszuwerten, und welche Designfehler die ATS-Kompatibilität häufig mindern.",
+    "category": "Lebenslauf-Formatierung",
+    "readTime": "9 Min. Lesezeit"
+  },
+  "what-is-an-ats-resume": {
+    "title": "Was ist ein ATS-Lebenslauf? Bedeutung, Format und bewährte Praktiken",
+    "excerpt": "Erfahren Sie, was ein ATS-Lebenslauf wirklich ist, wie Bewerbermanagementsysteme Lebensläufe lesen und welche Formatierungen, Dateitypen und bewährten Praktiken Kompatibilität und Lesbarkeit verbessern.",
+    "category": "Lebenslauf-Leitfaden",
+    "readTime": "10 Min. Lesezeit"
+  },
+  "how-to-make-your-resume-reflect-leadership": {
+    "title": "So zeigt Ihr Lebenslauf Führungsstärke, auch ohne je ein Team geführt zu haben",
+    "excerpt": "Erfahren Sie, wie Sie Führungsstärke im Lebenslauf durch Verantwortung, Eigeninitiative, Urteilsvermögen und Einfluss zeigen, auch ohne formale Führungserfahrung.",
+    "category": "Führung",
+    "readTime": "9 Min. Lesezeit"
+  },
+  "ats-optimization-getting-past-the-robots": {
+    "title": "ATS-Optimierung erklärt: So funktionieren Bewerbermanagementsysteme",
+    "excerpt": "Erfahren Sie, wie ATS (Bewerbermanagementsysteme) Lebensläufe verarbeiten, welche Kompatibilitätsprobleme häufig auftreten und mit welchen praktischen Mitteln Sie die ATS-Optimierung verbessern, ohne die Lesbarkeit zu opfern.",
+    "category": "Karrieretipps",
+    "readTime": "10 Min. Lesezeit"
+  },
+  "building-your-personal-brand-through-your-resume": {
+    "title": "So bauen Sie Ihre persönliche Marke über Ihren Lebenslauf auf (Praxisleitfaden)",
+    "excerpt": "Erfahren Sie, wie Sie über Ihren Lebenslauf eine klare persönliche Marke aufbauen, mit fokussierter Botschaft, durchgängiger Struktur und belegbarer Erfahrung, ohne generisch zu wirken.",
+    "category": "Branding",
+    "readTime": "8 Min. Lesezeit"
+  },
+  "how-to-choose-the-perfect-resume-template": {
+    "title": "So wählen Sie die richtige Lebenslaufvorlage für Ihre Karriere",
+    "excerpt": "Erfahren Sie, wie Sie die richtige Lebenslaufvorlage anhand Ihrer Rolle, Ihres Erfahrungsniveaus und Ihrer beruflichen Ziele auswählen, ohne Klarheit oder Kompatibilität zu opfern.",
+    "category": "Lebenslauf-Leitfaden",
+    "readTime": "7 Min. Lesezeit"
+  },
+  "how-to-build-a-professional-resume-step-by-step": {
+    "title": "So erstellen Sie einen professionellen Lebenslauf: Schritt-für-Schritt-Anleitung",
+    "excerpt": "Eine klare, schrittweise Anleitung zum Erstellen eines professionellen Lebenslaufs, von Struktur und Zusammenfassungen bis hin zu Erfahrung, Kompetenzen und bewährten Formatierungspraktiken.",
+    "category": "Lebenslauf-Leitfaden",
+    "readTime": "12 Min. Lesezeit"
+  }
+}

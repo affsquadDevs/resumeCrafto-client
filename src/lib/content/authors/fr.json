@@ -1,1 +1,14 @@
-{}
+{
+  "resumecraftor-editorial-team": {
+    "role": "Équipe éditoriale",
+    "bio": "L'équipe éditoriale de ResumeCraftor étudie le fonctionnement réel du recrutement, ce que recherchent les recruteurs et la façon dont les systèmes de suivi des candidatures analysent et classent les CV. Nous transformons ces recherches en conseils clairs et concrets sur le CV et la carrière, qui reflètent les attentes réelles des recruteurs plutôt que des recommandations génériques. Chaque article est vérifié au regard du comportement actuel des ATS et des pratiques de recrutement avant sa publication.",
+    "expertise": [
+      "Rédaction de CV",
+      "Optimisation ATS",
+      "Attentes des recruteurs",
+      "Développement de carrière",
+      "Lettres de motivation",
+      "Stratégie de recherche d'emploi"
+    ]
+  }
+}

@@ -1,1 +1,244 @@
-{}
+{
+  "software-engineer": {
+    "title": "Ingénieur logiciel",
+    "category": "Technologie",
+    "summary": "Mettez en valeur votre expertise technique, vos projets livrés et votre impact mesurable pour les postes d'ingénierie.",
+    "intro": "Un CV d'ingénieur logiciel solide équilibre l'étendue des compétences techniques et les preuves d'un impact réel. Les recruteurs et les responsables d'ingénierie veulent connaître les langages et les systèmes que vous maîtrisez, mais ils recrutent sur les résultats : fonctionnalités livrées, latence réduite, problèmes résolus. Mettez vos résultats en avant et appuyez-les sur la stack que vous avez utilisée.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "API REST",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Conception de systèmes"
+    ],
+    "tips": [
+      "Commencez chaque puce par un verbe d'action fort et un résultat mesurable, par exemple « Réduction du temps de réponse de l'API de 40 % ».",
+      "Listez vos principaux langages et frameworks dans une section de compétences dédiée afin qu'un ATS puisse les repérer rapidement.",
+      "Ajoutez un lien vers un profil GitHub ou un portfolio qui démontre du code réel et exécutable.",
+      "Décrivez l'échelle à laquelle vous avez travaillé (requêtes par seconde, utilisateurs, volume de données) pour donner du contexte à votre impact.",
+      "Adaptez la stack que vous mettez en avant à l'offre d'emploi plutôt que de lister toutes les technologies que vous avez touchées."
+    ]
+  },
+  "ux-designer": {
+    "title": "Designer UX",
+    "category": "Design",
+    "summary": "Mettez en avant votre processus de conception, vos méthodes de recherche et les résultats produit que votre travail a générés.",
+    "intro": "Un CV de designer UX doit illustrer votre façon de penser, et non se limiter à une liste d'outils. Les équipes de recrutement recherchent un processus clair : recherche, idéation, prototypage et validation, le tout relié à des résultats tels qu'un meilleur taux de réussite des tâches ou une conversion plus élevée. Associez votre savoir-faire à l'impact métier de vos conceptions.",
+    "keySkills": [
+      "User Research",
+      "Wireframing",
+      "Prototypage",
+      "Figma",
+      "Tests d'utilisabilité",
+      "Architecture de l'information",
+      "Design d'interaction",
+      "Design Systems",
+      "Accessibilité"
+    ],
+    "tips": [
+      "Commencez chaque poste par le problème que vous résolviez et le résultat obtenu, pas seulement les écrans conçus.",
+      "Incluez toujours un lien vers un portfolio comportant deux ou trois études de cas approfondies.",
+      "Quantifiez l'impact dès que possible, par exemple « Augmentation du taux d'achèvement de l'onboarding de 22 % ».",
+      "Nommez les méthodes de recherche et de test que vous avez utilisées afin que votre processus soit visible par les non-designers.",
+      "Gardez une mise en page épurée et bien aérée ; votre CV est lui-même un échantillon de votre design."
+    ]
+  },
+  "accountant": {
+    "title": "Comptable",
+    "category": "Finance",
+    "summary": "Démontrez votre rigueur, votre connaissance de la conformité et les contrôles financiers dont vous avez la charge.",
+    "intro": "Un CV de comptable se juge sur la précision, la crédibilité et la confiance. Les employeurs veulent voir les certifications pertinentes, les systèmes que vous utilisez et un historique irréprochable de reporting exact et dans les délais. Faites ressortir votre souci du détail dans le contenu comme dans la mise en forme de la page.",
+    "keySkills": [
+      "Reporting financier",
+      "Comptes fournisseurs",
+      "Comptes clients",
+      "Grand livre",
+      "Rapprochements",
+      "GAAP",
+      "Préparation fiscale",
+      "QuickBooks",
+      "Excel",
+      "Audit"
+    ],
+    "tips": [
+      "Faites figurer les certifications telles que CPA bien en évidence en haut de la page.",
+      "Quantifiez l'ampleur de ce que vous gérez, par exemple les budgets, le volume de transactions ou le nombre de comptes.",
+      "Nommez les logiciels de comptabilité et les systèmes ERP que vous maîtrisez afin que l'ATS puisse les repérer.",
+      "Mettez en avant vos réussites en matière de conformité, comme des audits sans réserve ou une réduction des erreurs de reporting.",
+      "Conservez une mise en forme sobre et impeccable ; la rigueur fait partie du message."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Ingénieur mécanique",
+    "category": "Ingénierie",
+    "summary": "Présentez votre expérience de conception, vos outils techniques et les produits que vous avez contribué à concrétiser.",
+    "intro": "Un CV d'ingénieur mécanique doit relier la capacité technique à des résultats tangibles : pièces conçues, produits lancés ou coûts réduits. Les responsables du recrutement recherchent une maîtrise de la CAO, des normes pertinentes et une expérience concrète tout au long du cycle de vie du produit. Montrez à la fois ce que vous avez conçu et le résultat obtenu.",
+    "keySkills": [
+      "CAO",
+      "SolidWorks",
+      "AutoCAD",
+      "Analyse par éléments finis",
+      "GD&T",
+      "Conception de produits",
+      "Prototypage",
+      "Procédés de fabrication",
+      "Analyse de tolérances"
+    ],
+    "tips": [
+      "Listez les outils de CAO et de simulation que vous utilisez ainsi que votre niveau de maîtrise pour chacun.",
+      "Quantifiez les résultats tels que le poids réduit, le coût économisé ou le temps de cycle amélioré.",
+      "Mentionnez les normes et méthodologies que vous appliquez, comme le GD&T ou l'ISO.",
+      "Mettez en avant le travail transversal avec la production, la qualité et les fournisseurs.",
+      "Incluez tout brevet, conception publiée ou projet de fin d'études qui démontre une compétence appliquée."
+    ]
+  },
+  "project-manager": {
+    "title": "Chef de projet",
+    "category": "Management",
+    "summary": "Prouvez que vous livrez les projets dans les délais, dans le budget et avec des résultats métier mesurables.",
+    "intro": "Un CV de chef de projet se joue entièrement sur les résultats. Les employeurs veulent la preuve que vous savez cadrer le travail, gérer les parties prenantes et tenir les délais et les budgets. Mettez en avant les résultats des projets que vous avez menés, puis présentez les méthodologies et les outils qui vous y ont conduit.",
+    "keySkills": [
+      "Planification de projet",
+      "Gestion des parties prenantes",
+      "Agile",
+      "Scrum",
+      "Gestion des risques",
+      "Budgétisation",
+      "Jira",
+      "Roadmapping",
+      "Leadership transversal"
+    ],
+    "tips": [
+      "Quantifiez l'envergure de chaque projet : taille du budget, effectifs de l'équipe et calendrier.",
+      "Commencez vos puces par des résultats de livraison, par exemple « Livraison d'une migration de 1,2 M$ avec deux semaines d'avance ».",
+      "Mentionnez vos certifications telles que PMP ou CSM si vous les détenez.",
+      "Montrez la gestion des parties prenantes et le travail transversal, pas seulement le suivi des tâches.",
+      "Adaptez la méthodologie que vous mettez en avant au poste, qu'il s'agisse d'Agile, de Waterfall ou d'un modèle hybride."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Responsable marketing",
+    "category": "Marketing",
+    "summary": "Reliez vos campagnes au chiffre d'affaires, à la croissance et aux canaux que vous avez développés.",
+    "intro": "Un CV de responsable marketing doit se lire comme une histoire de croissance. Les équipes de recrutement veulent savoir quels canaux vous pilotez, les campagnes que vous avez menées et le pipeline ou le chiffre d'affaires qu'elles ont générés. Ancrez votre expérience dans des indicateurs pour que votre impact soit impossible à ignorer.",
+    "keySkills": [
+      "Gestion de campagnes",
+      "SEO",
+      "Content Marketing",
+      "Acquisition payante",
+      "Analyse marketing",
+      "Email Marketing",
+      "Stratégie de marque",
+      "Google Analytics",
+      "Génération de leads",
+      "Marketing Automation"
+    ],
+    "tips": [
+      "Quantifiez les résultats tels que les leads générés, le CAC réduit ou le chiffre d'affaires influencé.",
+      "Nommez les canaux et les plateformes que vous pilotez afin qu'ils correspondent aux mots-clés de l'offre.",
+      "Montrez votre responsabilité sur le budget et le retour que vous en avez tiré.",
+      "Mettez en avant une campagne phare avec des chiffres clairs avant/après.",
+      "Démontrez à la fois la stratégie et l'exécution, et non l'une au détriment de l'autre."
+    ]
+  },
+  "student": {
+    "title": "Étudiant",
+    "category": "Débutant",
+    "summary": "Transformez vos cours, vos projets et vos stages en un premier CV convaincant.",
+    "intro": "Un CV de débutant décroche des entretiens en tirant le meilleur parti d'une expérience formelle limitée. Les cours, les projets, les stages et le leadership extrascolaire comptent tous lorsqu'ils sont formulés autour de compétences et de résultats. Concentrez-vous sur ce que vous savez faire, étayé par des exemples concrets, plutôt que de vous excuser d'un parcours professionnel court.",
+    "keySkills": [
+      "Communication",
+      "Travail d'équipe",
+      "Gestion du temps",
+      "Microsoft Office",
+      "Recherche",
+      "Résolution de problèmes",
+      "Adaptabilité",
+      "Leadership"
+    ],
+    "tips": [
+      "Placez la formation en haut du CV et incluez les cours pertinents, la moyenne si elle est élevée et les distinctions.",
+      "Traitez les projets de cours et les stages comme des emplois, avec des puces axées sur les résultats.",
+      "Mettez en avant le leadership dans des clubs, le sport ou le bénévolat pour montrer votre initiative.",
+      "Limitez-vous à une page et adoptez une mise en page épurée et facile à parcourir.",
+      "Adaptez votre section de compétences aux postes précis auxquels vous postulez."
+    ]
+  },
+  "community-manager": {
+    "title": "Community manager",
+    "category": "Marketing",
+    "summary": "Montrez comment vous développez, engagez et fidélisez des audiences sur les différents canaux.",
+    "intro": "Un CV de community manager doit prouver que vous savez bâtir et entretenir une audience engagée. Les équipes de recrutement recherchent des indicateurs de croissance, des résultats d'engagement et la preuve que vous savez incarner la voix d'une marque tout en gérant de vraies conversations. Associez les plateformes que vous gérez aux résultats que vous avez produits.",
+    "keySkills": [
+      "Animation de communauté",
+      "Gestion des réseaux sociaux",
+      "Création de contenu",
+      "Modération",
+      "Voix de la marque",
+      "Analytics",
+      "Discord",
+      "Support client",
+      "Coordination d'événements"
+    ],
+    "tips": [
+      "Quantifiez la croissance de la communauté, le taux d'engagement et la fidélisation lorsque c'est possible.",
+      "Nommez les plateformes et les outils que vous gérez, tels que Discord, Slack ou les réseaux sociaux.",
+      "Montrez comment vous avez géré des escalades ou inversé un sentiment négatif.",
+      "Mettez en avant les campagnes ou événements que vous avez menés et la participation qu'ils ont suscitée.",
+      "Démontrez une voix de marque cohérente à l'aide d'exemples concrets."
+    ]
+  },
+  "creative-writer": {
+    "title": "Rédacteur créatif",
+    "category": "Rédaction",
+    "summary": "Laissez votre voix, votre polyvalence et vos travaux publiés plaider en votre faveur.",
+    "intro": "Un CV de rédacteur créatif doit démontrer de la polyvalence, de la fiabilité et une voix distinctive. Les éditeurs et les clients veulent voir des travaux publiés, les formats que vous maîtrisez et votre capacité à livrer des textes aboutis dans les délais. Mettez en avant vos références et laissez un portfolio faire le gros du travail.",
+    "keySkills": [
+      "Copywriting",
+      "Storytelling",
+      "Révision",
+      "Stratégie de contenu",
+      "Rédaction SEO",
+      "Recherche",
+      "Relecture",
+      "Voix de la marque",
+      "CMS"
+    ],
+    "tips": [
+      "Incluez toujours un lien vers un portfolio présentant une sélection soignée de vos meilleurs textes.",
+      "Listez les publications, signatures ou clients notables pour établir votre crédibilité.",
+      "Montrez votre polyvalence en nommant les formats que vous rédigez, comme les formats longs, les scripts ou les accroches.",
+      "Quantifiez votre portée lorsque c'est possible, par exemple le lectorat ou l'engagement sur les travaux publiés.",
+      "Gardez le CV lui-même net et sans faute ; c'est un échantillon de votre écriture."
+    ]
+  },
+  "sales-representative": {
+    "title": "Commercial",
+    "category": "Vente",
+    "summary": "Mettez en avant l'atteinte de vos objectifs, les affaires conclues et le chiffre d'affaires généré.",
+    "intro": "Un CV de commercial est avant tout une affaire de chiffres. Les responsables du recrutement recherchent l'atteinte des objectifs, la taille des affaires et la régularité avec laquelle vous tenez vos cibles. Placez vos résultats au premier plan et appuyez-les sur le processus et les outils que vous avez utilisés pour les obtenir.",
+    "keySkills": [
+      "Génération de leads",
+      "Prospection",
+      "Négociation",
+      "CRM",
+      "Salesforce",
+      "Gestion du pipeline",
+      "Closing",
+      "Gestion de comptes",
+      "Démarchage téléphonique"
+    ],
+    "tips": [
+      "Commencez chaque poste par l'atteinte de vos objectifs, par exemple « Atteinte de 128 % de l'objectif en 2025 ».",
+      "Quantifiez la taille des affaires, le chiffre d'affaires généré et l'ampleur de votre portefeuille clients.",
+      "Nommez le CRM et les outils de vente que vous utilisez afin qu'ils correspondent aux mots-clés de l'ATS.",
+      "Montrez votre progression, comme les distinctions President's Club ou les promotions.",
+      "Mettez en avant à la fois les résultats en nouvelle clientèle et en développement de comptes pour montrer votre polyvalence."
+    ]
+  }
+}

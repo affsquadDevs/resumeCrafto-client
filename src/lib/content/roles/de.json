@@ -1,1 +1,244 @@
-{}
+{
+  "software-engineer": {
+    "title": "Softwareentwickler",
+    "category": "Technologie",
+    "summary": "Präsentieren Sie Ihre technische Tiefe, ausgelieferte Projekte und messbare Wirkung für Stellen im Engineering.",
+    "intro": "Ein überzeugender Lebenslauf als Softwareentwickler verbindet technische Breite mit nachweisbarer Wirkung. Recruiter und Engineering-Manager möchten die Sprachen und Systeme sehen, mit denen Sie arbeiten, doch eingestellt wird auf Basis von Ergebnissen wie ausgelieferten Features, reduzierter Latenz und gelösten Problemen. Stellen Sie Ergebnisse voran und untermauern Sie sie mit dem von Ihnen genutzten Stack.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "REST APIs",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Systemdesign"
+    ],
+    "tips": [
+      "Beginnen Sie jeden Stichpunkt mit einem starken Verb und einem messbaren Ergebnis, etwa \"API-Antwortzeit um 40 % reduziert.\"",
+      "Führen Sie Ihre wichtigsten Sprachen und Frameworks in einem eigenen Kompetenzbereich auf, damit ein ATS sie schnell zuordnen kann.",
+      "Verlinken Sie ein GitHub-Profil oder Portfolio, das echten, lauffähigen Code zeigt.",
+      "Beschreiben Sie die Größenordnung, in der Sie gearbeitet haben (Requests pro Sekunde, Nutzer, Datenvolumen), um Ihrer Wirkung Kontext zu geben.",
+      "Stimmen Sie den hervorgehobenen Stack auf die Stellenbeschreibung ab, statt jede Technologie aufzulisten, mit der Sie je in Berührung kamen."
+    ]
+  },
+  "ux-designer": {
+    "title": "UX-Designer",
+    "category": "Design",
+    "summary": "Heben Sie Ihren Designprozess, Ihre Forschungsmethoden und die erzielten Produktergebnisse hervor.",
+    "intro": "Ein Lebenslauf als UX-Designer sollte sich wie ein Beleg für Ihre Denkweise lesen, nicht nur wie eine Liste von Werkzeugen. Einstellungsteams suchen einen klaren Prozess: Forschung, Ideenfindung, Prototyping und Validierung, verknüpft mit Ergebnissen wie höherer Aufgabenerfüllung oder gesteigerter Conversion. Verbinden Sie Ihr Handwerk mit der geschäftlichen Wirkung, die Ihre Entwürfe erzielt haben.",
+    "keySkills": [
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Figma",
+      "Usability-Testing",
+      "Informationsarchitektur",
+      "Interaction Design",
+      "Designsysteme",
+      "Barrierefreiheit"
+    ],
+    "tips": [
+      "Beginnen Sie jede Position mit dem Problem, das Sie gelöst haben, und dem erzielten Ergebnis, nicht nur mit den Screens, die Sie gestaltet haben.",
+      "Fügen Sie stets einen Link zu einem Portfolio mit zwei bis drei tiefgehenden Fallstudien ein.",
+      "Quantifizieren Sie Ihre Wirkung, wo möglich, etwa \"Abschlussrate des Onboardings um 22 % gesteigert.\"",
+      "Nennen Sie die eingesetzten Forschungs- und Testmethoden, damit Ihr Prozess auch für Nicht-Designer sichtbar wird.",
+      "Halten Sie das Layout sauber und großzügig gesetzt; Ihr Lebenslauf ist selbst eine Designprobe."
+    ]
+  },
+  "accountant": {
+    "title": "Buchhalter",
+    "category": "Finanzen",
+    "summary": "Zeigen Sie Genauigkeit, Compliance-Kenntnisse und die Finanzkontrollen, für die Sie verantwortlich sind.",
+    "intro": "Ein Lebenslauf als Buchhalter wird an Präzision, Glaubwürdigkeit und Vertrauen gemessen. Arbeitgeber möchten einschlägige Zertifizierungen, die von Ihnen genutzten Systeme und eine saubere Bilanz aus korrekter, termingerechter Berichterstattung sehen. Machen Sie Ihre Sorgfalt sowohl im Inhalt als auch in der Gestaltung der Seite deutlich.",
+    "keySkills": [
+      "Finanzberichterstattung",
+      "Kreditorenbuchhaltung",
+      "Debitorenbuchhaltung",
+      "Hauptbuch",
+      "Kontenabstimmung",
+      "GAAP",
+      "Steuererklärung",
+      "QuickBooks",
+      "Excel",
+      "Wirtschaftsprüfung"
+    ],
+    "tips": [
+      "Führen Sie Zertifizierungen wie den CPA gut sichtbar im oberen Bereich der Seite auf.",
+      "Quantifizieren Sie den Umfang Ihrer Verantwortung, zum Beispiel Budgets, Transaktionsvolumen oder Anzahl der Konten.",
+      "Nennen Sie die Buchhaltungssoftware und ERP-Systeme, die Sie beherrschen, damit das ATS sie zuordnen kann.",
+      "Heben Sie Compliance-Erfolge hervor, etwa beanstandungsfreie Prüfungen oder reduzierte Berichtsfehler.",
+      "Halten Sie die Gestaltung zurückhaltend und makellos; Genauigkeit ist Teil der Botschaft."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Maschinenbauingenieur",
+    "category": "Ingenieurwesen",
+    "summary": "Stellen Sie Ihre Konstruktionserfahrung, technischen Werkzeuge und die Produkte vor, die Sie mitentwickelt haben.",
+    "intro": "Ein Lebenslauf als Maschinenbauingenieur sollte technisches Können mit greifbaren Ergebnissen verbinden: konstruierte Bauteile, eingeführte Produkte oder gesenkte Kosten. Einstellungsverantwortliche achten auf CAD-Kompetenz, einschlägige Normen und praktische Erfahrung über den gesamten Produktlebenszyklus. Zeigen Sie sowohl, was Sie gebaut haben, als auch das damit erzielte Ergebnis.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Finite-Elemente-Analyse",
+      "GD&T",
+      "Produktentwicklung",
+      "Prototyping",
+      "Fertigungsprozesse",
+      "Toleranzanalyse"
+    ],
+    "tips": [
+      "Führen Sie die genutzten CAD- und Simulationswerkzeuge sowie Ihr jeweiliges Kompetenzniveau auf.",
+      "Quantifizieren Sie Ergebnisse wie reduziertes Gewicht, eingesparte Kosten oder verbesserte Zykluszeiten.",
+      "Verweisen Sie auf die Normen und Methoden, nach denen Sie arbeiten, etwa GD&T oder ISO.",
+      "Heben Sie funktionsübergreifende Zusammenarbeit mit Fertigung, Qualitätssicherung und Lieferanten hervor.",
+      "Nennen Sie Patente, veröffentlichte Konstruktionen oder Abschlussprojekte, die angewandtes Können belegen."
+    ]
+  },
+  "project-manager": {
+    "title": "Projektmanager",
+    "category": "Management",
+    "summary": "Belegen Sie, dass Sie Projekte termingerecht, im Budget und mit messbaren Geschäftsergebnissen liefern.",
+    "intro": "Ein Lebenslauf als Projektmanager steht und fällt mit den Ergebnissen. Arbeitgeber möchten den Nachweis, dass Sie Aufgaben abgrenzen, Stakeholder steuern und Termine wie Budgets einhalten können. Stellen Sie die Ergebnisse Ihrer geleiteten Projekte voran und zeigen Sie dann die Methoden und Werkzeuge, mit denen Sie dorthin gelangt sind.",
+    "keySkills": [
+      "Projektplanung",
+      "Stakeholdermanagement",
+      "Agile",
+      "Scrum",
+      "Risikomanagement",
+      "Budgetierung",
+      "Jira",
+      "Roadmapping",
+      "Funktionsübergreifende Führung"
+    ],
+    "tips": [
+      "Quantifizieren Sie bei jedem Projekt den Umfang: Budgetgröße, Teamstärke und Zeitrahmen.",
+      "Beginnen Sie Stichpunkte mit Lieferergebnissen, etwa \"Migration über 1,2 Mio. $ zwei Wochen vor Termin abgeschlossen.\"",
+      "Nennen Sie Ihre Zertifizierungen wie PMP oder CSM, sofern Sie diese besitzen.",
+      "Zeigen Sie Stakeholder- und funktionsübergreifendes Management, nicht nur die reine Aufgabenverfolgung.",
+      "Stimmen Sie die hervorgehobene Methode auf die Rolle ab, sei es Agile, Wasserfall oder ein hybrider Ansatz."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Marketingmanager",
+    "category": "Marketing",
+    "summary": "Verbinden Sie Kampagnen mit Umsatz, Wachstum und den Kanälen, die Sie skaliert haben.",
+    "intro": "Ein Lebenslauf als Marketingmanager sollte sich wie eine Wachstumsgeschichte lesen. Einstellungsteams möchten sehen, welche Kanäle Sie verantworten, welche Kampagnen Sie durchgeführt haben und welche Pipeline oder welchen Umsatz diese erzeugt haben. Verankern Sie Ihre Erfahrung in Kennzahlen, damit Ihre Wirkung unübersehbar ist.",
+    "keySkills": [
+      "Kampagnenmanagement",
+      "SEO",
+      "Content-Marketing",
+      "Paid Acquisition",
+      "Marketing-Analytics",
+      "E-Mail-Marketing",
+      "Markenstrategie",
+      "Google Analytics",
+      "Lead-Generierung",
+      "Marketing-Automatisierung"
+    ],
+    "tips": [
+      "Quantifizieren Sie Ergebnisse wie generierte Leads, gesenkte CAC oder beeinflussten Umsatz.",
+      "Nennen Sie die von Ihnen verantworteten Kanäle und Plattformen, damit sie zu den Stichwörtern der Stelle passen.",
+      "Zeigen Sie Budgetverantwortung und die damit erzielte Rendite.",
+      "Heben Sie eine Vorzeigekampagne mit klaren Vorher-Nachher-Zahlen hervor.",
+      "Belegen Sie sowohl Strategie als auch Umsetzung, nicht nur eines von beidem."
+    ]
+  },
+  "student": {
+    "title": "Student",
+    "category": "Berufseinstieg",
+    "summary": "Verwandeln Sie Lehrveranstaltungen, Projekte und Praktika in einen überzeugenden ersten Lebenslauf.",
+    "intro": "Ein Lebenslauf für den Berufseinstieg gewinnt Vorstellungsgespräche, indem er das Beste aus begrenzter formaler Erfahrung macht. Lehrveranstaltungen, Projekte, Praktika und außercurriculare Führungsrollen zählen alle, wenn sie auf Kompetenzen und Ergebnisse ausgerichtet sind. Konzentrieren Sie sich auf das, was Sie können, untermauert durch konkrete Beispiele, statt sich für eine kurze Berufserfahrung zu entschuldigen.",
+    "keySkills": [
+      "Kommunikation",
+      "Teamarbeit",
+      "Zeitmanagement",
+      "Microsoft Office",
+      "Recherche",
+      "Problemlösung",
+      "Anpassungsfähigkeit",
+      "Führung"
+    ],
+    "tips": [
+      "Platzieren Sie die Ausbildung weit oben und nennen Sie relevante Lehrveranstaltungen, die Note bei guter Leistung sowie Auszeichnungen.",
+      "Behandeln Sie Studienprojekte und Praktika wie Anstellungen, mit ergebnisorientierten Stichpunkten.",
+      "Heben Sie Führungsrollen in Vereinen, im Sport oder im Ehrenamt hervor, um Eigeninitiative zu zeigen.",
+      "Beschränken Sie sich auf eine Seite und nutzen Sie ein klares, leicht erfassbares Layout.",
+      "Stimmen Sie Ihren Kompetenzbereich auf die konkreten Stellen ab, auf die Sie sich bewerben."
+    ]
+  },
+  "community-manager": {
+    "title": "Community-Manager",
+    "category": "Marketing",
+    "summary": "Zeigen Sie, wie Sie Zielgruppen über Kanäle hinweg gewinnen, aktivieren und binden.",
+    "intro": "Ein Lebenslauf als Community-Manager sollte belegen, dass Sie eine engagierte Zielgruppe aufbauen und erhalten können. Einstellungsteams achten auf Wachstumskennzahlen, Engagement-Ergebnisse und den Nachweis, dass Sie eine Markenstimme verkörpern und zugleich echte Gespräche führen können. Verbinden Sie die von Ihnen betreuten Plattformen mit den erzielten Ergebnissen.",
+    "keySkills": [
+      "Community-Engagement",
+      "Social-Media-Management",
+      "Content-Erstellung",
+      "Moderation",
+      "Markenstimme",
+      "Analytics",
+      "Discord",
+      "Kundensupport",
+      "Eventkoordination"
+    ],
+    "tips": [
+      "Quantifizieren Sie nach Möglichkeit Community-Wachstum, Engagement-Rate und Bindung.",
+      "Nennen Sie die betreuten Plattformen und Werkzeuge, etwa Discord, Slack oder Social-Media-Kanäle.",
+      "Zeigen Sie, wie Sie Eskalationen bewältigt oder negative Stimmung umgekehrt haben.",
+      "Heben Sie Kampagnen oder Events hervor, die Sie durchgeführt haben, und die damit erzielte Beteiligung.",
+      "Belegen Sie eine durchgängige Markenstimme mit konkreten Beispielen."
+    ]
+  },
+  "creative-writer": {
+    "title": "Kreativautor",
+    "category": "Schreiben",
+    "summary": "Lassen Sie Ihre Stimme, Vielseitigkeit und veröffentlichten Arbeiten für sich sprechen.",
+    "intro": "Ein Lebenslauf als Kreativautor sollte Vielseitigkeit, Zuverlässigkeit und eine unverwechselbare Stimme belegen. Redaktionen und Kunden möchten veröffentlichte Arbeiten sehen, die Formate, die Sie beherrschen, sowie Ihre Fähigkeit, ausgereifte Texte termingerecht zu liefern. Stellen Sie Veröffentlichungen voran und lassen Sie ein Portfolio die Hauptarbeit leisten.",
+    "keySkills": [
+      "Copywriting",
+      "Storytelling",
+      "Lektorat",
+      "Content-Strategie",
+      "SEO-Texterstellung",
+      "Recherche",
+      "Korrektorat",
+      "Markenstimme",
+      "CMS"
+    ],
+    "tips": [
+      "Fügen Sie stets einen Portfolio-Link mit einer kuratierten Auswahl Ihrer besten Arbeiten ein.",
+      "Nennen Sie namhafte Publikationen, Bylines oder Kunden, um Glaubwürdigkeit aufzubauen.",
+      "Zeigen Sie Vielseitigkeit, indem Sie die Formate nennen, die Sie schreiben, etwa Langtexte, Drehbücher oder Werbetexte.",
+      "Quantifizieren Sie nach Möglichkeit die Reichweite, zum Beispiel Leserschaft oder Engagement bei veröffentlichten Arbeiten.",
+      "Halten Sie den Lebenslauf selbst prägnant und fehlerfrei; er ist eine Schreibprobe."
+    ]
+  },
+  "sales-representative": {
+    "title": "Vertriebsmitarbeiter",
+    "category": "Vertrieb",
+    "summary": "Stellen Sie Zielerreichung, abgeschlossene Geschäfte und den von Ihnen erzielten Umsatz voran.",
+    "intro": "Bei einem Lebenslauf als Vertriebsmitarbeiter geht es im Kern um Zahlen. Einstellungsverantwortliche achten auf Quotenerfüllung, Abschlussgröße und wie konstant Sie Ihre Ziele erreichen. Stellen Sie Ihre Ergebnisse klar in den Vordergrund und untermauern Sie sie mit dem Prozess und den Werkzeugen, mit denen Sie sie erzielt haben.",
+    "keySkills": [
+      "Lead-Generierung",
+      "Akquise",
+      "Verhandlungsführung",
+      "CRM",
+      "Salesforce",
+      "Pipeline-Management",
+      "Geschäftsabschluss",
+      "Account-Management",
+      "Kaltakquise"
+    ],
+    "tips": [
+      "Beginnen Sie jede Position mit der Quotenerfüllung, zum Beispiel \"128 % der Quote im Jahr 2025 erreicht.\"",
+      "Quantifizieren Sie Abschlussgröße, erzielten Umsatz und den Umfang Ihres Kundenstamms.",
+      "Nennen Sie das CRM und die Vertriebswerkzeuge, die Sie nutzen, damit sie zu den ATS-Stichwörtern passen.",
+      "Zeigen Sie Entwicklung, etwa President's-Club-Auszeichnungen oder Beförderungen.",
+      "Heben Sie sowohl Neugeschäfts- als auch Bestandskundenergebnisse hervor, um Ihre Bandbreite zu zeigen."
+    ]
+  }
+}

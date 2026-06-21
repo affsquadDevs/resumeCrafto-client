@@ -1,1 +1,14 @@
-{}
+{
+  "resumecraftor-editorial-team": {
+    "role": "Redaktionsteam",
+    "bio": "Das ResumeCraftor-Redaktionsteam erforscht, wie Einstellungsprozesse tatsächlich ablaufen, worauf Recruiter achten und wie Bewerbermanagementsysteme Lebensläufe auswerten und einstufen. Wir verwandeln diese Forschung in klare, praxisnahe Lebenslauf- und Karriereberatung, die reale Erwartungen von Recruitern widerspiegelt statt allgemeiner Ratschläge. Jeder Artikel wird vor der Veröffentlichung am aktuellen ATS-Verhalten und an gängigen Einstellungspraktiken geprüft.",
+    "expertise": [
+      "Lebenslauferstellung",
+      "ATS-Optimierung",
+      "Erwartungen von Recruitern",
+      "Karriereentwicklung",
+      "Anschreiben",
+      "Strategie für die Jobsuche"
+    ]
+  }
+}

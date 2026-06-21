@@ -1,1 +1,14 @@
-{}
+{
+  "resumecraftor-editorial-team": {
+    "role": "Equipo Editorial",
+    "bio": "El Equipo Editorial de ResumeCraftor investiga cómo funciona realmente la contratación, qué buscan los reclutadores y cómo los sistemas de seguimiento de candidatos (ATS) analizan y clasifican los currículums. Convertimos esa investigación en una orientación clara y práctica sobre currículums y carrera profesional que refleja las expectativas reales de los reclutadores, en lugar de consejos genéricos. Cada artículo se revisa conforme al comportamiento actual de los ATS y a las prácticas de contratación antes de su publicación.",
+    "expertise": [
+      "Redacción de currículums",
+      "Optimización para ATS",
+      "Expectativas de los reclutadores",
+      "Desarrollo profesional",
+      "Cartas de presentación",
+      "Estrategia de búsqueda de empleo"
+    ]
+  }
+}

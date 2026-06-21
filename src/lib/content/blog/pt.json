@@ -1,1 +1,62 @@
-{}
+{
+  "how-to-write-a-strategic-resume": {
+    "title": "Como Escrever um Currículo Que Soe Mais Estratégico, e Não Apenas Operacional",
+    "excerpt": "Aprenda a apresentar o seu trabalho de forma mais estratégica para que o seu currículo demonstre visão de negócio, capacidade de priorização e maturidade profissional.",
+    "category": "Dicas de Carreira",
+    "readTime": "8 min de leitura"
+  },
+  "how-to-make-your-resume-sound-more-senior": {
+    "title": "Como Fazer o Seu Currículo Soar Mais Sénior Sem Exagerar",
+    "excerpt": "Aprenda a apresentar a sua experiência com uma linguagem mais forte e mais sénior, sem exagerar conquistas nem sobrevalorizar o seu papel.",
+    "category": "Dicas de Carreira",
+    "readTime": "9 min de leitura"
+  },
+  "resume-keywords-for-ats": {
+    "title": "Palavras-Chave de Currículo para ATS: Como Usá-las de Forma Natural",
+    "excerpt": "Aprenda a usar palavras-chave de currículo para ATS de forma natural, para que os sistemas de gestão de candidaturas reconheçam a sua relevância sem sobrecarga de palavras-chave.",
+    "category": "Guia de Currículo",
+    "readTime": "8 min de leitura"
+  },
+  "ats-resume-formatting-tips": {
+    "title": "Dicas de Formatação de Currículo para ATS: O Que Usar e O Que Evitar",
+    "excerpt": "Aprenda quais as escolhas de formatação de currículo que ajudam os sistemas de gestão de candidaturas a interpretar corretamente o seu currículo e quais os erros de design que costumam reduzir a compatibilidade com ATS.",
+    "category": "Formatação de Currículo",
+    "readTime": "9 min de leitura"
+  },
+  "what-is-an-ats-resume": {
+    "title": "O Que É um Currículo ATS? Significado, Formato e Boas Práticas",
+    "excerpt": "Saiba o que é realmente um currículo ATS, como os sistemas de gestão de candidaturas leem os currículos e quais os formatos, tipos de ficheiro e boas práticas que melhoram a compatibilidade e a legibilidade.",
+    "category": "Guia de Currículo",
+    "readTime": "10 min de leitura"
+  },
+  "how-to-make-your-resume-reflect-leadership": {
+    "title": "Como Fazer o Seu Currículo Refletir Liderança Mesmo Que Nunca Tenha Gerido uma Equipa",
+    "excerpt": "Aprenda a evidenciar liderança no seu currículo através de responsabilização, iniciativa, discernimento e influência, mesmo sem experiência formal de gestão.",
+    "category": "Liderança",
+    "readTime": "9 min de leitura"
+  },
+  "ats-optimization-getting-past-the-robots": {
+    "title": "Otimização para ATS Explicada: Como Funcionam os Sistemas de Gestão de Candidaturas",
+    "excerpt": "Aprenda como os ATS (Sistemas de Gestão de Candidaturas) processam os currículos, quais os problemas de compatibilidade mais comuns e formas práticas de melhorar a otimização para ATS sem sacrificar a legibilidade.",
+    "category": "Dicas de Carreira",
+    "readTime": "10 min de leitura"
+  },
+  "building-your-personal-brand-through-your-resume": {
+    "title": "Construir a Sua Marca Pessoal Através do Currículo (Guia Prático)",
+    "excerpt": "Aprenda a construir uma marca pessoal clara através do seu currículo, recorrendo a uma mensagem focada, uma estrutura consistente e experiência sustentada em evidências, sem soar genérico.",
+    "category": "Branding",
+    "readTime": "8 min de leitura"
+  },
+  "how-to-choose-the-perfect-resume-template": {
+    "title": "Como Escolher o Modelo de Currículo Certo para a Sua Carreira",
+    "excerpt": "Aprenda a escolher o modelo de currículo certo com base na sua função, nível de experiência e objetivos profissionais, sem sacrificar a clareza ou a compatibilidade.",
+    "category": "Guia de Currículo",
+    "readTime": "7 min de leitura"
+  },
+  "how-to-build-a-professional-resume-step-by-step": {
+    "title": "Como Criar um Currículo Profissional: Guia Passo a Passo",
+    "excerpt": "Um guia claro e passo a passo para criar um currículo profissional, desde a estrutura e os resumos até à experiência, às competências e às boas práticas de formatação.",
+    "category": "Guia de Currículo",
+    "readTime": "12 min de leitura"
+  }
+}

@@ -1,1 +1,62 @@
-{}
+{
+  "how-to-write-a-strategic-resume": {
+    "title": "Jak napisać CV, które brzmi bardziej strategicznie, a nie tylko operacyjnie",
+    "excerpt": "Dowiedz się, jak przedstawiać swoją pracę w bardziej strategiczny sposób, aby Twoje CV pokazywało myślenie biznesowe, ustalanie priorytetów i zawodową dojrzałość.",
+    "category": "Porady dotyczące kariery",
+    "readTime": "8 min czytania"
+  },
+  "how-to-make-your-resume-sound-more-senior": {
+    "title": "Jak sprawić, by Twoje CV brzmiało bardziej senioralnie, bez przesady",
+    "excerpt": "Dowiedz się, jak przedstawiać swoje doświadczenie mocniejszym, bardziej senioralnym językiem, nie wyolbrzymiając osiągnięć ani nie zawyżając swojej roli.",
+    "category": "Porady dotyczące kariery",
+    "readTime": "9 min czytania"
+  },
+  "resume-keywords-for-ats": {
+    "title": "Słowa kluczowe w CV pod ATS: jak używać ich naturalnie",
+    "excerpt": "Dowiedz się, jak naturalnie używać słów kluczowych w CV pod ATS, aby systemy śledzenia kandydatów rozpoznawały Twoje dopasowanie bez upychania słów kluczowych.",
+    "category": "Poradnik CV",
+    "readTime": "8 min czytania"
+  },
+  "ats-resume-formatting-tips": {
+    "title": "Wskazówki dotyczące formatowania CV pod ATS: co stosować, a czego unikać",
+    "excerpt": "Dowiedz się, które wybory formatowania pomagają systemom śledzenia kandydatów poprawnie odczytać Twoje CV, a które błędy projektowe często obniżają zgodność z ATS.",
+    "category": "Formatowanie CV",
+    "readTime": "9 min czytania"
+  },
+  "what-is-an-ats-resume": {
+    "title": "Czym jest CV pod ATS? Znaczenie, format i najlepsze praktyki",
+    "excerpt": "Dowiedz się, czym naprawdę jest CV pod ATS, jak systemy śledzenia kandydatów odczytują CV oraz które formatowanie, typy plików i najlepsze praktyki poprawiają zgodność i czytelność.",
+    "category": "Poradnik CV",
+    "readTime": "10 min czytania"
+  },
+  "how-to-make-your-resume-reflect-leadership": {
+    "title": "Jak sprawić, by Twoje CV odzwierciedlało przywództwo, nawet jeśli nigdy nie zarządzałeś zespołem",
+    "excerpt": "Dowiedz się, jak pokazać przywództwo w CV poprzez odpowiedzialność, inicjatywę, rozsądek i wpływ, nawet bez formalnego doświadczenia menedżerskiego.",
+    "category": "Przywództwo",
+    "readTime": "9 min czytania"
+  },
+  "ats-optimization-getting-past-the-robots": {
+    "title": "Optymalizacja pod ATS wyjaśniona: jak działają systemy śledzenia kandydatów",
+    "excerpt": "Dowiedz się, jak systemy śledzenia kandydatów (ATS) przetwarzają CV, jakie są typowe problemy ze zgodnością oraz jak praktycznie poprawić optymalizację pod ATS bez utraty czytelności.",
+    "category": "Porady dotyczące kariery",
+    "readTime": "10 min czytania"
+  },
+  "building-your-personal-brand-through-your-resume": {
+    "title": "Budowanie marki osobistej za pomocą CV (praktyczny przewodnik)",
+    "excerpt": "Dowiedz się, jak zbudować wyraźną markę osobistą za pomocą CV, wykorzystując skoncentrowany przekaz, spójną strukturę i doświadczenie poparte dowodami, bez brzmienia ogólnikowo.",
+    "category": "Branding",
+    "readTime": "8 min czytania"
+  },
+  "how-to-choose-the-perfect-resume-template": {
+    "title": "Jak wybrać odpowiedni szablon CV do swojej kariery",
+    "excerpt": "Dowiedz się, jak wybrać odpowiedni szablon CV w oparciu o swoją rolę, poziom doświadczenia i cele zawodowe, bez utraty przejrzystości i zgodności.",
+    "category": "Poradnik CV",
+    "readTime": "7 min czytania"
+  },
+  "how-to-build-a-professional-resume-step-by-step": {
+    "title": "Jak zbudować profesjonalne CV: przewodnik krok po kroku",
+    "excerpt": "Jasny przewodnik krok po kroku po budowaniu profesjonalnego CV — od struktury i podsumowań po doświadczenie, umiejętności i najlepsze praktyki formatowania.",
+    "category": "Poradnik CV",
+    "readTime": "12 min czytania"
+  }
+}

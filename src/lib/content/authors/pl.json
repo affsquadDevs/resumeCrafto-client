@@ -1,1 +1,14 @@
-{}
+{
+  "resumecraftor-editorial-team": {
+    "role": "Zespół redakcyjny",
+    "bio": "Zespół redakcyjny ResumeCraftor bada, jak naprawdę przebiega rekrutacja, czego szukają rekruterzy oraz jak systemy śledzenia kandydatów (ATS) analizują i porządkują CV. Przekuwamy te badania w jasne, praktyczne wskazówki dotyczące CV i kariery, które odzwierciedlają rzeczywiste oczekiwania rekruterów, a nie ogólnikowe porady. Każdy artykuł, zanim zostanie opublikowany, jest weryfikowany pod kątem aktualnego działania ATS i praktyk rekrutacyjnych.",
+    "expertise": [
+      "Pisanie CV",
+      "Optymalizacja pod ATS",
+      "Oczekiwania rekruterów",
+      "Rozwój kariery",
+      "Listy motywacyjne",
+      "Strategia poszukiwania pracy"
+    ]
+  }
+}

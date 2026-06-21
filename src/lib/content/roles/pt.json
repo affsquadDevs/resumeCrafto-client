@@ -1,1 +1,244 @@
-{}
+{
+  "software-engineer": {
+    "title": "Engenheiro de Software",
+    "category": "Tecnologia",
+    "summary": "Demonstre a sua profundidade técnica, os projetos concretizados e o impacto mensurável em funções de engenharia.",
+    "intro": "Um bom currículo de engenheiro de software equilibra a amplitude técnica com provas de impacto real. Os recrutadores e os gestores de engenharia querem conhecer as linguagens e os sistemas com que trabalha, mas contratam com base em resultados, como funcionalidades lançadas, latência reduzida e problemas resolvidos. Comece pelos resultados e sustente-os com a stack que utilizou.",
+    "keySkills": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Node.js",
+      "REST APIs",
+      "SQL",
+      "Git",
+      "CI/CD",
+      "Conceção de Sistemas"
+    ],
+    "tips": [
+      "Comece cada ponto com um verbo forte e um resultado mensurável, como \"Reduzi o tempo de resposta da API em 40%.\"",
+      "Liste as suas principais linguagens e frameworks numa secção de competências dedicada para que um ATS as possa identificar rapidamente.",
+      "Inclua uma ligação para um perfil do GitHub ou portefólio que demonstre código real e executável.",
+      "Descreva a escala a que trabalhou (pedidos por segundo, utilizadores, volume de dados) para dar contexto ao seu impacto.",
+      "Adapte a stack que destaca à descrição da função, em vez de listar todas as tecnologias com que já teve contacto."
+    ]
+  },
+  "ux-designer": {
+    "title": "Designer de UX",
+    "category": "Design",
+    "summary": "Realce o seu processo de design, os métodos de investigação e os resultados de produto que o seu trabalho gerou.",
+    "intro": "Um currículo de designer de UX deve ler-se como um argumento sobre a forma como pensa, e não apenas como uma lista de ferramentas. As equipas de contratação procuram um processo claro: investigação, ideação, prototipagem e validação, associado a resultados como uma maior taxa de sucesso nas tarefas ou uma conversão mais elevada. Combine o seu domínio técnico com o impacto de negócio que os seus designs proporcionaram.",
+    "keySkills": [
+      "Investigação de Utilizadores",
+      "Wireframing",
+      "Prototipagem",
+      "Figma",
+      "Testes de Usabilidade",
+      "Arquitetura de Informação",
+      "Design de Interação",
+      "Design Systems",
+      "Acessibilidade"
+    ],
+    "tips": [
+      "Inicie cada função com o problema que estava a resolver e o resultado que alcançou, e não apenas com os ecrãs que desenhou.",
+      "Inclua sempre uma ligação para um portefólio com dois ou três estudos de caso aprofundados.",
+      "Quantifique o impacto sempre que possível, como \"Aumentei a conclusão do onboarding em 22%.\"",
+      "Indique os métodos de investigação e de teste que utilizou para que o seu processo seja visível para quem não é designer.",
+      "Mantenha um layout limpo e bem espaçado; o próprio currículo é uma amostra de design."
+    ]
+  },
+  "accountant": {
+    "title": "Contabilista",
+    "category": "Finanças",
+    "summary": "Demonstre rigor, conhecimento de conformidade e os controlos financeiros pelos quais é responsável.",
+    "intro": "Um currículo de contabilista é avaliado pela precisão, credibilidade e confiança. Os empregadores querem ver as certificações relevantes, os sistemas em que trabalha e um historial impecável de relatórios rigorosos e entregues a tempo. Torne a sua atenção ao detalhe evidente tanto no conteúdo como na formatação da página.",
+    "keySkills": [
+      "Relato Financeiro",
+      "Contas a Pagar",
+      "Contas a Receber",
+      "Razão Geral",
+      "Reconciliações",
+      "GAAP",
+      "Preparação Fiscal",
+      "QuickBooks",
+      "Excel",
+      "Auditoria"
+    ],
+    "tips": [
+      "Liste certificações como CPA em destaque, junto ao topo da página.",
+      "Quantifique a dimensão do que gere, por exemplo, orçamentos, volume de transações ou número de contas.",
+      "Indique o software de contabilidade e os sistemas ERP que conhece para que o ATS os possa identificar.",
+      "Realce conquistas de conformidade, como auditorias sem reparos ou a redução de erros nos relatórios.",
+      "Mantenha uma formatação conservadora e impecável; o rigor faz parte da mensagem."
+    ]
+  },
+  "mechanical-engineer": {
+    "title": "Engenheiro Mecânico",
+    "category": "Engenharia",
+    "summary": "Apresente a sua experiência de conceção, as ferramentas técnicas e os produtos que ajudou a concretizar.",
+    "intro": "Um currículo de engenheiro mecânico deve ligar a capacidade técnica a resultados tangíveis: peças concebidas, produtos lançados ou custos reduzidos. Os gestores de contratação procuram domínio de CAD, normas relevantes e experiência prática ao longo do ciclo de vida do produto. Mostre tanto o que construiu como o resultado que isso produziu.",
+    "keySkills": [
+      "CAD",
+      "SolidWorks",
+      "AutoCAD",
+      "Análise de Elementos Finitos",
+      "GD&T",
+      "Conceção de Produto",
+      "Prototipagem",
+      "Processos de Fabrico",
+      "Análise de Tolerâncias"
+    ],
+    "tips": [
+      "Liste as ferramentas de CAD e de simulação que utiliza e o seu nível de proficiência em cada uma.",
+      "Quantifique resultados como peso reduzido, custos poupados ou tempo de ciclo melhorado.",
+      "Faça referência às normas e metodologias com que trabalha, como GD&T ou ISO.",
+      "Realce o trabalho interfuncional com produção, qualidade e fornecedores.",
+      "Inclua eventuais patentes, designs publicados ou projetos finais que demonstrem competência aplicada."
+    ]
+  },
+  "project-manager": {
+    "title": "Gestor de Projeto",
+    "category": "Gestão",
+    "summary": "Comprove que entrega projetos a tempo, dentro do orçamento e com resultados de negócio mensuráveis.",
+    "intro": "Um currículo de gestor de projeto vive ou morre pelos resultados. Os empregadores querem provas de que sabe definir o âmbito do trabalho, gerir as partes interessadas e cumprir prazos e orçamentos. Comece pelos resultados dos projetos que conduziu e depois mostre as metodologias e ferramentas que o levaram lá.",
+    "keySkills": [
+      "Planeamento de Projetos",
+      "Gestão de Partes Interessadas",
+      "Agile",
+      "Scrum",
+      "Gestão de Risco",
+      "Orçamentação",
+      "Jira",
+      "Roadmapping",
+      "Liderança Interfuncional"
+    ],
+    "tips": [
+      "Quantifique o âmbito de cada projeto: dimensão do orçamento, número de elementos da equipa e cronograma.",
+      "Inicie os pontos com resultados de entrega, como \"Concluí uma migração de 1,2 M€ com duas semanas de antecedência.\"",
+      "Indique as suas certificações, como PMP ou CSM, caso as possua.",
+      "Mostre a gestão de partes interessadas e interfuncional, e não apenas o acompanhamento de tarefas.",
+      "Adeque a metodologia que destaca à função, seja Agile, Waterfall ou híbrida."
+    ]
+  },
+  "marketing-manager": {
+    "title": "Gestor de Marketing",
+    "category": "Marketing",
+    "summary": "Ligue as campanhas à receita, ao crescimento e aos canais que escalou.",
+    "intro": "Um currículo de gestor de marketing deve ler-se como uma história de crescimento. As equipas de contratação querem ver quais os canais pelos quais é responsável, as campanhas que conduziu e o pipeline ou a receita que geraram. Ancore a sua experiência em métricas para que o seu impacto seja impossível de ignorar.",
+    "keySkills": [
+      "Gestão de Campanhas",
+      "SEO",
+      "Marketing de Conteúdos",
+      "Aquisição Paga",
+      "Análise de Marketing",
+      "Email Marketing",
+      "Estratégia de Marca",
+      "Google Analytics",
+      "Geração de Leads",
+      "Automação de Marketing"
+    ],
+    "tips": [
+      "Quantifique resultados como leads geradas, CAC reduzido ou receita influenciada.",
+      "Indique os canais e as plataformas pelos quais é responsável para que correspondam às palavras-chave da função.",
+      "Mostre a responsabilidade pelo orçamento e o retorno que produziu com ele.",
+      "Realce uma campanha emblemática com números claros de antes e depois.",
+      "Demonstre tanto estratégia como execução, e não apenas uma delas."
+    ]
+  },
+  "student": {
+    "title": "Estudante",
+    "category": "Nível de Entrada",
+    "summary": "Transforme as cadeiras, os projetos e os estágios num primeiro currículo convincente.",
+    "intro": "Um currículo de nível de entrada conquista entrevistas tirando o máximo partido de uma experiência formal limitada. As cadeiras, os projetos, os estágios e a liderança em atividades extracurriculares contam quando enquadrados em torno de competências e resultados. Concentre-se no que sabe fazer, sustentado por exemplos concretos, em vez de se desculpar por um percurso profissional curto.",
+    "keySkills": [
+      "Comunicação",
+      "Trabalho em Equipa",
+      "Gestão do Tempo",
+      "Microsoft Office",
+      "Investigação",
+      "Resolução de Problemas",
+      "Adaptabilidade",
+      "Liderança"
+    ],
+    "tips": [
+      "Coloque a formação junto ao topo e inclua cadeiras relevantes, a média se for elevada, e distinções.",
+      "Trate os projetos académicos e os estágios como empregos, com pontos focados em resultados.",
+      "Realce a liderança em clubes, desporto ou voluntariado para demonstrar iniciativa.",
+      "Mantenha-o numa página e utilize um layout limpo e fácil de percorrer.",
+      "Adapte a secção de competências às funções específicas a que se está a candidatar."
+    ]
+  },
+  "community-manager": {
+    "title": "Gestor de Comunidade",
+    "category": "Marketing",
+    "summary": "Mostre como faz crescer, envolve e fideliza audiências em vários canais.",
+    "intro": "Um currículo de gestor de comunidade deve provar que sabe construir e manter uma audiência envolvida. As equipas de contratação procuram métricas de crescimento, resultados de envolvimento e provas de que consegue representar a voz de uma marca enquanto gere conversas reais. Combine as plataformas que gere com os resultados que produziu.",
+    "keySkills": [
+      "Envolvimento da Comunidade",
+      "Gestão de Redes Sociais",
+      "Criação de Conteúdos",
+      "Moderação",
+      "Voz da Marca",
+      "Análise de Dados",
+      "Discord",
+      "Apoio ao Cliente",
+      "Coordenação de Eventos"
+    ],
+    "tips": [
+      "Quantifique o crescimento da comunidade, a taxa de envolvimento e a fidelização sempre que possível.",
+      "Indique as plataformas e ferramentas que gere, como Discord, Slack ou canais sociais.",
+      "Mostre como geriu escalações ou inverteu um sentimento negativo.",
+      "Realce campanhas ou eventos que conduziu e a participação que geraram.",
+      "Demonstre uma voz de marca consistente com exemplos concretos."
+    ]
+  },
+  "creative-writer": {
+    "title": "Escritor Criativo",
+    "category": "Escrita",
+    "summary": "Deixe a sua voz, versatilidade e trabalho publicado falarem por si.",
+    "intro": "Um currículo de escritor criativo deve demonstrar versatilidade, fiabilidade e uma voz distinta. Os editores e os clientes querem ver trabalho publicado, os formatos que domina e a sua capacidade de entregar uma escrita polida dentro do prazo. Comece pelos créditos e deixe que um portefólio faça o trabalho pesado.",
+    "keySkills": [
+      "Copywriting",
+      "Narrativa",
+      "Edição",
+      "Estratégia de Conteúdos",
+      "Escrita para SEO",
+      "Investigação",
+      "Revisão de Texto",
+      "Voz da Marca",
+      "CMS"
+    ],
+    "tips": [
+      "Inclua sempre uma ligação para um portefólio com uma seleção criteriosa dos seus melhores trabalhos.",
+      "Liste publicações, assinaturas ou clientes de relevo para estabelecer credibilidade.",
+      "Mostre versatilidade indicando os formatos que escreve, como conteúdos longos, guiões ou copy.",
+      "Quantifique o alcance sempre que possível, por exemplo o número de leitores ou o envolvimento com o trabalho publicado.",
+      "Mantenha o currículo nítido e sem gralhas; é uma amostra de escrita."
+    ]
+  },
+  "sales-representative": {
+    "title": "Representante de Vendas",
+    "category": "Vendas",
+    "summary": "Comece pelo cumprimento de objetivos, pelos negócios fechados e pela receita que gerou.",
+    "intro": "Um currículo de representante de vendas é, fundamentalmente, sobre números. Os gestores de contratação procuram o cumprimento de objetivos, a dimensão dos negócios e a consistência com que atingiu as metas. Coloque os seus resultados em primeiro plano e sustente-os com o processo e as ferramentas que utilizou para os alcançar.",
+    "keySkills": [
+      "Geração de Leads",
+      "Prospeção",
+      "Negociação",
+      "CRM",
+      "Salesforce",
+      "Gestão de Pipeline",
+      "Fecho de Negócios",
+      "Gestão de Contas",
+      "Chamadas a Frio"
+    ],
+    "tips": [
+      "Inicie cada função com o cumprimento de objetivos, por exemplo \"Atingi 128% do objetivo em 2025.\"",
+      "Quantifique a dimensão dos negócios, a receita gerada e o volume da sua carteira de clientes.",
+      "Indique o CRM e as ferramentas de vendas que utiliza para que correspondam às palavras-chave do ATS.",
+      "Mostre progressão, como prémios President's Club ou promoções.",
+      "Realce resultados tanto de novos negócios como de crescimento de contas para demonstrar versatilidade."
+    ]
+  }
+}
