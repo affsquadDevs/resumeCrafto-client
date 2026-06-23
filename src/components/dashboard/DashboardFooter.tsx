@@ -63,8 +63,7 @@ export const DashboardFooter = () => {
                                 {[
                                     { name: t('linkHome'), href: '/' },
                                     { name: t('linkHowItWorks'), href: '/how-it-works', emphasized: true },
-                                    { name: t('linkTemplates'), href: '/templates' },
-                                    { name: t('linkSettings'), href: '/settings' }
+                                    { name: t('linkTemplates'), href: '/templates' }
                                 ].map((item) => (
                                     <li key={item.name}>
                                         <Link
