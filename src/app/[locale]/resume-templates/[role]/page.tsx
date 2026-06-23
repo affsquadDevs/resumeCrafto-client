@@ -26,10 +26,10 @@ export async function generateMetadata({
     const description = `${role.summary} Use our free, ATS-friendly ${role.title} resume template to build a polished resume in minutes.`;
 
     return {
-        title: `${role.title} Resume Template (Free & ATS-Friendly)`,
+        title: `${role.title} Resume Template`,
         description,
         openGraph: {
-            title: `${role.title} Resume Template (Free & ATS-Friendly)`,
+            title: `${role.title} Resume Template`,
             description,
             url: localizedUrl(`/resume-templates/${role.slug}`, locale),
             type: "website",

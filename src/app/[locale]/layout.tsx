@@ -31,7 +31,8 @@ export async function generateMetadata({
     metadataBase: new URL("https://resumecraftor.com"),
     title: {
       default: t("homeTitle"),
-      template: "%s | ResumeCraftor",
+      // Passthrough template (no "| ResumeCraftor" suffix) to keep titles short.
+      template: "%s",
     },
     description: t("homeDescription"),
     applicationName: "ResumeCraftor",

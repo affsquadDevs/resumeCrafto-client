@@ -87,7 +87,6 @@ export const CraftorNavbar = ({ mode = 'default', title, backUrl = '/', activeTa
         { name: t('linkAboutUs'), href: '/about' },
         { name: t('linkContact'), href: '/contact' },
         { name: t('linkTermsOfService'), href: '/terms-of-service' },
-        { name: t('linkSettings'), href: '/settings' },
     ];
 
     return (

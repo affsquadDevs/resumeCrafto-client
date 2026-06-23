@@ -48,7 +48,7 @@ export const EditorHeader = ({
                     <ChevronLeft size={20} />
                 </Link>
                 <div className="flex flex-col min-w-0">
-                    <h1 className="text-xs sm:text-sm font-bold text-gray-900 leading-none truncate max-w-[80px] xs:max-w-[120px] sm:max-w-none">{resumeName || t('untitled')}</h1>
+                    <div className="text-xs sm:text-sm font-bold text-gray-900 leading-none truncate max-w-[80px] xs:max-w-[120px] sm:max-w-none">{resumeName || t('untitled')}</div>
                     <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1 hidden sm:block">{t('a4Standard')}</span>
                 </div>
             </div>
