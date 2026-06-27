@@ -23,6 +23,28 @@ export interface BlogPostMeta {
 
 export const blogPosts: BlogPostMeta[] = [
     {
+        id: "16",
+        title: "Resume Formats Explained: Chronological vs. Functional vs. Combination",
+        excerpt: "A practical breakdown of the three main resume formats, who each one suits, and how to choose the layout that survives ATS screening and wins interviews.",
+        author: "ResumeCraftor Editorial Team",
+        date: "2026-06-22",
+        readTime: "10 min read",
+        category: "Resume Guide",
+        slug: "resume-formats-chronological-functional-combination",
+        image: "/assets/photo/ATS%20resume%20formatting%20guide.png",
+    },
+    {
+        id: "17",
+        title: "How to Write a Resume With No Experience: A Complete Guide",
+        excerpt: "A step-by-step guide to writing a strong first resume with no work experience, using projects, school, and volunteering to prove you can do the job.",
+        author: "ResumeCraftor Editorial Team",
+        date: "2026-06-21",
+        readTime: "9 min read",
+        category: "Career Tips",
+        slug: "how-to-write-a-resume-with-no-experience",
+        image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+    },
+    {
         id: "11",
         title: "How to Quantify Achievements on Your Resume (With Real Examples)",
         excerpt: "A practical guide to quantifying resume achievements with real before-and-after bullet rewrites, metric formulas, and ways to find numbers even when you never tracked them.",

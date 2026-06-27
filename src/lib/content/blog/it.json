@@ -88,5 +88,17 @@
     "excerpt": "Una guida pratica alla lunghezza ideale del CV in base al livello di esperienza, quando due pagine sono accettabili e come tagliare i contenuti senza indebolire il tuo impatto.",
     "category": "Guida al CV",
     "readTime": "7 min di lettura"
+  },
+  "resume-formats-chronological-functional-combination": {
+    "title": "I formati del curriculum spiegati: cronologico, funzionale e combinato",
+    "excerpt": "Un'analisi pratica dei tre principali formati di curriculum, a chi si adatta ciascuno e come scegliere il layout che supera lo screening ATS e conquista i colloqui.",
+    "category": "Guida al curriculum",
+    "readTime": "10 min di lettura"
+  },
+  "how-to-write-a-resume-with-no-experience": {
+    "title": "Come scrivere un curriculum senza esperienza: la guida completa",
+    "excerpt": "Una guida passo dopo passo per scrivere un primo curriculum efficace anche senza esperienza lavorativa, usando progetti, percorso di studi e volontariato per dimostrare di essere all'altezza del ruolo.",
+    "category": "Consigli di carriera",
+    "readTime": "9 min di lettura"
   }
 }
