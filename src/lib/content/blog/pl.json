@@ -88,5 +88,17 @@
     "excerpt": "Praktyczny przewodnik po idealnej długości CV w zależności od poziomu doświadczenia, kiedy dwie strony są dopuszczalne oraz jak ograniczyć treść bez osłabienia siły przekazu.",
     "category": "Poradnik CV",
     "readTime": "7 min czytania"
+  },
+  "resume-formats-chronological-functional-combination": {
+    "title": "Formaty CV w pigułce: chronologiczny vs. funkcjonalny vs. kombinowany",
+    "excerpt": "Praktyczny przegląd trzech głównych formatów CV: dla kogo każdy z nich się sprawdza i jak wybrać układ, który przejdzie weryfikację ATS i pomoże zdobyć zaproszenia na rozmowy.",
+    "category": "Poradnik CV",
+    "readTime": "10 min czytania"
+  },
+  "how-to-write-a-resume-with-no-experience": {
+    "title": "Jak napisać CV bez doświadczenia: kompletny przewodnik",
+    "excerpt": "Przewodnik krok po kroku, jak napisać mocne pierwsze CV bez doświadczenia zawodowego, wykorzystując projekty, naukę i wolontariat, aby udowodnić, że poradzisz sobie z pracą.",
+    "category": "Porady dotyczące kariery",
+    "readTime": "9 min czytania"
   }
 }
