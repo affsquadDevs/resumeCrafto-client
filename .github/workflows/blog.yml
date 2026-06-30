@@ -1,0 +1,65 @@
+name: Daily Blog
+
+# Generates brand-new blog posts with the Claude API (matching the existing
+# posts' style + on-page SEO), writes the English metadata into
+# src/lib/blog-data.ts, the English body into src/lib/content/articles/en.json,
+# and the translations into src/lib/content/articles/<locale>.json and
+# src/lib/content/blog/<locale>.json, then commits to the default branch.
+#
+# The cron fires daily, but scripts/should-run-blog.mjs gates it down to 2 random
+# days per ISO week, so posts are generated only ~twice a week.
+# A manual "Run workflow" always generates, regardless of the day.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily at 06:00 UTC — gated to 2 random days/week below
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many new posts to generate"
+        type: string
+        default: "2"
+
+concurrency:
+  group: daily-blog
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # On scheduled runs, only proceed on this week's 2 random days. Manual runs
+      # skip the gate (always generate).
+      - name: Weekly run gate
+        id: gate
+        run: echo "run=$(node scripts/should-run-blog.mjs)" >> "$GITHUB_OUTPUT"
+
+      - name: Generate posts
+        if: github.event_name == 'workflow_dispatch' || steps.gate.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: claude-opus-4-8
+        run: node scripts/generate-blog.mjs --count "${{ inputs.count || '2' }}"
+
+      - name: Commit & push
+        if: github.event_name == 'workflow_dispatch' || steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          git add src/lib/blog-data.ts src/lib/content/articles/ src/lib/content/blog/
+          git commit -m "blog: add daily posts ($DATE)"
+          git push
